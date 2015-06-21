@@ -8,8 +8,8 @@ class Home extends Controller {
     
     public function index ($name = '') {
         echo 'We are in home/index <br />';
-        $user = $this->load_model('User');
-        $user->setName($name);
+        $this->loadModel('User');
+        $this->model->setName($name);
 
         //$this->inc_view('home/index', ['name' => $user->getName()]);
         

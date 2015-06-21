@@ -8,13 +8,18 @@ class Controller {
     }
     
     /**
-     * 
+     * Lädt ein Model und instanziert es anschliessend
      * @param type $model
-     * @return \model
      */
-    public function load_model($model) {
-        require_once '../app/models/' . $model . '.php';
-        return new $model();
+    public function loadModel($model) {
+        
+        $file = '../app/models/' . $model . '.php';
+        
+        if (file_exists($file)) {
+            require_once $file;
+            $this->model = new $model();
+        }
+        
     }
     
     // Mometan nicht gebraucht
