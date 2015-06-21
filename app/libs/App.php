@@ -26,8 +26,12 @@ class App {
         $file = ROOT. '/app/controllers/' . $this->controller . '.php';
         require_once $file;
 
-        //erstelle neues controller objekt
+        $model = $this->controller;
+        //erstelle neues controller Objekt
         $this->controller = new $this->controller;
+        
+        //Lade Model
+        $this->controller->loadModel($model);
 
         //Prüfe ob Methode existiert
         if (isset($url[1])) {
