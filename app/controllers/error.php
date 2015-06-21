@@ -8,7 +8,7 @@ class Error extends Controller {
 
     public function index($name = '') {
         echo 'We are in error/index <br />';
-        $this->inc_view('error/index');
+        $this->view->render('error/index');
     }
 
 }
