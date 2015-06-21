@@ -1,5 +1,5 @@
 <?php
-
+// weiss noch nicht wofür ich die brauch
 class View {
 
     function __construct() {
@@ -7,6 +7,8 @@ class View {
     }
 
     public function render($name) {
+        require 'views/header.php';
         require 'views/' . $name . '.php';
+        require 'views/footer.php';
     }
 }
