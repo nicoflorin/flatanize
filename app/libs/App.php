@@ -3,7 +3,7 @@
 class App {
 
     //Default Werte
-    protected $controller = 'home';
+    protected $controller = 'homeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -16,9 +16,9 @@ class App {
         $url = $this->parseUrl();
 
         // Prüfe ob Controller existiert
-        $file = '../app/controllers/' . $url[0] . '.php';
+        $file = '../app/controllers/' . $url[0] . 'Controller.php';
         if (file_exists($file)) {
-            $this->controller = $url[0];
+            $this->controller = $url[0] . 'Controller';
             unset($url[0]);
         }
 
@@ -26,12 +26,8 @@ class App {
         $file = ROOT. '/app/controllers/' . $this->controller . '.php';
         require_once $file;
 
-        $model = $this->controller;
         //erstelle neues controller Objekt
         $this->controller = new $this->controller;
-        
-        //Lade Model
-        $this->controller->loadModel($model);
 
         //Prüfe ob Methode existiert
         if (isset($url[1])) {

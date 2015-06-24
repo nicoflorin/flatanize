@@ -1,7 +1,9 @@
 <?php
 
 class Controller {
-
+    
+    protected  $model;
+    
     function __construct() {
         echo 'Main Controller <br />';
         $this->view = new View();
@@ -13,7 +15,7 @@ class Controller {
      */
     public function loadModel($model) {
         
-        $file = '../app/models/' . $model . '.php';
+        $file = '../app/models/' . $model . 'Model.php';
         
         if (file_exists($file)) {
             require_once $file;
