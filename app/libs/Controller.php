@@ -15,7 +15,7 @@ class Controller {
      */
     public function loadModel($model) {
         
-        $file = '../app/models/' . $model . 'Model.php';
+        $file = ROOT . '/app/models/' . $model . 'Model.php';
         
         if (file_exists($file)) {
             require_once $file;

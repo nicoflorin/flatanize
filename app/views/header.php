@@ -51,7 +51,7 @@
                         <!-- login navbar -->
                         <form class="navbar-form navbar-right" action="action.php" method="post">
                             <div class="form-group ">
-                                <input type="text" placeholder="Username" class="form-control" id="inputUsername">
+                                <input type="text" placeholder="User Name" class="form-control" id="inputUsername">
                             </div>
                             <div class="form-group">
                                 <input type="password" placeholder="Password" class="form-control" id="inputPassword">

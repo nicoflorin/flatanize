@@ -18,7 +18,6 @@ class Database extends PDO { //php.ini: extension=php_pdo_mysql.dll enablen
                 ':host=' . $settings['database']['host'] .
                 ((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '') .
                 ';dbname=' . $settings['database']['db'];
-        echo $dsn;
         
         // Erstelle PDO Objekt
         parent::__construct($dsn, $settings['database']['username'], $settings['database']['password']);

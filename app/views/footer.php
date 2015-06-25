@@ -2,6 +2,7 @@
 
         </div> <!-- end wrapper -->
         <!-- Footer only on large devices -->
+        <!--
         <footer class="hidden-xs">
             <div class="containter">
                 <div class="text-center text-muted">
@@ -9,10 +10,10 @@
                 </div>
             </div>
         </footer>
-
+        -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Bootstrap's JavaScript plugin -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="<?php echo URL ?>js/bootstrap.min.js"></script>
     </body>
 </html> 
