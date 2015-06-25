@@ -2,8 +2,6 @@
 
 /**
  * Verarbeitet die Registrierung
- *
- * @author Nico
  */
 class Register extends Model {
 
@@ -16,8 +14,6 @@ class Register extends Model {
      * @param array $request
      */
     public function register(array $request) {
-        print_r($request);
-
         //input sent from post
         $in_userName = $request['username'];
         $in_displayName = $request['displayname'];

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Model Hauptklasse
+ */
 class Model {
     protected $db;
 

@@ -1,6 +1,10 @@
 <?php
 
-class Database extends PDO { //php.ini: extension=php_pdo_mysql.dll enablen
+/**
+ * Database Hauptklasse
+ * Erweitert PDO Klasse (Datenbankzugriff)
+ */
+class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mysql.dll enablen
     /**
      * Erstellt ein Database Objekt anhand der Informationen eines .ini File
      * @param type $file

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Bootstrap Class
+ * Hier wird der Controller und die Funktion geladen
+ */
 class App {
 
     //Default Werte
@@ -11,6 +15,11 @@ class App {
         
     }
 
+    /**
+     * Lädt gemäss URL den entsprechenden Controller und 
+     * allenfalls eine Funktion
+     * Bsp. index.php?url=home/index -> lädt home Controller / index Funktion
+     */
     public function init() {
         // Trennt Url zwischen / und erstellt Array
         $url = $this->parseUrl();

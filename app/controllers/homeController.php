@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Controller für Home 
+ */
 class HomeController extends Controller {
 
     function __construct() {

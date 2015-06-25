@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * View Hauptklasse
+ */
 class View {
 
     function __construct() {
