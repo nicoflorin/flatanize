@@ -8,8 +8,8 @@
         <title>Homepage - Home</title>
 
         <!-- Bootstrap -->
-        <link href="<?php echo URL; ?>/public/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo URL; ?>/public/css/styles.css" rel="stylesheet">
+        <link href="<?php echo URL; ?>public/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo URL; ?>public/css/styles.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,17 +35,17 @@
                         </button>
 
                         <!-- Titel -->
-                        <a class="navbar-brand" href="index.php">FLATANIZE</a>
+                        <a class="navbar-brand" href="<?php echo URL; ?>home/index">FLATANIZE</a>
 
                     </div><!-- end navbar-header -->
 
                     <!-- Collect the nav links and forms for toggling -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                            <li><a href=""><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
-                            <li><a href=""><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li><a href=""><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
+                            <li class="active"><a href="<?php echo URL; ?>home/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a href="<?php echo URL; ?>home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
+                            <li><a href="<?php echo URL; ?>home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                            <li><a href="<?php echo URL; ?>home/signUp"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->
@@ -69,3 +69,5 @@
                     </div><!-- end navbarCollapse -->
                 </div> <!-- end container -->
             </nav><!-- end nav -->	
+            <!-- main container -->
+            <div class="container" id="mainContainer">

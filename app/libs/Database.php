@@ -1,9 +1,8 @@
 <?php
 
-class Database extends PDO {
-
+class Database extends PDO { //php.ini: extension=php_pdo_mysql.dll enablen
     /**
-     * Erstellt ein Database Objekt anhand von einem .ini File
+     * Erstellt ein Database Objekt anhand der Informationen eines .ini File
      * @param type $file
      * @throws exception
      */
@@ -13,7 +12,7 @@ class Database extends PDO {
         if (!$settings = parse_ini_file($file, TRUE)) {
             throw new exception('Unable to open ' . $file . '.');
         }
-        
+
         // verknüpfe Settings zu dsn String
         $dsn = $settings['database']['driver'] .
                 ':host=' . $settings['database']['host'] .

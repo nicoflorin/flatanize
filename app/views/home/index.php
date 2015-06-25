@@ -1,6 +1,3 @@
-      <!-- main container -->
-        <div class="container" id="mainContainer">
-
             <!-- Carousel for mainpage Infos -->
             <div class="carousel slide" id="mainCarousel" data-interval="5000" data-ride="carousel"> <!-- interval in ms, auto switch -->
 
@@ -49,7 +46,3 @@
 
                 <a href="" class="btn btn-large btn-primary">Register now!</a>
             </div><!-- end mainCallout -->
-
-        </div><!-- end main container -->
-          
-    </div> <!-- end wrapper -->

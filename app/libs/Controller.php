@@ -2,10 +2,10 @@
 
 class Controller {
     
-    protected  $model;
+    protected $model;
+    protected $view;
     
     function __construct() {
-        echo 'Main Controller <br />';
         $this->view = new View();
     }
     

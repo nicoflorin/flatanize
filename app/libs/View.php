@@ -1,11 +1,15 @@
 <?php
-// weiss noch nicht wofür ich die brauch
+
 class View {
 
     function __construct() {
-        echo 'This is the View <br />';
-    }
 
+    }
+    
+    /**
+     * Lädt das entsprechende view file (html content)
+     * @param type $name
+     */
     public function render($name) {
         require (ROOT . '/app/views/' . $name . '.php');
     }
