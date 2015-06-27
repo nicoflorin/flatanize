@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/flatanize/app/models/UserModel.php</file>
+            <file>file:/C:/xampp/htdocs/flatanize/app/models/registerModel.php</file>
+            <file>file:/C:/xampp/htdocs/flatanize/app/controllers/homeController.php</file>
+            <file>file:/C:/xampp/htdocs/flatanize/app/views/home/signUp.php</file>
         </group>
     </open-files>
 </project-private>

@@ -13,7 +13,9 @@ class View {
      * Lädt das entsprechende view file (html content)
      * @param type $name
      */
-    public function render($name) {
+    public function render($name, $data = null) {
+        require (ROOT . '/app/views/header.php');
         require (ROOT . '/app/views/' . $name . '.php');
+        require (ROOT . '/app/views/footer.php');
     }
 }
