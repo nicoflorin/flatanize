@@ -23,7 +23,7 @@ class Register extends Model {
 
         $error = [];
         if (empty($in_userName)) {
-            $error = ["username" => "false"];
+            $error += ["username" => "false"];
         }
         if (empty($in_displayName)) {
             $error += ["displayname" => "false"];

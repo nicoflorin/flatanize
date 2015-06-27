@@ -32,7 +32,7 @@ class HomeController extends Controller {
         $res = $this->model->register($_POST);
 
         //Falls keine Fehler aufgetreten sind
-        if ($res == true) {
+        if ($res === true) {
             $this->view->render('home/index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->render('home/signUp', $res);
