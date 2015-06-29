@@ -30,7 +30,7 @@
                 <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
             </div>
             <div class="form-group">
-                <input type="text" name="wg_code" id="wg_code" class="form-control input-lg" placeholder="Flat Code (if available)" tabindex="5">
+                <input type="text" name="flat_code" id="flat_code" class="form-control input-lg" placeholder="Flat Code (if available)" tabindex="5">
             </div>
             <div class="form-group">
                 <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">

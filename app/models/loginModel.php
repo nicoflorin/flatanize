@@ -26,12 +26,12 @@ class Login extends Model {
 
     public function login($request) {
         //username und password von Formular
-        $in_userName = $request['username'];
-        $in_password = $request['password'];
+        $in_userName = $request['l_username'];
+        $in_password = $request['l_password'];
 
         $st = $this->db->prepare("SELECT password, salt FROM users WHERE username = :username LIMIT 1");
         $st->execute(array(':username' => $in_userName));
-        $res = $st->fetch(PDO::FETCH_ASSOC);
+        $res = $st->fetch(PDO::FETCH_ASSOC); // Gibt Tabelle mit key zurück
 
         $passwordFromDB = $res['password'];
         $saltFromDB = $res['salt'];

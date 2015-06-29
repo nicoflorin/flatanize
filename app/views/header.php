@@ -51,10 +51,10 @@
                         <!-- login navbar -->
                         <form class="navbar-form navbar-right" action="<?= URL ?>/home/login" method="post">
                             <div class="form-group ">
-                                <input type="text" placeholder="User Name" class="form-control" name="username">
+                                <input type="text" placeholder="User Name" class="form-control" name="l_username">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" name="password">
+                                <input type="password" placeholder="Password" class="form-control" name="l_password">
                             </div>
 
                             <button type="submit" class="btn btn-success">Login</button>

@@ -19,7 +19,7 @@ class Register extends Model {
         $in_displayName = $request['displayname'];
         $in_email = $request['email'];
         $in_password = $request['password'];
-        $in_wg_code = $request['wg_code'];
+        $in_flat_code = $request['flat_code'];
 
         $error = [];
         if (empty($in_userName)) {
@@ -65,6 +65,14 @@ class Register extends Model {
                 ':password' => $hashed_password,
                 ':salt' => $salt,
             ));
+            
+            // Falls ein Flat Code eingegeben wurde, den User gleich mit dieser WG verlinken
+            if (!empty($in_flat_code)) {
+                $stmt = $this->db->prepare("SELECT id FROM flats WHERE code = :flat_code");
+                $stmt->execute(array(':flat_code' => $in_flat_code));
+                $res = $stmt->fetch(PDO::FETCH_ASSOC);
+                
+            }
 
             // Wenn keine Fehler auftraten
             return true;
