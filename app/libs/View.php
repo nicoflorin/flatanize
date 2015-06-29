@@ -8,7 +8,7 @@ class View {
     protected $data = [];
 
     function __construct() {
-        $this->data['title'] = "Home";
+        $this->data['title'] = 'Home';
     }
 
     /**
@@ -16,8 +16,8 @@ class View {
      * @param type $name
      * @param type $data
      */
-    public function render($name, $data = null) {
-
+    public function render($name, $data = []) {
+        $this->data = array_merge($this->data, $data); // Array zu Property hinzufügen
         require (ROOT . '/app/views/header.php');
         require (ROOT . '/app/views/' . $name . '.php');
         require (ROOT . '/app/views/footer.php');

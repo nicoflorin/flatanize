@@ -36,6 +36,7 @@ class HomeController extends Controller {
             $this->view->render('home/index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('title', 'Sign Up');
+            $this->view->assign('error', 'true');
             $this->view->render('home/signUp', $res);
         }
     }

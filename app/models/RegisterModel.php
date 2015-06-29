@@ -37,7 +37,7 @@ class Register extends Model {
         //falls Fehler aufgetreten sind, $error Array zurückgeben
         if (!empty($error)) {
             
-            // Befüllte Felder wieder zurückgeben
+            // Korrekt Befüllte Felder wieder zurückgeben
             if (!empty($in_userName)) {
                $error["username"] = $in_userName;
             }
