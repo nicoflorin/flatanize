@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Controller für Home 
+ * Controller für Home
  */
 class HomeController extends Controller {
 
@@ -13,7 +13,6 @@ class HomeController extends Controller {
      * Lädt index Seite
      */
     public function index($name = '') {
-        //$this->inc_view('home/index', ['name' => $user->getName()]);
         $this->view->render('home/index');
     }
 
@@ -21,6 +20,7 @@ class HomeController extends Controller {
      * Lädt SignUp Seite
      */
     public function signUp() {
+        $this->view->assign('title', 'Sign Up');
         $this->view->render('home/signUp');
     }
 
@@ -35,6 +35,7 @@ class HomeController extends Controller {
         if ($res === true) {
             $this->view->render('home/index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
+            $this->view->assign('title', 'Sign Up');
             $this->view->render('home/signUp', $res);
         }
     }

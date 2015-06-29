@@ -23,16 +23,16 @@ class Register extends Model {
 
         $error = [];
         if (empty($in_userName)) {
-            $error += ["username" => "false"];
+            $error['username'] = "false";
         }
         if (empty($in_displayName)) {
-            $error += ["displayname" => "false"];
+            $error['displayname'] = "false";
         }
         if (empty($in_email)) {
-            $error += ["email" => "false"];
+            $error['email'] = "false";
         }
         if (empty($in_password)) {
-            $error += ["password" => "false"];
+            $error['password'] = "false";
         }
         //falls Fehler aufgetreten sind, $error Array zurückgeben
         if (!empty($error)) {
@@ -66,6 +66,7 @@ class Register extends Model {
                 ':salt' => $salt,
             ));
 
+            // Wenn keine Fehler auftraten
             return true;
         }
     }
