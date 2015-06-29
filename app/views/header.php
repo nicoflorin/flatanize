@@ -49,12 +49,12 @@
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->
-                        <form class="navbar-form navbar-right" action="action.php" method="post">
+                        <form class="navbar-form navbar-right" action="<?= URL ?>/home/login" method="post">
                             <div class="form-group ">
-                                <input type="text" placeholder="User Name" class="form-control" id="inputUsername">
+                                <input type="text" placeholder="User Name" class="form-control" name="username">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" id="inputPassword">
+                                <input type="password" placeholder="Password" class="form-control" name="password">
                             </div>
 
                             <button type="submit" class="btn btn-success">Login</button>
@@ -62,8 +62,6 @@
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-primary"><input type="checkbox" id="rememberMe"> Remember</label>
                             </div>
-                            <!-- copyright, only on small devices, hidden in footer -->
-                            <p class="visible-xs">&copy; 2015 Nico Florin All Rights Reserved</p>
                         </form><!-- end login -->
 
                     </div><!-- end navbarCollapse -->

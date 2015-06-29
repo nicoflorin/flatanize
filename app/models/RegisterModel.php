@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Verarbeitet die Registrierung
+ * Verarbeitet die Registrierung eines Benutzers
  */
 class Register extends Model {
 
