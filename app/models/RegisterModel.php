@@ -51,7 +51,7 @@ class Register extends Model {
             // Return Error
             return $error;
         } else { // sonst User erstellen
-            $salt = openssl_random_pseudo_bytes(64); //generate 265bit random string
+            $salt = openssl_random_pseudo_bytes(64); //generate 512bit random string
             $hashed_password = hash_hmac("sha256", $in_password, $salt);
 
             $st = $this->db->prepare(
