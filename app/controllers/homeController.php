@@ -13,15 +13,14 @@ class HomeController extends Controller {
      * Lädt index Seite
      */
     public function index($name = '') {
-        $this->view->render('home/index');
+        $this->view->render('home/index', 'Home');
     }
 
     /**
      * Lädt SignUp Seite
      */
     public function signUp() {
-        $this->view->assign('title', 'Sign Up');
-        $this->view->render('home/signUp');
+        $this->view->render('home/signUp', 'Sign Up');
     }
 
     /**
@@ -35,9 +34,8 @@ class HomeController extends Controller {
         if ($res === true) {
             $this->view->render('home/index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
-            $this->view->assign('title', 'Sign Up');
             $this->view->assign('error', 'true');
-            $this->view->render('home/signUp', $res);
+            $this->view->render('home/signUp', 'Sign Up', $res);
         }
     }
     

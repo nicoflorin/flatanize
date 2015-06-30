@@ -16,7 +16,8 @@ class View {
      * @param type $name
      * @param type $data
      */
-    public function render($name, $data = []) {
+    public function render($name, $title = '', $data = []) {
+        $this->assign('title', $title);
         $this->data = array_merge($this->data, $data); // Array zu Property hinzufügen
         require (ROOT . '/app/views/header.php');
         require (ROOT . '/app/views/' . $name . '.php');
