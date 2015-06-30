@@ -5,7 +5,7 @@
  */
 class Register extends Model {
 
-    public function __construct() {
+    function __construct() {
         parent::__construct();
     }
 

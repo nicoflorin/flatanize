@@ -45,7 +45,7 @@
                             <li class="active"><a href="<?= URL ?>home/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                             <li><a href="<?= URL ?>home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
                             <li><a href="<?= URL ?>home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li><a href="<?= URL ?>home/signUp"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
+                            <li><a href="<?= URL ?>register/signUp"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->
