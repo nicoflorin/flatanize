@@ -86,9 +86,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `flatanize`.`cleaning_schedules`
+-- Table `flatanize`.`cleanings`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `flatanize`.`cleaning_schedules` (
+CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
   `title` VARCHAR(255) NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`cleaning_schedules` (
   `start` DATE NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_cleaning_schedules_flats`
+  CONSTRAINT `fk_cleanings_flats`
     FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
     ON DELETE NO ACTION
@@ -111,27 +111,26 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `flatanize`.`wdays` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `day` ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NULL,
-  `weekdayscol` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `flatanize`.`weekdaysCleaning_schedules`
+-- Table `flatanize`.`wdays_cleanings`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `flatanize`.`weekdaysCleaning_schedules` (
+CREATE TABLE IF NOT EXISTS `flatanize`.`wdays_cleanings` (
   `wdays_id` INT UNSIGNED NOT NULL,
-  `cleaning_schedules_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`wdays_id`, `cleaning_schedules_id`),
-  INDEX `cleaning_schedules_id_idx` (`cleaning_schedules_id` ASC),
-  CONSTRAINT `wdays_id`
+  `cleanings_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`wdays_id`, `cleanings_id`),
+  INDEX `cleanings_id_idx` (`cleanings_id` ASC),
+  CONSTRAINT `fk_wdays_c_wdays`
     FOREIGN KEY (`wdays_id`)
     REFERENCES `flatanize`.`wdays` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `cleaning_schedules_id`
-    FOREIGN KEY (`cleaning_schedules_id`)
-    REFERENCES `flatanize`.`cleaning_schedules` (`id`)
+  CONSTRAINT `fk_wdays_c_cleanings`
+    FOREIGN KEY (`cleanings_id`)
+    REFERENCES `flatanize`.`cleanings` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
