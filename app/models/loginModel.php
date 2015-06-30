@@ -7,7 +7,7 @@
  */
 class Login extends Model {
 
-    public function __construct() {
+    function __construct() {
         parent::__construct();
     }
 
@@ -30,19 +30,21 @@ class Login extends Model {
         $in_userName = $request['l_username'];
         $in_password = $request['l_password'];
 
-        $st = $this->db->prepare("SELECT password, salt FROM users WHERE username = :username LIMIT 1");
-        $st->execute(array(':username' => $in_userName));
-        $res = $st->fetch(PDO::FETCH_ASSOC); // Gibt Tabelle mit key zurück
+        // Select auf diesen Usernamen
+        $bind = array(':username' => $in_userName);
+        $res = $this->db->select('password, salt', 'users', 'username = :username LIMIT 1', $bind);
 
-        $passwordFromDB = $res['password'];
-        $saltFromDB = $res['salt'];
+        // Bei Treffer auf DB
+        if (!empty($res)) { 
+            $passwordFromDB = $res[0]['password'];
+            $saltFromDB = $res[0]['salt'];
 
-        // Vergleiche Input Password mit Hash, Salt aus DB
-        //compare input password with hash,salt from DB
-        if ($this->testPassword($in_password, $saltFromDB, $passwordFromDB)) {
-            return true;
-        } else {
-            return false;
+            // Vergleiche Input Password mit Hash, Salt aus DB
+            if ($this->testPassword($in_password, $saltFromDB, $passwordFromDB)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
