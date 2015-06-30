@@ -13,8 +13,6 @@ class Login extends Model {
 
     /**
      * Return True falls das Password mit dem Sal und Hash übereinstimmt
-     * @param type $saltFromDB
-     * @return type
      */
     private function testPassword($password, $saltFromDB, $hashFromDB) {
         if (hash_hmac("sha256", $password, $saltFromDB) == $hashFromDB) {
@@ -24,6 +22,9 @@ class Login extends Model {
         }
     }
 
+    /**
+     * Verarbeitet Login
+     */
     public function login($request) {
         //username und password von Formular
         $in_userName = $request['l_username'];
