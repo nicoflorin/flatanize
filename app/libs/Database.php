@@ -26,6 +26,9 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
 
         // Erstelle PDO Objekt
         parent::__construct($dsn, $settings['database']['username'], $settings['database']['password']);
+        
+        // setzte ErrorLevel
+        $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
     }
 
     /**
@@ -62,6 +65,7 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
     public function insert($table, $fields, $values, $bind = array()) {
         if (!empty($table) && !empty($fields) && !empty($values)) {
             $sql = "INSERT INTO " . $table . " (" . $fields . ") VALUES (" . $values . ");";
+
             return $this->run($sql, $bind);
         } else {
             return false;
