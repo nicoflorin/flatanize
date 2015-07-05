@@ -37,7 +37,8 @@ class flatModel extends Model {
                 $res = $this->db->insert('flats', 'name, code', ':flatName, :code', $bind);
                 $flat_id = $this->db->lastInsertId();
                 $this->setFlatId($flat_id);
-                $this->linkUserToFlat(Session::get('user_id'), $flat_id);
+                $user = new UserModel();
+                $user->linkUserToFlat(Session::get('user_id'), $flat_id);
                 $next = false;
             }
         } while ($next);
@@ -53,7 +54,6 @@ class flatModel extends Model {
     /*
      * Erstellt einen zufälligen String
      */
-
     private function createRandomCode($length) {
         $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $result = '';
