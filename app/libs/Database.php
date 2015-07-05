@@ -32,40 +32,56 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
      * Gibt einen oder mehrere Datensätze zurück
      */
     public function select($fields = "*", $table, $where = "", $bind = array()) {
-        $sql = "SELECT " . $fields . " FROM " . $table;
-        if (!empty($where)) {
-            $sql .= " WHERE " . $where;
+        if (!empty($table)) {
+            $sql = "SELECT " . $fields . " FROM " . $table;
+            if (!empty($where)) {
+                $sql .= " WHERE " . $where;
+            }
+            $sql .= ";";
+            return $this->run($sql, $bind);
+        } else {
+            return false;
         }
-        $sql .= ";";
-        return $this->run($sql, $bind);
     }
 
     /**
      * Löscht einen Datensatz aus einer Tabelle
      */
     public function delete($table, $where = "", $bind = array()) {
-        $sql = "DELETE FROM " . $table . " WHERE " . $where . ";";
-        return $this->run($sql, $bind);
+        if (!empty($table)) {
+            $sql = "DELETE FROM " . $table . " WHERE " . $where . ";";
+            return $this->run($sql, $bind);
+        } else {
+            return false;
+        }
     }
 
     /**
      * Fügt einen neuen Datensatz in die Tabelle ein
      */
     public function insert($table, $fields, $values, $bind = array()) {
-        $sql = "INSERT INTO " . $table . " (" . $fields . ") VALUES (" . $values . ");";
-        return $this->run($sql, $bind);
+        if (!empty($table) && !empty($fields) && !empty($values)) {
+            $sql = "INSERT INTO " . $table . " (" . $fields . ") VALUES (" . $values . ");";
+            return $this->run($sql, $bind);
+        } else {
+            return false;
+        }
     }
 
     /**
      * Aktualisiert einen oder mehrere Datensätze
      */
     public function update($table, $fieldVal, $where = "", $bind = array()) {
-        $sql = "UPDATE " . $table . " SET " . $fieldVal;
-        if (!empty($where)) {
-            $sql .= " WHERE " . $where;
+        if (!empty($table) && !empty(filedVal)) {
+            $sql = "UPDATE " . $table . " SET " . $fieldVal;
+            if (!empty($where)) {
+                $sql .= " WHERE " . $where;
+            }
+            $sql .= ";";
+            return $this->run($sql, $bind);
+        } else {
+            return false;
         }
-        $sql .= ";";
-        return $this->run($sql, $bind);
     }
 
     /**
