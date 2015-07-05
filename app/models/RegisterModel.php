@@ -3,7 +3,7 @@
 /**
  * Verarbeitet die Registrierung eines Benutzers
  */
-class Register extends Model {
+class RegisterModel extends Model {
 
     function __construct() {
         parent::__construct();
