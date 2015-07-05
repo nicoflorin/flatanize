@@ -76,7 +76,7 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
      * Aktualisiert einen oder mehrere Datensätze
      */
     public function update($table, $fieldVal, $where = "", $bind = array()) {
-        if (!empty($table) && !empty(filedVal)) {
+        if (!empty($table) && !empty($fieldVal)) {
             $sql = "UPDATE " . $table . " SET " . $fieldVal;
             if (!empty($where)) {
                 $sql .= " WHERE " . $where;
