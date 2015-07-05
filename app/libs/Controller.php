@@ -10,6 +10,7 @@ class Controller {
 
     function __construct() {
         $this->view = new View();
+        Session::init();
     }
 
     /**
@@ -30,10 +31,11 @@ class Controller {
     /**
      * Leitet Anfrage per Header Änderung um
      */
-    public function redirect($controller, $method = "index", $args = array()) {
+    public function redirect($controller="home", $method = "index", $args = array()) {
 
         $location = URL . "/" . $controller . "/" . $method . "/" . implode("/", $args);
         header("Location: " . $location);
         exit;
     }
+
 }
