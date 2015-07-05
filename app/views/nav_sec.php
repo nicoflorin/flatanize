@@ -19,9 +19,9 @@
         <!-- Collect the nav links and forms for toggling -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="<?= URL ?>/home/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="<?= URL ?>/home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
-                <li><a href="<?= URL ?>/home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>/home/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="<?php echo ($this->data['title'] == 'FAQ') ? 'active' : '' ?>"><a href="<?= URL ?>/home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
+                <li class="<?php echo ($this->data['title'] == 'About') ? 'active' : '' ?>"><a href="<?= URL ?>/home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
             </ul><!-- end navbar-nav -->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
