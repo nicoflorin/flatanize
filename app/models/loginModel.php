@@ -32,16 +32,24 @@ class LoginModel extends Model {
 
         // Select auf diesen Usernamen
         $bind = array(':username' => $in_userName);
-        $res = $this->db->select('id, password, salt', 'users', 'username = :username LIMIT 1', $bind);
+        $res = $this->db->select('id, flat_id, password, salt', 'users', 'username = :username LIMIT 1', $bind);
 
         // Bei Treffer auf DB
         if (!empty($res)) { 
             $passwordFromDB = $res[0]['password'];
             $saltFromDB = $res[0]['salt'];
+            $flat_id = $res[0]['flat_id'];
 
             // Vergleiche Input Password mit Hash, Salt aus DB
             if ($this->testPassword($in_password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
+                //Schreibe User Session var
                 Session::set('user_id', $res[0]['id']);
+                
+                //Schreibe flat Session var
+                if (isset($flat_id)) {
+                    Session::set('flat_id', $flat_id);
+                }
+                
                 return true;
             } else {
                 return false;
