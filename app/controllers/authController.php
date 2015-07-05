@@ -13,11 +13,11 @@ class AuthController extends Controller{
     public function login() {
         $this->loadModel('login');
         $res = $this->model->login($_POST);
-        if ($res === TRUE) {
+        if ($res === true) {
             //Set logged In Session key
-            Session::set('loggedIn', true);
+            Session::setLoggedIn();
             
-            $this->redirect('app', 'shopping');
+            $this->redirect('app', 'index');
         } else {
             $this->redirect(); //home
         }
