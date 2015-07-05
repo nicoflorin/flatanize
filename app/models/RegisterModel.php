@@ -14,7 +14,6 @@ class RegisterModel extends Model {
      * @param array $request
      */
     public function register(array $request) {
-        // @Todo doppelte User prüfen
         //input sent from post
         $in_userName = $request['username'];
         $in_displayName = $request['displayname'];
