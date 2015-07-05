@@ -40,7 +40,7 @@ class LoginModel extends Model {
             $saltFromDB = $res[0]['salt'];
 
             // Vergleiche Input Password mit Hash, Salt aus DB
-            if ($this->testPassword($in_password, $saltFromDB, $passwordFromDB)) {
+            if ($this->testPassword($in_password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
                 Session::set('user_id', $res[0]['id']);
                 return true;
             } else {
