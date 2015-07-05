@@ -13,7 +13,12 @@ class HomeController extends Controller {
      * Lädt index Seite
      */
     public function index($name = '') {
-        $this->view->render('home/index', 'Home');
+        if (Session::isLoggedIn()) {
+            $this->view->render('app/index', 'Home');
+        } else {
+            $this->view->render('home/index', 'Home');
+        }
+        
     }
     
 
