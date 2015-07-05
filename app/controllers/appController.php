@@ -5,13 +5,18 @@
  * @author Nico
  */
 class appController extends Controller {
+    
+    /**
+     * Lädt Secure Index Seite
+     */
+    public function index() {
+        $this->view->render('app/index' , 'Home');
+    }
+    
+    /**
+     * Lädt Shopping Seite
+     */
     public function shopping () {
-        if (Session::get('loggedIn')) {
-            $this->view->render('app/shopping', 'Shopping List');
-        } else {
-            Session::destroy();
-            $this->redirect(); //home
-        }
-        
+        $this->view->render('app/shopping', 'Shopping List');
     }
 }
