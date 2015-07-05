@@ -27,8 +27,8 @@ class registerController extends Controller{
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->redirect('home', 'index');
-            //$this->view->render('home/index');
+            $this->redirect();//home
+
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error', 'true');
             $this->view->render('register/signUp', 'Sign Up', $res);
