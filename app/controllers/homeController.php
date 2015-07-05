@@ -16,16 +16,5 @@ class HomeController extends Controller {
         $this->view->render('home/index', 'Home');
     }
     
-    /**
-     * Übergibt POST Daten an LoginModel
-     */
-    public function login() {
-        $this->loadModel('login');
-        $res = $this->model->login($_POST);
-        if ($res === TRUE) {
-            echo "success";
-        } else {
-            echo "failed";
-        }
-    }
+
 }
