@@ -1,16 +1,13 @@
 <?php
 
-class UserModel {
+class UserModel extends Model{
 
+    private $id;
+    private $flat_id;
     private $name;
 
     function __construct() {
-        try {
-            $db = new Database();
-            echo '<br />DB connect successfull!';
-        } catch (Exception $e) {
-            echo 'Connection failed: ' . $e->getMessage();
-        }
+        parent::construct();
     }
 
     function getName() {
