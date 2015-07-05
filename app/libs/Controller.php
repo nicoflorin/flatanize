@@ -22,7 +22,8 @@ class Controller {
 
         if (file_exists($file)) {
             require_once $file;
-            $this->model = new $model();
+            $this->model = $model . "Model";
+            $this->model = new $this->model();
         }
     }
 
