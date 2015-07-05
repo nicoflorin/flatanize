@@ -1,10 +1,7 @@
-<div class="col-md-3 col-xs-12">
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="<?= URL ?>">Home</a></li>
-        <li><a href="#">Shopping List</a></li>
-        <li><a href="#">Cleaning Schedules</a></li>
-        <li><a href="#">Financials</a></li>
-        <li><hr /></li>
-        <li><a href="#">Settings</a></li>
+        <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>">Home</a></li>
+        <li class="<?php echo ($this->data['title'] == 'Shopping List') ? 'active' : '' ?>"><a href="#">Shopping List</a></li>
+        <li class="<?php echo ($this->data['title'] == 'Cleaning Schedules') ? 'active' : '' ?>"><a href="#">Cleaning Schedules</a></li>
+        <li class="<?php echo ($this->data['title'] == 'Financials') ? 'active' : '' ?>"><a href="#">Financials</a></li>
+        <li class="<?php echo ($this->data['title'] == 'Settings') ? 'active' : '' ?>"><a href="<?= URL ?>/app/settings">Settings</a></li>
     </ul>
-</div>
