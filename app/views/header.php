@@ -49,7 +49,7 @@
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->
-                        <form class="navbar-form navbar-right" action="<?= URL ?>/home/login" method="post">
+                        <form class="navbar-form navbar-right" action="<?= URL ?>/auth/login" method="post">
                             <div class="form-group ">
                                 <input type="text" placeholder="User Name" class="form-control" name="l_username">
                             </div>
