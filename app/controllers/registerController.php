@@ -27,7 +27,7 @@ class registerController extends Controller{
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            header("Location: " . URL . "home/index");
+            $this->redirect('home', 'index');
             //$this->view->render('home/index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error', 'true');
