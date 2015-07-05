@@ -1,6 +1,6 @@
 <div class="well">
     <div class="page-header">
-        <h1>Home</h1>
+        <h1><?= $this->data['title'] ?></h1>
     </div>
     <div class="row">
         <?php require_once 'left_nav.php'; ?>
