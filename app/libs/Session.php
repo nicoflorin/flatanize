@@ -27,4 +27,24 @@ class Session {
         unset($_SESSION);
         session_destroy();
     }
+
+    /**
+     * Prüft ob die Session Variable 'loggedIn' gesetzt ist
+     * @return boolean
+     */
+    public static function isLoggedIn() {
+        if (isset($_SESSION['loggedIn'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Setzt 'loggedIn' Session Variable
+     */
+    public static function setLoggedIn() {
+        $_SESSION['loggedIn'] = true;
+    }
+
 }
