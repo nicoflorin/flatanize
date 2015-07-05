@@ -1,13 +1,13 @@
 <?php
 
-class UserModel extends Model{
+class UserModel extends Model {
 
     private $id;
     private $flat_id;
     private $name;
 
     function __construct() {
-        parent::construct();
+        parent::__construct();
     }
 
     function getName() {
@@ -16,6 +16,17 @@ class UserModel extends Model{
 
     function setName($value) {
         $this->name = $value;
+    }
+
+    /**
+     * 
+     */
+    public function linkUserToFlat($user_id, $flat_id) {
+        $bind = array(
+            ':user_id' => $user_id,
+            ':flat_id' => $flat_id
+        );
+        $res = $this->db->update('users', 'flat_id = :flat_id', 'id = :user_id', $bind);
     }
 
 }

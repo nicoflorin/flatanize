@@ -10,7 +10,7 @@ class flatModel extends Model {
     /**
      * Erstellt eine WG
      */
-    public function run(array $request) {
+    public function create(array $request) {
         $in_flatName = $request['flatName'];
 
         //Falls kein Flat Name eingegeben wurde
@@ -37,6 +37,7 @@ class flatModel extends Model {
                 $res = $this->db->insert('flats', 'name, code', ':flatName, :code', $bind);
                 $flat_id = $this->db->lastInsertId();
                 $this->setFlatId($flat_id);
+                $this->linkUserToFlat(Session::get('user_id'), $flat_id);
                 $next = false;
             }
         } while ($next);
