@@ -8,8 +8,8 @@
         <title>FLATANIZE - <?= $this->data['title'] ?></title>
 
         <!-- Bootstrap -->
-        <link href="<?= URL ?>public/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?= URL ?>public/css/styles.css" rel="stylesheet">
+        <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?= URL ?>/public/css/styles.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,17 +35,17 @@
                         </button>
 
                         <!-- Titel -->
-                        <a class="navbar-brand" href="<?= URL ?>home/index">FLATANIZE</a>
+                        <a class="navbar-brand" href="<?= URL ?>">FLATANIZE</a>
 
                     </div><!-- end navbar-header -->
 
                     <!-- Collect the nav links and forms for toggling -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="<?= URL ?>home/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                            <li><a href="<?= URL ?>home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
-                            <li><a href="<?= URL ?>home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li><a href="<?= URL ?>register/signUp"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
+                            <li class="active"><a href="<?= URL ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a href="<?= URL ?>/home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
+                            <li><a href="<?= URL ?>/home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                            <li><a href="<?= URL ?>/register/signUp"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->

@@ -10,7 +10,7 @@
             echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
         }
         ?>
-        <form role="form" action="<?= URL ?>register/run" method="post">
+        <form role="form" action="<?= URL ?>/register/run" method="post">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group <?php echo ($this->data['username'] === true ) ? 'has-error' : '' ?>">

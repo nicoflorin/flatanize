@@ -31,7 +31,7 @@ class Controller {
      */
     public function redirect($controller, $method = "index", $args = array()) {
 
-        $location = URL . $controller . "/" . $method . "/" . implode("/", $args);
+        $location = URL . "/" . $controller . "/" . $method . "/" . implode("/", $args);
         header("Location: " . $location);
         exit;
     }
