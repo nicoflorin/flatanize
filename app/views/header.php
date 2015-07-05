@@ -9,6 +9,7 @@
 
         <!-- Bootstrap -->
         <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?= URL ?>/public/css/bootstrap-theme.css" rel="stylesheet">
         <link href="<?= URL ?>/public/css/styles.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +23,7 @@
         <div id="wrapper">
 
             <?php 
-                if (Session::get('loggedIn')) {
+                if (Session::isLoggedIn()) {
                     require_once ROOT . '/app/views/nav_sec.php';
                 } else {
                     require_once ROOT . '/app/views/nav.php';
