@@ -12,13 +12,6 @@ class registerController extends Controller{
     }
 
     /**
-     * Lädt SignUp Seite
-     */
-    public function signUp() {
-        $this->view->render('register/signUp', 'Sign Up');
-    }
-
-    /**
      * Übergibt POST Daten an RegisterModel
      */
     public function run() {
@@ -31,7 +24,7 @@ class registerController extends Controller{
 
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error', 'true');
-            $this->view->render('register/signUp', 'Sign Up', $res);
+            $this->view->render('home/signUp', 'Sign Up', $res);
         }
     }
 
