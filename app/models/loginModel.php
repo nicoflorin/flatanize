@@ -52,7 +52,7 @@ class LoginModel extends Model {
                 }
                 
                 return true;
-            } else {
+            } else { //wenn Password falsch
                 return false;
             }
         }
