@@ -6,6 +6,11 @@
  * @author Nico
  */
 class appController extends Controller {
+    
+    function __construct() {
+        parent::__construct();
+        Session::checkLogin();
+    }
 
     /**
      * Lädt Secure Index Seite
