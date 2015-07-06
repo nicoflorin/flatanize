@@ -8,10 +8,11 @@
 class flatModel extends Model {
 
     /**
-     * Erstellt eine WG
+     * Erstellt eine WG und verlinkt den User mit dieser WG
      */
-    public function create(array $request) {
-        $in_flatName = $request['flatName'];
+    public function create($name, $userId) {
+        $in_flatName = $name;
+        $in_userId = $userId;
 
         //Falls kein Flat Name eingegeben wurde
         $error = [];
@@ -38,7 +39,7 @@ class flatModel extends Model {
                 $flat_id = $this->db->lastInsertId();
                 $this->setFlatId($flat_id);
                 $user = new UserModel();
-                $user->linkUserToFlat(Session::get('user_id'), $flat_id);
+                $user->linkUserToFlat($in_userId, $flat_id);
                 $next = false;
             }
         } while ($next);
@@ -50,9 +51,28 @@ class flatModel extends Model {
             return false;
         }
     }
+    
+    /**
+     * Löscht bei einem User die WG Verlinkung
+     */
+    public function leave($userId) {
+        $bind = array(':userId' => $userId);
+        $res = $this->db->update('users', 'flat_id = NULL', 'id = :userId', $bind);
+        
+        // Bei Update in DB
+        if ($res == 1) {
+            return true;
+        } else {
+            return false;
+        }
+        
+        
+    }
 
-    /*
+    /**
      * Erstellt einen zufälligen String
+     * @param int $length
+     * @return string
      */
     private function createRandomCode($length) {
         $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
