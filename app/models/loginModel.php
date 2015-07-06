@@ -15,7 +15,8 @@ class LoginModel extends Model {
      * Return True falls das Password mit dem Sal und Hash übereinstimmt
      */
     private function testPassword($password, $saltFromDB, $hashFromDB) {
-        if (hash_hmac("sha256", $password, $saltFromDB) == $hashFromDB) {
+        //old (hash_hmac("sha256", $password, $saltFromDB) == $hashFromDB) {
+        if (password_verify($password . $saltFromDB, $hashFromDB)) { // Standard PHP hashing Function benutzt
             return true;
         } else {
             return false;

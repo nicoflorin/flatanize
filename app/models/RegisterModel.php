@@ -91,8 +91,9 @@ class RegisterModel extends Model {
             return $error;
         } else { // sonst User erstellen
             $salt = openssl_random_pseudo_bytes(64); //Generiere Random String
-            $hashed_password = hash_hmac("sha256", $in_password, $salt); // Hashe Passwort mit Salt
-
+            // old $hashed_password = hash_hmac("sha256", $in_password, $salt); // Hashe Passwort mit Salt
+            $hashed_password = password_hash($in_password . $salt, PASSWORD_BCRYPT); //Standard PHP Hashing function benutzt
+            
             $bind = array(
                 ':username' => $in_userName,
                 ':display_name' => $in_displayName,
