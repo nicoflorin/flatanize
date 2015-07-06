@@ -13,36 +13,31 @@ class RegisterModel extends Model {
      * Prüft Benutzer Eingaben und erstellt den User in der DB.
      * @param array $request
      */
-    public function register(array $request) {
-        //input sent from post
-        $in_userName = $request['username'];
-        $in_displayName = $request['displayname'];
-        $in_email = $request['email'];
-        $in_password = $request['password'];
-        $in_flat_code = $request['flat_code'];
+    public function register($userName, $displayName, $email, $password, $flatCode = "") {
+
 
         $error = [];
-        if (empty($in_userName)) {
+        if (empty($userName)) {
             $error['username'] = true;
             $error['error_id'] = 1;
         }
-        if (empty($in_displayName)) {
+        if (empty($displayName)) {
             $error['displayname'] = true;
             $error['error_id'] = 1;
         }
-        if (empty($in_email)) {
+        if (empty($email)) {
             $error['email'] = true;
             $error['error_id'] = 1;
         }
-        if (empty($in_password)) {
+        if (empty($password)) {
             $error['password'] = true;
             $error['error_id'] = 1;
         }
 
         // Prüfe ob User oder email Adresse bereits existiert
         $bind = array(
-            ':username' => $in_userName,
-            ':email' => $in_email
+            ':username' => $userName,
+            ':email' => $email
         );
         $count = $this->db->select('count(*) as cnt', 'users', 'username = :username OR email = :email', $bind);
         // Falls ein Eintrag gefunden wurde, existiert User bereits
@@ -51,8 +46,8 @@ class RegisterModel extends Model {
         }
 
         //Falls Flat eingegebn, Prüfe ob Flat existiert
-        if (!empty($in_flat_code)) {
-            $bind = array(':flat_code' => $in_flat_code);
+        if (!empty($flatCode)) {
+            $bind = array(':flat_code' => $flatCode);
             $res = $this->db->select('id', 'flats', 'code = :flat_code', $bind);
             if (empty($res)) {
                 $error['error_id'] = 3;
@@ -68,27 +63,27 @@ class RegisterModel extends Model {
             }
 
             // Korrekt Befüllte Felder wieder zurückgeben
-            if (!empty($in_userName)) {
-                $error["username"] = $in_userName;
+            if (!empty($userName)) {
+                $error["username"] = $userName;
             }
-            if (!empty($in_displayName)) {
-                $error["displayname"] = $in_displayName;
+            if (!empty($displayName)) {
+                $error["displayname"] = $displayName;
             }
-            if (!empty($in_email)) {
-                $error["email"] = $in_email;
+            if (!empty($email)) {
+                $error["email"] = $email;
             }
 
             // Return Error
             return $error;
         } else { // sonst User erstellen
             $salt = openssl_random_pseudo_bytes(64); //Generiere Random String
-            // old $hashed_password = hash_hmac("sha256", $in_password, $salt); // Hashe Passwort mit Salt
-            $hashed_password = password_hash($in_password . $salt, PASSWORD_BCRYPT); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
+            // old $hashed_password = hash_hmac("sha256", $password, $salt); // Hashe Passwort mit Salt
+            $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
 
             $bind = array(
-                ':username' => $in_userName,
-                ':display_name' => $in_displayName,
-                ':email' => $in_email,
+                ':username' => $userName,
+                ':display_name' => $displayName,
+                ':email' => $email,
                 ':password' => $hashed_password,
                 ':salt' => $salt
             );
