@@ -14,9 +14,10 @@ class AuthController extends Controller{
         $this->loadModel('login');
         $res = $this->model->login($_POST);
         if ($res === true) {
-            //Set logged In Session key
+            // Setze loggedIn Session var
             Session::setLoggedIn();
             
+            //Redirect zu Secure Bereich
             $this->redirect('app', 'index');
         } else {
             $this->redirect(); //home
