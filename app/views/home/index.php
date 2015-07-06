@@ -44,5 +44,5 @@
 
                 <p class="lead">Some solid leading copy text comes here</p>
 
-                <a href="" class="btn btn-large btn-primary">Register now!</a>
+                <a href="<?= URL ?>/home/signUp" class="btn btn-large btn-primary">Sign Up now!</a>
             </div><!-- end mainCallout -->
