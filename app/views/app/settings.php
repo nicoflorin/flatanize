@@ -8,12 +8,14 @@
             <div class="page-header">
                 <h1><?= $this->data['title'] ?></h1>
             </div>
-            <div>
-                <h3>Create Flat</h3>
-                <div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create Flat</h3>
+                </div>
+                <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
                     <?php
-                    if (isset($this->data['error'])) {
+                    if (isset($this->data['error_create'])) {
                         echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
                     }
                     ?>
@@ -23,14 +25,25 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" tabindex="7">
+                            <input type="submit" value="Create" class="btn btn-primary" tabindex="2">
                         </div>
                     </form>
+                </div><!-- end panel-body -->
+            </div><!-- end createFlat -->
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Leave Flat</h3>
                 </div>
-            </div>
+                <div class="panel-body">
+                    <form role="form" action="<?= URL ?>/app/leaveFlat" method="post">
+                        <div class="form-group">
+                            <input type="submit" value="Leave" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div><!-- end panel-body -->
+            </div><!-- end leaveFlat -->
 
-
-        </div>
-    </div><!-- end well -->
-</div><!-- end col -->
+        </div><!-- end well -->
+    </div><!-- end col -->
 </div><!-- end row -->
