@@ -23,6 +23,10 @@ class appController extends Controller {
      * Lädt Shopping Seite
      */
     public function shopping() {
+        $flatId = Session::get('flat_id');
+        $this->loadModel('shopping');
+        $list = $this->model->getList($flatId);
+        $this->view->list = $list;
         $this->view->render('app/shopping', 'Shopping List');
     }
 
@@ -71,7 +75,25 @@ class appController extends Controller {
      * Handelt das hinzügen eines Artikel zur Shopping List
      */
     public function addToShoppingList() {
+        $product = $_POST['product'];
+        $amount = $_POST['amount'];
+        $flatId = Session::get('flat_id');
         
+        $error = [];
+        if (empty($product)) {
+            $error['product'] = true;
+            $error['error_id'] = 'Please Enter a Product name!';
+        }
+        
+        $this->loadModel('shopping');
+        $res = $this->model->add($flatId, $product, $amount);
+        $this->redirect('app/shopping');
+    }
+    
+    public function deleteFromShoppingList($id) {
+        $this->loadModel('shopping');
+        $res = $this->model->delete($id);
+        $this->redirect('app/shopping');
     }
 
 }

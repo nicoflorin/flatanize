@@ -15,16 +15,16 @@
                         <div class="col-xs-9"">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
-                                <input type="text" class="form-control" placeholder="Product" tabindex="1">
+                                <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1">
                             </div>
                         </div>
                         <div class="col-xs-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Amount" tabindex="2">
+                                <input type="text" class="form-control" name="amount" placeholder="Amount" tabindex="2">
                                 <span class="input-group-btn">
                                     <input type="submit" value="Add" class="btn btn-primary" tabindex="3">
                                 </span>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -37,11 +37,24 @@
                     <h3 class="panel-title">Your Shopping List</h3>
                 </div>
                 <div class="panel-body">
-                    <table>
-                        <tr>
-                            <td>Product</td>
-                            <td>Amount</td>
-                        </tr>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($this->list as $value) {
+                                echo '<tr>';
+                                echo '<td>' . $value['product'] . '</td>';
+                                echo '<td>' . $value['amount'] . '</td>';
+                                echo '<td><a href="' . URL . '/app/deleteFromShoppingList/' . $value['id'] . '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
+                                echo '</tr>';
+                            }
+                            ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
