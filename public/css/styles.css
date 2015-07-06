@@ -26,6 +26,11 @@ body {
     margin-top: 0;   
 }
 
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
 
 /* ===========================================
     Navbar
