@@ -29,21 +29,44 @@ class appController extends Controller {
     }
 
     /**
-     * 
+     * Handelt den WG Erstellungsprozess
      */
     public function createFlat() {
+        $flatName = $_POST['flatName'];
+        $userId = Session::get('user_id');
         $this->loadModel('flat');
-        $res = $this->model->create($_POST);
+        $res = $this->model->create($flatName, $userId);
+
+        //Falls keine Fehler aufgetreten sind
+        if ($res === true) {
+            $this->view->render('app/settings', 'Settings');
+        } else { // Sonst Formular nochmals laden, mit Error Daten
+            $this->view->assign('error_create', 'true');
+            $this->view->render('app/settings', 'Settings', $res);
+        }
+    }
+
+    /**
+     * Handelt den WG Verlassenprozess
+     */
+    public function leaveFlat() {
+        $userId = Session::get('user_id');
+        $this->loadModel('flat');
+        $res = $this->model->leave($userId);
         
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            echo 'success';
-            print_r($_SESSION);
-
+            $this->view->render('app/settings', 'Settings');
         } else { // Sonst Formular nochmals laden, mit Error Daten
-            $this->view->assign('error', 'true');
-            $this->view->render('app/settings', 'Settings', $res);
+            $this->view->render('app/settings', 'Settings');
         }
+    }
+    
+    /**
+     * Handelt das hinzügen eines Artikel zur Shopping List
+     */
+    public function addToShoppingList() {
+        
     }
 
 }
