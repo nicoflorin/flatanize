@@ -28,6 +28,7 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
         parent::__construct($dsn, $settings['database']['username'], $settings['database']['password']);
         
         // setzte ErrorLevel
+        // @ToDo entfernen bei Website upload
         $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
     }
 
@@ -93,7 +94,6 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
      */
     public function run($sql, $bind = array()) {
         $sql = trim($sql);
-        echo '<br />';
         try {
             $stmt = $this->prepare($sql);
             if ($stmt->execute($bind) !== false) {
