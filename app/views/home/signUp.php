@@ -8,6 +8,7 @@
             <?php
             if (isset($this->data['error'])) {
                 echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
+                // @Todo Form validation mit Bootstrap <span class="help-block">Username is available</span>
             }
             ?>
             <div>
