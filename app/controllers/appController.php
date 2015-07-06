@@ -90,6 +90,9 @@ class appController extends Controller {
         $this->redirect('app/shopping');
     }
     
+    /*
+     * Handelt das Löschen eines Shopping List Eintrages
+     */
     public function deleteFromShoppingList($id) {
         $this->loadModel('shopping');
         $res = $this->model->delete($id);
