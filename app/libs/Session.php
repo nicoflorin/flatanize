@@ -7,6 +7,9 @@
  */
 class Session {
 
+    /**
+     * Startet eine Session
+     */
     public static function init() {
         @session_start();
     }
@@ -23,6 +26,9 @@ class Session {
         }
     }
 
+    /**
+     * Zerstört eine Session
+     */
     public static function destroy() {
         unset($_SESSION);
         session_destroy();
@@ -45,6 +51,19 @@ class Session {
      */
     public static function setLoggedIn() {
         $_SESSION['loggedIn'] = true;
+    }
+    
+    /**
+     * Prüft ob der Benutzer eingeloggt ist. Sonst zurück zum Start
+     * @return boolean
+     */
+    public static function checkLogin() {
+        if (Session::isLoggedIn()) {
+            return true;
+        } else {
+            Session::destroy();
+            header("Location: " . URL);
+        }
     }
 
 }
