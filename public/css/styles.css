@@ -1,5 +1,5 @@
 /* ===========================================
-Stylesheet für die Diplomarbeit
+Stylesheet für flatanize
 Datei: style.css
 Autor: Nico Florin
 ============================================*/
@@ -9,11 +9,12 @@ Autor: Nico Florin
 ============================================*/
 
 body {
-    /* for smoother font on chrome */
-    -webkit-font-smoothing; antialiased;
+    
+    -webkit-font-smoothing: antialiased; /* Schönere Schriftart auf Chrome */
     text-rendering: optimizeLegibility;
-    margin-top: 60px; /* because of the fixed header */
-    margin-bottom: 60px; /* because of the fixed footer */
+    margin-top: 80px; /* Abstand zu Navigation.*/
+    // margin-bottom: 60px; /* Abstand zu Footer */
+    background-color: #F9F9F9;
 }
 
 
