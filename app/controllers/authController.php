@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Auth
+ * Ist zuständig für die Authentifizierung
  *
  * @author Nico
  */
