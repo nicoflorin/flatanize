@@ -83,7 +83,7 @@ class RegisterModel extends Model {
         } else { // sonst User erstellen
             $salt = openssl_random_pseudo_bytes(64); //Generiere Random String
             // old $hashed_password = hash_hmac("sha256", $in_password, $salt); // Hashe Passwort mit Salt
-            $hashed_password = password_hash($in_password . $salt, PASSWORD_BCRYPT); //Standard PHP Hashing function benutzt
+            $hashed_password = password_hash($in_password . $salt, PASSWORD_BCRYPT); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
 
             $bind = array(
                 ':username' => $in_userName,
@@ -93,7 +93,7 @@ class RegisterModel extends Model {
                 ':salt' => $salt
             );
             // Füre DB Insert aus
-            $this->db->insert('users', 'username, display_name, email, password, salt', ':username, :display_name, :email, :password, :salt', $bind);
+            $res = $this->db->insert('users', 'username, display_name, email, password, salt', ':username, :display_name, :email, :password, :salt', $bind);
 
 
             // Falls ein Flat Code eingegeben wurde, den User gleich mit dieser WG verlinken
@@ -104,7 +104,11 @@ class RegisterModel extends Model {
             }
 
             // Wenn keine Fehler auftraten
-            return true;
+            if ($res == 1) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
