@@ -22,7 +22,7 @@ class shoppingController extends Controller {
      * Lädt Shopping index Seite
      */
     public function index() {
-        $flatId = Session::get('flat_id');
+        $flatId = Session::getFlatId();
         $this->loadModel('shopping');
         $list = $this->model->getList($flatId);
         $this->view->list = $list;
@@ -35,7 +35,7 @@ class shoppingController extends Controller {
     public function addToShoppingList() {
         $product = $_POST['product'];
         $amount = $_POST['amount'];
-        $flatId = Session::get('flat_id');
+        $flatId = Session::getFlatId();
 
         $error = [];
         if (empty($product)) {

@@ -48,7 +48,7 @@ class LoginModel extends Model {
                 
                 //Schreibe flat Session var
                 if (isset($flat_id)) {
-                    Session::set('flat_id', $flat_id);
+                    Session::setFlatId($flat_id);
                 }
                 
                 return true;

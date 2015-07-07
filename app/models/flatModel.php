@@ -37,7 +37,7 @@ class flatModel extends Model {
                 // Füre DB Insert aus
                 $res = $this->db->insert('flats', 'name, code', ':flatName, :code', $bind);
                 $flat_id = $this->db->lastInsertId();
-                $this->setFlatId($flat_id);
+                Session::setFlatId($flat_id);
                 $user = new UserModel();
                 $user->linkUserToFlat($in_userId, $flat_id);
                 $next = false;
@@ -58,6 +58,9 @@ class flatModel extends Model {
     public function leave($userId) {
         $bind = array(':userId' => $userId);
         $res = $this->db->update('users', 'flat_id = NULL', 'id = :userId', $bind);
+        
+        //Session var löschen
+        Session::unSetFlatId();
         
         // Bei Update in DB
         if ($res == 1) {
@@ -82,12 +85,4 @@ class flatModel extends Model {
         }
         return $result;
     }
-
-    /**
-     * Setzt die Session Variable flat_id
-     */
-    public function setFlatId($id) {
-        Session::set('flat_id', $id);
-    }
-
 }
