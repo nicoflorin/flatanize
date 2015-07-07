@@ -10,13 +10,11 @@ class flatModel extends Model {
     /**
      * Erstellt eine WG und verlinkt den User mit dieser WG
      */
-    public function create($name, $userId) {
-        $in_flatName = $name;
-        $in_userId = $userId;
+    public function create($flatName, $userId) {
 
         //Falls kein Flat Name eingegeben wurde
         $error = [];
-        if (empty($in_flatName)) {
+        if (empty($flatName)) {
             $error['error_msg'] = 'Please enter a name for your flat!';
             return $error;
         }
@@ -31,7 +29,7 @@ class flatModel extends Model {
             // Bei Treffer auf DB
             if (empty($res)) {
                 $bind = array(
-                    ':flatName' => $in_flatName,
+                    ':flatName' => $flatName,
                     ':code' => $code
                 );
                 // Füre DB Insert aus
@@ -39,7 +37,7 @@ class flatModel extends Model {
                 $flat_id = $this->db->lastInsertId();
                 Session::setFlatId($flat_id);
                 $user = new UserModel();
-                $user->linkUserToFlat($in_userId, $flat_id);
+                $user->linkUserToFlat($userId, $flat_id);
                 $next = false;
             }
         } while ($next);
@@ -51,25 +49,61 @@ class flatModel extends Model {
             return false;
         }
     }
-    
+
     /**
      * Löscht bei einem User die WG Verlinkung
      */
     public function leave($userId) {
         $bind = array(':userId' => $userId);
         $res = $this->db->update('users', 'flat_id = NULL', 'id = :userId', $bind);
-        
+
         //Session var löschen
         Session::unSetFlatId();
-        
+
         // Bei Update in DB
         if ($res == 1) {
             return true;
         } else {
             return false;
         }
-        
-        
+    }
+
+    /**
+     * fügt einen Benutzer einer bestehenden WG hinzu
+     */
+    public function join($userId, $flatCode) {
+
+        //Falls kein Flat Code eingegeben wurde
+        $error = [];
+        if (empty($flatCode)) {
+            $error['error_msg'] = 'Please enter a flat code!';
+            return $error;
+        }
+
+        //Suche nach WG mit diesem Code
+        $bind = array(':flatCode' => $flatCode);
+        $res = $this->db->select('id', 'flats', 'code = :flatCode LIMIT 1', $bind);
+
+        if (!empty($res)) {//Fals eine WG zurück kam
+            $flatId = $res[0]['id'];
+            //Füge User WG hinzu
+            $bind = array(
+                ':userId' => $userId,
+                ':flatId' => $flatId,
+            );
+            $res = $this->db->update('users', 'flat_id = :flatId', 'id = :userId', $bind);
+
+            // Bei Update in DB
+            if ($res == 1) {
+                //Session var schreiben
+                Session::setFlatId($flatId);
+                return true;
+            } else {
+                return false;
+            }
+        } else { //Wenn es die WG nicht gibt, false zurückgeben
+            return false;
+        }
     }
 
     /**
@@ -85,4 +119,5 @@ class flatModel extends Model {
         }
         return $result;
     }
+
 }

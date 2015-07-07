@@ -6,7 +6,7 @@
  * @author Nico
  */
 class appController extends Controller {
-    
+
     function __construct() {
         parent::__construct();
         Session::checkLogin();
@@ -39,7 +39,7 @@ class appController extends Controller {
         if ($res === true) {
             $this->view->render('app/settings', 'Settings');
         } else { // Sonst Formular nochmals laden, mit Error Daten
-            $this->view->assign('error_create', 'true');
+            $this->view->assign('error_create', true);
             $this->view->render('app/settings', 'Settings', $res);
         }
     }
@@ -51,7 +51,7 @@ class appController extends Controller {
         $userId = Session::get('user_id');
         $this->loadModel('flat');
         $res = $this->model->leave($userId);
-        
+
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
             $this->view->render('app/settings', 'Settings');
@@ -59,7 +59,24 @@ class appController extends Controller {
             $this->view->render('app/settings', 'Settings');
         }
     }
-    
-    
+
+    /**
+     * Handelt den Prozess um einer bestehenden WG beizutreten
+     */
+    public function joinFlat() {
+        $userId = Session::get('user_id');
+        $flatCode = $_POST['flatCode'];
+        
+        $this->loadModel('flat');
+        $res = $this->model->join($userId, $flatCode);
+
+        //Falls keine Fehler aufgetreten sind
+        if ($res === true) {
+            $this->view->render('app/settings', 'Settings');
+        } else { // Sonst Formular nochmals laden, mit Error Daten
+            $this->view->assign('error_join', true);
+            $this->view->render('app/settings', 'Settings', $res);
+        }
+    }
 
 }
