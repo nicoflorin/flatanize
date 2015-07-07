@@ -8,7 +8,7 @@
             <div class="page-header">
                 <h1><?= $this->data['title'] ?></h1>
             </div>
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <div class="panel-heading">
                     <h3 class="panel-title">Create Flat</h3>
                 </div>
@@ -31,7 +31,7 @@
                 </div><!-- end panel-body -->
             </div><!-- end createFlat -->
 
-            <div class="panel panel-primary">
+            <div class="panel panel-primary" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <div class="panel-heading">
                     <h3 class="panel-title">Leave Flat</h3>
                 </div>
