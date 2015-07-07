@@ -10,7 +10,7 @@
             </div>
 
             <div id="addToShoppingList">
-                <form method="post" action="<?= URL ?>/app/addToShoppingList">
+                <form method="post" action="<?= URL ?>/shopping/addToShoppingList">
                     <div class="row">
                         <div class="col-xs-9 nopadding">
                             <div class="input-group">
@@ -51,7 +51,7 @@
                                 echo '<tr>';
                                 echo '<td>' . $value['product'] . '</td>';
                                 echo '<td>' . $value['amount'] . '</td>';
-                                echo '<td><a href="' . URL . '/app/deleteFromShoppingList/' . $value['id'] .
+                                echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $value['id'] .
                                 '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
                                 echo '</tr>';
                             }
