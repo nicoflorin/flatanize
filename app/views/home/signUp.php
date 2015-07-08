@@ -35,7 +35,7 @@
                         <input type="text" name="flat_code" id="flat_code" class="form-control input-lg" placeholder="Flat Code (if available)" tabindex="5">
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+                        <input type="submit" value="Register" class="btn btn-success btn-block btn-lg" tabindex="7">
                     </div>
                 </form>
             </div>
