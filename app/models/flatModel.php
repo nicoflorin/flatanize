@@ -86,6 +86,7 @@ class flatModel extends Model {
 
         if (!empty($res)) {//Fals eine WG zurück kam
             $flatId = $res[0]['id'];
+
             //Füge User WG hinzu
             $bind = array(
                 ':userId' => $userId,
@@ -102,6 +103,40 @@ class flatModel extends Model {
                 return false;
             }
         } else { //Wenn es die WG nicht gibt, false zurückgeben
+            return false;
+        }
+    }
+
+    /**
+     * Holt den WG Code aus der DB
+     * @param int $flatId
+     */
+    public function getFlatCode($flatId) {
+        //Suche nach WG mit dieser Id
+        $bind = array(':flatId' => $flatId);
+        $res = $this->db->select('code', 'flats', 'id = :flatId LIMIT 1', $bind);
+
+        //Fals ein WG Code zurück kam
+        if (!empty($res)) {
+            return $res[0]['code'];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Holt den WG Namen aus der DB
+     * @param int $flatId
+     */
+    public function getFlatName($flatId) {
+        //Suche nach WG mit dieser Id
+        $bind = array(':flatId' => $flatId);
+        $res = $this->db->select('name', 'flats', 'id = :flatId LIMIT 1', $bind);
+
+        //Fals ein WG Name zurück kam
+        if (!empty($res)) {
+            return $res[0]['name'];
+        } else {
             return false;
         }
     }
