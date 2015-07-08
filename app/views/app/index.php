@@ -6,7 +6,7 @@
     <div class="col-md-9 col-xs-12">
         <div class="well">
             <div class="page-header">
-                <h1><?= $this->data['title'] ?></h1>
+                <h1>Hi <?= $this->displayName ?>!</h1>
             </div>
         </div><!-- end well -->
     </div><!-- end col -->
