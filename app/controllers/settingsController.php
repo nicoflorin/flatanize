@@ -24,7 +24,7 @@ class SettingsController extends Controller {
             $this->view->flatName = $this->model->getFlatName($flatId);
             $this->view->flatCode = $this->model->getFlatCode($flatId);
         }
-        $this->view->render('app/settings', 'Settings');
+        $this->view->render('settings/index', 'Settings');
     }
 
     /**
@@ -38,10 +38,10 @@ class SettingsController extends Controller {
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->redirect('app', 'settings');
+            $this->redirect('settings', 'index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_create', true);
-            $this->view->render('app/settings', 'Settings', $res);
+            $this->view->render('settings/index', 'Settings', $res);
         }
     }
 
@@ -71,7 +71,7 @@ class SettingsController extends Controller {
             $this->redirect('settings', 'index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_join', true);
-            $this->view->render('app/settings', 'Settings', $res);
+            $this->view->render('settings/index', 'Settings', $res);
         }
     }
 

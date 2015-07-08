@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3 col-xs-12">
-        <?php require_once 'left_nav.php'; ?>
+        <?php require_once ROOT . '/app/views/app/' . 'left_nav.php'; ?>
     </div>
 
     <div class="col-md-9 col-xs-12">
@@ -15,7 +15,9 @@
                     <h3 class="panel-title"><?= $this->flatName ?></h3>
                 </div>
                 <div class="panel-body">
-                    <p>Your Flat Code is: <?= $this->flatCode ?></p>
+                    <p>Your flat code is: <?= $this->flatCode ?></p>
+                    <p>You are in a flat with:</p>
+                    <p>@Todo Liste von allen mitglieder</p>
                 </div><!-- end panel-body -->
             </div><!-- end flat infos -->
 
@@ -32,7 +34,7 @@
                     }
                     ?>
                     <p>Share your flat with your buddies. Send them your code now.</p>
-                    <form role="form" action="<?= URL ?>/app/shareFlat" method="post">
+                    <form role="form" action="<?= URL ?>/settings/shareFlat" method="post">
                         <div class="form-group">
                             <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" tabindex="1">
                         </div>
@@ -55,7 +57,7 @@
                         echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
                     }
                     ?>
-                    <form role="form" action="<?= URL ?>/app/createFlat" method="post">
+                    <form role="form" action="<?= URL ?>/settings/createFlat" method="post">
                         <div class="form-group">
                             <input type="text" value="" id="flatName" name="flatName" class="form-control" placeholder="Flat Name" tabindex="1">
                         </div>
@@ -79,7 +81,7 @@
                         echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
                     }
                     ?>
-                    <form role="form" action="<?= URL ?>/app/joinFlat" method="post">
+                    <form role="form" action="<?= URL ?>/settings/joinFlat" method="post">
                         <div class="form-group">
                             <input type="text" value="" id="flatCode" name="flatCode" class="form-control" placeholder="Flat Code" tabindex="1">
                         </div>
@@ -103,7 +105,7 @@
                         echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
                     }
                     ?>
-                    <form role="form" action="<?= URL ?>/app/leaveFlat" method="post">
+                    <form role="form" action="<?= URL ?>/settings/leaveFlat" method="post">
                         <div class="form-group">
                             <input type="submit" value="Leave" class="btn btn-primary">
                         </div>

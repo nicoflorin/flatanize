@@ -8,6 +8,8 @@
             <div class="page-header">
                 <h1><?= $this->data['title'] ?></h1>
             </div>
+
+            
         </div><!-- end well -->
     </div><!-- end col -->
 </div><!-- end row -->

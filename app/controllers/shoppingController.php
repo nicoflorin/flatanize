@@ -20,7 +20,7 @@ class ShoppingController extends Controller {
         $this->loadModel('shopping');
         $list = $this->model->getList($flatId);
         $this->view->list = $list;
-        $this->view->render('app/shopping', 'Shopping List');
+        $this->view->render('shopping/index', 'Shopping List');
     }
 
     /**
