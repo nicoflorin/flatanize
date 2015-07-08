@@ -16,6 +16,8 @@ class HomeSecController extends Controller {
      * Lädt Secure Index Seite
      */
     public function index() {
+        $this->loadModel('user');
+        $this->view->displayName = $this->model->getDisplayName(Session::get('user_id'));
         $this->view->render('app/index', 'Home');
     }
 
