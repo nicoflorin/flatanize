@@ -12,7 +12,6 @@ require_once (ROOT . '/app/libs/Database.php');
 require_once (ROOT . '/app/libs/Model.php');
 require_once (ROOT . '/app/libs/Session.php');
 require_once (ROOT . '/app/libs/View.php');
-require_once (ROOT . '/app/libs/User.php');
 
 //Configs
 require_once (ROOT . '/app/configs/paths.php');
