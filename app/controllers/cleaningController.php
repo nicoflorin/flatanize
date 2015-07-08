@@ -16,14 +16,14 @@ class CleaningController extends Controller {
      * Lädt Cleaning index Seite
      */
     public function index() {
-        $this->view->render('cleaning/index', 'Cleaning Schedules');
+        $this->view->render('cleaning/index', 'Cleaning Tasks');
     }
 
     /**
      * Lädt Seite um neuen Task zu erstellen
      */
     public function showCreateTask() {
-        $this->view->render('cleaning/create_task', 'Cleaning Schedules');
+        $this->view->render('cleaning/create_task', 'Create Task');
     }
     
     public function createTask() {
