@@ -94,6 +94,7 @@ class RegisterModel extends Model {
             // Falls ein Flat Code eingegeben wurde, den User gleich mit dieser WG verlinken
             if (!empty($flat_id)) {
                 $user_id = $this->db->lastInsertId(); // Id des erstellen Users
+                require_once ROOT . '/app/models/userModel.php';
                 $user = new UserModel();
                 $user->linkUserToFlat($user_id, $flat_id);
             }
