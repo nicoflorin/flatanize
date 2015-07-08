@@ -45,16 +45,17 @@ class shoppingController extends Controller {
 
         $this->loadModel('shopping');
         $res = $this->model->add($flatId, $product, $amount);
-        $this->redirect('shopping/index');
+        $this->redirect('shopping', 'index');
     }
 
     /*
      * Handelt das Löschen eines Shopping List Eintrages
      */
     public function deleteFromShoppingList($id) {
+        //@Todo prüfen ob user berechtigt ist zum löschen
         $this->loadModel('shopping');
         $res = $this->model->delete($id);
-        $this->redirect('shopping/index');
+        $this->redirect('shopping' ,'index');
     }
 
 }
