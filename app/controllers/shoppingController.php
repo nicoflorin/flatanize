@@ -1,13 +1,6 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of shoppingController
+ * Ist Zuständig für die Shopping Funktionen
  *
  * @author Nico
  */
@@ -37,25 +30,26 @@ class shoppingController extends Controller {
         $amount = $_POST['amount'];
         $flatId = Session::getFlatId();
 
-        $error = [];
+        //Falls kein Produkt eingegeben wurde
+        //@Todo Fehlermeldung anzeigen, wenn nichts eingegeben wurde
         if (empty($product)) {
-            $error['product'] = true;
-            $error['error_id'] = 'Please Enter a Product name!';
+            $this->redirect('shopping', 'index');
+        } else {
+            $this->loadModel('shopping');
+            $res = $this->model->add($flatId, $product, $amount);
+            $this->redirect('shopping', 'index');
         }
-
-        $this->loadModel('shopping');
-        $res = $this->model->add($flatId, $product, $amount);
-        $this->redirect('shopping', 'index');
     }
 
     /*
      * Handelt das Löschen eines Shopping List Eintrages
      */
+
     public function deleteFromShoppingList($id) {
         //@Todo prüfen ob user berechtigt ist zum löschen
         $this->loadModel('shopping');
         $res = $this->model->delete($id);
-        $this->redirect('shopping' ,'index');
+        $this->redirect('shopping', 'index');
     }
 
 }
