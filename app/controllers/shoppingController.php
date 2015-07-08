@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Ist Zuständig für die Shopping Funktionen
  *
  * @author Nico
  */
-class shoppingController extends Controller {
+class ShoppingController extends Controller {
 
     function __construct() {
         parent::__construct();
@@ -32,11 +33,15 @@ class shoppingController extends Controller {
 
         //Falls kein Produkt eingegeben wurde
         //@Todo Fehlermeldung anzeigen, wenn nichts eingegeben wurde
-        if (empty($product)) {
-            $this->redirect('shopping', 'index');
-        } else {
+        if (!empty($product)) {
+            //Menge default 1
+            if (empty($amount)) {
+                $amount = 1;
+            }
             $this->loadModel('shopping');
             $res = $this->model->add($flatId, $product, $amount);
+            $this->redirect('shopping', 'index');
+        } else {
             $this->redirect('shopping', 'index');
         }
     }
