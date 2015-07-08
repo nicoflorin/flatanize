@@ -24,7 +24,7 @@
             <!-- Share Flat -->
             <div class="panel panel-primary" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <div class="panel-heading">
-                    <h3 class="panel-title">Share Flat</h3>
+                    <h3 class="panel-title">Share your flat</h3>
                 </div>
                 <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
@@ -36,7 +36,7 @@
                     <p>Share your flat with your buddies. Send them your code now.</p>
                     <form role="form" action="<?= URL ?>/settings/shareFlat" method="post">
                         <div class="form-group">
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" tabindex="1">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" tabindex="1" required> 
                         </div>
 
                         <div class="form-group">
@@ -48,7 +48,7 @@
             <!-- Create Flat -->
             <div class="panel panel-primary" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <div class="panel-heading">
-                    <h3 class="panel-title">Create Flat</h3>
+                    <h3 class="panel-title">Create flat</h3>
                 </div>
                 <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
@@ -59,7 +59,7 @@
                     ?>
                     <form role="form" action="<?= URL ?>/settings/createFlat" method="post">
                         <div class="form-group">
-                            <input type="text" value="" id="flatName" name="flatName" class="form-control" placeholder="Flat Name" tabindex="1">
+                            <input type="text" value="" id="flatName" name="flatName" class="form-control" placeholder="Flat Name" tabindex="1" required>
                         </div>
 
                         <div class="form-group">
@@ -72,7 +72,7 @@
             <!-- Join Flat -->
             <div class="panel panel-primary" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <div class="panel-heading">
-                    <h3 class="panel-title">Join Flat</h3>
+                    <h3 class="panel-title">Join flat</h3>
                 </div>
                 <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
@@ -83,7 +83,7 @@
                     ?>
                     <form role="form" action="<?= URL ?>/settings/joinFlat" method="post">
                         <div class="form-group">
-                            <input type="text" value="" id="flatCode" name="flatCode" class="form-control" placeholder="Flat Code" tabindex="1">
+                            <input type="text" value="" id="flatCode" name="flatCode" class="form-control" placeholder="Flat Code" tabindex="1" required>
                         </div>
 
                         <div class="form-group">
@@ -96,7 +96,7 @@
             <!-- Leave Flat -->
             <div class="panel panel-primary" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <div class="panel-heading">
-                    <h3 class="panel-title">Leave Flat</h3>
+                    <h3 class="panel-title">Leave your flat</h3>
                 </div>
                 <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
@@ -105,9 +105,10 @@
                         echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
                     }
                     ?>
+                    <p>You really want to leave your flat?</p>
                     <form role="form" action="<?= URL ?>/settings/leaveFlat" method="post">
                         <div class="form-group">
-                            <input type="submit" value="Leave" class="btn btn-success">
+                            <input type="submit" value="Yes, leave" class="btn btn-success">
                         </div>
                     </form>
                 </div><!-- end panel-body -->
