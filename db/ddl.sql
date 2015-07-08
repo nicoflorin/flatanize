@@ -35,9 +35,8 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`users` (
   `username` VARCHAR(50) NOT NULL,
   `display_name` VARCHAR(50) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
-  `password` CHAR(64) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `salt` CHAR(64) NOT NULL,
-  `last_login` DATETIME NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_users_flats`
@@ -86,20 +85,37 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `flatanize`.`frequencies`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `flatanize`.`frequencies` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `flatanize`.`cleanings`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
+  `frequency_id` INT UNSIGNED NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `frequency` VARCHAR(255) NOT NULL,
   `weekday` CHAR(2) NOT NULL,
   `start` DATE NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
+  INDEX `fk_cleanings_frequencies_idx` (`frequency_id` ASC),
   CONSTRAINT `fk_cleanings_flats`
     FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cleanings_frequencies`
+    FOREIGN KEY (`frequency_id`)
+    REFERENCES `flatanize`.`frequencies` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
