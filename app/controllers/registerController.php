@@ -5,7 +5,7 @@
  *
  * @author Nico
  */
-class registerController extends Controller {
+class RegisterController extends Controller {
 
     function __construct() {
         parent::__construct();
