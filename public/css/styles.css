@@ -43,6 +43,15 @@ body {
     margin-bottom: 10px; 
 }
 
+/* ===========================================
+    Left Navigation
+============================================*/
+
+/* change hover, focus for navbar li */
+.nav  > li > a:hover, .navbar .navbar-nav > li > a:focus {
+    background-color: #ADADAD;
+    color: #fff;
+}
 
 /* ===========================================
     Carousel
