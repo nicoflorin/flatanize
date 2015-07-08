@@ -33,24 +33,20 @@ body {
     Navbar
 ============================================*/
 
-/* change hover, focus for navbar li */
+/* Hover, focus anpassung für Navigation */
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
     background-color: #191919;
     color: #fff; /* white color when hover */
-}
-
-.navbar {
-    margin-bottom: 10px; 
 }
 
 /* ===========================================
     Left Navigation
 ============================================*/
 
-/* change hover, focus for navbar li */
+/* Hover, focus anpassung für linke Navigation */
 .nav  > li > a:hover, .navbar .navbar-nav > li > a:focus {
-    background-color: #ADADAD;
-    color: #fff;
+    background-color: #D5D5D5;
+    color: #000;
 }
 
 /* ===========================================
@@ -62,15 +58,15 @@ body {
 }
 
 .carousel-caption {
-       font-size: 24px; /* font size of carousel text */
+       font-size: 24px; /* font size von carousel text */
 }
 
-.carousel-caption h4 {  /* font size of carousel titel */
+.carousel-caption h4 {  /* font size von carousel titel */
        font-size: 32px
 }
 
 
-/* Default Settings for Carousel */
+/* Standard Settings für Carousel */
 #mainCarousel .item {
     height: 400px;   
 }
@@ -93,7 +89,7 @@ body {
 ============================================*/
 
 #mainCallout {
-    margin-top: 10px; /* little margin to the top of mainCallout */   
+    margin-top: 10px; /* kleiner Abstand zu top für mainCallout */   
 }
 
 /* ===========================================
@@ -101,37 +97,31 @@ body {
 ============================================*/
 
 
-footer {
-    background-color: #e8e8e8;
-    font-size: 14px;
-    padding: 10px;
-    
-    /* footer fixed to bottom */
-    height: 60px;
-}
-
-
 /* ===========================================
     Media Queries
 ============================================*/
 
-/* Portrait & landscape phone */
+/* Portrait & landscape Smartphone */
 @media (max-width: 480px) {
     
-    //Damit auf Smartphone nicht zu viel Platz am Rand
-    //verschwendet wird
+    /* Damit auf Smartphone nicht zu viel Platz */
+    /* verschwendet wird */
     .well {
         padding-top: 10px;
         padding-bottom: 5px;
         padding-left: 5px;
         padding-right: 5px;
     }
+    
+    body {
+    margin-top: 60px; /* Abstand zu Navigation.*/
+}
 }
 
-/* Landscape phone to portrait tablet */
+/* Landscape phone bis portrait tablet */
 @media (max-width: 768px) {
     
-    /* Specific Carousel Settings */
+    /* Carousel Einstellungen */
     #mainCarousel .item {
         height: 310px;   
     }
@@ -148,7 +138,7 @@ footer {
         background: url('../images/carousel_small_01.jpg') top center no-repeat;
     }
     
-    /* Smaller font for small screen width */
+    /* Kleinere Schriftgrösse für kleinere Bildschirme */
     .carousel-caption {
         font-size: 16px;   
     }
@@ -167,10 +157,10 @@ footer {
     
 }
 
-/* Large desktop */
+/* Grosse Bildschirme / Desktops */
 @media (max-width: 1200px) {
     
-    /* Specific Carousel Settings */
+    /* Carousel Einstellungen */
     #mainCarousel .item {
         height: 500;   
     }
