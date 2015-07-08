@@ -11,7 +11,7 @@
 
             <!-- create New Task -->
             <div>
-                <a class="btn btn-primary" href="<?= URL ?>/cleaning/addNewTask" role="button">Create New Task</a>
+                <a class="btn btn-success" href="<?= URL ?>/cleaning/showCreateTask" role="button">Create New Task</a>
             </div>
             
             <!-- Flat schedules -->

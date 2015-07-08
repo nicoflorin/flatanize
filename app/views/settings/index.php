@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Send Code" class="btn btn-primary" tabindex="2">
+                            <input type="submit" value="Send Code" class="btn btn-success" tabindex="2">
                         </div>
                     </form>
                 </div><!-- end panel-body -->
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" tabindex="2">
+                            <input type="submit" value="Create" class="btn btn-success" tabindex="2">
                         </div>
                     </form>
                 </div><!-- end panel-body -->
@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Join" class="btn btn-primary" tabindex="2">
+                            <input type="submit" value="Join" class="btn btn-success" tabindex="2">
                         </div>
                     </form>
                 </div><!-- end panel-body -->
@@ -107,7 +107,7 @@
                     ?>
                     <form role="form" action="<?= URL ?>/settings/leaveFlat" method="post">
                         <div class="form-group">
-                            <input type="submit" value="Leave" class="btn btn-primary">
+                            <input type="submit" value="Leave" class="btn btn-success">
                         </div>
                     </form>
                 </div><!-- end panel-body -->

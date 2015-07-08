@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-xs-2">
                             <div >
-                                <input type="submit" value="Add" class="btn btn-primary btn-block" tabindex="3">
+                                <input type="submit" value="Add" class="btn btn-success btn-block" tabindex="3">
                             </div>
                         </div>
                     </div><!-- end row -->
