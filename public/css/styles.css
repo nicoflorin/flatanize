@@ -15,11 +15,13 @@ body {
     margin-top: 80px; /* Abstand zu Navigation.*/
     // margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
+    font-size: 1.5em;
 }
-
 
 .well .page-header {
     margin-top: 0px;   
+    margin-bottom: 15px;
+    padding-bottom: 0px;
 }
 
 .well .page-header h1 {
@@ -106,7 +108,15 @@ footer {
 
 /* Portrait & landscape phone */
 @media (max-width: 480px) {
-
+    
+    //Damit auf Smartphone nicht zu viel Platz am Rand
+    //verschwendet wird
+    .well {
+        padding-top: 10px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }
 
 /* Landscape phone to portrait tablet */
