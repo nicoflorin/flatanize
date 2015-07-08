@@ -20,12 +20,12 @@
                             </div>
                         </div>
                         <div class="col-xs-2">
-                            <div class="input-group">
+                            <div>
                                 <input type="text" class="form-control" name="amount" placeholder="Amount" tabindex="2">
                             </div>
                         </div>
                         <div class="col-xs-2">
-                            <div class="input-group">
+                            <div >
                                 <input type="submit" value="Add" class="btn btn-primary btn-block" tabindex="3">
                             </div>
                         </div>
