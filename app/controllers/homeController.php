@@ -15,7 +15,7 @@ class HomeController extends Controller {
     public function index() {
         //Prüfung ob User eingeloggt ist. Je nachdem secure oder non-secure Bereich anzeigen
         if (Session::isLoggedIn()) {
-            $this->view->render('app/index', 'Home');
+            $this->redirect('homeSec', 'index');
         } else {
             $this->view->render('home/index', 'Home');
         }

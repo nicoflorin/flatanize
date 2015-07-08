@@ -5,7 +5,7 @@
  *
  * @author Nico
  */
-class appController extends Controller {
+class SettingsController extends Controller {
 
     function __construct() {
         parent::__construct();
@@ -13,16 +13,17 @@ class appController extends Controller {
     }
 
     /**
-     * Lädt Secure Index Seite
+     * Lädt settings index Seite
      */
     public function index() {
-        $this->view->render('app/index', 'Home');
-    }
-
-    /**
-     * Lädt Settings Seite
-     */
-    public function settings() {
+        $flatId = Session::getFlatId();
+        //Falls Session var gesetzt, hole WG Code aus DB
+        if ($flatId !== false) {
+            $this->loadModel('flat');
+            // Übergebe Daten an View
+            $this->view->flatName = $this->model->getFlatName($flatId);
+            $this->view->flatCode = $this->model->getFlatCode($flatId);
+        }
         $this->view->render('app/settings', 'Settings');
     }
 
@@ -37,7 +38,7 @@ class appController extends Controller {
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->view->render('app/settings', 'Settings');
+            $this->redirect('app', 'settings');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_create', true);
             $this->view->render('app/settings', 'Settings', $res);
@@ -52,12 +53,7 @@ class appController extends Controller {
         $this->loadModel('flat');
         $res = $this->model->leave($userId);
 
-        //Falls keine Fehler aufgetreten sind
-        if ($res === true) {
-            $this->view->render('app/settings', 'Settings');
-        } else { // Sonst Formular nochmals laden, mit Error Daten
-            $this->view->render('app/settings', 'Settings');
-        }
+        $this->redirect('settings', 'index');
     }
 
     /**
@@ -66,17 +62,37 @@ class appController extends Controller {
     public function joinFlat() {
         $userId = Session::get('user_id');
         $flatCode = $_POST['flatCode'];
-        
+
         $this->loadModel('flat');
         $res = $this->model->join($userId, $flatCode);
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->view->render('app/settings', 'Settings');
+            $this->redirect('settings', 'index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_join', true);
             $this->view->render('app/settings', 'Settings', $res);
         }
+    }
+
+    /**
+     * Handelt das versenden des WG Code
+     */
+    public function shareFlat() {
+        $email = $_POST['email'];
+        $this->loadModel('flat');
+        $flatCode = $this->model->getFlatCode(Session::getFlatId());
+
+        //@Todo Email versand
+        $betreff = 'Der Betreff';
+        $nachricht = $flatCode;
+        $header = 'From: webmaster@example.com' . "\r\n" .
+                'Reply-To: webmaster@example.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+        mail($email, $betreff, $nachricht, $header);
+
+        $this->redirect('settings', 'index');
     }
 
 }
