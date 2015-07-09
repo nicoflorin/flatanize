@@ -27,6 +27,7 @@ class ShoppingController extends Controller {
      * Handelt das hinzügen eines Artikel zur Shopping List
      */
     public function addToShoppingList() {
+        //@Todo Eingabe Produkt mit Produkt:Menge. Dann String bei : trennen
         $product = $_POST['product'];
         $amount = $_POST['amount'];
         $flatId = Session::getFlatId();
