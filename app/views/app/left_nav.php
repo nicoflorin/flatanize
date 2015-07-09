@@ -4,7 +4,7 @@
         <b class="caret"></b>
     </button>
 </div><!-- end navbar-header -->
-<div class="well collapse navbar-collapse" id="leftNavCollapse">
+<div class="well collapse" id="leftNavCollapse">
     <ul class="nav nav-pills nav-stacked">
         <!-- @Todo Dynamisch active classe -->
         <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>">Home</a></li>
