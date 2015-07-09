@@ -53,7 +53,7 @@ class cleaningModel extends Model{
         if (!empty($res)) {
             return $res;
         } else {
-            return false;
+            return array(); //sonst leeres Array
         }
     }
 }
