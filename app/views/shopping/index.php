@@ -31,38 +31,35 @@
                         </div>
                     </div><!-- end row -->
                 </form>
-                <hr>
             </div><!-- end addShopping -->
-
+            <br>
             <!-- Shopping List -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Your Shopping List</h3>
                 </div>
-                <div class="panel-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="col-xs-10">Product</th>
-                                <th class="col-xs-1">Amount</th>
-                                <th class="col-xs-1"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($this->list as $value) {
-                                echo '<tr>';
-                                echo '<td>' . $value['product'] . '</td>';
-                                echo '<td>' . $value['amount'] . '</td>';
-                                echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $value['id'] .
-                                '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
-                                echo '</tr>';
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-10">Product</th>
+                            <th class="col-xs-1">Amount</th>
+                            <th class="col-xs-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($this->list as $value) {
+                            echo '<tr>';
+                            echo '<td>' . $value['product'] . '</td>';
+                            echo '<td>' . $value['amount'] . '</td>';
+                            echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $value['id'] .
+                            '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div><!-- end panel -->
         </div><!-- end well -->
     </div><!-- end col -->
 </div><!-- end row -->
