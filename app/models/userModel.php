@@ -11,10 +11,10 @@ class UserModel extends Model {
      */
     public function linkUserToFlat($userId, $flatId) {
         $bind = array(
-            ':user_id' => $userId,
-            ':flat_id' => $flatId
+            ':userId' => $userId,
+            ':flatId' => $flatId
         );
-        $res = $this->db->update('users', 'flat_id = :flat_id', 'id = :user_id', $bind);
+        $res = $this->db->update('users', 'flats_id = :flatId', 'id = :userId', $bind);
         if ($res == 1) {
             return true;
         } else {

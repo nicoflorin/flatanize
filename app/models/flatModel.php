@@ -34,12 +34,12 @@ class flatModel extends Model {
                 );
                 // Füre DB Insert aus
                 $res = $this->db->insert('flats', 'name, code', ':flatName, :code', $bind);
-                $flat_id = $this->db->lastInsertId();
-                Session::setFlatId($flat_id);
+                $flatId = $this->db->lastInsertId();
+                Session::setFlatId($flatId);
                 //@Todo Besser lösen als so
                 require_once ROOT . '/app/models/userModel.php';
                 $user = new UserModel();
-                $user->linkUserToFlat($userId, $flat_id);
+                $user->linkUserToFlat($userId, $flatId);
                 $next = false;
             }
         } while ($next);
@@ -57,7 +57,7 @@ class flatModel extends Model {
      */
     public function leave($userId) {
         $bind = array(':userId' => $userId);
-        $res = $this->db->update('users', 'flat_id = NULL', 'id = :userId', $bind);
+        $res = $this->db->update('users', 'flats_id = NULL', 'id = :userId', $bind);
 
         //Session var löschen
         Session::unSetFlatId();
@@ -94,7 +94,7 @@ class flatModel extends Model {
                 ':userId' => $userId,
                 ':flatId' => $flatId,
             );
-            $res = $this->db->update('users', 'flat_id = :flatId', 'id = :userId', $bind);
+            $res = $this->db->update('users', 'flats_id = :flatId', 'id = :userId', $bind);
 
             // Bei Update in DB
             if ($res == 1) {
@@ -141,6 +141,16 @@ class flatModel extends Model {
         } else {
             return false;
         }
+    }
+    
+    /**
+     * Holt alle usersId aus einer WG
+     * @param type $flatId
+     */
+    public function getFlatUsers($flatId) {
+         //Suche nach WG mit dieser Id
+        $bind = array(':flatId' => $flatId);
+        $res = $this->db->select('id', 'users', 'flats_id = :flatId LIMIT 1', $bind);
     }
 
     /**

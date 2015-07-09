@@ -52,7 +52,7 @@ class RegisterModel extends Model {
             if (empty($res)) {
                 $error['error_id'] = 3;
             } else {
-                $flat_id = $res[0]['id'];
+                $flatId = $res[0]['id'];
             }
         }
 
@@ -92,11 +92,11 @@ class RegisterModel extends Model {
 
 
             // Falls ein Flat Code eingegeben wurde, den User gleich mit dieser WG verlinken
-            if (!empty($flat_id)) {
+            if (!empty($flatId)) {
                 $user_id = $this->db->lastInsertId(); // Id des erstellen Users
                 require_once ROOT . '/app/models/userModel.php';
                 $user = new UserModel();
-                $user->linkUserToFlat($user_id, $flat_id);
+                $user->linkUserToFlat($user_id, $flatId);
             }
 
             // Wenn keine Fehler auftraten
