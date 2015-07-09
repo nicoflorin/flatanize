@@ -53,11 +53,11 @@
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($this->list as $value) {
+                            foreach ($this->list as $entry) {
                                 echo '<tr>';
-                                echo '<td>' . $value['product'] . '</td>';
-                                echo '<td>' . $value['amount'] . '</td>';
-                                echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $value['id'] .
+                                echo '<td>' . $entry['product'] . '</td>';
+                                echo '<td>' . $entry['amount'] . '</td>';
+                                echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $entry['id'] .
                                 '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
                                 echo '</tr>';
                             }
