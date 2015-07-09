@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group <?php echo ($this->data['username'] === true ) ? 'has-error' : '' ?>">
-                                <input type="text" value="<?php echo (isset($this->data['username']) && $this->data['username'] !== true) ? $this->data['username'] : '' ?>" name="username" id="first_name" class="form-control input-lg" placeholder="User Name" tabindex="1" required>
+                                <input type="text" value="<?php echo (isset($this->data['username']) && $this->data['username'] !== true) ? $this->data['username'] : '' ?>" name="username" id="first_name" class="form-control input-lg" placeholder="User Name" tabindex="1" required autofocus>
                             </div>
                         </div>
                         <div class="col-md-6">

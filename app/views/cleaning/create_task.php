@@ -17,7 +17,7 @@
                 <div class="panel-body">
                     <form method="post" action="<?= URL ?>/cleaning/createTask">
                         <div class="form-group">
-                            <input type="text" id="title" name="title" class="form-control" placeholder="Title" tabindex="1" required>
+                            <input type="text" id="title" name="title" class="form-control" placeholder="Title" tabindex="1" required autofocus>
                         </div>
                         <div class="form-group">
                             <!-- @todo auswahl per button -->
@@ -49,6 +49,22 @@
                             }
                             ?>
                         </div>
+                        <p>Who has to do it?</p>
+                        <div class="form-group <?php echo (isset($this->data['users'])) ? 'has-error' : '' ?>">
+                            <div class="" data-toggle="buttons">
+                                <?php
+                                foreach ($this->userList as $key => $user) {
+                                    echo '<label class="btn btn-primary"><input type="checkbox" name="user[]" value="' . $key . '">' . $user . '</label>';
+                                }
+                                ?>
+                            </div>
+                            <?php
+                            if (isset($this->data['users'])) {
+                                echo '<span class="help-block">Select at least one resident!</span>';
+                            }
+                            ?>
+                        </div>
+
                         <div class="form-group">
                             <input type="submit" value="Create Task" class="btn btn-success btn-block btn-lg" tabindex="5">
                         </div>
