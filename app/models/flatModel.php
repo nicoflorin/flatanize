@@ -142,15 +142,21 @@ class flatModel extends Model {
             return false;
         }
     }
-    
+
     /**
      * Holt alle usersId aus einer WG
      * @param type $flatId
      */
     public function getFlatUsers($flatId) {
-         //Suche nach WG mit dieser Id
+        //Suche nach WG mit dieser Id
         $bind = array(':flatId' => $flatId);
-        $res = $this->db->select('id', 'users', 'flats_id = :flatId LIMIT 1', $bind);
+        $res = $this->db->select('id', 'users', 'flats_id = :flatId', $bind);
+
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return false;
+        }
     }
 
     /**
