@@ -8,7 +8,7 @@
             <div class="page-header">
                 <h1><?= $this->data['title'] ?></h1>
             </div>
-            
+
             <div class="alert alert-success" role="alert" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <p>Please create or join a flat <a href="<?= URL ?>/settings/index"> here.</a></p>
             </div>
@@ -18,20 +18,22 @@
                 <div id="addToShoppingList">
                     <form method="post" action="<?= URL ?>/shopping/addToShoppingList">
                         <div class="row">
-                            <div class="col-xs-8">
+                            <div class="col-xs-7 col-md-8 nopadding">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
-                                    <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1">
+                                    <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1" autofocus>
                                 </div>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-xs-2 col-md-2 nopadding">
                                 <div>
-                                    <input type="text" class="form-control" name="amount" placeholder="Amount" tabindex="2">
+                                    <input type="text" class="form-control" name="amount" placeholder="Qty" tabindex="2">
                                 </div>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-xs-3 col-md-2">
                                 <div >
-                                    <input type="submit" value="Add" class="btn btn-success btn-block" tabindex="3">
+                                    <button type="submit" class="btn btn-success btn-block" tabindex="3">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
                                 </div>
                             </div>
                         </div><!-- end row -->
