@@ -10,15 +10,17 @@ class shoppingModel extends Model {
     /**
      * Fügt einen neuen Eintrag zur Shopping List hinzu
      */
-    public function add($flatId, $product, $amount = "") {
+    public function add($flatId, $product, $amount = "", $userId) {
 
         $bind = array(
             ':flatId' => $flatId,
             ':product' => $product,
-            ':amount' => $amount
+            ':amount' => $amount,
+            ':userId' => $userId
+                
         );
         // Füre DB Insert aus
-        $res = $this->db->insert('shopping_lists', 'flats_id, product, amount', ':flatId, :product, :amount', $bind);
+        $res = $this->db->insert('shopping_lists', 'flats_id, product, amount, added_by', ':flatId, :product, :amount, :userId', $bind);
         if ($res == 1) {
             return true;
         } else {

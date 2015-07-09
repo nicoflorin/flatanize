@@ -30,6 +30,7 @@ class ShoppingController extends Controller {
         $product = $_POST['product'];
         $amount = $_POST['amount'];
         $flatId = Session::getFlatId();
+        $userId = Session::get('user_id');
 
         //Falls kein Produkt eingegeben wurde
         //@Todo Fehlermeldung anzeigen, wenn nichts eingegeben wurde
@@ -39,7 +40,7 @@ class ShoppingController extends Controller {
                 $amount = 1;
             }
             $this->loadModel('shopping');
-            $res = $this->model->add($flatId, $product, $amount);
+            $res = $this->model->add($flatId, $product, $amount, $userId);
             $this->redirect('shopping', 'index');
         } else {
             $this->redirect('shopping', 'index');

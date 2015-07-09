@@ -7,6 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema flatanize
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `flatanize` ;
 
 -- -----------------------------------------------------
 -- Schema flatanize
@@ -53,13 +54,20 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `flatanize`.`shopping_lists` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
+  `added_by` INT UNSIGNED NOT NULL,
   `product` VARCHAR(255) NOT NULL,
   `amount` INT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
+  INDEX `fk_shopping_users_idx` (`added_by` ASC),
   CONSTRAINT `fk_shopping_lists_flats`
     FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_shopping_users`
+    FOREIGN KEY (`added_by`)
+    REFERENCES `flatanize`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
