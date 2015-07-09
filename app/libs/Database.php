@@ -99,7 +99,7 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
             if ($stmt->execute($bind) !== false) {
                 //Bei Select gib Datensätze zurück
                 if (strpos($sql, 'SELECT') !== false) {
-                    return $stmt->fetchAll();
+                    return $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
                 // Sonst gib count zurück
                 elseif (strpos($sql, 'DELETE') !== false || strpos($sql, 'INSERT') !== false || strpos($sql, 'UPDATE') !== false) {
