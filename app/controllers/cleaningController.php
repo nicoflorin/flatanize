@@ -52,6 +52,9 @@ class CleaningController extends Controller {
         $this->view->render('cleaning/create_task', 'Cleaning Tasks');
     }
 
+    /**
+     * Handelt create Task Form Input und ruft Model für Erstellung auf
+     */
     public function createTask() {
         $title = $_POST['title'];
         $freq = $_POST['frequency'];
@@ -59,7 +62,9 @@ class CleaningController extends Controller {
         $start = $_POST['start'];
         $users = $_POST['user'];
         $flatId = Session::getFlatId();
-
+        //@Todo active User anhand von Reihenfolge Auswahl in GUI
+        $activeUser = $users[0];
+        
         $error = [];
         //Prüfe ob Datum format 
         if ($this->validateDate($start)) { //Y-m-d
@@ -77,7 +82,8 @@ class CleaningController extends Controller {
         //Wenn keine Fehler auftraten
         if (empty($error)) {
             $this->loadModel('cleaning');
-            $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users);
+            $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users, $activeUser);
+
             if ($res === true) {
                 $this->redirect('cleaning', 'index');
             } else {
