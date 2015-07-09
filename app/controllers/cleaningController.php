@@ -22,17 +22,34 @@ class CleaningController extends Controller {
         $this->view->taskList = $this->model->getTaskList($flatId);
         $this->view->render('cleaning/index', 'Cleaning Tasks');
     }
-    
 
     /**
      * Lädt Seite um neuen Task zu erstellen
      */
     public function showCreateTask($error = '') {
-        // error == 1 bedeutet datum im falschen Format
-        if ($error == 1) {
-            $this->view->assign('date', true);
+        $this->loadModel('flat');
+        $users = $this->model->getFlatUsers(Session::getFlatId());
+
+        //Hole Displayname für alle User einer WG
+        $this->loadModel('user');
+        foreach ($users as $user) {
+            $usersName[$user['id']] = $this->model->getDisplayName($user['id']);
         }
-        $this->view->render('cleaning/create_task', 'Create Task');
+
+        //userliste an View übergeben
+        $this->view->userList = $usersName;
+
+        //Prüfen ob Fehler übermittelt
+        switch ($error) {
+            case 'users':
+                $this->view->assign('users', true);
+                break;
+            case 'date':
+                $this->view->assign('date', true);
+                break;
+        }
+
+        $this->view->render('cleaning/create_task', 'Cleaning Tasks');
     }
 
     public function createTask() {
@@ -40,25 +57,30 @@ class CleaningController extends Controller {
         $freq = $_POST['frequency'];
         $wday = $_POST['weekday'];
         $start = $_POST['start'];
+        $users = $_POST['user'];
         $flatId = Session::getFlatId();
 
         $error = [];
         //Prüfe ob Datum format 
         if ($this->validateDate($start)) { //Y-m-d
-
         } else if ($this->validateDate($start, 'd.m.Y')) {
             $start = $this->formatDate($start); //formatiere Datum in Format y-m-d
         } else { //Kein Datum im gewünschten Format
-            $error['date'] = true;
+            $error['date'] = 'date';
+        }
+
+        //Wenn keine Users 
+        if (empty($users)) {
+            $error['users'] = 'users';
         }
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
             $this->loadModel('cleaning');
-            $res = $this->model->create($flatId, $title, $freq, $wday, $start);
+            $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users);
             if ($res === true) {
                 $this->redirect('cleaning', 'index');
-            }else {
+            } else {
                 $this->redirect('cleaning', 'showCreateTask');
             }
         } else {
