@@ -24,7 +24,7 @@ class flatModel extends Model {
             $code = $this->createRandomCode(5);
 
             $bind = array(':flat_code' => $code);
-            $res = $this->db->select('code', 'flats', 'code = :flat_code', $bind);
+            $res = $this->db->select('code', 'flats', 'code = :flat_code LIMIT 1', $bind);
 
             // Bei Treffer auf DB
             if (empty($res)) {

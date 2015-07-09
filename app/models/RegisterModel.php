@@ -48,7 +48,7 @@ class RegisterModel extends Model {
         //Falls Flat eingegebn, Prüfe ob Flat existiert
         if (!empty($flatCode)) {
             $bind = array(':flat_code' => $flatCode);
-            $res = $this->db->select('id', 'flats', 'code = :flat_code', $bind);
+            $res = $this->db->select('id', 'flats', 'code = :flat_code LIMIT 1', $bind);
             if (empty($res)) {
                 $error['error_id'] = 3;
             } else {

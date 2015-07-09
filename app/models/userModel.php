@@ -30,7 +30,7 @@ class UserModel extends Model {
         $bind = array(
             ':user_id' => $userId,
         );
-        $res = $this->db->select('display_name', 'users', 'id = :user_id', $bind);
+        $res = $this->db->select('display_name', 'users', 'id = :user_id LIMIT 1', $bind);
         if (!empty($res)) {
             return $res[0]['display_name'];
         } else {
