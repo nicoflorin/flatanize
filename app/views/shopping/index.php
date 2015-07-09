@@ -49,7 +49,7 @@
                         <thead>
                             <tr>
                                 <th class="col-xs-10">Product</th>
-                                <th class="col-xs-1">Amount</th>
+                                <th class="col-xs-1">Qty</th>
                                 <th class="col-xs-1"></th>
                             </tr>
                         </thead>

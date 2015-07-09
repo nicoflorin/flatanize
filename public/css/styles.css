@@ -28,6 +28,22 @@ body {
     margin-top: 0;   
 }
 
+/* Shopping List */
+.nopadding {
+   padding-right: 0 !important;
+}
+
+/* Falls Zeile in Tabelle zu lang, erscheinen nur noch ... */
+.table {
+  table-layout:fixed;
+}
+
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 /* ===========================================
     Navbar
