@@ -10,7 +10,7 @@
             </div>
 
             <div class="alert alert-success" role="alert" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
-                <p>Please create or join a flat <a href="<?= URL ?>/settings/index"> here.</p>
+                <p>Please create or join a flat <a href="<?= URL ?>/settings/index"> here.</a></p>
             </div>
 
             <div id="cleaningContent" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
