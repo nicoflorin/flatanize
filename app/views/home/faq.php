@@ -4,8 +4,9 @@
     </div>
     <div class="row">
         <!-- @Todo FAQ erstellen -->
+        <!-- @TOdo Mobile Fehler beheben -->
         <!-- Bootstrap Accordion -->
-        <div class="panel-group" id="accordion">
+        <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
