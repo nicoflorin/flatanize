@@ -49,7 +49,7 @@
                         <thead>
                             <tr>
                                 <th class="col-xs-10">Product</th>
-                                <th class="col-xs-1">Qty</th>
+                                <th class="col-xs-1 text-center">Qty</th>
                                 <th class="col-xs-1"></th>
                             </tr>
                         </thead>
@@ -59,8 +59,8 @@
                             ?>
                                 <tr>
                                     <td><?= $entry['product'] ?></td>
-                                    <td><?= $entry['amount'] ?></td>
-                                    <td>
+                                    <td class="text-center"><?= $entry['amount'] ?></td>
+                                    <td class="text-right">
                                         <a href="<?php echo URL . '/shopping/deleteFromShoppingList/' . $entry['id']; ?>" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </a>
