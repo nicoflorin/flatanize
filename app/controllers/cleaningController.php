@@ -23,7 +23,7 @@ class CleaningController extends Controller {
     }
 
     /**
-     * 
+     * Holt alle Tasks und holt für jeden den aktiven User
      * @param type $flatId
      * @return type
      */
@@ -129,6 +129,10 @@ class CleaningController extends Controller {
         $this->redirect('cleaning', 'index');
     }
     
+    /**
+     * Setzt den Task für den eingeloggten User auf erledigt
+     * @param type $id
+     */
     public function setTaskDone($id) {
         $userId = Session::get('user_id');
         $this->loadModel('cleaning');
