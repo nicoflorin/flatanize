@@ -38,17 +38,11 @@ body {
   table-layout:fixed;
 }
 
-.table td {
+.table .td-dotted {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 
 /* ===========================================
     Navbar

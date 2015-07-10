@@ -57,7 +57,7 @@
                             <?php
                             foreach ($this->list as $entry) {
                                 echo '<tr>';
-                                echo '<td>' . $entry['product'] . '</td>';
+                                echo '<td class="td-dotted">' . $entry['product'] . '</td>';
                                 echo '<td>' . $entry['amount'] . '</td>';
                                 echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $entry['id'] .
                                 '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
