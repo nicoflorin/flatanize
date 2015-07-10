@@ -61,7 +61,7 @@
                                         <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
                                     </td>
 
-                                    <td>
+                                    <td class="text-right">
                                         <a href="<?php echo URL . '/task/setTaskDone/' . $entry['id'] ?>" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
                                         <a href="<?php echo URL . '/task/deleteTask/' . $entry['id'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
                                     </td>
