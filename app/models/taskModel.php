@@ -10,26 +10,20 @@ class taskModel extends Model {
     /**
      * Erstellt einen neuen Task
      */
-    public function create($flatId, $title, $freq, $wday, $nextDate, $users) {
-        //Hole wochenTag ID aus DB
-        $bind = array(':wday' => $wday);
-        $res = $this->db->select('id', 'wdays', 'day = :wday LIMIT 1', $bind);
-        $wdayId = $res[0]['id'];
-
+    public function create($flatId, $title, $freq, $nextDate, $users) {
         //Hole Frequenz ID aus DB
         $bind = array(':freq' => $freq);
         $res = $this->db->select('id', 'frequencies', 'description = :freq LIMIT 1', $bind);
         $freqId = $res[0]['id'];
-
+        
         //Füge Daten in DB ein
         $bind = array(
             ':flatId' => $flatId,
             ':freqId' => $freqId,
-            ':wdayId' => $wdayId,
             ':title' => $title,
             ':nextDate' => $nextDate
         );
-        $res = $this->db->insert('tasks', 'flats_id, frequencies_id, wdays_id, title, next_date', ':flatId, :freqId, :wdayId, :title, :nextDate', $bind);
+        $res = $this->db->insert('tasks', 'flats_id, frequencies_id, title, next_date', ':flatId, :freqId, :title, :nextDate', $bind);
         $taskId = $this->db->lastInsertId();
 
         //Wenn OK
@@ -41,7 +35,6 @@ class taskModel extends Model {
                 $this->setTaskUser($user, $taskId, $userOrder);
                 $userOrder++;
             }
-
             return true;
         } else {
             return false;
@@ -75,11 +68,27 @@ class taskModel extends Model {
     /**
      * Holt anhand der flatId alle WG Tasks aus DB
      * @param type $flatId
-     * @return boolean
+     * @return array
      */
     public function getTaskList($flatId) {
         $bind = array(':flatId' => $flatId);
         $res = $this->db->select('id', 'tasks', 'flats_id = :flatId', $bind);
+
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return array(); //sonst leeres Array
+        }
+    }
+
+    /**
+     * Holt einen Task aus der DB
+     * @param type $id
+     * @return array
+     */
+    public function getTask($id) {
+        $bind = array(':id' => $id);
+        $res = $this->db->select('a.id, a.flats_id, a.title, a.next_date, b.description', 'tasks a, frequencies b', 'a.id = :id AND a.frequencies_id = b.id', $bind);
 
         if (!empty($res)) {
             return $res;
@@ -98,12 +107,11 @@ class taskModel extends Model {
             ':flatId' => $flatId,
             ':taskId' => $taskId
         );
-        $res = $this->db->select('a.id, d.description, e.day, a.title, a.next_date, c.display_name'
-                , 'tasks a, tasks_users b, users c, frequencies d, wdays e'
+        $res = $this->db->select('a.id, d.description, a.title, a.next_date, c.display_name'
+                , 'tasks a, tasks_users b, users c, frequencies d'
                 , 'a.id = b.tasks_id
                     AND c.id = b.users_id
                     AND d.id = a.frequencies_id
-                    AND e.id = a.wdays_id
                     AND a.flats_id = :flatId
                     AND b.tasks_id = :taskId
                     order by b.count, b.user_order
@@ -144,13 +152,20 @@ class taskModel extends Model {
      * @param type $userId
      * @return boolean
      */
-    public function setTaskDone($id, $userId) {
+    public function updateTask($id, $userId, $nextDate) {
         $bind = array(
             ':id' => $id,
             ':userId' => $userId
         );
 
         $res = $this->db->update('tasks_users', 'count = count+1', 'tasks_id = :id AND users_id = :userId', $bind);
+
+        $bind = array(
+            ':id' => $id,
+            ':nextDate' => $nextDate
+        );
+
+        $res = $this->db->update('tasks', 'next_date = :nextDate', 'id = :id', $bind);
 
         if ($res > 0) {
             return true;
@@ -163,11 +178,10 @@ class taskModel extends Model {
      * Berechnet das nächste Datum für Task
      * @param type $date
      * @param type $freq
-     * @param type $day
      */
-    public function calcNextDate($date, $freq, $day) {
+    public function calcNextDate($date, $freq) {
         $date = new DateTime($date);
-        
+
         switch ($freq) {
             case 'once':
                 $return = $date->format('y-m-d');
@@ -179,13 +193,13 @@ class taskModel extends Model {
                 break;
 
             case 'weekly':
-                
-
+                $date = $date->modify('+1 week');
+                $return = $date->format('y-m-d');
                 break;
 
             case 'every month':
-
-
+                $date = $date->modify('+1 month');
+                $return = $date->format('y-m-d');
                 break;
 
             default:
