@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `flatanize`.`users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `flat_id` INT UNSIGNED NULL,
+  `flats_id` INT UNSIGNED NULL,
   `username` VARCHAR(50) NOT NULL,
   `display_name` VARCHAR(50) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`users` (
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_users_flats`
-    FOREIGN KEY (`flat_id`)
+    FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -118,15 +118,13 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
-  `frequency_id` INT UNSIGNED NOT NULL,
+  `frequencies_id` INT UNSIGNED NOT NULL,
   `wdays_id` INT UNSIGNED NOT NULL,
   `title` VARCHAR(255) NOT NULL,
-  `frequency` VARCHAR(255) NOT NULL,
-  `weekday` CHAR(2) NOT NULL,
   `start` DATE NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_cleanings_frequencies_idx` (`frequency_id` ASC),
+  INDEX `fk_cleanings_frequencies_idx` (`frequencies_id` ASC),
   INDEX `fk_cleanings_wdays_idx` (`wdays_id` ASC),
   CONSTRAINT `fk_cleanings_flats`
     FOREIGN KEY (`flats_id`)
@@ -134,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cleanings_frequencies`
-    FOREIGN KEY (`frequency_id`)
+    FOREIGN KEY (`frequencies_id`)
     REFERENCES `flatanize`.`frequencies` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -146,6 +144,57 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `flatanize`.`cleanings_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings_users` (
+  `cleanings_id` INT UNSIGNED NOT NULL,
+  `users_id` INT UNSIGNED NOT NULL,
+  `user_order` INT UNSIGNED NOT NULL,
+  `count` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`cleanings_id`, `users_id`),
+  INDEX `fk_cleanings_users_us_idx` (`users_id` ASC),
+  CONSTRAINT `fk_cleanings_users_cl`
+    FOREIGN KEY (`cleanings_id`)
+    REFERENCES `flatanize`.`cleanings` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cleanings_users_us`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `flatanize`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `flatanize`.`frequencies`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `flatanize`;
+INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'once');
+INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'daily');
+INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'weekly');
+INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'monthly');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `flatanize`.`wdays`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `flatanize`;
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Monday');
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Tuesday');
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Wednesday');
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Thursday');
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Friday');
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Saturday');
+INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Sunday');
+
+COMMIT;
