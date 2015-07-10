@@ -42,19 +42,19 @@
                             </select>
                         </div>
                         <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
-                            <input type="date" id="start" name="start" class="form-control" placeholder="Start" tabindex="4" required>
+                            <input type="date" id="start" name="start" class="form-control" placeholder="Start Date" tabindex="4" required>
                             <?php
                             if (isset($this->data['date'])) {
                                 echo '<span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>';
                             }
                             ?>
                         </div>
-                        <p>Who has to do it?</p>
+                        <p>Who needs to do it all?</p>
                         <div class="form-group <?php echo (isset($this->data['users'])) ? 'has-error' : '' ?>">
                             <div class="" data-toggle="buttons">
                                 <?php
                                 foreach ($this->userList as $key => $user) {
-                                    echo '<label class="btn btn-primary"><input type="checkbox" name="user[]" value="' . $key . '">' . $user . '</label>';
+                                    echo '<label class="btn btn-primary"><input type="checkbox" name="user[]" value="' . $key . '" tabindex="4">' . $user . '</label>';
                                 }
                                 ?>
                             </div>
