@@ -28,9 +28,6 @@
                         <h3 class="panel-title">Scheduled Tasks</h3>
                     </div>
 
-                    <div class="alert alert-info" role="alert" <?php echo (!empty($this->taskList)) ? 'style="display:none;"' : '' ?>>
-                        <p>There are no scheduled tasks available.</p>
-                    </div>
                     <table class="table">
                         <thead class="nopadding">
                             <tr>
@@ -40,6 +37,9 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr <?php echo (!empty($this->taskList)) ? 'style="display:none;"' : '' ?>>
+                                <td class="text-info">There are no scheduled tasks available.</td>
+                            </tr>
                             <?php
                             foreach ($this->taskList as $key => $entry) {
                                 //prüfen ob Datum in vergangenheit
@@ -67,8 +67,8 @@
                                 <?php
                             }
                             ?><!-- end foreach -->
+                        </tbody>
                     </table>
-
                 </div><!-- end panel -->
             </div><!-- end taskContent -->
         </div><!-- end well -->
