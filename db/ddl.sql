@@ -103,30 +103,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `flatanize`.`wdays`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `flatanize`.`wdays` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `day` ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `flatanize`.`tasks`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `flatanize`.`tasks` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
   `frequencies_id` INT UNSIGNED NOT NULL,
-  `wdays_id` INT UNSIGNED NOT NULL,
   `title` VARCHAR(255) NOT NULL,
-  `start` DATE NOT NULL,
-  `nextDate` DATE NOT NULL,
+  `next_date` DATE NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_tasks_frequencies_idx` (`frequencies_id` ASC),
-  INDEX `fk_tasks_wdays_idx` (`wdays_id` ASC),
   CONSTRAINT `fk_tasks_flats`
     FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
@@ -135,11 +122,6 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`tasks` (
   CONSTRAINT `fk_tasks_frequencies`
     FOREIGN KEY (`frequencies_id`)
     REFERENCES `flatanize`.`frequencies` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tasks_wdays`
-    FOREIGN KEY (`wdays_id`)
-    REFERENCES `flatanize`.`wdays` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -181,22 +163,6 @@ INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'on
 INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'daily');
 INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'weekly');
 INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'monthly');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `flatanize`.`wdays`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `flatanize`;
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Monday');
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Tuesday');
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Wednesday');
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Thursday');
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Friday');
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Saturday');
-INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Sunday');
 
 COMMIT;
 
