@@ -32,11 +32,11 @@
                         <p>There are no scheduled tasks available.</p>
                     </div>
                     <table class="table">
-                        <thead>
+                        <thead class="nopadding">
                             <tr>
-                                <th class="col-xs-5"></th>
-                                <th class="col-xs-5"></th>
-                                <th class="col-xs-2"></th>
+                                <th class="col-xs-5 nopadding"></th>
+                                <th class="col-xs-5 nopadding"></th>
+                                <th class="col-xs-2 nopadding"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,6 +51,7 @@
                                     <td>
                                         <strong><?= $entry['title'] ?></strong>
                                         <p><?= $entry['description'] ?></p>
+                                        <strong class="text-danger" <?php echo (!isset($this->dateError[$key])) ? 'style="display:none;"' : '' ?>>overdue</strong>
                                     </td>
 
                                     <td>
