@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <!-- button für menü auf mobile -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#leftNavCollapse">
-            <b class="caret"></b>
+            Menu <b class="caret"></b>
         </button>
     </div><!-- end navbar-header -->
     <div class="collapse navbar-collapse" id="leftNavCollapse">
