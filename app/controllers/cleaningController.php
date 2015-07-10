@@ -19,7 +19,7 @@ class CleaningController extends Controller {
         $flatId = Session::getFlatId();
         $this->view->taskList = $this->getTaskList($flatId);
         //Seite laden
-        $this->view->render('cleaning/index', 'Cleaning Tasks');
+        $this->view->render('cleaning/index', 'Task Scheduling');
     }
 
     /**
@@ -45,6 +45,39 @@ class CleaningController extends Controller {
         }
 
         return $newTaskList;
+    }
+    
+    /**
+     * Berechnet das nächste Datum für Task
+     * @param type $date
+     * @param type $freq
+     * @param type $day
+     */
+    public function calcNextDate($date, $freq, $day) {
+        switch ($freq) {
+            case 'once':
+                $return = $date;
+                break;
+            
+            case 'daily':
+                $return = $date+1;
+                break;
+            
+            case 'weekly':
+                
+
+                break;
+            
+            case 'every month':
+                
+
+                break;
+
+            default:
+                break;
+        }
+        
+        return $return;
     }
 
     /**
@@ -74,7 +107,7 @@ class CleaningController extends Controller {
                 break;
         }
 
-        $this->view->render('cleaning/create_task', 'Cleaning Tasks');
+        $this->view->render('cleaning/create_task', 'Task Scheduling');
     }
 
     /**
