@@ -14,7 +14,7 @@ require_once (ROOT . '/app/libs/Session.php');
 require_once (ROOT . '/app/libs/View.php');
 
 //Configs
-require_once (ROOT . '/app/configs/paths.php');
+require_once (ROOT . '/app/configs/consts.php');
 
 // Starte Hauptscript
 $app = new App();
