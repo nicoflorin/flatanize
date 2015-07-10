@@ -63,6 +63,7 @@ class Session {
         } else {
             Session::destroy();
             header("Location: " . URL);
+            exit;
         }
     }
 
