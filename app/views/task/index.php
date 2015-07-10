@@ -43,9 +43,11 @@
                             <?php
                             foreach ($this->taskList as $key => $entry) {
                                 //prüfen ob Datum in vergangenheit
-                                if (strtotime($entry['start']) < time()) {
+                                if (strtotime($entry['next_date']) < time()) {
                                     $this->dateError[$key] = true;
                                 }
+                                $date = new DateTime($entry['next_date']);
+                                $entry['next_date'] = $date->format('d.m.Y');
                                 ?>
                                 <tr class="<?php echo (isset($this->dateError[$key])) ? 'bg-danger' : '' ?>">
                                     <td>
@@ -55,8 +57,8 @@
                                     </td>
 
                                     <td>
-                                        <p> <?= $entry['display_name'] ?>'s turn</p>
-                                        <p>On <?= $entry['day'] ?></p>
+                                        <p><?= $entry['display_name'] ?>'s turn</p>
+                                        <p>On <?= $entry['next_date'] ?></p>
                                     </td>
 
                                     <td>
