@@ -17,7 +17,6 @@ class shoppingModel extends Model {
             ':product' => $product,
             ':amount' => $amount,
             ':userId' => $userId
-                
         );
         // Füre DB Insert aus
         $res = $this->db->insert('shopping_lists', 'flats_id, product, amount, added_by', ':flatId, :product, :amount, :userId', $bind);
@@ -27,7 +26,7 @@ class shoppingModel extends Model {
             return false;
         }
     }
-    
+
     /**
      * Löscht einen Eintrag aus der Shopping List
      * @param type $id
@@ -38,9 +37,14 @@ class shoppingModel extends Model {
         );
         // Füre DB Delete aus
         $res = $this->db->delete('shopping_lists', 'id = :id', $bind);
-        return $res;
+
+        if ($res > 0) {
+            return $res;
+        } else {
+            return false;
+        }
     }
-    
+
     /**
      * Holt alle Shopping List Einträge aus der DB
      * @param type $flatId
@@ -50,8 +54,12 @@ class shoppingModel extends Model {
         // Select auf diese Flat
         $bind = array(':flatId' => $flatId);
         $res = $this->db->select('id, product, amount', 'shopping_lists', 'flats_id = :flatId', $bind);
-        
-        return $res;
+
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return false;
+        }
     }
 
 }
