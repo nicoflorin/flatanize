@@ -13,10 +13,10 @@
                 <p>Please create or join a flat <a href="<?= URL ?>/settings/index"> here.</a></p>
             </div>
 
-            <div id="cleaningContent" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
+            <div id="taskContent" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                 <!-- create New Task -->
                 <div>
-                    <a class="btn btn-success" href="<?= URL ?>/cleaning/showCreateTask" role="button">Create New Task</a>
+                    <a class="btn btn-success" href="<?= URL ?>/task/showCreateTask" role="button">Create New Task</a>
                     <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
                         <span class="glyphicon glyphicon-repeat"></span>
                     </button>
@@ -60,8 +60,8 @@
                                     </td>
 
                                     <td>
-                                        <a href="<?php echo URL . '/cleaning/setTaskDone/' . $entry['id'] ?>" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
-                                        <a href="<?php echo URL . '/cleaning/deleteTask/' . $entry['id'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <a href="<?php echo URL . '/task/setTaskDone/' . $entry['id'] ?>" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
+                                        <a href="<?php echo URL . '/task/deleteTask/' . $entry['id'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
                                     </td>
                                 </tr>
                                 <?php
@@ -70,7 +70,7 @@
                     </table>
 
                 </div><!-- end panel -->
-            </div><!-- end cleaningContent -->
+            </div><!-- end taskContent -->
         </div><!-- end well -->
     </div><!-- end col -->
 </div><!-- end row -->

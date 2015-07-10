@@ -15,7 +15,7 @@
                     <h3 class="panel-title">Create a new task</h3>
                 </div>
                 <div class="panel-body">
-                    <form method="post" action="<?= URL ?>/cleaning/createTask">
+                    <form method="post" action="<?= URL ?>/task/createTask">
                         <div class="form-group">
                             <input type="text" id="title" name="title" class="form-control" placeholder="Title" tabindex="1" required autofocus>
                         </div>

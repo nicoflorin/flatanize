@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Description of cleaningModel
+ * Description of taskModel
  *
  * @author Nico
  */
-class cleaningModel extends Model {
+class taskModel extends Model {
 
     /**
-     * Erstellt einen neuen Cleaning Task
+     * Erstellt einen neuen Task
      */
     public function create($flatId, $title, $freq, $wday, $start, $users) {
         //Hole wochenTag ID aus DB
@@ -29,16 +29,16 @@ class cleaningModel extends Model {
             ':title' => $title,
             ':start' => $start
         );
-        $res = $this->db->insert('cleanings', 'flats_id, frequencies_id, wdays_id, title, start', ':flatId, :freqId, :wdayId, :title, :start', $bind);
-        $cleaningId = $this->db->lastInsertId();
+        $res = $this->db->insert('tasks', 'flats_id, frequencies_id, wdays_id, title, start', ':flatId, :freqId, :wdayId, :title, :start', $bind);
+        $taskId = $this->db->lastInsertId();
 
         //Wenn OK
         if ($res == 1) {
-            //Erstelle für jeden User einen Eintrag in cleaning_users
+            //Erstelle für jeden User einen Eintrag in task_users
             //@Todo UserOrder aus GUI übernehmen
             $userOrder = 1;
             foreach ($users as $user) {
-                $this->setCleaningUser($user, $cleaningId, $userOrder);
+                $this->setTaskUser($user, $taskId, $userOrder);
                 $userOrder++;
             }
 
@@ -49,21 +49,21 @@ class cleaningModel extends Model {
     }
 
     /**
-     * Setzt Werte in n:m tabelle cleanings_users
+     * Setzt Werte in n:m tabelle tasks_users
      * @param type $userId
-     * @param type $cleaningId
+     * @param type $taskId
      * @param type $orderNr
      * @return boolean
      */
-    public function setCleaningUser($userId, $cleaningId, $userOrder = 1, $count = 0) {
+    public function setTaskUser($userId, $taskId, $userOrder = 1, $count = 0) {
         //Füge Daten in DB ein
         $bind = array(
             ':userId' => $userId,
-            ':cleaningId' => $cleaningId,
+            ':taskId' => $taskId,
             ':userOrder' => $userOrder,
             ':count' => $count
         );
-        $res = $this->db->insert('cleanings_users', 'cleanings_id, users_id, user_order, count', ':cleaningId, :userId, :userOrder, :count', $bind);
+        $res = $this->db->insert('tasks_users', 'tasks_id, users_id, user_order, count', ':taskId, :userId, :userOrder, :count', $bind);
 
         if (!empty($res)) {
             return true;
@@ -79,7 +79,7 @@ class cleaningModel extends Model {
      */
     public function getTaskList($flatId) {
         $bind = array(':flatId' => $flatId);
-        $res = $this->db->select('id', 'cleanings', 'flats_id = :flatId', $bind);
+        $res = $this->db->select('id', 'tasks', 'flats_id = :flatId', $bind);
 
         if (!empty($res)) {
             return $res;
@@ -91,21 +91,21 @@ class cleaningModel extends Model {
     /**
      * Holt für einen Task den aktiven User aus der DB
      * @param type $flatId
-     * @param type $cleaningId
+     * @param type $taskId
      */
-    public function getActiveUser($flatId, $cleaningId) {
+    public function getActiveUser($flatId, $taskId) {
         $bind = array(
             ':flatId' => $flatId,
-            ':cleaningId' => $cleaningId
+            ':taskId' => $taskId
         );
         $res = $this->db->select('a.id, d.description, e.day, a.title, a.`start`, c.display_name'
-                , 'cleanings a, cleanings_users b, users c, frequencies d, wdays e'
-                , 'a.id = b.cleanings_id
+                , 'tasks a, tasks_users b, users c, frequencies d, wdays e'
+                , 'a.id = b.tasks_id
                     AND c.id = b.users_id
                     AND d.id = a.frequencies_id
                     AND e.id = a.wdays_id
                     AND a.flats_id = :flatId
-                    AND b.cleanings_id = :cleaningId
+                    AND b.tasks_id = :taskId
                     order by b.count, b.user_order
                     LIMIT 1;', $bind);
 
@@ -125,11 +125,11 @@ class cleaningModel extends Model {
         $bind = array(
             ':id' => $id
         );
-        // Füre DB Delete auf cleanings_users aus
-        $res = $this->db->delete('cleanings_users', 'cleanings_id = :id', $bind);
+        // Füre DB Delete auf tasks_users aus
+        $res = $this->db->delete('tasks_users', 'tasks_id = :id', $bind);
         if ($res > 0) {
-            // Füre DB Delete auf cleanings aus
-            $res = $this->db->delete('cleanings', 'id = :id', $bind);
+            // Füre DB Delete auf tasks aus
+            $res = $this->db->delete('tasks', 'id = :id', $bind);
             if ($res > 0) {
                 return true;
             }
@@ -144,7 +144,7 @@ class cleaningModel extends Model {
             ':userId' => $userId
         );
         
-        $res = $this->db->update('cleanings_users', 'count = count+1', 'cleanings_id = :id AND users_id = :userId', $bind);
+        $res = $this->db->update('tasks_users', 'count = count+1', 'tasks_id = :id AND users_id = :userId', $bind);
 
         if ($res > 0) {
             return true;

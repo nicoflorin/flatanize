@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Description of cleaningController
+ * Description of taskController
  *
  * @author Nico
  */
-class CleaningController extends Controller {
+class TaskController extends Controller {
 
     function __construct() {
         parent::__construct();
@@ -13,13 +13,13 @@ class CleaningController extends Controller {
     }
 
     /**
-     * Lädt Cleaning index Seite
+     * Lädt Task index Seite
      */
     public function index() {
         $flatId = Session::getFlatId();
         $this->view->taskList = $this->getTaskList($flatId);
         //Seite laden
-        $this->view->render('cleaning/index', 'Task Scheduling');
+        $this->view->render('task/index', 'Task Scheduling');
     }
 
     /**
@@ -30,7 +30,7 @@ class CleaningController extends Controller {
     public function getTaskList($flatId) {
         $taskList = array();
         $newTaskList = array();
-        $this->loadModel('cleaning');
+        $this->loadModel('task');
 
         $list = $this->model->getTaskList($flatId);
 
@@ -107,7 +107,7 @@ class CleaningController extends Controller {
                 break;
         }
 
-        $this->view->render('cleaning/create_task', 'Task Scheduling');
+        $this->view->render('task/create_task', 'Task Scheduling');
     }
 
     /**
@@ -138,16 +138,16 @@ class CleaningController extends Controller {
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
-            $this->loadModel('cleaning');
+            $this->loadModel('task');
             $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users);
 
             if ($res === true) {
-                $this->redirect('cleaning', 'index');
+                $this->redirect('task', 'index');
             } else {
-                $this->redirect('cleaning', 'showCreateTask');
+                $this->redirect('task', 'showCreateTask');
             }
         } else {
-            $this->redirect('cleaning', 'showCreateTask', $error);
+            $this->redirect('task', 'showCreateTask', $error);
         }
     }
 
@@ -156,10 +156,10 @@ class CleaningController extends Controller {
      * @param type $id
      */
     public function deleteTask($id) {
-        $this->loadModel('cleaning');
+        $this->loadModel('task');
         $res = $this->model->deleteTask($id);
 
-        $this->redirect('cleaning', 'index');
+        $this->redirect('task', 'index');
     }
     
     /**
@@ -168,10 +168,10 @@ class CleaningController extends Controller {
      */
     public function setTaskDone($id) {
         $userId = Session::get('user_id');
-        $this->loadModel('cleaning');
+        $this->loadModel('task');
         $res = $this->model->setTaskDone($id, $userId);
 
-        $this->redirect('cleaning', 'index');
+        $this->redirect('task', 'index');
     }
 
     /**

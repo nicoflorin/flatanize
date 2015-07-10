@@ -113,15 +113,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `flatanize`.`cleanings`
+-- Table `flatanize`.`tasks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings` (
+CREATE TABLE IF NOT EXISTS `flatanize`.`tasks` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
   `frequencies_id` INT UNSIGNED NOT NULL,
   `wdays_id` INT UNSIGNED NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `start` DATE NOT NULL,
+  `nextDate` DATE NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_cleanings_frequencies_idx` (`frequencies_id` ASC),
@@ -145,21 +146,21 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `flatanize`.`cleanings_users`
+-- Table `flatanize`.`tasks_users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `flatanize`.`cleanings_users` (
-  `cleanings_id` INT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `flatanize`.`tasks_users` (
+  `tasks_id` INT UNSIGNED NOT NULL,
   `users_id` INT UNSIGNED NOT NULL,
   `user_order` INT UNSIGNED NOT NULL,
   `count` INT NOT NULL DEFAULT 0,
-  PRIMARY KEY (`cleanings_id`, `users_id`),
-  INDEX `fk_cleanings_users_us_idx` (`users_id` ASC),
-  CONSTRAINT `fk_cleanings_users_cl`
-    FOREIGN KEY (`cleanings_id`)
-    REFERENCES `flatanize`.`cleanings` (`id`)
+  PRIMARY KEY (`tasks_id`, `users_id`),
+  INDEX `fk_tasks_users_us_idx` (`users_id` ASC),
+  CONSTRAINT `fk_tasks_users_cl`
+    FOREIGN KEY (`tasks_id`)
+    REFERENCES `flatanize`.`tasks` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cleanings_users_us`
+  CONSTRAINT `fk_tasks_users_us`
     FOREIGN KEY (`users_id`)
     REFERENCES `flatanize`.`users` (`id`)
     ON DELETE NO ACTION
@@ -198,3 +199,4 @@ INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Saturday');
 INSERT INTO `flatanize`.`wdays` (`id`, `day`) VALUES (DEFAULT, 'Sunday');
 
 COMMIT;
+
