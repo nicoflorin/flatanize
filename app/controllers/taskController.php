@@ -47,8 +47,6 @@ class TaskController extends Controller {
         return $newTaskList;
     }
 
-
-
     /**
      * Lädt Seite um neuen Task zu erstellen
      * @param type $error
@@ -85,14 +83,13 @@ class TaskController extends Controller {
     public function createTask() {
         $title = $_POST['title'];
         $freq = $_POST['frequency'];
-        $wday = $_POST['weekday'];
         $start = $_POST['start'];
         $users = $_POST['user'];
         $flatId = Session::getFlatId();
         //@Todo erster User anhand von Reihenfolge Auswahl in GUI
 
         $this->loadModel('task');
-        
+
         $error = [];
         //Prüfe ob Datum format 
         if ($this->validateDate($start)) { //Y-m-d
@@ -106,14 +103,11 @@ class TaskController extends Controller {
         if (empty($users)) {
             $error['users'] = 'users';
         }
-        
-        //Berechne nächster Task Tag
-        $nextDate = $this->model->calcNextDate($start, $freq, $wday);
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
-            
-            $res = $this->model->create($flatId, $title, $freq, $wday, $nextDate, $users);
+
+            $res = $this->model->create($flatId, $title, $freq, $start, $users);
 
             if ($res === true) {
                 $this->redirect('task', 'index');
@@ -142,7 +136,19 @@ class TaskController extends Controller {
     public function setTaskDone($id) {
         $userId = Session::get('user_id');
         $this->loadModel('task');
-        $res = $this->model->setTaskDone($id, $userId);
+        $res = $this->model->getTask($id);
+        $date = $res[0]['next_date'];
+        $freq = $res[0]['description'];
+
+        // Bei einmaligem Task diesen löschen
+        if ($freq == 'once') {
+            $res = $this->model->deleteTask($id);
+        } else {
+            // Berechne neues Datum
+            $nextDate = $this->model->calcNextDate($date, $freq);
+
+            $res = $this->model->updateTask($id, $userId, $nextDate);
+        }
 
         $this->redirect('task', 'index');
     }
