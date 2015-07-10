@@ -16,24 +16,35 @@ class CleaningController extends Controller {
      * Lädt Cleaning index Seite
      */
     public function index() {
-        $this->loadModel('cleaning');
         $flatId = Session::getFlatId();
+        $this->view->taskList = $this->getTaskList($flatId);
+        //Seite laden
+        $this->view->render('cleaning/index', 'Cleaning Tasks');
+    }
+
+    /**
+     * 
+     * @param type $flatId
+     * @return type
+     */
+    public function getTaskList($flatId) {
+        $taskList = array();
+        $newTaskList = array();
+        $this->loadModel('cleaning');
+
         $list = $this->model->getTaskList($flatId);
 
-        //$taskList = array();
         //Holt für jeden Task den akiven User
         foreach ($list as $entry) {
             $taskList[] = $this->model->getActiveUser($flatId, $entry['id']);
         }
-        
+
         //Da dreidimensionales Array, dieses zu zweidimensional machen
         foreach ($taskList as $entry) {
             $newTaskList[] = $entry[0];
         }
-        
-        //Seite laden
-        $this->view->taskList = $newTaskList;
-        $this->view->render('cleaning/index', 'Cleaning Tasks');
+
+        return $newTaskList;
     }
 
     /**
@@ -77,7 +88,7 @@ class CleaningController extends Controller {
         $users = $_POST['user'];
         $flatId = Session::getFlatId();
         //@Todo erster User anhand von Reihenfolge Auswahl in GUI
-        
+
         $error = [];
         //Prüfe ob Datum format 
         if ($this->validateDate($start)) { //Y-m-d
@@ -105,6 +116,25 @@ class CleaningController extends Controller {
         } else {
             $this->redirect('cleaning', 'showCreateTask', $error);
         }
+    }
+
+    /**
+     * Löscht einen Task aus DB
+     * @param type $id
+     */
+    public function deleteTask($id) {
+        $this->loadModel('cleaning');
+        $res = $this->model->deleteTask($id);
+
+        $this->redirect('cleaning', 'index');
+    }
+    
+    public function setTaskDone($id) {
+        $userId = Session::get('user_id');
+        $this->loadModel('cleaning');
+        $res = $this->model->setTaskDone($id, $userId);
+
+        $this->redirect('cleaning', 'index');
     }
 
     /**

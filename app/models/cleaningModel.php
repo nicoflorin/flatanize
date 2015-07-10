@@ -80,7 +80,7 @@ class cleaningModel extends Model {
     public function getTaskList($flatId) {
         $bind = array(':flatId' => $flatId);
         $res = $this->db->select('id', 'cleanings', 'flats_id = :flatId', $bind);
-        
+
         if (!empty($res)) {
             return $res;
         } else {
@@ -108,11 +108,48 @@ class cleaningModel extends Model {
                     AND b.cleanings_id = :cleaningId
                     order by b.count, b.user_order
                     LIMIT 1;', $bind);
-        
+
         if (!empty($res)) {
             return $res;
         } else {
             return array(); //sonst leeres Array
+        }
+    }
+
+    /**
+     * Löscht einen Task aus der DB
+     * @param type $id
+     * @return boolean
+     */
+    public function deleteTask($id) {
+        $bind = array(
+            ':id' => $id
+        );
+        // Füre DB Delete auf cleanings_users aus
+        $res = $this->db->delete('cleanings_users', 'cleanings_id = :id', $bind);
+        if ($res > 0) {
+            // Füre DB Delete auf cleanings aus
+            $res = $this->db->delete('cleanings', 'id = :id', $bind);
+            if ($res > 0) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+    
+    public function setTaskDone($id, $userId) {
+        $bind = array(
+            ':id' => $id,
+            ':userId' => $userId
+        );
+        
+        $res = $this->db->update('cleanings_users', 'count = count+1', 'cleanings_id = :id AND users_id = :userId', $bind);
+
+        if ($res > 0) {
+            return true;
+        }else {
+            return false;
         }
     }
 
