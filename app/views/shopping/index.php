@@ -18,18 +18,18 @@
                 <div id="addToShoppingList">
                     <form method="post" action="<?= URL ?>/shopping/addToShoppingList">
                         <div class="row">
-                            <div class="col-xs-7 col-md-8 nopadding">
+                            <div class="col-xs-7 col-md-8 nopadding-right">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
                                     <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1" autofocus>
                                 </div>
                             </div>
-                            <div class="col-xs-2 col-md-2 nopadding">
+                            <div class="col-xs-2 col-md-2 nopadding-left">
                                 <div>
                                     <input type="text" class="form-control" name="amount" placeholder="Qty" tabindex="2">
                                 </div>
                             </div>
-                            <div class="col-xs-3 col-md-2">
+                            <div class="col-xs-3 col-md-2 nopadding-left">
                                 <div >
                                     <button type="submit" class="btn btn-success btn-block" tabindex="3">
                                         <span class="glyphicon glyphicon-plus"></span>
@@ -56,12 +56,17 @@
                         <tbody>
                             <?php
                             foreach ($this->list as $entry) {
-                                echo '<tr>';
-                                echo '<td class="td-dotted">' . $entry['product'] . '</td>';
-                                echo '<td>' . $entry['amount'] . '</td>';
-                                echo '<td><a href="' . URL . '/shopping/deleteFromShoppingList/' . $entry['id'] .
-                                '" class="btn btn-xs"><span class="glyphicon glyphicon-remove"></span></a></td>';
-                                echo '</tr>';
+                            ?>
+                                <tr>
+                                    <td><?= $entry['product'] ?></td>
+                                    <td><?= $entry['amount'] ?></td>
+                                    <td>
+                                        <a href="<?php echo URL . '/shopping/deleteFromShoppingList/' . $entry['id']; ?>" class="btn btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php
                             }
                             ?>
                         </tbody>
