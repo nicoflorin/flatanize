@@ -29,19 +29,16 @@ body {
 }
 
 /* Shopping List */
-.nopadding {
+.nopadding-right {
    padding-right: 0 !important;
 }
 
-/* Falls Zeile in Tabelle zu lang, erscheinen nur noch ... */
-.table {
-  table-layout:fixed;
+.nopadding-left {
+   padding-left: 0 !important;
 }
 
-.table .td-dotted {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.nopadding {
+    padding: 0px !important;
 }
 
 /* ===========================================
@@ -129,8 +126,8 @@ body {
     }
     
     body {
-    margin-top: 60px; /* Abstand zu Navigation.*/
-}
+        margin-top: 60px; /* Abstand zu Navigation.*/
+    }
 }
 
 /* Landscape phone bis portrait tablet */
