@@ -26,7 +26,7 @@
                                 <option value="once">once</option>
                                 <option value="daily">daily</option>
                                 <option value="weekly">weekly</option>
-                                <option value="monthly">every month</option>
+                                <option value="every month">every month</option>
                             </select>
                         </div>
                         <div class="form-group">
