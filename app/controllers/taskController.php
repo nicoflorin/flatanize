@@ -46,39 +46,8 @@ class TaskController extends Controller {
 
         return $newTaskList;
     }
-    
-    /**
-     * Berechnet das nächste Datum für Task
-     * @param type $date
-     * @param type $freq
-     * @param type $day
-     */
-    public function calcNextDate($date, $freq, $day) {
-        switch ($freq) {
-            case 'once':
-                $return = $date;
-                break;
-            
-            case 'daily':
-                $return = $date+1;
-                break;
-            
-            case 'weekly':
-                
 
-                break;
-            
-            case 'every month':
-                
 
-                break;
-
-            default:
-                break;
-        }
-        
-        return $return;
-    }
 
     /**
      * Lädt Seite um neuen Task zu erstellen
@@ -122,6 +91,8 @@ class TaskController extends Controller {
         $flatId = Session::getFlatId();
         //@Todo erster User anhand von Reihenfolge Auswahl in GUI
 
+        $this->loadModel('task');
+        
         $error = [];
         //Prüfe ob Datum format 
         if ($this->validateDate($start)) { //Y-m-d
@@ -135,11 +106,14 @@ class TaskController extends Controller {
         if (empty($users)) {
             $error['users'] = 'users';
         }
+        
+        //Berechne nächster Task Tag
+        $nextDate = $this->model->calcNextDate($start, $freq, $wday);
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
-            $this->loadModel('task');
-            $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users);
+            
+            $res = $this->model->create($flatId, $title, $freq, $wday, $nextDate, $users);
 
             if ($res === true) {
                 $this->redirect('task', 'index');
@@ -157,11 +131,10 @@ class TaskController extends Controller {
      */
     public function deleteTask($id) {
         $this->loadModel('task');
-        $res = $this->model->deleteTask($id);
-
+        $this->model->deleteTask($id);
         $this->redirect('task', 'index');
     }
-    
+
     /**
      * Setzt den Task für den eingeloggten User auf erledigt
      * @param type $id
