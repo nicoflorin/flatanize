@@ -41,9 +41,9 @@ class cleaningModel extends Model {
                 $this->setCleaningUser($user, $cleaningId, $userOrder);
                 $userOrder++;
             }
-            
+
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -55,13 +55,13 @@ class cleaningModel extends Model {
      * @param type $orderNr
      * @return boolean
      */
-    public function setCleaningUser($userId, $cleaningId, $userOrder=1, $count=0) {
+    public function setCleaningUser($userId, $cleaningId, $userOrder = 1, $count = 0) {
         //Füge Daten in DB ein
         $bind = array(
             ':userId' => $userId,
             ':cleaningId' => $cleaningId,
             ':userOrder' => $userOrder,
-             ':count' => $count   
+            ':count' => $count
         );
         $res = $this->db->insert('cleanings_users', 'cleanings_id, users_id, user_order, count', ':cleaningId, :userId, :userOrder, :count', $bind);
 
@@ -78,9 +78,37 @@ class cleaningModel extends Model {
      * @return boolean
      */
     public function getTaskList($flatId) {
-        //Inner Join auf cleanings, frequencies, wdays
         $bind = array(':flatId' => $flatId);
-        $res = $this->db->select('a.id, a.flats_id, a.title, a.start, b.description, c.day', 'cleanings a, frequencies b, wdays c', 'a.frequencies_id = b.id AND a.wdays_id = c.id AND flats_id = :flatId', $bind);
+        $res = $this->db->select('id', 'cleanings', 'flats_id = :flatId', $bind);
+        
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return array(); //sonst leeres Array
+        }
+    }
+
+    /**
+     * Holt für einen Task den aktiven User aus der DB
+     * @param type $flatId
+     * @param type $cleaningId
+     */
+    public function getActiveUser($flatId, $cleaningId) {
+        $bind = array(
+            ':flatId' => $flatId,
+            ':cleaningId' => $cleaningId
+        );
+        $res = $this->db->select('a.id, d.description, e.day, a.title, a.`start`, c.display_name'
+                , 'cleanings a, cleanings_users b, users c, frequencies d, wdays e'
+                , 'a.id = b.cleanings_id
+                    AND c.id = b.users_id
+                    AND d.id = a.frequencies_id
+                    AND e.id = a.wdays_id
+                    AND a.flats_id = :flatId
+                    AND b.cleanings_id = :cleaningId
+                    order by b.count, b.user_order
+                    LIMIT 1;', $bind);
+        
         if (!empty($res)) {
             return $res;
         } else {

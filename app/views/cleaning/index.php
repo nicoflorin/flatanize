@@ -24,28 +24,29 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Scheduled Tasks</h3>
                     </div>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="col-xs-7">Title</th>
-                                <th class="col-xs-2">Freq.</th>
-                                <th class="col-xs-1">On</th>
-                                <th class="col-xs-2">Start</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($this->taskList as $value) {
-                                echo '<tr>';
-                                echo '<td>' . $value['title'] . '</td>';
-                                echo '<td>' . $value['description'] . '</td>';
-                                echo '<td>' . $value['day'] . '</td>';
-                                echo '<td>' . $value['start'] . '</td>';
-                                echo '</tr>';
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                    <div class="panel-body">
+                    <?php
+                    foreach ($this->taskList as $entry) {
+                        ?>
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <strong><?= $entry['title'] ?></strong>
+                                <p><?= $entry['description'] ?></p>
+                            </div>
+                            <div class="col-xs-5">
+                                <p><?= $entry['display_name'] ?></p>
+                                <p><?= $entry['day'] ?></p>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="<?php echo URL . '/cleaning/setTaskDone/' . $entry['id'] ?>" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
+                                <a href="<?php echo URL . '/cleaning/setTaskDone/' . $entry['id'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                            </div>
+                        </div>
+                        <hr>
+                        <?php
+                    }
+                    ?><!-- end foreach -->
+                    </div><!-- end panel-body -->
                 </div><!-- end panel -->
             </div><!-- end cleaningContent -->
         </div><!-- end well -->

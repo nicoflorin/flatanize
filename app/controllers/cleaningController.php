@@ -18,13 +18,27 @@ class CleaningController extends Controller {
     public function index() {
         $this->loadModel('cleaning');
         $flatId = Session::getFlatId();
-        //Hole Liste von Tasks
-        $this->view->taskList = $this->model->getTaskList($flatId);
+        $list = $this->model->getTaskList($flatId);
+
+        //$taskList = array();
+        //Holt für jeden Task den akiven User
+        foreach ($list as $entry) {
+            $taskList[] = $this->model->getActiveUser($flatId, $entry['id']);
+        }
+        
+        //Da dreidimensionales Array, dieses zu zweidimensional machen
+        foreach ($taskList as $entry) {
+            $newTaskList[] = $entry[0];
+        }
+        
+        //Seite laden
+        $this->view->taskList = $newTaskList;
         $this->view->render('cleaning/index', 'Cleaning Tasks');
     }
 
     /**
      * Lädt Seite um neuen Task zu erstellen
+     * @param type $error
      */
     public function showCreateTask($error = '') {
         $this->loadModel('flat');
