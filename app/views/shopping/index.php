@@ -61,7 +61,7 @@
                                     <td><?= $entry['product'] ?></td>
                                     <td><?= $entry['amount'] ?></td>
                                     <td>
-                                        <a href="<?php echo URL . '/shopping/deleteFromShoppingList/' . $entry['id']; ?>" class="btn btn-xs">
+                                        <a href="<?php echo URL . '/shopping/deleteFromShoppingList/' . $entry['id']; ?>" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-remove"></span>
                                         </a>
                                     </td>
