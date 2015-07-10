@@ -10,7 +10,7 @@ class taskModel extends Model {
     /**
      * Erstellt einen neuen Task
      */
-    public function create($flatId, $title, $freq, $wday, $start, $users) {
+    public function create($flatId, $title, $freq, $wday, $nextDate, $users) {
         //Hole wochenTag ID aus DB
         $bind = array(':wday' => $wday);
         $res = $this->db->select('id', 'wdays', 'day = :wday LIMIT 1', $bind);
@@ -27,9 +27,9 @@ class taskModel extends Model {
             ':freqId' => $freqId,
             ':wdayId' => $wdayId,
             ':title' => $title,
-            ':start' => $start
+            ':nextDate' => $nextDate
         );
-        $res = $this->db->insert('tasks', 'flats_id, frequencies_id, wdays_id, title, start', ':flatId, :freqId, :wdayId, :title, :start', $bind);
+        $res = $this->db->insert('tasks', 'flats_id, frequencies_id, wdays_id, title, next_date', ':flatId, :freqId, :wdayId, :title, :nextDate', $bind);
         $taskId = $this->db->lastInsertId();
 
         //Wenn OK
@@ -98,7 +98,7 @@ class taskModel extends Model {
             ':flatId' => $flatId,
             ':taskId' => $taskId
         );
-        $res = $this->db->select('a.id, d.description, e.day, a.title, a.`start`, c.display_name'
+        $res = $this->db->select('a.id, d.description, e.day, a.title, a.next_date, c.display_name'
                 , 'tasks a, tasks_users b, users c, frequencies d, wdays e'
                 , 'a.id = b.tasks_id
                     AND c.id = b.users_id
@@ -137,20 +137,62 @@ class taskModel extends Model {
             return false;
         }
     }
-    
+
+    /**
+     * Setzt einen Task für einen User auf erledigt
+     * @param type $id
+     * @param type $userId
+     * @return boolean
+     */
     public function setTaskDone($id, $userId) {
         $bind = array(
             ':id' => $id,
             ':userId' => $userId
         );
-        
+
         $res = $this->db->update('tasks_users', 'count = count+1', 'tasks_id = :id AND users_id = :userId', $bind);
 
         if ($res > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
+    }
+
+    /**
+     * Berechnet das nächste Datum für Task
+     * @param type $date
+     * @param type $freq
+     * @param type $day
+     */
+    public function calcNextDate($date, $freq, $day) {
+        $date = new DateTime($date);
+        
+        switch ($freq) {
+            case 'once':
+                $return = $date->format('y-m-d');
+                break;
+
+            case 'daily':
+                $date = $date->modify('+1 day');
+                $return = $date->format('y-m-d');
+                break;
+
+            case 'weekly':
+                
+
+                break;
+
+            case 'every month':
+
+
+                break;
+
+            default:
+                break;
+        }
+
+        return $return;
     }
 
 }
