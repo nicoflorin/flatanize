@@ -141,7 +141,7 @@ class TaskController extends Controller {
         $freq = $res[0]['description'];
 
         // Bei einmaligem Task diesen löschen
-        if ($freq == 'once') {
+        if ($freq == ONCE) {
             $res = $this->model->deleteTask($id);
         } else {
             // Berechne neues Datum

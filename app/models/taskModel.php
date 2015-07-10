@@ -183,21 +183,21 @@ class taskModel extends Model {
         $date = new DateTime($date);
 
         switch ($freq) {
-            case 'once':
+            case ONCE:
                 $return = $date->format('y-m-d');
                 break;
 
-            case 'daily':
+            case DAILY:
                 $date = $date->modify('+1 day');
                 $return = $date->format('y-m-d');
                 break;
 
-            case 'weekly':
+            case WEEKLY:
                 $date = $date->modify('+1 week');
                 $return = $date->format('y-m-d');
                 break;
 
-            case 'every month':
+            case MONTHLY:
                 $date = $date->modify('+1 month');
                 $return = $date->format('y-m-d');
                 break;

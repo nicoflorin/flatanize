@@ -23,10 +23,10 @@
                             <!-- @todo auswahl per button -->
                             <select name="frequency" class="form-control" tabindex="2" required> 
                                 <option value="" disabled selected>Select frequency</option>
-                                <option value="once">once</option>
-                                <option value="daily">daily</option>
-                                <option value="weekly">weekly</option>
-                                <option value="every month">every month</option>
+                                <option value="<?= ONCE ?>">once</option>
+                                <option value="<?= DAILY ?>">daily</option>
+                                <option value="<?= WEEKLY ?>">weekly</option>
+                                <option value="<?= MONTHLY ?>">every month</option>
                             </select>
                         </div>
                         
