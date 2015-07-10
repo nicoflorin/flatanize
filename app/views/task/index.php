@@ -58,7 +58,7 @@
 
                                     <td>
                                         <p><?= $entry['display_name'] ?>'s turn</p>
-                                        <p>On <?= $entry['next_date'] ?></p>
+                                        <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
                                     </td>
 
                                     <td>
