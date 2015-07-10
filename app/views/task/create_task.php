@@ -29,18 +29,7 @@
                                 <option value="every month">every month</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <select name="weekday" class="form-control" tabindex="3" placeholder="bla" required> 
-                                <option value="" disabled selected>Select weekday</option>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                                <option value="Saturday">Saturday</option>
-                                <option value="Sunday">Sunday</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
                             <input type="date" id="start" name="start" class="form-control" placeholder="Start Date" tabindex="4" required>
                             <?php
