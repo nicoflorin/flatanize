@@ -62,8 +62,7 @@ class CleaningController extends Controller {
         $start = $_POST['start'];
         $users = $_POST['user'];
         $flatId = Session::getFlatId();
-        //@Todo active User anhand von Reihenfolge Auswahl in GUI
-        $activeUser = $users[0];
+        //@Todo erster User anhand von Reihenfolge Auswahl in GUI
         
         $error = [];
         //Prüfe ob Datum format 
@@ -82,7 +81,7 @@ class CleaningController extends Controller {
         //Wenn keine Fehler auftraten
         if (empty($error)) {
             $this->loadModel('cleaning');
-            $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users, $activeUser);
+            $res = $this->model->create($flatId, $title, $freq, $wday, $start, $users);
 
             if ($res === true) {
                 $this->redirect('cleaning', 'index');

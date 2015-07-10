@@ -10,7 +10,7 @@ class cleaningModel extends Model {
     /**
      * Erstellt einen neuen Cleaning Task
      */
-    public function create($flatId, $title, $freq, $wday, $start, $users, $activeUser) {
+    public function create($flatId, $title, $freq, $wday, $start, $users) {
         //Hole wochenTag ID aus DB
         $bind = array(':wday' => $wday);
         $res = $this->db->select('id', 'wdays', 'day = :wday LIMIT 1', $bind);
@@ -27,17 +27,19 @@ class cleaningModel extends Model {
             ':freqId' => $freqId,
             ':wdayId' => $wdayId,
             ':title' => $title,
-            ':start' => $start,
-            ':activeUser' => $activeUser
+            ':start' => $start
         );
-        $res = $this->db->insert('cleanings', 'flats_id, frequencies_id, active_user_id, wdays_id, title, start', ':flatId, :freqId, :activeUser, :wdayId, :title, :start', $bind);
+        $res = $this->db->insert('cleanings', 'flats_id, frequencies_id, wdays_id, title, start', ':flatId, :freqId, :wdayId, :title, :start', $bind);
         $cleaningId = $this->db->lastInsertId();
 
         //Wenn OK
         if ($res == 1) {
             //Erstelle für jeden User einen Eintrag in cleaning_users
+            //@Todo UserOrder aus GUI übernehmen
+            $userOrder = 1;
             foreach ($users as $user) {
-                $this->setCleaningUser($user, $cleaningId);
+                $this->setCleaningUser($user, $cleaningId, $userOrder);
+                $userOrder++;
             }
             
             return true;
@@ -53,14 +55,15 @@ class cleaningModel extends Model {
      * @param type $orderNr
      * @return boolean
      */
-    public function setCleaningUser($userId, $cleaningId, $user_order = 1) {
+    public function setCleaningUser($userId, $cleaningId, $userOrder=1, $count=0) {
         //Füge Daten in DB ein
         $bind = array(
             ':userId' => $userId,
             ':cleaningId' => $cleaningId,
-            ':userOrder' => $user_order
+            ':userOrder' => $userOrder,
+             ':count' => $count   
         );
-        $res = $this->db->insert('cleanings_users', 'cleanings_id, users_id, user_order', ':cleaningId, :userId, :userOrder', $bind);
+        $res = $this->db->insert('cleanings_users', 'cleanings_id, users_id, user_order, count', ':cleaningId, :userId, :userOrder, :count', $bind);
 
         if (!empty($res)) {
             return true;
