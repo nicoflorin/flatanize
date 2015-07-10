@@ -44,6 +44,9 @@ class TaskController extends Controller {
             $newTaskList[] = $entry[0];
         }
 
+        for ($i = 0; $i < count($newTaskList); $i++) {
+            $newTaskList[$i]['day'] = $this->getWeekday($newTaskList[$i]['next_date']);
+        }
         return $newTaskList;
     }
 
@@ -176,6 +179,43 @@ class TaskController extends Controller {
     public function formatDate($date, $format = 'Y-m-d') {
         $out = new DateTime($date);
         return $out->format($format);
+    }
+
+    /**
+     * Gibt Wochentag zurück
+     * @param type $date
+     * @return type
+     */
+    function getWeekday($date) {
+        $day = date('w', strtotime($date));
+
+        $ret = '';
+        switch ($day) {
+            case 0:
+                $ret = SUNDAY;
+                break;
+            case 1:
+                $ret = MONDAY;
+                break;
+            case 2:
+                $ret = TUESDAY;
+                break;
+            case 3:
+                $ret = WEDNESDAY;
+                break;
+            case 4:
+                $ret = THURSDAY;
+                break;
+            case 5:
+                $ret = FRIDAY;
+                break;
+            case 6:
+                $ret = SATURDAY;
+                break;
+            default:
+                break;
+        }
+        return $ret;
     }
 
 }
