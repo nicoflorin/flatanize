@@ -47,8 +47,8 @@ class shoppingModel extends Model {
 
     /**
      * Holt alle Shopping List Einträge aus der DB
-     * @param type $flatId
-     * @return type
+     * @param int $flatId
+     * @return array
      */
     public function getList($flatId) {
         // Select auf diese Flat
@@ -58,7 +58,7 @@ class shoppingModel extends Model {
         if (!empty($res)) {
             return $res;
         } else {
-            return false;
+            return array();
         }
     }
 
