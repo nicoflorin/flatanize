@@ -125,19 +125,19 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`tasks` (
   `nextDate` DATE NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_cleanings_frequencies_idx` (`frequencies_id` ASC),
-  INDEX `fk_cleanings_wdays_idx` (`wdays_id` ASC),
-  CONSTRAINT `fk_cleanings_flats`
+  INDEX `fk_tasks_frequencies_idx` (`frequencies_id` ASC),
+  INDEX `fk_tasks_wdays_idx` (`wdays_id` ASC),
+  CONSTRAINT `fk_tasks_flats`
     FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cleanings_frequencies`
+  CONSTRAINT `fk_tasks_frequencies`
     FOREIGN KEY (`frequencies_id`)
     REFERENCES `flatanize`.`frequencies` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cleanings_wdays`
+  CONSTRAINT `fk_tasks_wdays`
     FOREIGN KEY (`wdays_id`)
     REFERENCES `flatanize`.`wdays` (`id`)
     ON DELETE NO ACTION
