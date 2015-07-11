@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`shopping_lists` (
     REFERENCES `flatanize`.`flats` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_shopping_users`
+  CONSTRAINT `fk_shopping_lists_users`
     FOREIGN KEY (`added_by`)
     REFERENCES `flatanize`.`users` (`id`)
     ON DELETE NO ACTION
@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`finances` (
   `product` VARCHAR(255) NOT NULL,
   `price` DECIMAL(9,2) NOT NULL,
   `date` DATE NOT NULL,
+  `cleared` TINYINT(1) NOT NULL DEFAULT 0,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_finances_flats`
@@ -134,15 +135,36 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`tasks_users` (
   `tasks_id` INT UNSIGNED NOT NULL,
   `users_id` INT UNSIGNED NOT NULL,
   `user_order` INT UNSIGNED NOT NULL,
-  `count` INT NOT NULL DEFAULT 0,
+  `count` INT UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`tasks_id`, `users_id`),
   INDEX `fk_tasks_users_us_idx` (`users_id` ASC),
-  CONSTRAINT `fk_tasks_users_cl`
+  CONSTRAINT `fk_tasks_users_tasks`
     FOREIGN KEY (`tasks_id`)
     REFERENCES `flatanize`.`tasks` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tasks_users_us`
+  CONSTRAINT `fk_tasks_users_users`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `flatanize`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `flatanize`.`finances_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `flatanize`.`finances_users` (
+  `finances_id` INT UNSIGNED NOT NULL,
+  `users_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`finances_id`, `users_id`),
+  INDEX `fk_fin_users_users_id_idx` (`users_id` ASC),
+  CONSTRAINT `fk_fin_users_finances`
+    FOREIGN KEY (`finances_id`)
+    REFERENCES `flatanize`.`finances` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_fin_users_users`
     FOREIGN KEY (`users_id`)
     REFERENCES `flatanize`.`users` (`id`)
     ON DELETE NO ACTION
@@ -162,7 +184,7 @@ USE `flatanize`;
 INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'once');
 INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'daily');
 INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'weekly');
-INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'monthly');
+INSERT INTO `flatanize`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'every month');
 
 COMMIT;
 
