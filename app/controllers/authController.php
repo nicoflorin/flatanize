@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ist zuständig für die Authentifizierung
+ * Controller für die Authentifizierung
  *
  * @author Nico
  */

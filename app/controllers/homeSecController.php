@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Zuständig für Secure Home
+ * Controller für Secure Home
  *
  * @author Nico
  */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ist Zuständig für die Shopping Funktionen
+ * Controller für die Shopping Funktionen
  *
  * @author Nico
  */

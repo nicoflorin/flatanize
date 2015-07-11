@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ist zuständig für die Registrierfunktionen
+ * Controller für die Registrierfunktionen
  *
  * @author Nico
  */

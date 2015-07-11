@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of appController
+ * Controller für Einstellungen
  *
  * @author Nico
  */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of taskController
+ * Controller für Aufgabenplanung
  *
  * @author Nico
  */
