@@ -43,9 +43,10 @@
                             <?php
                             foreach ($this->taskList as $key => $entry) {
                                 //prüfen ob Datum in vergangenheit
-                                if (strtotime($entry['next_date']) < time()) {
+                                if (strtotime($entry['next_date']) <= time()) {
                                     $this->dateError[$key] = true;
                                 }
+                                //Datum in Format d.m.Y formatieren
                                 $date = new DateTime($entry['next_date']);
                                 $entry['next_date'] = $date->format('d.m.Y');
                                 ?>
@@ -62,8 +63,16 @@
                                     </td>
 
                                     <td class="text-right">
-                                        <a href="<?php echo URL . '/task/setTaskDone/' . $entry['id'] ?>" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></a>
-                                        <a href="<?php echo URL . '/task/deleteTask/' . $entry['id'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post" class="form-inline">
+                                            <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+                                        </form>
+                                        <br>
+                                        <form action="<?php echo URL . '/task/deleteTask'; ?>" method="post" class="form-inline">
+                                            <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                            <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                                        </form>
+         
                                     </td>
                                 </tr>
                                 <?php

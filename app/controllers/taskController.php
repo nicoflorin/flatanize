@@ -124,33 +124,40 @@ class TaskController extends Controller {
 
     /**
      * Löscht einen Task aus DB
-     * @param type $id
      */
-    public function deleteTask($id) {
-        $this->loadModel('task');
-        $this->model->deleteTask($id);
+    public function deleteTask() {
+        //@Todo prüfen ob User berechtigt
+        $id = $_POST['id'];
+        if (!empty($id)) {
+            $this->loadModel('task');
+            $this->model->deleteTask($id);
+        }
+
         $this->redirect('task', 'index');
     }
 
     /**
      * Setzt den Task für den eingeloggten User auf erledigt
-     * @param type $id
      */
-    public function setTaskDone($id) {
-        $userId = Session::get('user_id');
-        $this->loadModel('task');
-        $res = $this->model->getTask($id);
-        $date = $res[0]['next_date'];
-        $freq = $res[0]['description'];
+    public function setTaskDone() {
+        //@Todo prüfen ob User berechtigt
+        $id = $_POST['id'];
+        if (!empty($id)) {
+            $userId = Session::get('user_id');
+            $this->loadModel('task');
+            $res = $this->model->getTask($id);
+            $date = $res[0]['next_date'];
+            $freq = $res[0]['description'];
 
-        // Bei einmaligem Task diesen löschen
-        if ($freq == ONCE) {
-            $res = $this->model->deleteTask($id);
-        } else {
-            // Berechne neues Datum
-            $nextDate = $this->model->calcNextDate($date, $freq);
+            // Bei einmaligem Task diesen löschen
+            if ($freq == ONCE) {
+                $res = $this->model->deleteTask($id);
+            } else {
+                // Berechne neues Datum
+                $nextDate = $this->model->calcNextDate($date, $freq);
 
-            $res = $this->model->updateTask($id, $userId, $nextDate);
+                $res = $this->model->updateTask($id, $userId, $nextDate);
+            }
         }
 
         $this->redirect('task', 'index');
@@ -180,7 +187,5 @@ class TaskController extends Controller {
         $out = new DateTime($date);
         return $out->format($format);
     }
-
-
 
 }
