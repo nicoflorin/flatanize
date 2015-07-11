@@ -82,17 +82,17 @@ class TaskController extends Controller {
         $title = $_POST['title'];
         $freq = $_POST['frequency'];
         $start = $_POST['start'];
-        $users = $_POST['user'];
+        $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
         $flatId = Session::getFlatId();
+        
         //@Todo erster User anhand von Reihenfolge Auswahl in GUI
-
         $this->loadModel('task');
 
         $error = [];
         //Prüfe ob Datum format 
-        if ($this->validateDate($start)) { //Y-m-d
-        } else if ($this->validateDate($start, 'd.m.Y')) {
-            $start = $this->formatDate($start); //formatiere Datum in Format y-m-d
+        if (Functions::validateDate($start)) { //Y-m-d
+        } else if (Functions::validateDate($start, 'd.m.Y')) {
+            $start = Functions::formatDate($start); //formatiere Datum in Format y-m-d
         } else { //Kein Datum im gewünschten Format
             $error['date'] = 'date';
         }
@@ -156,31 +156,6 @@ class TaskController extends Controller {
         }
 
         $this->redirect('task', 'index');
-    }
-
-    /**
-     * Prüft einen String auf das korrekte Datum Format
-     * @param string $date
-     * @param string $format
-     * @return boolean
-     */
-    public function validateDate($date, $format = 'Y-m-d') {
-        try {
-            $d = DateTime::createFromFormat($format, $date);
-            return $d && $d->format($format) == $date;
-        } catch (Exception $e) {
-            return false;
-        }
-    }
-
-    /**
-     * Formatiert ein DateTime in das gewünschte Format
-     * @param DateTime $date
-     * @param string $format
-     */
-    public function formatDate($date, $format = 'Y-m-d') {
-        $out = new DateTime($date);
-        return $out->format($format);
     }
 
 }
