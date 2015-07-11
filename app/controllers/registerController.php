@@ -28,7 +28,8 @@ class RegisterController extends Controller {
         //@Todo Passwortlänge mind. 8 Zeichen lang.
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->redirect(); //home
+            $this->view->assign('success', 'true');
+            $this->view->render('home/signUp', 'Sign Up');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error', 'true');
             $this->view->render('home/signUp', 'Sign Up', $res);

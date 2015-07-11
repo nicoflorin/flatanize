@@ -2,6 +2,7 @@
     <div class="page-header">
         <h1><?= $this->data['title'] ?></h1>
     </div>
+    <!-- @Todo anzeige ob Registrierung erfolgreich -->
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
@@ -9,6 +10,11 @@
             if (isset($this->data['error'])) {
                 echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
                 // @Todo Form validation mit Bootstrap <span class="help-block">Username is available</span>
+            }
+            ?>
+            <?php
+            if (isset($this->data['success'])) {
+                echo '<div class="alert alert-success" role="alert"><p>Sign Up was successful!</p></div>';
             }
             ?>
             <div>

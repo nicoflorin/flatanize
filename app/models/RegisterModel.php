@@ -15,7 +15,6 @@ class RegisterModel extends Model {
      */
     public function register($userName, $displayName, $email, $password, $flatCode = "") {
 
-
         $error = [];
         if (empty($userName)) {
             $error['username'] = true;
