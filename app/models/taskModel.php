@@ -88,7 +88,10 @@ class taskModel extends Model {
      */
     public function getTask($id) {
         $bind = array(':id' => $id);
-        $res = $this->db->select('a.id, a.flats_id, a.title, a.next_date, b.description', 'tasks a, frequencies b', 'a.id = :id AND a.frequencies_id = b.id', $bind);
+        $res = $this->db->select(
+                'a.id, a.flats_id, a.title, a.next_date, b.description', 
+                'tasks a, frequencies b', 
+                'a.id = :id AND a.frequencies_id = b.id', $bind);
 
         if (!empty($res)) {
             return $res;
@@ -103,11 +106,13 @@ class taskModel extends Model {
      * @param type $taskId
      */
     public function getActiveUser($flatId, $taskId) {
+        //@Todo evtl. View erstellen
         $bind = array(
             ':flatId' => $flatId,
             ':taskId' => $taskId
         );
-        $res = $this->db->select('a.id, d.description, a.title, a.next_date, c.display_name'
+        $res = $this->db->select(
+                'a.id, d.description, a.title, a.next_date, c.display_name'
                 , 'tasks a, tasks_users b, users c, frequencies d'
                 , 'a.id = b.tasks_id
                     AND c.id = b.users_id
