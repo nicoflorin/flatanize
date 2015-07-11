@@ -42,10 +42,9 @@ class ShoppingController extends Controller {
             }
             $this->loadModel('shopping');
             $res = $this->model->add($flatId, $product, $amount, $userId);
-            $this->redirect('shopping', 'index');
-        } else {
-            $this->redirect('shopping', 'index');
         }
+        
+        $this->redirect('shopping', 'index');
     }
 
     /*
@@ -55,8 +54,11 @@ class ShoppingController extends Controller {
     public function deleteFromShoppingList() {
         $id = $_POST['id'];
         //@Todo prüfen ob user berechtigt ist zum löschen
-        $this->loadModel('shopping');
-        $res = $this->model->delete($id);
+        if (!empty($id)) {
+            $this->loadModel('shopping');
+            $res = $this->model->delete($id);
+        }
+
         $this->redirect('shopping', 'index');
     }
 
