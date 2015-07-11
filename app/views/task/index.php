@@ -46,9 +46,6 @@
                                 if (strtotime($entry['next_date']) <= strtotime('today')) {
                                     $this->dateError[$key] = true;
                                 }
-                                //Datum in Format d.m.Y formatieren
-                                $date = new DateTime($entry['next_date']);
-                                $entry['next_date'] = $date->format('d.m.Y');
                                 ?>
                                 <tr class="<?php echo (isset($this->dateError[$key])) ? 'bg-danger' : '' ?>">
                                     <td>

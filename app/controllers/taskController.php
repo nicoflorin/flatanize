@@ -43,9 +43,12 @@ class TaskController extends Controller {
         foreach ($taskList as $entry) {
             $newTaskList[] = $entry[0];
         }
-
+        
+        //Hole Wochentag
+        //Formatiere Datum um
         for ($i = 0; $i < count($newTaskList); $i++) {
             $newTaskList[$i]['day'] = $this->model->getWeekday($newTaskList[$i]['next_date']);
+            $newTaskList[$i]['next_date'] = Functions::formatDate($newTaskList[$i]['next_date'], 'd.m.Y');
         }
         return $newTaskList;
     }
