@@ -58,8 +58,8 @@
                             <input type="submit" value="Create Task" class="btn btn-success btn-block btn-lg" tabindex="5">
                         </div>
                     </form>
-                </div>
-            </div>
+                </div><!-- end panel-body -->
+            </div><!-- end panel -->
         </div><!-- end well -->
     </div><!-- end col -->
 </div><!-- end row -->
