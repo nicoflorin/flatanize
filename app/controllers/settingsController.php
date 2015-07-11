@@ -23,6 +23,10 @@ class SettingsController extends Controller {
             // Übergebe Daten an View
             $this->view->flatName = $this->model->getFlatName($flatId);
             $this->view->flatCode = $this->model->getFlatCode($flatId);
+            
+            //Hole Usernames und übergebe an view
+            $this->loadModel('user');
+            $this->view->users = $this->model->getAllDisplayNames($flatId);;
         }
         $this->view->render('settings/index', 'Settings');
     }

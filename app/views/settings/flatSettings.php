@@ -8,7 +8,18 @@
         <div class="panel-body">
             <p>Your flat code is: <strong><?= $this->flatCode ?></strong></p>
             <p>You are in a flat with:</p>
-            <p>@Todo Liste von allen mitglieder</p>
+            <ul>
+                <?php
+                //Liste der Users anzeigen
+                foreach ($this->users as $key => $name) {
+                    ?>
+
+                    <li><?= $name ?></li>
+
+                    <?php
+                }
+                ?>
+            </ul>
         </div><!-- end panel-body -->
     </div><!-- end flat infos -->
 
@@ -24,7 +35,7 @@
                 echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
             }
             ?>
-            <p>Share this flat with your buddies. Send them your code now.</p>
+            <p>Share this flat with your buddies. Send them your flat code now.</p>
             <form role="form" action="<?= URL ?>/settings/shareFlat" method="post">
                 <div class="form-group">
                     <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" tabindex="1" required> 
