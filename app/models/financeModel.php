@@ -6,15 +6,16 @@
  */
 class FinanceModel extends Model{
     
-    public function create($flatId, $product, $price, $date, $users) {
+    public function create($flatId, $userId, $product, $price, $date, $users) {
         //Füge Daten in DB ein
         $bind = array(
             ':flatId' => $flatId,
+            ':userId' => $userId,
             ':product' => $product,
             ':price' => $price,
             ':date' => $date
         );
-        $res = $this->db->insert('finances', 'flats_id, product, price, date', ':flatId, :product, :price, :date', $bind);
+        $res = $this->db->insert('finances', 'flats_id, added_by, product, price, date', ':flatId, :userId, :product, :price, :date', $bind);
         $financesId = $this->db->lastInsertId();
 
         //Wenn OK
@@ -48,6 +49,29 @@ class FinanceModel extends Model{
             return true;
         } else {
             return false;
+        }
+    }
+    
+    /**
+     * Holt die Liste der Finanzeinträge, welche nicht gecleared sind
+     * @param type $flatId
+     */
+    public function getFinanceList($flatId) {
+        $bind = array(':flatId' => $flatId);
+        $res = $this->db->select(
+                'c.display_name, product, a.price, a.date, count(*) user_count', 
+                'finances a, finances_users b, users c',
+                'b.finances_id = a.id
+                AND a.added_by = c.id
+                AND a.flats_id = :flatId
+                AND cleared = 0
+                group by b.finances_id
+                order by a.date desc', $bind);
+
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return array(); //sonst leeres Array
         }
     }
 }
