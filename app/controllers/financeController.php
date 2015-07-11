@@ -22,24 +22,29 @@ class FinanceController extends Controller {
     /**
      * Lädt die Seite um einen Eintrag zu erstellen
      */
-    public function showCreateEntry($error = '') {
+    public function showCreateEntry(...$error) {
         //Hole Displayname für alle User einer WG
         $this->loadModel('user');
         $userNames = $this->model->getAllDisplayNames(Session::getFlatId());
-
+ 
         //userliste an View übergeben
         $this->view->userList = $userNames;
 
         //Prüfen ob Fehler übermittelt
-        switch ($error) {
-            case 'users':
-                $this->view->assign('users', true);
-                break;
-            case 'date':
-                $this->view->assign('date', true);
-                break;
+        foreach ($error as $value) {
+            switch ($value) {
+                case 'users':
+                    $this->view->assign('users', true);
+                    break;
+                case 'date':
+                    $this->view->assign('date', true);
+                    break;
+                case 'price':
+                    $this->view->assign('price', true);
+                    break;
+            }
         }
-
+        //Seite laden
         $this->view->render('finance/create_entry', 'Finances');
     }
 
@@ -61,13 +66,17 @@ class FinanceController extends Controller {
         } else if (Functions::validateDate($date, 'd.m.Y')) {
             $date = Functions::formatDate($date); //formatiere Datum in Format y-m-d
         } else { //Kein Datum im gewünschten Format
-            $error['date'] = 'date';
+            $error[] = 'date';
         }
 
         //Wenn keine Users 
         if (empty($users)) {
-            $error['users'] = 'users';
-            exit;
+            $error[] = 'users';
+        }
+
+        //Prüfe ob Preis decimal zahl oder integer
+        if (!is_numeric($price)) {
+            $error[] = 'price';
         }
 
         //Wenn keine Fehler auftraten
@@ -80,7 +89,7 @@ class FinanceController extends Controller {
             } else {
                 $this->redirect('finance', 'showCreateEntry');
             }
-        } else {
+        } else {// Sonst seite nochmals laden
             $this->redirect('finance', 'showCreateEntry', $error);
         }
     }

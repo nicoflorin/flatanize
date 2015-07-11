@@ -54,7 +54,7 @@ class TaskController extends Controller {
      * Lädt Seite um neuen Task zu erstellen
      * @param type $error
      */
-    public function showCreateTask($error = '') {
+    public function showCreateTask(...$error) {
         //Hole Displayname für alle User einer WG
         $this->loadModel('user');
         $userNames = $this->model->getAllDisplayNames(Session::getFlatId());
@@ -63,13 +63,15 @@ class TaskController extends Controller {
         $this->view->userList = $userNames;
 
         //Prüfen ob Fehler übermittelt
-        switch ($error) {
-            case 'users':
-                $this->view->assign('users', true);
-                break;
-            case 'date':
-                $this->view->assign('date', true);
-                break;
+        foreach ($error as $value) {
+            switch ($value) {
+                case 'users':
+                    $this->view->assign('users', true);
+                    break;
+                case 'date':
+                    $this->view->assign('date', true);
+                    break;
+            }
         }
 
         $this->view->render('task/create_task', 'Task Scheduling');
@@ -84,7 +86,7 @@ class TaskController extends Controller {
         $start = $_POST['start'];
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
         $flatId = Session::getFlatId();
-        
+
         //@Todo erster User anhand von Reihenfolge Auswahl in GUI
         $this->loadModel('task');
 
@@ -94,12 +96,12 @@ class TaskController extends Controller {
         } else if (Functions::validateDate($start, 'd.m.Y')) {
             $start = Functions::formatDate($start); //formatiere Datum in Format y-m-d
         } else { //Kein Datum im gewünschten Format
-            $error['date'] = 'date';
+            $error[] = 'date';
         }
 
         //Wenn keine Users 
         if (empty($users)) {
-            $error['users'] = 'users';
+            $error[] = 'users';
         }
 
         //Wenn keine Fehler auftraten

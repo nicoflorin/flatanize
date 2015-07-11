@@ -24,15 +24,15 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-repeat"></span></span>
-                            <!-- @todo auswahl per button -->
-                            <select name="frequency" class="form-control" tabindex="2" required> 
-                                <option value="" disabled selected>Select frequency</option>
-                                <option value="<?= ONCE ?>">once</option>
-                                <option value="<?= DAILY ?>">daily</option>
-                                <option value="<?= WEEKLY ?>">weekly</option>
-                                <option value="<?= MONTHLY ?>">every month</option>
-                            </select>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-repeat"></span></span>
+                                <!-- @todo auswahl per button -->
+                                <select name="frequency" class="form-control" tabindex="2" required> 
+                                    <option value="" disabled selected>Select frequency</option>
+                                    <option value="<?= ONCE ?>">once</option>
+                                    <option value="<?= DAILY ?>">daily</option>
+                                    <option value="<?= WEEKLY ?>">weekly</option>
+                                    <option value="<?= MONTHLY ?>">every month</option>
+                                </select>
                             </div>
                         </div>
 
@@ -40,12 +40,12 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                                 <input type="date" id="start" name="start" class="form-control" placeholder="Start Date" tabindex="4" required>
-                                <?php
-                                if (isset($this->data['date'])) {
-                                    echo '<span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>';
-                                }
-                                ?>
                             </div>
+                            <?php
+                            if (isset($this->data['date'])) {
+                                echo '<span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>';
+                            }
+                            ?>
                         </div>
                         <p>Who needs to do it all?</p>
                         <div class="form-group <?php echo (isset($this->data['users'])) ? 'has-error' : '' ?>">
