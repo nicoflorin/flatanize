@@ -16,8 +16,23 @@ class FinanceController extends Controller {
      * Lädt index Seite
      */
     public function index() {
+        $this->loadModel('finance');
+        $flatId = Session::getFlatId();
+        
+        $financeList = $this->model->getFinanceList($flatId);
+        
+        //Berechne Preis pro Person
+        //Formatiere Datum um
+        for ($i = 0; $i < count($financeList); $i++) {
+            $financeList[$i]['pricePP'] = round($financeList[$i]['price'] / $financeList[$i]['user_count'], 2);
+            $financeList[$i]['date'] = Functions::formatDate($financeList[$i]['date'], 'd.m.Y');
+        }
+
+        //Hole alle Einträge aus DB
+        $this->view->financeList = $financeList;
         $this->view->render('finance/index', 'Finances');
     }
+    
 
     /**
      * Lädt die Seite um einen Eintrag zu erstellen
@@ -57,6 +72,7 @@ class FinanceController extends Controller {
         $date = $_POST['date'];
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
         $flatId = Session::getFlatId();
+        $userId = Session::get('user_id');
 
         $this->loadModel('finance');
 
@@ -81,8 +97,8 @@ class FinanceController extends Controller {
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
-
-            $res = $this->model->create($flatId, $product, $price, $date, $users);
+            //Erstelle Eintrag
+            $res = $this->model->create($flatId, $userId, $product, $price, $date, $users);
 
             if ($res === true) {
                 $this->redirect('finance', 'index');
