@@ -17,19 +17,27 @@
                 <div class="panel-body">
                     <form method="post" action="<?= URL ?>/finance/createEntry">
                         <div class="form-group">
-                            <input type="text" id="product" name="product" class="form-control" placeholder="Product" tabindex="1" required autofocus>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
+                                <input type="text" id="product" name="product" class="form-control" placeholder="Product" tabindex="1" required autofocus>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
+                                <input type="text" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
+                            </div>
                         </div>
-                        
-                        <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
-                            <input type="date" id="date" name="date" class="form-control" value="<?php echo date('d.m.Y', time()); ?>" tabindex="3" required>
-                            <?php
-                            if (isset($this->data['date'])) {
-                                echo '<span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>';
-                            }
-                            ?>
+                        <div class="form-group">
+                            <div class="input-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                <input type="date" id="date" name="date" class="form-control" value="<?php echo date('d.m.Y', time()); ?>" tabindex="3" required>
+                                <?php
+                                if (isset($this->data['date'])) {
+                                    echo '<span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>';
+                                }
+                                ?>
+                            </div>
                         </div>
                         <p>Who needs to pay for it all?</p>
                         <div class="form-group <?php echo (isset($this->data['users'])) ? 'has-error' : '' ?>">
