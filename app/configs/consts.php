@@ -10,5 +10,6 @@ define('THURSDAY', 'Thursday');
 define('FRIDAY', 'Friday');
 define('SATURDAY', 'Saturday');
 define('SUNDAY', 'Sunday');
+define('CURR', 'CHF');
 define('URL', 'http://'.$_SERVER['HTTP_HOST'].'/flatanize');
 // ROOT in public/index.php definiert. ROOT => flatanize
