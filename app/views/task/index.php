@@ -43,7 +43,7 @@
                             <?php
                             foreach ($this->taskList as $key => $entry) {
                                 //prüfen ob Datum in vergangenheit
-                                if (strtotime($entry['next_date']) <= time()) {
+                                if (strtotime($entry['next_date']) <= strtotime('today')) {
                                     $this->dateError[$key] = true;
                                 }
                                 //Datum in Format d.m.Y formatieren
