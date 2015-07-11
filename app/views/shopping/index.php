@@ -64,9 +64,10 @@
                                     <td><?= $entry['product'] ?></td>
                                     <td class="text-center"><?= $entry['amount'] ?></td>
                                     <td class="text-right">
-                                        <a href="<?php echo URL . '/shopping/deleteFromShoppingList/' . $entry['id']; ?>" class="btn btn-danger btn-xs">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </a>
+                                        <form action="<?php echo URL . '/shopping/deleteFromShoppingList'; ?>" method="post">
+                                        <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                        <button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php

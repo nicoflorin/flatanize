@@ -52,7 +52,8 @@ class ShoppingController extends Controller {
      * Handelt das Löschen eines Shopping List Eintrages
      */
 
-    public function deleteFromShoppingList($id) {
+    public function deleteFromShoppingList() {
+        $id = $_POST['id'];
         //@Todo prüfen ob user berechtigt ist zum löschen
         $this->loadModel('shopping');
         $res = $this->model->delete($id);
