@@ -35,9 +35,10 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`users` (
   `flats_id` INT UNSIGNED NULL,
   `username` VARCHAR(50) NOT NULL,
   `display_name` VARCHAR(50) NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `salt` CHAR(64) NOT NULL,
+  `img` VARCHAR(255) NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_users_flats`
@@ -79,15 +80,22 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `flatanize`.`finances` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `flats_id` INT UNSIGNED NOT NULL,
+  `added_by` INT UNSIGNED NOT NULL,
   `product` VARCHAR(255) NOT NULL,
   `price` DECIMAL(9,2) NOT NULL,
   `date` DATE NOT NULL,
   `cleared` TINYINT(1) NOT NULL DEFAULT 0,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
+  INDEX `fk_finances_users_idx` (`added_by` ASC),
   CONSTRAINT `fk_finances_flats`
     FOREIGN KEY (`flats_id`)
     REFERENCES `flatanize`.`flats` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_finances_users`
+    FOREIGN KEY (`added_by`)
+    REFERENCES `flatanize`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
