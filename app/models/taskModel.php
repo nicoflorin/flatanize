@@ -184,29 +184,66 @@ class taskModel extends Model {
 
         switch ($freq) {
             case ONCE:
-                $return = $date->format('y-m-d');
+                $ret = $date->format('y-m-d');
                 break;
 
             case DAILY:
                 $date = $date->modify('+1 day');
-                $return = $date->format('y-m-d');
+                $ret = $date->format('y-m-d');
                 break;
 
             case WEEKLY:
                 $date = $date->modify('+1 week');
-                $return = $date->format('y-m-d');
+                $ret = $date->format('y-m-d');
                 break;
 
             case MONTHLY:
                 $date = $date->modify('+1 month');
-                $return = $date->format('y-m-d');
+                $ret = $date->format('y-m-d');
                 break;
 
             default:
                 break;
         }
 
-        return $return;
+        return $ret;
+    }
+    
+        /**
+     * Gibt Wochentag zurück
+     * @param type $date
+     * @return type
+     */
+    function getWeekday($date) {
+        $day = date('w', strtotime($date));
+
+        $ret = '';
+        switch ($day) {
+            case 0:
+                $ret = SUNDAY;
+                break;
+            case 1:
+                $ret = MONDAY;
+                break;
+            case 2:
+                $ret = TUESDAY;
+                break;
+            case 3:
+                $ret = WEDNESDAY;
+                break;
+            case 4:
+                $ret = THURSDAY;
+                break;
+            case 5:
+                $ret = FRIDAY;
+                break;
+            case 6:
+                $ret = SATURDAY;
+                break;
+            default:
+                break;
+        }
+        return $ret;
     }
 
 }
