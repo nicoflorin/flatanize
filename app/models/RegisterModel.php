@@ -39,6 +39,7 @@ class RegisterModel extends Model {
             ':email' => $email
         );
         $count = $this->db->select('count(*) as cnt', 'users', 'username = :username OR email = :email', $bind);
+        
         // Falls ein Eintrag gefunden wurde, existiert User bereits
         if ($count[0]['cnt'] > 0) {
             $error['error_id'] = 2;
