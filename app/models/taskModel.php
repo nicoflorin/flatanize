@@ -203,7 +203,7 @@ class taskModel extends Model {
                 break;
 
             case MONTHLY:
-                $date = $date->modify('+1 month');
+                $date = $date->modify('+4 week');
                 $ret = $date->format('y-m-d');
                 break;
 
