@@ -22,7 +22,7 @@
                             <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                             <li class="<?php echo ($this->data['title'] == 'FAQ') ? 'active' : '' ?>"><a href="<?= URL ?>/home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
                             <li class="<?php echo ($this->data['title'] == 'About') ? 'active' : '' ?>"><a href="<?= URL ?>/home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li class="<?php echo ($this->data['title'] == 'Sign Up') ? 'active' : '' ?>"><a href="<?= URL ?>/home/signUp"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
+                            <li class="<?php echo ($this->data['title'] == 'Sign Up') ? 'active' : '' ?>"><a href="<?= URL ?>/register/index"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->

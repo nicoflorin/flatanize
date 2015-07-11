@@ -35,11 +35,4 @@ class HomeController extends Controller {
         $this->view->render('home/about', 'About');
     }
 
-    /**
-     * Lädt SignUp Seite
-     */
-    public function signUp() {
-        $this->view->render('home/signUp', 'Sign Up');
-    }
-
 }

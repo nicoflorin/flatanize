@@ -10,6 +10,13 @@ class RegisterController extends Controller {
     function __construct() {
         parent::__construct();
     }
+    
+    /**
+     * Lädt SignUp Seite
+     */
+    public function index() {
+        $this->view->render('home/signUp', 'Sign Up');
+    }
 
     /**
      * Übergibt POST Daten an RegisterModel
@@ -21,6 +28,8 @@ class RegisterController extends Controller {
         $in_email = $_POST['email'];
         $in_password = $_POST['password'];
         $in_flatCode = $_POST['flat_code'];
+        
+        //@Todo Fehlerüberprüfung 
 
         $this->loadModel('register');
         $res = $this->model->register($in_userName, $in_displayName, $in_email, $in_password, $in_flatCode);
