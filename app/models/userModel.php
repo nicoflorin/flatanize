@@ -50,9 +50,9 @@ class UserModel extends Model {
         $res = $this->db->select('id, display_name', 'users', 'flats_id = :flatId', $bind);
         $usersName = array();
         
-        //Erstelle Array Array ( [1] => Name [2] => Name2 ) 
+        //Erstelle Array: Array ( [1] => Name [2] => Name2 ) 
         foreach ($res as $user) {
-            $usersName[$user['id']] = $this->getDisplayName($user['id']);
+            $usersName[$user['id']] = $user['display_name'];
         }
         if (!empty($usersName)) {
             return $usersName;
