@@ -8,15 +8,13 @@
         <div class="panel-body">
             <p>Your flat code is: <strong><?= $this->flatCode ?></strong></p>
             <p>You are in a flat with:</p>
-            <ul>
+            <ul class="list-group">
                 <?php
                 //Liste der Users anzeigen
                 foreach ($this->users as $key => $name) {
-                    ?>
-
-                    <li><?= $name ?></li>
-
-                    <?php
+                ?>
+                    <li class="list-group-item"><?= $name ?></li>
+                <?php
                 }
                 ?>
             </ul>
