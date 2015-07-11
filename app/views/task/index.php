@@ -25,7 +25,7 @@
                 <!-- Flat schedules -->
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Scheduled Tasks</h3>
+                        <h3 class="panel-title">Your Scheduled Tasks</h3>
                     </div>
 
                     <table class="table">

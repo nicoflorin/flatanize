@@ -55,7 +55,9 @@
                         </thead>
                         <tbody>
                             <tr <?php echo (!empty($this->list)) ? 'style="display:none;"' : '' ?>>
-                                <td class="text-info">There are no records available.</td>
+                                <td  class="text-info" >There are no records available.</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <?php
                             foreach ($this->list as $entry) {
