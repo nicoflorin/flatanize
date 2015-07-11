@@ -122,7 +122,7 @@
                             </form>
                         </div><!-- end panel-body -->
                     </div><!-- end leaveFlat -->
-                </div>
+                </div><!-- end flatSettings -->
                 <!-- User Settings tab -->
                 <div id="userSettings" class="tab-pane fade">
                     <!-- @Todo Passwort ändern -->
