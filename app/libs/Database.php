@@ -29,7 +29,7 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
         
         // setzte ErrorLevel
         // @ToDo entfernen bei Website upload
-        $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+        $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
