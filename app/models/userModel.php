@@ -38,4 +38,27 @@ class UserModel extends Model {
         }
     }
 
+    /**
+     * Holt alle DisplayNames einer WG aus der DB
+     * @param type $flatId
+     * @return array
+     */
+    public function getAllDisplayNames($flatId) {
+        $bind = array(
+            ':flatId' => $flatId,
+        );
+        $res = $this->db->select('id, display_name', 'users', 'flats_id = :flatId', $bind);
+        $usersName = array();
+        
+        //Erstelle Array Array ( [1] => Name [2] => Name2 ) 
+        foreach ($res as $user) {
+            $usersName[$user['id']] = $this->getDisplayName($user['id']);
+        }
+        if (!empty($usersName)) {
+            return $usersName;
+        } else {
+            return array();
+        }
+    }
+
 }

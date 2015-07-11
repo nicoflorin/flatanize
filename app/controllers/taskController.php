@@ -55,17 +55,12 @@ class TaskController extends Controller {
      * @param type $error
      */
     public function showCreateTask($error = '') {
-        $this->loadModel('flat');
-        $users = $this->model->getFlatUsers(Session::getFlatId());
-
         //Hole Displayname für alle User einer WG
         $this->loadModel('user');
-        foreach ($users as $user) {
-            $usersName[$user['id']] = $this->model->getDisplayName($user['id']);
-        }
+        $userNames = $this->model->getAllDisplayNames(Session::getFlatId());
 
         //userliste an View übergeben
-        $this->view->userList = $usersName;
+        $this->view->userList = $userNames;
 
         //Prüfen ob Fehler übermittelt
         switch ($error) {
