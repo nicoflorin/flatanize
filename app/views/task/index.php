@@ -48,14 +48,11 @@
                                         <strong><?= $entry['title'] ?></strong>
                                         <p><?= $entry['description'] ?></p>
                                         <?php
+                                        // Falls fällig, Meldung anzeigen
                                         if (isset($entry['overdue'])) {
-                                        ?>
-                                        <strong class="text-danger">overdue</strong>
-                                        <?php
-                                        } elseif (isset($entry['today'])) {
-                                        ?>
-                                        <strong class="text-success">today</strong>
-                                        <?php
+                                            echo '<strong class="text-danger">overdue</strong>';
+                                        } elseif (isset($entry['today'])) { // Falls Heute Meldung anzeigen
+                                            echo '<strong class="text-success">today</strong>';
                                         }
                                         ?>
                                     </td>
@@ -78,9 +75,9 @@
 
                                     </td>
                                 </tr>
-                                <?php
-                            }
-                            ?><!-- end foreach -->
+    <?php
+}
+?><!-- end foreach -->
                         </tbody>
                     </table>
                 </div><!-- end panel -->

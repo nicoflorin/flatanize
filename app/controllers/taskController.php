@@ -48,6 +48,7 @@ class TaskController extends Controller {
             $newTaskList[$i]['day'] = $this->model->getWeekday($newTaskList[$i]['next_date']); //Hole Wochentag
             $newTaskList[$i]['next_date'] = Functions::formatDate($newTaskList[$i]['next_date'], 'd.m.Y'); //Formatiere Datum um
             
+            //Berechnen ob Datum überfallig oder Heute ist
             if (strtotime($newTaskList[$i]['next_date']) < strtotime('today')) { //overdue
                 $newTaskList[$i]['overdue'] = true;
             } elseif (strtotime($newTaskList[$i]['next_date']) == strtotime('today')) { //today
