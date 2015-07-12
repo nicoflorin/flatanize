@@ -42,16 +42,22 @@
                             </tr>
                             <?php
                             foreach ($this->taskList as $key => $entry) {
-                                //prüfen ob Datum in vergangenheit
-                                if (strtotime($entry['next_date']) <= strtotime('today')) {
-                                    $this->dateError[$key] = true;
-                                }
                                 ?>
-                                <tr class="<?php echo (isset($this->dateError[$key])) ? 'bg-danger' : '' ?>">
+                                <tr class="<?php echo (isset($entry['overdue'])) ? 'bg-danger' : '' ?>">
                                     <td>
                                         <strong><?= $entry['title'] ?></strong>
                                         <p><?= $entry['description'] ?></p>
-                                        <strong class="text-danger" <?php echo (!isset($this->dateError[$key])) ? 'style="display:none;"' : '' ?>>overdue</strong>
+                                        <?php
+                                        if (isset($entry['overdue'])) {
+                                        ?>
+                                        <strong class="text-danger">overdue</strong>
+                                        <?php
+                                        } elseif (isset($entry['today'])) {
+                                        ?>
+                                        <strong class="text-success">today</strong>
+                                        <?php
+                                        }
+                                        ?>
                                     </td>
 
                                     <td>
@@ -69,7 +75,7 @@
                                             <input type="hidden" name="id" value="<?= $entry['id'] ?>">
                                             <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                         </form>
-         
+
                                     </td>
                                 </tr>
                                 <?php
