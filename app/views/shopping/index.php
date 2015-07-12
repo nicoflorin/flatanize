@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-xs-2 col-md-2 nopadding-left nopadding-right">
                                 <div>
-                                    <input type="text" class="form-control" name="amount" placeholder="Qty" tabindex="2">
+                                    <input type="number" pattern="[0-9]*" class="form-control" name="amount" placeholder="Qty" tabindex="2">
                                 </div>
                             </div>
                             <div class="col-xs-2 col-md-2 nopadding-left">
