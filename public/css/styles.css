@@ -9,9 +9,6 @@ Autor: Nico Florin
 ============================================*/
 
 body {
-
-    -webkit-font-smoothing: antialiased; /* Schönere Schriftart auf Chrome */
-    text-rendering: optimizeLegibility;
     margin-top: 80px; /* Abstand zu Navigation.*/
     // margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
