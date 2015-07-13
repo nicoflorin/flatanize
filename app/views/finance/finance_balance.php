@@ -16,9 +16,9 @@
         <table class="table">
             <thead class="nopadding">
                 <tr>
-                    <th class="col-xs-2 col-md-4 nopadding"></th>
-                    <th class="col-xs-5 col-md-4 nopadding"></th>
-                    <th class="col-xs-5 col-md-4 nopadding"></th>
+                    <th class="col-xs-5 col-md-5 nopadding"></th>
+                    <th class="col-xs-2 col-md-2 nopadding"></th>
+                    <th class="col-xs-5 col-md-5 nopadding"></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,23 +28,26 @@
                     $diff = $balance['diff'];
                     if ($diff >= 0) {
                         $balance['plus'] = true;
+                        $diff = '+' . $diff . ' ' . CURR;
                     } else {
                         $balance['minus'] = true;
+                        $diff = $diff . ' ' . CURR;
                     }
+                    
                     ?>
                     <tr>
-                        <td><?= $balance['display_name'] ?></td>
                         <td>
-                            <div class="progress">
+                            <div class="progress <?php echo (!isset($balance['minus'])) ? 'hidden' : ''?>">
                                 <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: 100%;"' : ''?>>
-                                    <?php echo (isset($balance['minus'])) ? $diff . ' ' . CURR : ''?>
+                                    <?php echo (isset($balance['minus'])) ? $diff : '' ?>
                                 </div>
                             </div>
                         </td>
+                        <td class="text-center"><?= $balance['display_name'] ?></td>
                         <td>
-                            <div class="progress">
+                            <div class="progress <?php echo (!isset($balance['plus'])) ? 'hidden' : ''?>">
                                 <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: 100%;"' : ''?>>
-                                    <?php echo (isset($balance['plus'])) ? $diff . ' ' . CURR : ''?>
+                                    <?php echo (isset($balance['plus'])) ? $diff : ''?>
                                 </div>
                             </div>
                         </td>
