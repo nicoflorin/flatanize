@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 <tr <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
-                    <td class="text-info">There are no scheduled tasks available.</td>
+                    <td class="text-info">There are no finance entries available.</td>
                 </tr>
 
                 <?php
@@ -65,10 +65,9 @@
                         </div>
                         <div class="modal-body">
                             <h4><?= $entry['product'] ?></h4>
-                            <p>Created by: <strong><?= $entry['display_name'] ?></strong></p>
-                            <p>On: <?= $entry['date'] ?></p>
-                            <p>Price: <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?><p>
-                            <p>Payers: </p>
+                            <p><strong><?= $entry['display_name'] ?></strong> paid <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?><p>
+                            <p>on: <?= $entry['date'] ?></p>
+                            <p>participants: </p>
                             <table class="table">
                                 <?php
                                 foreach ($this->userList[0] as $user) {
