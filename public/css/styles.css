@@ -9,7 +9,7 @@ Autor: Nico Florin
 ============================================*/
 
 body {
-    
+
     -webkit-font-smoothing: antialiased; /* Schönere Schriftart auf Chrome */
     text-rendering: optimizeLegibility;
     margin-top: 80px; /* Abstand zu Navigation.*/
@@ -30,11 +30,11 @@ body {
 
 /* Shopping List */
 .nopadding-right {
-   padding-right: 0 !important;
+    padding-right: 0 !important;
 }
 
 .nopadding-left {
-   padding-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 .nopadding {
@@ -70,11 +70,11 @@ body {
 }
 
 .carousel-caption {
-       font-size: 24px; /* font size von carousel text */
+    font-size: 24px; /* font size von carousel text */
 }
 
 .carousel-caption h4 {  /* font size von carousel titel */
-       font-size: 32px
+    font-size: 32px
 }
 
 
@@ -115,7 +115,7 @@ body {
 
 /* Portrait & landscape Smartphone */
 @media (max-width: 480px) {
-    
+
     /* Damit auf Smartphone nicht zu viel Platz */
     /* verschwendet wird */
     .well {
@@ -124,7 +124,7 @@ body {
         padding-left: 5px;
         padding-right: 5px;
     }
-    
+
     body {
         margin-top: 60px; /* Abstand zu Navigation.*/
     }
@@ -132,7 +132,7 @@ body {
 
 /* Landscape phone bis portrait tablet */
 @media (max-width: 768px) {
-    
+
     /* Carousel Einstellungen */
     #mainCarousel .item {
         height: 310px;   
@@ -149,29 +149,29 @@ body {
     #slide3 {
         background: url('../images/carousel_small_01.jpg') top center no-repeat;
     }
-    
+
     /* Kleinere Schriftgrösse für kleinere Bildschirme */
     .carousel-caption {
         font-size: 16px;   
     }
-    
+
     .carousel-caption h4 {
         font-size: 22px; 
     }
-    
-    
+
+
     #mainContainer {
-    /* small padding on small devices */
+        /* small padding on small devices */
         padding-left: 10px; 
         padding-right: 10px; 
     }
 
-    
+
 }
 
 /* Grosse Bildschirme / Desktops */
 @media (max-width: 1200px) {
-    
+
     /* Carousel Einstellungen */
     #mainCarousel .item {
         height: 500;   
@@ -188,5 +188,5 @@ body {
     #slide3 {
         background: url('../images/carousel_large_01.jpg') top center no-repeat;
     }
-    
+
 }
