@@ -16,10 +16,10 @@
         <table class="table">
             <thead class="nopadding">
                 <tr>
-                    <th class="col-xs-4 nopadding"></th>
-                    <th class="col-xs-2 nopadding"></th>
-                    <th class="col-xs-5 nopadding"></th>
-                    <th class="col-xs-1 nopadding"></th>
+                    <th class="col-xs-4 col-md-3 nopadding"></th>
+                    <th class="col-xs-2 col-md-5 nopadding"></th>
+                    <th class="col-xs-5 col-md-2 nopadding"></th>
+                    <th class="col-xs-1 col-md-1 nopadding"></th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +42,9 @@
                         <td class="text-right">
                             <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
                         </td>
-                        <td><a href="#financeInfoId<?= $entry['id'] ?>" class="btn btn-sm btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+                        <td class="text-right">
+                            <a href="#financeInfoId<?= $entry['id'] ?>" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a>
+                        </td>
                     </tr>
                     <?php
                 }
