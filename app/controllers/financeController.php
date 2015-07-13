@@ -25,6 +25,7 @@ class FinanceController extends Controller {
         //Berechne Preis pro Person
         //Formatiere Datum um
         //Hole alle Users pro Eintrag
+        $users = array();
         for ($i = 0; $i < count($financeList); $i++) {
             $financeList[$i]['pricePP'] = round($financeList[$i]['price'] / $financeList[$i]['user_count'], 2);
             $financeList[$i]['date'] = Functions::formatDate($financeList[$i]['date'], 'd.m.Y');
@@ -33,10 +34,35 @@ class FinanceController extends Controller {
             $users[] = $this->model->getUsersOfFinanceEntry($financeList[$i]['id']);
         }
 
+        $userBalance = $this->calcBalanceInfos();
+
         //übergebe Daten an View
+        $this->view->userBalance = $userBalance;
         $this->view->userList = $users;
         $this->view->financeList = $financeList;
         $this->view->render('finance/index', 'Finances');
+    }
+
+    /**
+     * Berechnet Balance Informationen
+     */
+    public function calcBalanceInfos() {
+        $flatId = Session::getFlatId();
+        //Alle Benutzer einer WG suchen
+        $this->loadModel('flat');
+        $usersBalance = $this->model->getFlatUsers($flatId);
+
+        $this->loadModel('finance');
+
+        //Berechne Differenz von Total Bezahlt - SOLL bezahlt pro User
+        foreach ($usersBalance as $key => $user) {
+            $userId = $user['id'];
+            $usersBalance[$key]['sum'] = $this->model->getSumOfUser($flatId, $userId);
+            $usersBalance[$key]['total'] = $this->model->getTotalOfUser($flatId, $userId);
+            $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'],2);
+        }
+
+        return $usersBalance;
     }
 
     /**
@@ -100,10 +126,13 @@ class FinanceController extends Controller {
             $error[] = 'price';
         }
 
+        //
+        $pricePP = $price / count($users);
+
         //Wenn keine Fehler auftraten
         if (empty($error)) {
             //Erstelle Eintrag
-            $res = $this->model->create($flatId, $userId, $product, $price, $date, $users);
+            $res = $this->model->create($flatId, $userId, $product, $price, $date, $users, $pricePP);
 
             if ($res === true) {
                 $this->redirect('finance', 'index');

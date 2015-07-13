@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3 col-xs-12">
-        <?php require_once ROOT . '/app/views/app/' . 'left_nav.php'; ?>
+        <?php require_once ROOT . '/app/views/app/left_nav.php'; ?>
     </div>
 
     <div class="col-md-9 col-xs-12">
@@ -19,11 +19,9 @@
                 <li><a data-toggle="tab" href="#financeBalance">Balance</a></li>
             </ul><!-- end nav -->
             <br />
-            <div class="tab-content">
-                <div id="financeContent" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
-                    <?php require_once 'financeEntry.php'; ?>
-                    <?php require_once 'financeBalance.php'; ?>
-                </div><!-- end financeContent -->
+            <div class="tab-content" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
+                    <?php require_once 'finance_entry.php'; ?>
+                    <?php require_once 'finance_balance.php'; ?>
             </div><!-- end tab-content -->
         </div><!-- end well -->
     </div><!-- end col -->

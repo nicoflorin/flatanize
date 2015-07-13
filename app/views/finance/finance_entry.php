@@ -51,6 +51,7 @@
                 ?>
         </table>
 
+        <!-- Modal für Finance Information -->
         <?php
         foreach ($this->financeList as $entry) {
             ?>
