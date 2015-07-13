@@ -27,8 +27,12 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Your Scheduled Tasks</h3>
                     </div>
+                    <!-- no tasks available -->
+                    <div class="panel-body" <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
+                        <p class="text-info">There are no scheduled tasks available.</p>
+                    </div>
 
-                    <table class="table">
+                    <table class="table" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
                         <thead class="nopadding">
                             <tr>
                                 <th class="col-xs-5 nopadding"></th>
@@ -37,9 +41,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr <?php echo (!empty($this->taskList)) ? 'style="display:none;"' : '' ?>>
-                                <td class="text-info">There are no scheduled tasks available.</td>
-                            </tr>
                             <?php
                             foreach ($this->taskList as $key => $entry) {
                                 ?>
@@ -75,7 +76,7 @@
 
                                     </td>
                                 </tr>
-                            <?php
+                                <?php
                             }
                             ?><!-- end foreach -->
                         </tbody>

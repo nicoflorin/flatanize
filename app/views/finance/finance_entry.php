@@ -13,7 +13,12 @@
         <div class="panel-heading">
             <h3 class="panel-title">Your Finance Entries</h3>
         </div>
-        <table class="table">
+        <!-- no entries available -->
+        <div class="panel-body" <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
+            <p class="text-info">There are no finance entries available.</p>
+        </div>
+        
+        <table class="table" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
             <thead class="nopadding">
                 <tr>
                     <th class="col-xs-4 col-md-3 nopadding"></th>
@@ -22,11 +27,8 @@
                     <th class="col-xs-1 col-md-1 nopadding"></th>
                 </tr>
             </thead>
+            
             <tbody>
-                <tr <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
-                    <td class="text-info">There are no finance entries available.</td>
-                </tr>
-
                 <?php
                 foreach ($this->financeList as $entry) {
                     //Datum in Format d.m.Y formatieren
