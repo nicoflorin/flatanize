@@ -33,7 +33,7 @@
                     }
                     ?>
                     <tr>
-                        <td class="vertical-center"><?= $balance['display_name'] ?></td>
+                        <td><?= $balance['display_name'] ?></td>
                         <td>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: 100%;"' : ''?>>
