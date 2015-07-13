@@ -165,6 +165,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `flatanize`.`finances_users` (
   `finances_id` INT UNSIGNED NOT NULL,
   `users_id` INT UNSIGNED NOT NULL,
+  `pricePP` FLOAT NOT NULL,
   PRIMARY KEY (`finances_id`, `users_id`),
   INDEX `fk_fin_users_users_id_idx` (`users_id` ASC),
   CONSTRAINT `fk_fin_users_finances`
