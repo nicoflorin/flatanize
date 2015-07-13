@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3 col-xs-12">
-        <?php require_once ROOT . '/app/views/app/' . 'left_nav.php'; ?>
+        <?php require_once ROOT . '/app/views/app/left_nav.php'; ?>
     </div>
 
     <div class="col-md-9 col-xs-12">
@@ -25,11 +25,11 @@
                         <div class="form-group">
                             <div class="input-group <?php echo (isset($this->data['price'])) ? 'has-error' : '' ?>">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
-                                <input type="number" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
+                                <input type="text" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
                             </div>
                             <?php
                                 if (isset($this->data['price'])) {
-                                    echo '<span class="help-block">Please enter only numbers!</span>';
+                                    echo '<span class="help-block">Please enter numbers only!</span>';
                                 }
                                 ?>
                         </div>
