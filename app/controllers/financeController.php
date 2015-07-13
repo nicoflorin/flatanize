@@ -18,21 +18,26 @@ class FinanceController extends Controller {
     public function index() {
         $this->loadModel('finance');
         $flatId = Session::getFlatId();
-        
+
+        //Hole alle Einträge aus DB
         $financeList = $this->model->getFinanceList($flatId);
-        
+
         //Berechne Preis pro Person
         //Formatiere Datum um
+        //Hole alle Users pro Eintrag
         for ($i = 0; $i < count($financeList); $i++) {
             $financeList[$i]['pricePP'] = round($financeList[$i]['price'] / $financeList[$i]['user_count'], 2);
             $financeList[$i]['date'] = Functions::formatDate($financeList[$i]['date'], 'd.m.Y');
+
+            //Hole alle Users
+            $users[] = $this->model->getUsersOfFinanceEntry($financeList[$i]['id']);
         }
 
-        //Hole alle Einträge aus DB
+        //übergebe Daten an View
+        $this->view->userList = $users;
         $this->view->financeList = $financeList;
         $this->view->render('finance/index', 'Finances');
     }
-    
 
     /**
      * Lädt die Seite um einen Eintrag zu erstellen
@@ -41,7 +46,7 @@ class FinanceController extends Controller {
         //Hole Displayname für alle User einer WG
         $this->loadModel('user');
         $userNames = $this->model->getAllDisplayNames(Session::getFlatId());
- 
+
         //userliste an View übergeben
         $this->view->userList = $userNames;
 

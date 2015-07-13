@@ -34,23 +34,26 @@
                     ?>
 
                     <tr>
-                        <td><strong><?= $entry['product'] ?></strong>
+                        <td>
+                            <strong><?= $entry['product'] ?></strong>
                             <p><?= $entry['date'] ?></p>
                         </td>
                         <td><?= $entry['display_name'] ?></td>
-                        <td class="text-right"><?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
-                            <p><?= number_format($entry['pricePP'], 2, '.', '') ?>  <?= CURR ?></p>
+                        <td class="text-right">
+                            <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
                         </td>
-                        <td><a href="#financeInfo" class="btn btn-sm btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+                        <td><a href="#financeInfoId<?= $entry['id'] ?>" class="btn btn-sm btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a></td>
                     </tr>
                     <?php
                 }
                 ?>
         </table>
 
-        <div>
+        <?php
+        foreach ($this->financeList as $entry) {
+            ?>
             <!-- Modal für Finance Information -->
-            <div id="financeInfo" class="modal fade">
+            <div id="financeInfoId<?= $entry['id'] ?>" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -58,16 +61,31 @@
                             <h4 class="modal-title">Information</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Do you want to save changes you made to document before closing?</p>
-                            <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                            <h4><?= $entry['product'] ?></h4>
+                            <p>Created by: <strong><?= $entry['display_name'] ?></strong></p>
+                            <p>On: <?= $entry['date'] ?></p>
+                            <p>Price: <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?><p>
+                            <p>Payers: </p>
+                            <table class="table">
+                                <?php
+                                foreach ($this->userList[0] as $user) {
+                                    echo '<tr>';
+                                    echo '<td>' . $user['display_name'] . '</td>';
+                                    echo '<td>' . number_format($entry['pricePP'], 2, '.', '') . ' ' . CURR . '</td>';
+                                    echo '</tr>';
+                                }
+                                ?>
+                            </table>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>     
+            </div><!-- end financeInfo -->
+            <?php
+        }
+        ?>
 
     </div><!-- end panel -->
 </div>

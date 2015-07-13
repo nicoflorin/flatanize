@@ -32,6 +32,7 @@ class TaskController extends Controller {
         $newTaskList = array();
         $this->loadModel('task');
 
+        //Hole alle Tasks für eine WG
         $list = $this->model->getTaskList($flatId);
 
         //Holt für jeden Task den akiven User
@@ -44,6 +45,7 @@ class TaskController extends Controller {
             $newTaskList[] = $entry[0];
         }
 
+        //Loop durch alle Tasks
         for ($i = 0; $i < count($newTaskList); $i++) {
             $newTaskList[$i]['day'] = $this->model->getWeekday($newTaskList[$i]['next_date']); //Hole Wochentag
             $newTaskList[$i]['next_date'] = Functions::formatDate($newTaskList[$i]['next_date'], 'd.m.Y'); //Formatiere Datum um
@@ -55,8 +57,6 @@ class TaskController extends Controller {
                 $newTaskList[$i]['today'] = true;
             }
         }
-
-        //prüfen ob Datum in vergangenheit
 
         return $newTaskList;
     }
@@ -117,7 +117,7 @@ class TaskController extends Controller {
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
-
+            //Erstelle Eintrag
             $res = $this->model->create($flatId, $title, $freq, $start, $users);
 
             if ($res === true) {

@@ -59,7 +59,7 @@ class FinanceModel extends Model{
     public function getFinanceList($flatId) {
         $bind = array(':flatId' => $flatId);
         $res = $this->db->select(
-                'c.display_name, product, a.price, a.date, count(*) user_count', 
+                'a.id, c.display_name, product, a.price, a.date, count(*) user_count', 
                 'finances a, finances_users b, users c',
                 'b.finances_id = a.id
                 AND a.added_by = c.id
@@ -67,6 +67,26 @@ class FinanceModel extends Model{
                 AND cleared = 0
                 group by b.finances_id
                 order by a.date desc', $bind);
+
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return array(); //sonst leeres Array
+        }
+    }
+    
+    /**
+     * Holt alle Users eines Finance Eintrages aus der DB
+     * @param type $financesId
+     * @return type
+     */
+    public function getUsersOfFinanceEntry($financesId) {
+        $bind = array(':financesId' => $financesId);
+        $res = $this->db->select(
+                'a.users_id, b.display_name', 
+                'finances_users a, users b',
+                'a.users_id = b.id
+                AND a.finances_id = :financesId', $bind);
 
         if (!empty($res)) {
             return $res;
