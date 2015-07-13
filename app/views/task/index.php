@@ -63,21 +63,21 @@
                                     </td>
 
                                     <td class="text-right">
-                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post" class="form-inline">
+                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post" id="done-form">
                                             <input type="hidden" name="id" value="<?= $entry['id'] ?>">
                                             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
                                         </form>
                                         <br>
-                                        <form action="<?php echo URL . '/task/deleteTask'; ?>" method="post" class="form-inline">
+                                        <form action="<?php echo URL . '/task/deleteTask'; ?>" method="post">
                                             <input type="hidden" name="id" value="<?= $entry['id'] ?>">
-                                            <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                                            <button type="submit" class="btn btn-danger" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span></button>
                                         </form>
 
                                     </td>
                                 </tr>
-    <?php
-}
-?><!-- end foreach -->
+                            <?php
+                            }
+                            ?><!-- end foreach -->
                         </tbody>
                     </table>
                 </div><!-- end panel -->
