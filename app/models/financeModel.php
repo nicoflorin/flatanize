@@ -178,5 +178,24 @@ class FinanceModel extends Model {
             return array(); //sonst total = 0
         }
     }
+    
+    /**
+     * Rechnet für eine WG die Balance ab
+     * @param type $flatId
+     * @return boolean
+     */
+    public function clearBalance($flatId) {
+        $bind = array(
+            ':flatId' => $flatId
+        );
+
+        $res = $this->db->update('finances', 'cleared = 1', 'flats_id = :flatId', $bind);
+
+        if ($res > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
