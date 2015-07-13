@@ -116,8 +116,7 @@ class FinanceModel extends Model {
             ':userId' => $userId
         );
         $res = $this->db->select(
-                'added_by, sum(price) as sum', 'finances', 
-                'cleared = 0
+                'added_by, sum(price) as sum', 'finances', 'cleared = 0
                 AND flats_id = :flatId
                 AND added_by = :userId
                 GROUP BY added_by', $bind);
@@ -128,14 +127,14 @@ class FinanceModel extends Model {
             return 0; //sonst null
         }
     }
-    
+
     /**
      * Holt alle Einträge für einen Benutzer an denen er beteiligt war
      * @param type $flatId
      * @param type $userId
      * @return type
      */
-    public function getEntriesPerUser ($flatId, $userId) {
+    public function getEntriesPerUser($flatId, $userId) {
         $bind = array(
             ':flatId' => $flatId,
             ':userId' => $userId
@@ -152,7 +151,7 @@ class FinanceModel extends Model {
             return array(); //sonst total = 0
         }
     }
-    
+
     /**
      * Holt das Total zu bezahlende pro User
      * @param type $flatId
@@ -161,12 +160,11 @@ class FinanceModel extends Model {
      */
     public function getTotalOfUser($flatId, $userId) {
         $bind = array(
-                    ':flatId' => $flatId,
-                    ':userId' => $userId
-                );
+            ':flatId' => $flatId,
+            ':userId' => $userId
+        );
         $res = $this->db->select(
-                'sum(pricePP) as total',
-                'finances a, finances_users b',
+                'sum(pricePP) as total', 'finances a, finances_users b', 
                 'a.id = b.finances_id
                 and a.flats_id = :flatId
                 and b.users_id = :userId
@@ -175,10 +173,31 @@ class FinanceModel extends Model {
         if (!empty($res)) {
             return $res[0]['total'];
         } else {
-            return array(); //sonst total = 0
+            return 0; //sonst total = 0
         }
     }
-    
+
+    /**
+     * Holt das Total aller Einträge einer WG
+     * @param type $flatId
+     * @return int
+     */
+    public function getTotal($flatId) {
+        $bind = array(
+            ':flatId' => $flatId
+        );
+        $res = $this->db->select(
+                'sum(price) as total', 'finances', 
+                'flats_id = :flatId
+                and cleared = 0', $bind);
+
+        if (!empty($res)) {
+            return $res[0]['total'];
+        } else {
+            return 0; //sonst total = 0
+        }
+    }
+
     /**
      * Rechnet für eine WG die Balance ab
      * @param type $flatId

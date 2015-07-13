@@ -53,6 +53,8 @@ class FinanceController extends Controller {
         $usersBalance = $this->model->getFlatUsers($flatId);
 
         $this->loadModel('finance');
+        //Hole Total aller Einträge für WG
+        $total = $this->model->getTotal($flatId);
 
         //Berechne Differenz von Total Bezahlt - SOLL bezahlt pro User
         foreach ($usersBalance as $key => $user) {
@@ -60,6 +62,13 @@ class FinanceController extends Controller {
             $usersBalance[$key]['sum'] = $this->model->getSumOfUser($flatId, $userId);
             $usersBalance[$key]['total'] = $this->model->getTotalOfUser($flatId, $userId);
             $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'], 2);
+            //Prozentsatz von Differenz zu Total
+            $oneperc = $total/100;
+            if ($oneperc > 0) { //Division durch null vermeiden
+            $usersBalance[$key]['perc'] = abs(round($usersBalance[$key]['diff'] / $oneperc));
+            } else {
+                $usersBalance[$key]['perc'] = 100;
+            }
         }
 
         return $usersBalance;
