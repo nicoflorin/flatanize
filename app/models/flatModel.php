@@ -150,7 +150,7 @@ class flatModel extends Model {
     public function getFlatUsers($flatId) {
         //Suche nach WG mit dieser Id
         $bind = array(':flatId' => $flatId);
-        $res = $this->db->select('id', 'users', 'flats_id = :flatId', $bind);
+        $res = $this->db->select('id, display_name', 'users', 'flats_id = :flatId', $bind);
 
         if (!empty($res)) {
             return $res;
