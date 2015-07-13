@@ -67,12 +67,13 @@ class taskModel extends Model {
 
     /**
      * Holt anhand der flatId alle WG Tasks aus DB
+     * sortiert nach next_date
      * @param type $flatId
      * @return array
      */
     public function getTaskList($flatId) {
         $bind = array(':flatId' => $flatId);
-        $res = $this->db->select('id', 'tasks', 'flats_id = :flatId', $bind);
+        $res = $this->db->select('id', 'tasks', 'flats_id = :flatId order by next_date', $bind);
 
         if (!empty($res)) {
             return $res;
@@ -120,7 +121,8 @@ class taskModel extends Model {
                     AND a.flats_id = :flatId
                     AND b.tasks_id = :taskId
                     order by b.count, b.user_order
-                    LIMIT 1;', $bind);
+                    LIMIT 1;'
+                , $bind);
 
         if (!empty($res)) {
             return $res;
