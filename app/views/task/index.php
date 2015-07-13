@@ -63,7 +63,7 @@
                                     </td>
 
                                     <td class="text-right">
-                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post" id="done-form">
+                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post">
                                             <input type="hidden" name="id" value="<?= $entry['id'] ?>">
                                             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
                                         </form>
