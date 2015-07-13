@@ -59,10 +59,21 @@ class FinanceController extends Controller {
             $userId = $user['id'];
             $usersBalance[$key]['sum'] = $this->model->getSumOfUser($flatId, $userId);
             $usersBalance[$key]['total'] = $this->model->getTotalOfUser($flatId, $userId);
-            $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'],2);
+            $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'], 2);
         }
 
         return $usersBalance;
+    }
+
+    /**
+     * Rechnet die Balance ab
+     */
+    public function clearBalance() {
+        $this->loadModel('finance');
+        $flatId = Session::getFlatId();
+        $this->model->clearBalance($flatId);
+
+        $this->redirect('finance', 'index');
     }
 
     /**
