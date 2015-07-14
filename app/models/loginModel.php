@@ -12,21 +12,10 @@ class LoginModel extends Model {
     }
 
     /**
-     * Return True falls das Password mit dem Sal und Hash übereinstimmt
-     */
-    private function testPassword($password, $saltFromDB, $hashFromDB) {
-        //old (hash_hmac("sha256", $password, $saltFromDB) == $hashFromDB) {
-        if (password_verify($password . $saltFromDB, $hashFromDB)) { // Standard PHP hashing Function benutzt
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Verarbeitet Login
      */
     public function login($request) {
+        //@Todo nicht POST übergeben
         //username und password von Formular
         $in_userName = $request['l_username'];
         $in_password = $request['l_password'];
@@ -42,7 +31,7 @@ class LoginModel extends Model {
             $flatId = $res[0]['flats_id'];
 
             // Vergleiche Input Password mit Hash, Salt aus DB
-            if ($this->testPassword($in_password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
+            if (Functions::testPassword($in_password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
                 //Schreibe User Session var
                 Session::set('user_id', $res[0]['id']);
                 
