@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3 col-xs-12">
-        <?php require_once ROOT . '/app/views/app/' . 'left_nav.php'; ?>
+        <?php require_once ROOT . '/app/views/app/left_nav.php'; ?>
     </div>
 
     <div class="col-md-9 col-xs-12">
