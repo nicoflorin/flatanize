@@ -27,7 +27,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Your Account <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?= URL ?>/app/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+                        <li><a href="<?= URL ?>/settings/index"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
                         <li class="divider"></li>
                         <li><a href="<?= URL ?>/auth/logout"><span class="glyphicon glyphicon-off"></span> Log Out</a></li>
                     </ul>
