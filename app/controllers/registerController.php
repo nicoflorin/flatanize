@@ -23,9 +23,9 @@ class RegisterController extends Controller {
      */
     public function run() {
         //input sent from post
-        $in_userName = $_POST['username'];
-        $in_displayName = $_POST['displayname'];
-        $in_email = $_POST['email'];
+        $in_userName = strip_tags($_POST['username']);
+        $in_displayName = strip_tags($_POST['displayname']);
+        $in_email = strip_tags($_POST['email']);
         $in_password = $_POST['password'];
         $in_flatCode = $_POST['flat_code'];
         

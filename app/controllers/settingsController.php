@@ -35,7 +35,7 @@ class SettingsController extends Controller {
      * Handelt den WG Erstellungsprozess
      */
     public function createFlat() {
-        $flatName = $_POST['flatName'];
+        $flatName = strip_tags($_POST['flatName']);
         $userId = Session::get('user_id');
         $this->loadModel('flat');
         $res = $this->model->create($flatName, $userId);

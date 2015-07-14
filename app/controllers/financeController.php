@@ -119,7 +119,7 @@ class FinanceController extends Controller {
      * Erstellt einen neuen Finanz Eintrag
      */
     public function createEntry() {
-        $product = $_POST['product'];
+        $product = strip_tags($_POST['product']);
         $price = $_POST['price'];
         $date = $_POST['date'];
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen

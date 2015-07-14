@@ -92,7 +92,7 @@ class TaskController extends Controller {
      * Handelt create Task Form Input und ruft Model für Erstellung auf
      */
     public function createTask() {
-        $title = $_POST['title'];
+        $title = strip_tags($_POST['title']);
         $freq = $_POST['frequency'];
         $start = $_POST['start'];
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
