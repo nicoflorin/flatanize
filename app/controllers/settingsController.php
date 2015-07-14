@@ -23,10 +23,11 @@ class SettingsController extends Controller {
             // Übergebe Daten an View
             $this->view->flatName = $this->model->getFlatName($flatId);
             $this->view->flatCode = $this->model->getFlatCode($flatId);
-            
+
             //Hole Usernames und übergebe an view
             $this->loadModel('user');
-            $this->view->users = $this->model->getAllDisplayNames($flatId);;
+            $this->view->users = $this->model->getAllDisplayNames($flatId);
+            ;
         }
         $this->view->render('settings/index', 'Settings');
     }
@@ -75,6 +76,7 @@ class SettingsController extends Controller {
             $this->redirect('settings', 'index');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_join', true);
+
             $this->view->render('settings/index', 'Settings', $res);
         }
     }
@@ -96,6 +98,21 @@ class SettingsController extends Controller {
 
         mail($email, $betreff, $nachricht, $header);
 
+        $this->redirect('settings', 'index');
+    }
+
+    /**
+     * Zuständig für das Passwort wechseln
+     */
+    public function changePassword() {
+        $oldPW = $_POST['old_password'];
+        $newPW = $_POST['new_password'];
+        $verPW = $_POST['verify_password'];
+        $userId = Session::get('user_id');
+
+        $this->loadModel('settings');
+        $res = $this->model->changePassword($oldPW, $newPW, $verPW, $userId);
+        
         $this->redirect('settings', 'index');
     }
 
