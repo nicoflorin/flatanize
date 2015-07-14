@@ -45,7 +45,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Your Shopping List</h3>
                     </div>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th class="col-xs-10">Product</th>
