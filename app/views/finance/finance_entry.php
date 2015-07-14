@@ -34,13 +34,13 @@
                     //Datum in Format d.m.Y formatieren
                     $entry['date'] = Functions::formatDate($entry['date'], 'd.m.Y');
                     ?>
-
+                    <!-- row als Link zu Modal -->
                     <tr onclick="input" data-toggle="modal" href="#financeInfoId<?= $entry['id'] ?>">
                         <td>
-                            <strong><?= $entry['product'] ?></strong>
+                            <p><strong><?= $entry['product'] ?></strong></p>
                             <p><?= $entry['date'] ?></p>
                         </td>
-                        <td><?= $entry['display_name'] ?></td>
+                        <td>Added: <?= $entry['display_name'] ?></td>
                         <td class="text-right">
                             <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
                         </td>
