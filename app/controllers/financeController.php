@@ -54,19 +54,30 @@ class FinanceController extends Controller {
 
         $this->loadModel('finance');
         //Hole Total aller Einträge für WG
-        $total = $this->model->getTotal($flatId);
-
+        //$total = $this->model->getTotal($flatId);
+        $total = 0;
         //Berechne Differenz von Total Bezahlt - SOLL bezahlt pro User
         foreach ($usersBalance as $key => $user) {
             $userId = $user['id'];
-            $usersBalance[$key]['sum'] = $this->model->getSumOfUser($flatId, $userId);
-            $usersBalance[$key]['total'] = $this->model->getTotalOfUser($flatId, $userId);
+            $usersBalance[$key]['sum'] = $this->model->getSumOfUser($flatId, $userId); //Was User effektiv bezahlt hat
+            $usersBalance[$key]['total'] = $this->model->getTotalPerUser($flatId, $userId); //Was User zahlen muss
             $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'], 2);
+
+            //Total Berechnen (Total = 100%)
+            if ($usersBalance[$key]['diff'] > 0) {
+                $total += $usersBalance[$key]['diff'];
+            }
+            
+            
+        }
+        
+        foreach ($usersBalance as $key => $user) {
             //Prozentsatz von Differenz zu Total
-            $oneperc = $total/100;
+            $oneperc = $total / 100;
+            
             //Division durch null vermeiden
-            if ($oneperc > 0 && $usersBalance[$key]['diff'] != 0) { 
-            $usersBalance[$key]['perc'] = abs(round($usersBalance[$key]['diff'] / $oneperc));
+            if ($oneperc > 0 && $usersBalance[$key]['diff'] != 0) {
+                $usersBalance[$key]['perc'] = abs(round($usersBalance[$key]['diff'] / $oneperc));
             } else {
                 $usersBalance[$key]['perc'] = 100;
             }
@@ -164,7 +175,7 @@ class FinanceController extends Controller {
             $this->redirect('finance', 'showCreateEntry', $error);
         }
     }
-    
+
     /**
      * Löscht einen Eintrag aus der DB
      */
