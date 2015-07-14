@@ -25,6 +25,7 @@
                 <?php
                 //Balance für jeden User anzeigen
                 foreach ($this->userBalance as $balance) {
+                    //Prüfen ob Differenz positiv oder negativ
                     $diff = $balance['diff'];
                     if ($diff >= 0) {
                         $balance['plus'] = true;
@@ -43,7 +44,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center"><?= $balance['display_name'] ?></td>
+                        <td class="text-center"><span class="glyphicon glyphicon-user"></span><br><?= $balance['display_name'] ?></td>
                         <td>
                             <div class="progress <?php echo (!isset($balance['plus'])) ? 'hidden' : ''?>">
                                 <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : ''?>>
