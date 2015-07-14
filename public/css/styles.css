@@ -10,7 +10,7 @@ Autor: Nico Florin
 
 body {
     margin-top: 80px; /* Abstand zu Navigation.*/
-    // margin-bottom: 60px; /* Abstand zu Footer */
+    /* margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
     font-size: 1.5em;
 }
@@ -26,9 +26,9 @@ body {
 }
 
 /* Tabellen */
-//Tabellen standardmässig vertikal zentriert
+/* Tabellen standardmässig vertikal zentriert */
 .table > tbody > tr > td {
-    vertical-align: middle !important;
+   vertical-align: middle;
 }
 
 /* Shopping List */
