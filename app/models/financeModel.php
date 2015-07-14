@@ -43,6 +43,28 @@ class FinanceModel extends Model {
     }
 
     /**
+     * Löscht einen Eintrag aus der DB
+     * @param type $id
+     * @return boolean
+     */
+    public function deleteEntry($id) {
+        $bind = array(
+            ':id' => $id
+        );
+        // Füre DB Delete auf tasks_users aus
+        $res = $this->db->delete('finances_users', 'finances_id = :id', $bind);
+        if ($res > 0) {
+            // Füre DB Delete auf tasks aus
+            $res = $this->db->delete('finances', 'id = :id', $bind);
+            if ($res > 0) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Erstellt die Einträge in finances_users
      * @param type $userId
      * @param type $financesId
@@ -164,8 +186,7 @@ class FinanceModel extends Model {
             ':userId' => $userId
         );
         $res = $this->db->select(
-                'sum(pricePP) as total', 'finances a, finances_users b', 
-                'a.id = b.finances_id
+                'sum(pricePP) as total', 'finances a, finances_users b', 'a.id = b.finances_id
                 and a.flats_id = :flatId
                 and b.users_id = :userId
                 and a.cleared = 0', $bind);
@@ -187,8 +208,7 @@ class FinanceModel extends Model {
             ':flatId' => $flatId
         );
         $res = $this->db->select(
-                'sum(price) as total', 'finances', 
-                'flats_id = :flatId
+                'sum(price) as total', 'finances', 'flats_id = :flatId
                 and cleared = 0', $bind);
 
         if (!empty($res)) {

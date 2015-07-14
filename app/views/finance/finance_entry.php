@@ -18,7 +18,7 @@
             <p class="text-info">There are no finance entries available.</p>
         </div>
         
-        <table class="table" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
+        <table class="table table-hover" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
             <thead class="nopadding">
                 <tr>
                     <th class="col-xs-4 col-md-3 nopadding"></th>
@@ -35,7 +35,7 @@
                     $entry['date'] = Functions::formatDate($entry['date'], 'd.m.Y');
                     ?>
 
-                    <tr>
+                    <tr onclick="input" data-toggle="modal" href="#financeInfoId<?= $entry['id'] ?>">
                         <td>
                             <strong><?= $entry['product'] ?></strong>
                             <p><?= $entry['date'] ?></p>
@@ -45,7 +45,7 @@
                             <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
                         </td>
                         <td class="text-right">
-                            <a href="#financeInfoId<?= $entry['id'] ?>" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-info-sign"></span></a>
+                            <a href="#financeInfoId<?= $entry['id'] ?>" class="btn" data-toggle="modal"><span class="glyphicon glyphicon-menu-right"></span></a>
                         </td>
                     </tr>
                     <?php
@@ -82,6 +82,10 @@
                             </table>
                         </div>
                         <div class="modal-footer">
+                            <form method="post" action="<?= URL ?>/finance/deleteEntry">
+                                <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                <input type="submit" class="btn btn-danger pull-left" value="Delete">
+                            </form>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>

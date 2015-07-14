@@ -163,5 +163,19 @@ class FinanceController extends Controller {
             $this->redirect('finance', 'showCreateEntry', $error);
         }
     }
+    
+    /**
+     * Löscht einen Eintrag aus der DB
+     */
+    public function deleteEntry() {
+        //@Todo prüfen ob berechtigt
+        $id = $_POST['id'];
+        if (!empty($id)) {
+            $this->loadModel('finance');
+            $this->model->deleteEntry($id);
+        }
+
+        $this->redirect('finance', 'index');
+    }
 
 }
