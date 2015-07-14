@@ -34,13 +34,12 @@
                         $balance['minus'] = true;
                         $diff = $diff . ' ' . CURR;
                     }
-                    
                     ?>
                     <tr>
                         <td>
                             <div class="progress <?php echo (!isset($balance['minus'])) ? 'hidden' : ''?>">
                                 <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; display: block; float: right;"' : ''?>>
-                                    <?php echo (isset($balance['minus'])) ? $diff : '' ?>
+                                    <span><?php echo (isset($balance['minus'])) ? $diff : '' ?></span>
                                 </div>
                             </div>
                         </td>
@@ -48,7 +47,7 @@
                         <td>
                             <div class="progress <?php echo (!isset($balance['plus'])) ? 'hidden' : ''?>">
                                 <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : ''?>>
-                                    <?php echo (isset($balance['plus'])) ? $diff : ''?>
+                                    <span><?php echo (isset($balance['plus'])) ? $diff : ''?></span>
                                 </div>
                             </div>
                         </td>

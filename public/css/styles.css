@@ -28,26 +28,46 @@ body {
 /* Tabellen */
 /* Tabellen standardmässig vertikal zentriert */
 .table > tbody > tr > td {
-   vertical-align: middle;
+    vertical-align: middle;
 }
 
+/* =========================================== */
 /* Shopping List */
 .nopadding-right {
-    padding-right: 0 !important;
+    padding-right: 1px;
 }
 
 .nopadding-left {
-    padding-left: 0 !important;
+    padding-left: 1px;
 }
 
 .nopadding {
-    padding: 0px !important;
+    padding: 1px;
 }
 
+/* =========================================== */
 /* Finanzen */
 /* Default margin-bottom bei progressbar löschen */
 .progress {
     margin-bottom: 0px;
+}
+
+/* Damit Progress-Bar auch bei kleinem Prozentsatz gut aussieht*/
+.progress-bar {
+    overflow-x: visible;
+    white-space: nowrap; /* Immer ganzer Text anzeigen */
+    color: black;
+}
+
+/* Damit Text in Progressbar zentriert ist */
+.progress {
+  position: relative;
+}
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
 }
 
 /* ===========================================
@@ -89,7 +109,7 @@ body {
 
 /* Standard Settings für Carousel */
 #mainCarousel .item {
-    height: 400px;   
+    height: 500px;   
 }
 
 #slide1 {
@@ -183,7 +203,7 @@ body {
 
     /* Carousel Einstellungen */
     #mainCarousel .item {
-        height: 500;   
+        height: 500px;   
     }
 
     #slide1 {
@@ -197,5 +217,4 @@ body {
     #slide3 {
         background: url('../images/carousel_large_01.jpg') top center no-repeat;
     }
-
 }
