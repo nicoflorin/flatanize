@@ -62,4 +62,18 @@ class Functions {
         }
     }
 
+    /**
+     * Erstellt einen zufälligen String
+     * @param int $length
+     * @return string
+     */
+    public static function createRandomCode($length) {
+        $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $result = '';
+        for ($i = 0; $i < $length; $i++) {
+            $result .= $chars[mt_rand(0, 61)];
+        }
+        return $result;
+    }
+
 }

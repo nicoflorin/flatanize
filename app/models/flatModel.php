@@ -21,7 +21,7 @@ class flatModel extends Model {
 
         $next = true;
         do {
-            $code = $this->createRandomCode(5);
+            $code = Functions::createRandomCode(5);
 
             $bind = array(':flat_code' => $code);
             $res = $this->db->select('code', 'flats', 'code = :flat_code LIMIT 1', $bind);
@@ -158,20 +158,6 @@ class flatModel extends Model {
         } else {
             return false;
         }
-    }
-
-    /**
-     * Erstellt einen zufälligen String
-     * @param int $length
-     * @return string
-     */
-    private function createRandomCode($length) {
-        $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        $result = '';
-        for ($i = 0; $i < $length; $i++) {
-            $result .= $chars[mt_rand(0, 61)];
-        }
-        return $result;
     }
 
 }
