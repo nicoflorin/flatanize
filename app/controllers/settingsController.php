@@ -27,7 +27,6 @@ class SettingsController extends Controller {
             //Hole Usernames und übergebe an view
             $this->loadModel('user');
             $this->view->users = $this->model->getAllDisplayNames($flatId);
-            ;
         }
         $this->view->render('settings/index', 'Settings');
     }
@@ -56,7 +55,7 @@ class SettingsController extends Controller {
     public function leaveFlat() {
         $userId = Session::get('user_id');
         $this->loadModel('flat');
-        $res = $this->model->leave($userId);
+        $this->model->leave($userId);
 
         $this->redirect('settings', 'index');
     }
