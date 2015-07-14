@@ -138,7 +138,9 @@ class FinanceModel extends Model {
             ':userId' => $userId
         );
         $res = $this->db->select(
-                'added_by, sum(price) as sum', 'finances', 'cleared = 0
+                'added_by, sum(price) as sum', 
+                'finances', 
+                'cleared = 0
                 AND flats_id = :flatId
                 AND added_by = :userId
                 GROUP BY added_by', $bind);
@@ -180,7 +182,7 @@ class FinanceModel extends Model {
      * @param type $userId
      * @return type
      */
-    public function getTotalOfUser($flatId, $userId) {
+    public function getTotalPerUser($flatId, $userId) {
         $bind = array(
             ':flatId' => $flatId,
             ':userId' => $userId
