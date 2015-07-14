@@ -105,7 +105,8 @@ class flatModel extends Model {
                 return false;
             }
         } else { //Wenn es die WG nicht gibt, false zurückgeben
-            return false;
+            $error['error_msg'] = 'Flat Code not valid!';
+            return $error;
         }
     }
 
