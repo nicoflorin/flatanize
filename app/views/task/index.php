@@ -28,11 +28,11 @@
                         <h3 class="panel-title">Your Scheduled Tasks</h3>
                     </div>
                     <!-- no tasks available -->
-                    <div class="panel-body" <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
+                    <div class="panel-body" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
                         <p class="text-info">There are no scheduled tasks available.</p>
                     </div>
 
-                    <table class="table" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
+                    <table class="table table-hover" <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
                         <thead class="nopadding">
                             <tr>
                                 <th class="col-xs-5 nopadding"></th>
