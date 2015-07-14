@@ -56,22 +56,17 @@ body {
     margin-bottom: 0px;
 }
 
-/* Damit Progress-Bar auch bei kleinem Prozentsatz gut aussieht*/
-.progress-bar {
-    overflow-x: visible;
-    white-space: nowrap; /* Immer ganzer Text anzeigen */
-    color: black;
-}
-
 /* Damit Text in Progressbar zentriert ist */
 .progress {
   position: relative;
 }
 
 .progress span {
-    /*position: absolute;*/
+    position: absolute;
+    left: 0;
     display: block;
     width: 100%;
+    color: black;
 }
 
 /* ===========================================
