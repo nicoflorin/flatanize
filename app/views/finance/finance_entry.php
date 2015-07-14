@@ -45,7 +45,7 @@
                             <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
                         </td>
                         <td class="text-right">
-                            <a href="#financeInfoId<?= $entry['id'] ?>" class="btn" data-toggle="modal"><span class="glyphicon glyphicon-menu-right"></span></a>
+                            <span class="glyphicon glyphicon-menu-right"></span>
                         </td>
                     </tr>
                     <?php
