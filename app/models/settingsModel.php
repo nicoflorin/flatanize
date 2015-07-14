@@ -3,10 +3,48 @@
 /**
  * Verarbeitet die Registrierung eines Benutzers
  */
-class RegisterModel extends Model {
+class SettingsModel extends Model {
 
     function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Ändert das Paswort für einen Benutzer
+     * @param type $oldPW
+     * @param type $newPW
+     */
+    public function changePassword($oldPW, $newPW, $verPW, $userId) {
+        $error = '';
+        //Prüfen ob beide PWs gleich
+        if ($newPW !== $verPW) {
+            $error = $this->setErrorMsg(5);
+            return $error;
+        }
+        
+        //Vergleiche eingegebenes altes Passwort mit Passwort von DB
+        $bind = array(':userId' => $userId);
+        $res = $this->db->select('password, salt', 'users', 'id = :userId LIMIT 1', $bind);
+        $saltFromDB = $res[0]['salt'];
+        $pwFromDB = $res[0]['password'];
+
+        if (Functions::testPassword($oldPW, $saltFromDB, $pwFromDB)) {
+            //Setze neues Passwort
+            $salt = Functions::generateRandomData(64); //Generiere Random String
+            $string = $newPW . $salt;
+            $hashed_password = Functions::hash($string); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
+            $bind = array(
+                ':newPW' => $hashed_password,
+                ':newSalt' => $salt,
+                ':userId' => $userId
+            );
+            $res = $this->db->update('users', 'password = :newPW, salt = :newSalt', 'id = :userId', $bind);
+
+            return true;
+        } else {
+            //Bei Fehler Meldung zurückgeben
+            return $this->setErrorMsg(4);
+        }
     }
 
     /**
@@ -39,7 +77,7 @@ class RegisterModel extends Model {
             ':email' => $email
         );
         $count = $this->db->select('count(*) as cnt', 'users', 'username = :username OR email = :email', $bind);
-        
+
         // Falls ein Eintrag gefunden wurde, existiert User bereits
         if ($count[0]['cnt'] > 0) {
             $error['error_id'] = 2;
@@ -76,9 +114,10 @@ class RegisterModel extends Model {
             // Return Error
             return $error;
         } else { // sonst User erstellen
-            $salt = openssl_random_pseudo_bytes(64); //Generiere Random String
+            $salt = Functions::generateRandomData(64); //Generiere Random String
             // old $hashed_password = hash_hmac("sha256", $password, $salt); // Hashe Passwort mit Salt
-            $hashed_password = password_hash($password . $salt, PASSWORD_BCRYPT); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
+            $string = $password . $salt;
+            $hashed_password = Functions::hash($string); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
 
             $bind = array(
                 ':username' => $userName,
@@ -123,6 +162,12 @@ class RegisterModel extends Model {
                 break;
             case 3:
                 $msg = 'Flat Code not valid!';
+                break;
+            case 4:
+                $msg = 'Old Password not correct!';
+                break;
+            case 5:
+                $msg = 'Passwords do not match!';
                 break;
             default:
                 $msg = 'An Error occured!';

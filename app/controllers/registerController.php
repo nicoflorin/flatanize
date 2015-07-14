@@ -31,7 +31,7 @@ class RegisterController extends Controller {
         
         //@Todo Fehlerüberprüfung 
 
-        $this->loadModel('register');
+        $this->loadModel('settings');
         $res = $this->model->register($in_userName, $in_displayName, $in_email, $in_password, $in_flatCode);
 
         //@Todo Passwortlänge mind. 8 Zeichen lang.
