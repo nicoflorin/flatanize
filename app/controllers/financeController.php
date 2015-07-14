@@ -64,7 +64,8 @@ class FinanceController extends Controller {
             $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'], 2);
             //Prozentsatz von Differenz zu Total
             $oneperc = $total/100;
-            if ($oneperc > 0) { //Division durch null vermeiden
+            //Division durch null vermeiden
+            if ($oneperc > 0 && $usersBalance[$key]['diff'] != 0) { 
             $usersBalance[$key]['perc'] = abs(round($usersBalance[$key]['diff'] / $oneperc));
             } else {
                 $usersBalance[$key]['perc'] = 100;
