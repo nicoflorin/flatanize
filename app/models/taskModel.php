@@ -10,7 +10,7 @@ class taskModel extends Model {
     /**
      * Erstellt einen neuen Task
      */
-    public function create($flatId, $title, $freq, $nextDate, $users) {
+    public function createTask($flatId, $title, $freq, $nextDate, $users) {
         //Hole Frequenz ID aus DB
         $bind = array(':freq' => $freq);
         $res = $this->db->select('id', 'frequencies', 'description = :freq LIMIT 1', $bind);

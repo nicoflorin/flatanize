@@ -118,7 +118,7 @@ class TaskController extends Controller {
         //Wenn keine Fehler auftraten
         if (empty($error)) {
             //Erstelle Eintrag
-            $res = $this->model->create($flatId, $title, $freq, $start, $users);
+            $res = $this->model->createTask($flatId, $title, $freq, $start, $users);
 
             if ($res === true) {
                 $this->redirect('task', 'index');
