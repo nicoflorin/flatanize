@@ -44,6 +44,12 @@ body {
     padding: 0px !important;
 }
 
+/* Finanzen */
+/* Default margin-bottom bei progressbar löschen */
+.progress {
+    margin-bottom: 0px;
+}
+
 /* ===========================================
     Navbar
 ============================================*/
