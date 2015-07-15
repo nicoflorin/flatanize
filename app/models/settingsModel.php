@@ -164,7 +164,7 @@ class SettingsModel extends Model {
                 $msg = 'Flat Code not valid!';
                 break;
             case 4:
-                $msg = 'Old Password not correct!';
+                $msg = 'Old Password is not correct!';
                 break;
             case 5:
                 $msg = 'Passwords do not match!';
