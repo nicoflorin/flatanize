@@ -8,7 +8,7 @@
 define('ROOT', realpath(dirname(__DIR__))); // realpath gibt eindeutigen und absoluten Pfadnamen zurück
 
 //Configs
-require_once (ROOT . '/app/configs/consts.php');
+require_once (ROOT . '/app/configs/config.php');
 
 /**
  * Autoloader
