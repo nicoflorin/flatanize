@@ -81,6 +81,7 @@ class SettingsModel extends Model {
     public function register($userName, $displayName, $email, $password, $flatCode = "") {
 
         $error = [];
+        // Eingabe prüfen ob nicht leer
         if (empty($userName)) {
             $error['username'] = true;
             $error['error_id'] = 1;
@@ -97,7 +98,13 @@ class SettingsModel extends Model {
             $error['password'] = true;
             $error['error_id'] = 1;
         }
-
+        
+        // Prüfen ob DisplayName maxLen nicht überschreitet
+        if (strlen($displayName) > 15) {
+            $error['displayname'] = true;
+            $error['error_id'] = 7;
+        }
+        
         // Prüfe ob User oder email Adresse bereits existiert
         $bind = array(
             ':username' => $userName,
@@ -136,6 +143,9 @@ class SettingsModel extends Model {
             }
             if (!empty($email)) {
                 $error["email"] = $email;
+            }
+            if (!empty($flatCode)) {
+                $error["flatCode"] = $flatCode;
             }
 
             // Return Error
@@ -198,6 +208,9 @@ class SettingsModel extends Model {
                 break;
             case 6:
                 $msg = 'Please enter a value!';
+                break;
+            case 7:
+                $msg = 'Display Name too long! Max. 15 characters!';
                 break;
             default:
                 $msg = 'An Error occured!';
