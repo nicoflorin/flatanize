@@ -58,7 +58,7 @@ body {
 
 /* Damit Text in Progressbar zentriert ist */
 .progress {
-  position: relative;
+    position: relative;
 }
 /* Damit Text in Progressbar immer zentriert ist */
 .progress span {
@@ -74,8 +74,8 @@ body {
 
 /* Hover, focus anpassung für Navigation */
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
-    background-color: #191919;
-    color: #fff; /* white color when hover */
+    background-color: #D5D5D5;
+    color: #000; /* black font when hover */
 }
 
 /* ===========================================
@@ -83,9 +83,13 @@ body {
 ============================================*/
 
 /* Hover, focus anpassung für linke Navigation */
-.nav  > li > a:hover, .navbar .navbar-nav > li > a:focus {
+.nav  > li > a:hover, .nav > li > a:focus {
     background-color: #D5D5D5;
     color: #000;
+}
+
+.indent { 
+    text-indent: 1.5em;
 }
 
 /* ===========================================
