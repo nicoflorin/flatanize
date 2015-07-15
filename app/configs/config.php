@@ -1,9 +1,11 @@
 <?php
 //Konstanten
+//Frequenz
 define('ONCE', 'once');
 define('DAILY', 'daily');
 define('WEEKLY', 'weekly');
 define('MONTHLY', 'every month');
+//Wochentage
 define('MONDAY', 'Monday');
 define('TUESDAY', 'Tuesday');
 define('WEDNESDAY', 'Wednesday');
