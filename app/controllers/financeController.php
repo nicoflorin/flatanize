@@ -139,9 +139,8 @@ class FinanceController extends Controller {
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
         $flatId = Session::getFlatId();
         $userId = Session::get('user_id');
-
-        $this->loadModel('finance');
-
+        
+        //Errorhandling
         $error = [];
         //Prüfe ob Datum format 
         if (Functions::validateDate($date)) { //Y-m-d
@@ -157,16 +156,18 @@ class FinanceController extends Controller {
         }
 
         //Prüfe ob Preis decimal zahl oder integer
-        if (!is_numeric($price)) {
+        //oder ob grösser als 0
+        if (!is_numeric($price) || $price <= 0) {
             $error[] = 'price';
         }
 
-        //
+        //Preis Pro Person berechnen
         $pricePP = $price / count($users);
 
         //Wenn keine Fehler auftraten
         if (empty($error)) {
             //Erstelle Eintrag
+            $this->loadModel('finance');
             $res = $this->model->create($flatId, $userId, $product, $price, $date, $users, $pricePP);
 
             if ($res === true) {
