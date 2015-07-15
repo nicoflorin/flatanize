@@ -1,4 +1,5 @@
 <?php
+//Konstanten
 define('ONCE', 'once');
 define('DAILY', 'daily');
 define('WEEKLY', 'weekly');
@@ -11,5 +12,7 @@ define('FRIDAY', 'Friday');
 define('SATURDAY', 'Saturday');
 define('SUNDAY', 'Sunday');
 define('CURR', 'CHF');
+
+//Paths Konstanten
 define('URL', 'http://'.$_SERVER['HTTP_HOST'].'/flatanize');
 // ROOT in public/index.php definiert. ROOT => flatanize
