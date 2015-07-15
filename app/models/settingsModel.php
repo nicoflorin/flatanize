@@ -114,7 +114,7 @@ class SettingsModel extends Model {
             // Return Error
             return $error;
         } else { // sonst User erstellen
-            $salt = Functions::generateRandomData(32); //Generiere Random String
+            $salt = Functions::generateRandomData(64); //Generiere Random String
             // old $hashed_password = hash_hmac("sha256", $password, $salt); // Hashe Passwort mit Salt
             $string = $password . $salt;
             $hashed_password = Functions::hash($string); //Standard PHP Hashing function benutzt bcrypt (länge 60 zeichen)
