@@ -49,7 +49,7 @@
                             <div class="" data-toggle="buttons">
                                 <?php
                                 foreach ($this->userList as $key => $user) {
-                                    echo '<label class="btn btn-primary"><input type="checkbox" name="user[]" value="' . $key . '" tabindex="4">' . $user . '</label>';
+                                    echo '<label class="btn btn-default"><input type="checkbox" name="user[]" value="' . $key . '" tabindex="4">' . $user . '</label>';
                                 }
                                 ?>
                             </div>
