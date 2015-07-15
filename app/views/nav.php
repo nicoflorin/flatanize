@@ -28,10 +28,10 @@
                         <!-- login navbar -->
                         <form class="navbar-form navbar-right" action="<?= URL ?>/auth/login" method="post">
                             <div class="form-group ">
-                                <input type="text" placeholder="User Name" class="form-control" name="l_username">
+                                <input type="text" placeholder="User Name" class="form-control" name="username">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" name="l_password">
+                                <input type="password" placeholder="Password" class="form-control" name="password">
                             </div>
 
                             <button type="submit" class="btn btn-success">Login</button>

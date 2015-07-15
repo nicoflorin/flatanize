@@ -14,14 +14,9 @@ class LoginModel extends Model {
     /**
      * Verarbeitet Login
      */
-    public function login($request) {
-        //@Todo nicht POST übergeben
-        //username und password von Formular
-        $in_userName = $request['l_username'];
-        $in_password = $request['l_password'];
-
+    public function login($username, $password) {
         // Select auf diesen Usernamen
-        $bind = array(':username' => $in_userName);
+        $bind = array(':username' => $username);
         $res = $this->db->select('id, flats_id, password, salt', 'users', 'username = :username LIMIT 1', $bind);
 
         // Bei Treffer auf DB
@@ -31,7 +26,7 @@ class LoginModel extends Model {
             $flatId = $res[0]['flats_id'];
 
             // Vergleiche Input Password mit Hash, Salt aus DB
-            if (Functions::testPassword($in_password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
+            if (Functions::testPassword($password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
                 //Schreibe User Session var
                 Session::set('user_id', $res[0]['id']);
                 
