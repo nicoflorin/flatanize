@@ -2,47 +2,104 @@
     <div class="page-header">
         <h1><?= $this->data['title'] ?></h1>
     </div>
-    <div class="row">
         <!-- @Todo FAQ erstellen -->
-        <!-- @TOdo Mobile Fehler beheben -->
         <!-- Bootstrap Accordion -->
-        <div class="panel-group">
+        <div class="panel-group" id="faqAccordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. What is HTML?</a>
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq1">1. What is FLATANIZE?</a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in">
+                <div id="faq1" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+                        <p>With FLATANIZE you can organize the daily doings in a shared flat. Things like a shared shopping list, a task scheduler or keeping track of the finances has never been easier.</p>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. What is Bootstrap?</a>
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq2">2. Which functionalities does FLATANIZE have?</a>
                     </h4>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
+                <div id="faq2" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. What is CSS?</a>
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq3">3. How can i create a new flat?</a>
                     </h4>
                 </div>
-                <div id="collapseThree" class="panel-collapse collapse">
+                <div id="faq3" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="http://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                        <p></p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div><!-- end row -->
-</div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq4">4. How can i join a flat someone else created?</a>
+                    </h4>
+                </div>
+                <div id="faq4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq5">5. How can my flatmates join my created flat?</a>
+                    </h4>
+                </div>
+                <div id="faq5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq6">6. How can i create a new flat?</a>
+                    </h4>
+                </div>
+                <div id="faq6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq7">7. How can i create a new flat?</a>
+                    </h4>
+                </div>
+                <div id="faq7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq8">8. How can i create a new flat?</a>
+                    </h4>
+                </div>
+                <div id="faq8" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end panel-group -->
+</div><!-- end well -->
