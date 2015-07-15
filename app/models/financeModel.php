@@ -95,12 +95,12 @@ class FinanceModel extends Model {
     public function getFinanceList($flatId) {
         $bind = array(':flatId' => $flatId);
         $res = $this->db->select(
-                'a.id, c.display_name, a.product, a.price, a.date, count(*) user_count', 'finances a, finances_users b, users c', 'b.finances_id = a.id
+                'a.id, c.display_name, a.product, a.price, a.date, count(*) user_count, a.timestamp', 'finances a, finances_users b, users c', 'b.finances_id = a.id
                 AND a.added_by = c.id
                 AND a.flats_id = :flatId
                 AND cleared = 0
                 group by b.finances_id
-                order by a.date desc, a.product', $bind);
+                order by a.timestamp desc', $bind);
 
         if (!empty($res)) {
             return $res;
