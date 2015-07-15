@@ -29,7 +29,7 @@
                             </div>
                             <?php
                                 if (isset($this->data['price'])) {
-                                    echo '<span class="help-block">Please enter numbers only!</span>';
+                                    echo '<span class="help-block">Please enter positiv numbers only!</span>';
                                 }
                                 ?>
                         </div>
