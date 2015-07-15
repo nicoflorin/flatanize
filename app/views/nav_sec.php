@@ -28,6 +28,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Your Account <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?= URL ?>/settings/flatSetting"><span class="glyphicon glyphicon-cog"></span> Flat Settings</a></li>
+                        <li class="divider"></li>
                         <li><a href="<?= URL ?>/settings/userSettings"><span class="glyphicon glyphicon-cog"></span> User Settings</a></li>
                         <li class="divider"></li>
                         <li><a href="<?= URL ?>/auth/logout"><span class="glyphicon glyphicon-off"></span> Log Out</a></li>
