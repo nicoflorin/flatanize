@@ -38,7 +38,7 @@
                     <tr>
                         <td>
                             <div class="progress <?php echo (!isset($balance['minus'])) ? 'hidden' : ''?>">
-                                <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; display: block; float: right;"' : ''?>>
+                                <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; float: right;"' : ''?>>
                                     <span><?php echo (isset($balance['minus'])) ? $diff : '' ?></span>
                                 </div>
                             </div>

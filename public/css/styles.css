@@ -60,11 +60,10 @@ body {
 .progress {
   position: relative;
 }
-
+/* Damit Text in Progressbar immer zentriert ist */
 .progress span {
     position: absolute;
     left: 0;
-    display: block;
     width: 100%;
     color: black;
 }
