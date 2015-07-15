@@ -37,8 +37,8 @@ class Functions {
      * @param type $length
      * @return type
      */
-    public static function generateRandomData($length = 64) {
-        return openssl_random_pseudo_bytes($length);
+    public static function generateRandomData($length = 32) {
+        return bin2hex(openssl_random_pseudo_bytes($length));
     }
 
     /**
@@ -53,9 +53,8 @@ class Functions {
     /**
      * Return True falls das Password mit dem Sal und Hash übereinstimmt
      */
-    public static function testPassword($password, $saltFromDB, $hashFromDB) {
-        //old (hash_hmac("sha256", $password, $saltFromDB) == $hashFromDB) {
-        if (password_verify($password . $saltFromDB, $hashFromDB)) { // Standard PHP hashing Function benutzt
+    public static function testPassword($password, $salt, $hash) {
+        if (password_verify($password . $salt, $hash)) { // Standard PHP hashing Function benutzt
             return true;
         } else {
             return false;
