@@ -11,11 +11,15 @@ class SettingsController extends Controller {
         parent::__construct();
         Session::checkLogin();
     }
+    
+    public function index() {
+        $this->flatSettings();
+    }
 
     /**
-     * Lädt settings index Seite
+     * Lädt flat settings Seite
      */
-    public function index() {
+    public function flatSettings() {
         $flatId = Session::getFlatId();
         //Falls Session var gesetzt, hole WG Code aus DB
         if ($flatId !== false) {
@@ -28,8 +32,16 @@ class SettingsController extends Controller {
             $this->loadModel('user');
             $this->view->users = $this->model->getAllDisplayNames($flatId);
         }
-        $this->view->render('settings/index', 'Settings');
+        $this->view->render('settings/flatSettings', 'Flat Settings');
     }
+    
+        /**
+     * Lädt user settings Seite
+     */
+    public function userSettings() {
+        $this->view->render('settings/userSettings', 'User Settings');
+    }
+
 
     /**
      * Handelt den WG Erstellungsprozess
@@ -42,10 +54,10 @@ class SettingsController extends Controller {
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->redirect('settings', 'index');
+            $this->redirect('settings', 'flatSettings');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_create', true);
-            $this->view->render('settings/index', 'Settings', $res);
+            $this->view->render('settings/flatSettings', 'Flat Settings', $res);
         }
     }
 
@@ -57,7 +69,7 @@ class SettingsController extends Controller {
         $this->loadModel('flat');
         $this->model->leave($userId);
 
-        $this->redirect('settings', 'index');
+        $this->redirect('settings', 'flatSettings');
     }
 
     /**
@@ -72,11 +84,11 @@ class SettingsController extends Controller {
 
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
-            $this->redirect('settings', 'index');
+            $this->redirect('settings', 'flatSettings');
         } else { // Sonst Formular nochmals laden, mit Error Daten
             $this->view->assign('error_join', true);
 
-            $this->view->render('settings/index', 'Settings', $res);
+            $this->view->render('settings/flatSettings', 'Flat Settings', $res);
         }
     }
 
@@ -97,7 +109,7 @@ class SettingsController extends Controller {
 
         mail($email, $betreff, $nachricht, $header);
 
-        $this->redirect('settings', 'index');
+        $this->redirect('settings', 'flatSettings');
     }
 
     /**
@@ -111,8 +123,16 @@ class SettingsController extends Controller {
 
         $this->loadModel('settings');
         $res = $this->model->changePassword($oldPW, $newPW, $verPW, $userId);
+        //Falls kein Fehler auftrat
+        if ($res === true) {
+            $this->view->assign('success_pwchange', true);
+            $this->view->assign('success_msg', 'You have changed your password successfully!');
+        } else {
+            $this->view->assign('error_pwchange', true);
+            $this->view->assign('error_msg', $res);
+        }
         
-        $this->redirect('settings', 'index');
+        $this->view->render('settings/userSettings', 'User Settings');
     }
 
 }
