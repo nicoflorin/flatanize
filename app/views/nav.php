@@ -28,16 +28,16 @@
                         <!-- login navbar -->
                         <form class="navbar-form navbar-right" action="<?= URL ?>/auth/login" method="post">
                             <div class="form-group ">
-                                <input type="text" placeholder="User Name" class="form-control" name="username">
+                                <input type="text" placeholder="User Name" class="form-control" name="username" tabindex="1" required autofocus>
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" name="password">
+                                <input type="password" placeholder="Password" class="form-control" name="password" tabindex="2" required>
                             </div>
 
-                            <button type="submit" class="btn btn-success">Login</button>
+                            <button type="submit" class="btn btn-success" tabindex="3">Login</button>
 
                             <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-primary"><input type="checkbox" id="rememberMe"> Remember</label>
+                                <label class="btn btn-primary"><input type="checkbox" id="rememberMe" tabindex="4"> Remember</label>
                             </div>
                         </form><!-- end login -->
 
