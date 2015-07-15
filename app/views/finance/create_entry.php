@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <div class="input-group <?php echo (isset($this->data['price'])) ? 'has-error' : '' ?>">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span></span>
-                                <input type="text" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
+                                <input type="number" step="any" min="0" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
                             </div>
                             <?php
                                 if (isset($this->data['price'])) {
