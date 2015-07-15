@@ -21,19 +21,22 @@ class FinanceController extends Controller {
 
         //Hole alle Einträge aus DB
         $financeList = $this->model->getFinanceList($flatId);
-
-        //Berechne Preis pro Person
-        //Formatiere Datum um
-        //Hole alle Users pro Eintrag
+        
+        //user Liste initialisieren
         $users = array();
+        
+        //Loop durch alle Finanz Einträge
         for ($i = 0; $i < count($financeList); $i++) {
+            //Berechne Preis pro Person
             $financeList[$i]['pricePP'] = round($financeList[$i]['price'] / $financeList[$i]['user_count'], 2);
+            //Formatiere Datum um
             $financeList[$i]['date'] = Functions::formatDate($financeList[$i]['date'], 'd.m.Y');
-
-            //Hole alle Users
-            $users[] = $this->model->getUsersOfFinanceEntry($financeList[$i]['id']);
+            //Id des Finanz Eintrag
+            $financeId = $financeList[$i]['id'];
+            //Hole alle beteiligten Users pro Finanz Eintrag, schreibe in Array mit Index FinanzID
+            $users[$financeId] = $this->model->getUsersOfFinanceEntry($financeId);
         }
-
+        // Berechne Balance Informationen pro User
         $userBalance = $this->calcBalanceInfos();
 
         //übergebe Daten an View

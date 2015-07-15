@@ -72,7 +72,8 @@
                             <p>participants: </p>
                             <table class="table">
                                 <?php
-                                foreach ($this->userList[0] as $user) {
+                                $entryId = $entry['id'];
+                                foreach ($this->userList[$entryId] as $user) {
                                     echo '<tr>';
                                     echo '<td>' . $user['display_name'] . '</td>';
                                     echo '<td>' . number_format($entry['pricePP'], 2, '.', '') . ' ' . CURR . '</td>';
