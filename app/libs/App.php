@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bootstrap Class
+ * App Class
  * Hier wird der Controller und die Funktion geladen
  */
 class App {
