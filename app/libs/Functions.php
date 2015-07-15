@@ -37,8 +37,8 @@ class Functions {
      * @param type $length
      * @return type
      */
-    public static function generateRandomData($length = 32) {
-        return bin2hex(openssl_random_pseudo_bytes($length));
+    public static function generateRandomData($length = 64) {
+        return bin2hex(openssl_random_pseudo_bytes($length/2)); //Länge halbieren da bin2hex aus 1 byte 2 byte macht
     }
 
     /**
