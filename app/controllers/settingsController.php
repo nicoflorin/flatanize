@@ -126,10 +126,30 @@ class SettingsController extends Controller {
         //Falls kein Fehler auftrat
         if ($res === true) {
             $this->view->assign('success_pwchange', true);
-            $this->view->assign('success_msg', 'You have changed your password successfully!');
         } else {
             $this->view->assign('error_pwchange', true);
             $this->view->assign('error_msg', $res);
+        }
+        
+        $this->view->render('settings/userSettings', 'User Settings');
+    }
+    
+        /**
+     * Zuständig für das wechseln des Anzeigenamens
+     */
+    public function changeDisplayName() {
+        $displayName = strip_tags($_POST['displayName']);
+        $userId = Session::getUserId();
+
+        $this->loadModel('settings');
+        $res = $this->model->changeDisplayName($displayName, $userId);
+        
+        //Falls kein Fehler auftrat
+        if ($res === true) {
+            $this->view->assign('success_dnChange', true);
+        } else {
+            $this->view->assign('error_msg', $res);
+            $this->view->assign('error_dnChange', true);
         }
         
         $this->view->render('settings/userSettings', 'User Settings');

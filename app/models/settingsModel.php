@@ -8,6 +8,33 @@ class SettingsModel extends Model {
     function __construct() {
         parent::__construct();
     }
+    
+    public function changeDisplayName($displayName, $userId) {
+        $error = '';
+        
+        //Prüfen ob Eingabe gemacht
+        if (empty($displayName)) {
+            $error = $this->setErrorMsg(6); //no value entered
+        }
+        
+        //Falls kein Fehler auftrat
+        if (empty($error)) {
+            $bind = array(
+                ':userId' => $userId,
+                ':displayName' => $displayName
+            );
+            //Setze neuen Namen
+            $res = $this->db->update('users', 'display_name = :displayName', 'id = :userId', $bind);
+            
+            if ($res > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return $error;
+        }
+    }
 
     /**
      * Ändert das Paswort für einen Benutzer
@@ -168,6 +195,9 @@ class SettingsModel extends Model {
                 break;
             case 5:
                 $msg = 'Passwords do not match!';
+                break;
+            case 6:
+                $msg = 'Please enter a value!';
                 break;
             default:
                 $msg = 'An Error occured!';
