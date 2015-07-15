@@ -24,12 +24,13 @@ class LoginModel extends Model {
             $passwordFromDB = $res[0]['password'];
             $saltFromDB = $res[0]['salt'];
             $flatId = $res[0]['flats_id'];
+            $userId = $res[0]['id'];
 
             // Vergleiche Input Password mit Hash, Salt aus DB
             if (Functions::testPassword($password, $saltFromDB, $passwordFromDB)) { // Wenn Password übereinstimmt
                 //Schreibe User Session var
-                Session::set('user_id', $res[0]['id']);
-                
+                Session::setUserId($userId);
+
                 //Schreibe flat Session var
                 if (isset($flatId)) {
                     Session::setFlatId($flatId);

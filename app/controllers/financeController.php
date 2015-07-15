@@ -138,7 +138,7 @@ class FinanceController extends Controller {
         $date = $_POST['date'];
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
         $flatId = Session::getFlatId();
-        $userId = Session::get('user_id');
+        $userId = Session::getUserId();
         
         //Errorhandling
         $error = [];

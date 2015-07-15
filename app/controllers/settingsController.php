@@ -48,7 +48,7 @@ class SettingsController extends Controller {
      */
     public function createFlat() {
         $flatName = strip_tags($_POST['flatName']);
-        $userId = Session::get('user_id');
+        $userId = Session::getUserId();
         $this->loadModel('flat');
         $res = $this->model->create($flatName, $userId);
 
@@ -65,7 +65,7 @@ class SettingsController extends Controller {
      * Handelt den WG Verlassenprozess
      */
     public function leaveFlat() {
-        $userId = Session::get('user_id');
+        $userId = Session::getUserId();
         $this->loadModel('flat');
         $this->model->leave($userId);
 
@@ -76,7 +76,7 @@ class SettingsController extends Controller {
      * Handelt den Prozess um einer bestehenden WG beizutreten
      */
     public function joinFlat() {
-        $userId = Session::get('user_id');
+        $userId = Session::getUserId();
         $flatCode = $_POST['flatCode'];
 
         $this->loadModel('flat');
@@ -119,7 +119,7 @@ class SettingsController extends Controller {
         $oldPW = $_POST['old_password'];
         $newPW = $_POST['new_password'];
         $verPW = $_POST['verify_password'];
-        $userId = Session::get('user_id');
+        $userId = Session::getUserId();
 
         $this->loadModel('settings');
         $res = $this->model->changePassword($oldPW, $newPW, $verPW, $userId);

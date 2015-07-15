@@ -68,6 +68,25 @@ class Session {
     }
 
     /**
+     * Setzt 'user_id' Session Variable
+     */
+    public static function setUserId($userId) {
+        $_SESSION['user_id'] = $userId;
+    }
+
+    /**
+     * Gibt user ID zurück, falls vorhanden
+     * @return boolean
+     */
+    public static function getUserId() {
+        if (isset($_SESSION['user_id'])) {
+            return $_SESSION['user_id'];
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Setzt 'flat_id' Session Variable
      */
     public static function setFlatId($flatId) {

@@ -31,7 +31,7 @@ class ShoppingController extends Controller {
         $product = strip_tags($_POST['product']);
         $amount = $_POST['amount'];
         $flatId = Session::getFlatId();
-        $userId = Session::get('user_id');
+        $userId = Session::getUserId();
 
         //Falls kein Produkt eingegeben wurde
         //@Todo Fehlermeldung anzeigen, wenn nichts eingegeben wurde

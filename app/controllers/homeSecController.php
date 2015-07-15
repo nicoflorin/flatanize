@@ -17,7 +17,8 @@ class HomeSecController extends Controller {
      */
     public function index() {
         $this->loadModel('user');
-        $this->view->displayName = $this->model->getDisplayName(Session::get('user_id'));
+        $userId = Session::getUserId();
+        $this->view->displayName = $this->model->getDisplayName($userId);
         $this->view->render('app/index', 'Home');
     }
 

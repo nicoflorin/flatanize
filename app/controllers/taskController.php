@@ -151,7 +151,7 @@ class TaskController extends Controller {
         //@Todo prüfen ob User berechtigt
         $id = $_POST['id'];
         if (!empty($id)) {
-            $userId = Session::get('user_id');
+            $userId = Session::getUserId();
             $this->loadModel('task');
             $res = $this->model->getTask($id);
             $date = $res[0]['next_date'];
