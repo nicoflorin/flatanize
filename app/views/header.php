@@ -6,7 +6,8 @@
         <!-- mobile zuerst, kein zoomen auf Smartphone möglich -->
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
         <title>FLATANIZE - <?= $this->data['title'] ?></title>
-
+        <!-- @Todo Meta tags wie description, keywords, author usw. -->
+        
         <!-- Bootstrap -->
         <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
         <link href="<?= URL ?>/public/css/bootstrap-theme.css" rel="stylesheet">
