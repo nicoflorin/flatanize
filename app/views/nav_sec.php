@@ -11,11 +11,14 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <!-- Titel -->
-            <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" /></a>
-            <button id="leftMenuBtn" type="button" class="navbar-toggle hidden-lg" data-toggle="collapse" data-target="#leftNavCollapse">
-                <i class="fa fa-chevron-right whiteIcon"></i>
+            <!-- left Navbar toggle -->
+            <button id="leftMenuBtn" type="button" class="navbar-toggle hidden-lg">
+                <i id="leftMenuIcon" class="fa fa-chevron-right whiteIcon"></i>
             </button>
+
+            <!-- Titel -->
+            <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" alt="brand" /></a>
+            
 
         </div><!-- end navbar-header -->
 

@@ -2,8 +2,9 @@
 $(document).ready(function() {
     $('#leftMenuBtn').click(function() {
         $('#leftNav').toggleClass('showLeftMenu');
-        $('#rightContent').toggleClass('moveRight');
+        $('#mainContent').toggleClass('moveRight');
         $('#leftMenuIcon').toggleClass('fa-chevron-right');
         $('#leftMenuIcon').toggleClass('fa-chevron-left');
+        $('#bigLabel').toggleClass('showBigLabel');
     });
 });

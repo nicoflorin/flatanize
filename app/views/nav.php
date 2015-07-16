@@ -12,7 +12,7 @@
                         </button>
 
                         <!-- Titel -->
-                        <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" /></a>
+                        <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" alt="brand" /></a>
 
                     </div><!-- end navbar-header -->
 
