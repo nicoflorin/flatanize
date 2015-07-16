@@ -7,14 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
         <title>FLATANIZE - <?= $this->data['title'] ?></title>
         <!-- @Todo Meta tags wie description, keywords, author usw. -->
-        
+
         <!-- Bootstrap -->
         <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
         <link href="<?= URL ?>/public/css/bootstrap-theme.css" rel="stylesheet">
-        
+
         <!-- font-awesome -->
         <link href="<?= URL ?>/public/css/font-awesome.min.css" rel="stylesheet">
-        
+
         <!-- own Stylesheet -->
         <link href="<?= URL ?>/public/css/styles.css" rel="stylesheet">
 
@@ -27,14 +27,13 @@
     </head>
     <body>
         <div id="wrapper">
-
-            <?php 
-                if (Session::isLoggedIn()) {
-                    require_once ROOT . '/app/views/nav_sec.php';
-                } else {
-                    require_once ROOT . '/app/views/nav.php';
-                }
+            <?php
+            if (Session::isLoggedIn()) {
+                require_once ROOT . '/app/views/nav_sec.php';
+            } else {
+                require_once ROOT . '/app/views/nav.php';
+            }
             ?>
-            
+
             <!-- main container -->
             <div class="container" id="mainContainer">
