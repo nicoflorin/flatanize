@@ -35,6 +35,20 @@ body {
     border-bottom: 0px;
 }
 
+/* ------------------------------------------------ */
+/* Shopping List */
+.nopadding-right {
+    padding-right: 1px;
+}
+
+.nopadding-left {
+    padding-left: 1px;
+}
+
+.nopadding {
+    padding: 0px !important;
+}
+
 /* =========================================== */
 
 
@@ -155,15 +169,15 @@ body {
 
     /* ------------------------------------------------ */
     /* Shopping List */
-    .nopadding-right {
+    .nopadding-right-xs {
         padding-right: 1px;
     }
 
-    .nopadding-left {
+    .nopadding-left-xs {
         padding-left: 1px;
     }
 
-    .nopadding {
+    .nopadding-xs {
         padding: 0px !important;
     }
 }

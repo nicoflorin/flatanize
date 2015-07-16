@@ -18,18 +18,18 @@
                 <div id="addToShoppingList">
                     <form method="post" action="<?= URL ?>/shopping/addToShoppingList">
                         <div class="row">
-                            <div class="col-xs-8 col-md-8 nopadding-right">
+                            <div class="col-xs-8 col-md-8 nopadding-right-xs">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
                                     <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1" autofocus>
                                 </div>
                             </div>
-                            <div class="col-xs-2 col-md-2 nopadding-left nopadding-right">
+                            <div class="col-xs-2 col-md-2 nopadding-left-xs nopadding-right-xs">
                                 <div>
                                     <input type="number" pattern="[0-9]*" class="form-control" name="amount" placeholder="Qty" tabindex="2">
                                 </div>
                             </div>
-                            <div class="col-xs-2 col-md-2 nopadding-left">
+                            <div class="col-xs-2 col-md-2 nopadding-left-xs">
                                 <div >
                                     <button type="submit" class="btn btn-success btn-block" tabindex="3">
                                         <span class="glyphicon glyphicon-plus"></span>
