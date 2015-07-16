@@ -36,15 +36,16 @@
                         <thead class="nopadding">
                             <tr>
                                 <th class="col-xs-5 nopadding"></th>
-                                <th class="col-xs-5 nopadding"></th>
-                                <th class="col-xs-2 nopadding"></th>
+                                <th class="col-xs-4 nopadding"></th>
+                                <th class="col-xs-3 nopadding"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             foreach ($this->taskList as $key => $entry) {
                                 ?>
-                                <tr class="<?php echo (isset($entry['overdue'])) ? 'bg-danger' : '' ?>">
+                                <!-- row als Link zu Modal -->
+                                <tr onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>" class="<?php echo (isset($entry['overdue'])) ? 'bg-danger' : '' ?>">
                                     <td>
                                         <strong><?= $entry['title'] ?></strong>
                                         <p><?= $entry['description'] ?></p>
@@ -54,6 +55,8 @@
                                             echo '<strong class="text-danger">overdue</strong>';
                                         } elseif (isset($entry['today'])) { // Falls Heute Meldung anzeigen
                                             echo '<strong class="text-success">today</strong>';
+                                        } else {
+                                            echo '<p>due in ' . $entry['due_in'] . ' days</p>';
                                         }
                                         ?>
                                     </td>
@@ -61,28 +64,68 @@
                                     <td>
                                         <p><?= $entry['display_name'] ?>'s turn</p>
                                         <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
-                                    </td>
+                                </td>
 
-                                    <td class="text-right">
-                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post">
-                                            <input type="hidden" name="id" value="<?= $entry['id'] ?>">
-                                            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-                                        </form>
-                                        <br>
-                                        <form action="<?php echo URL . '/task/deleteTask'; ?>" method="post">
-                                            <input type="hidden" name="id" value="<?= $entry['id'] ?>">
-                                            <button type="submit" class="btn btn-danger" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span></button>
-                                        </form>
+                                <td class="text-right">
+                                    <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post">
+                                        <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+                                        <span class="glyphicon glyphicon-menu-right"></span>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?><!-- end foreach -->
+                    </tbody>
+                </table>
+            </div><!-- end panel -->
 
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                            ?><!-- end foreach -->
-                        </tbody>
-                    </table>
-                </div><!-- end panel -->
-            </div><!-- end taskContent -->
-        </div><!-- end well -->
-    </div><!-- end col -->
+            <!-- Modal für Task Information -->
+            <div id="taskModal">
+                <?php
+                foreach ($this->taskList as $entry) {
+                    ?>
+                    <div id="TaskInfoId<?= $entry['id'] ?>" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Task Informations</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h4><?= $entry['title'] ?></h4>
+                                    <p>On: <?= $entry['day'] ?>, <?= $entry['next_date'] ?></p>
+                                    <p>Scheduled: <?= $entry['description'] ?></p>
+                                    <p>Next is <?= $entry['display_name'] ?></p>
+                                    <br>
+                                    <?php
+                                    // Falls fällig, Meldung anzeigen
+                                    if (isset($entry['overdue'])) {
+                                        echo '<p>This task is <strong class="text-danger">overdue!</strong></p>';
+                                    } elseif (isset($entry['today'])) { // Falls Heute Meldung anzeigen
+                                        echo '<p>This task is due <strong class="text-success">today!</strong></p>';
+                                    } else {
+                                        echo '<p>This task is due in ' . $entry['due_in'] . ' days.</p>';
+                                    }
+                                    ?>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="<?= URL ?>/task/deleteTask">
+                                        <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                        <input type="submit" class="btn btn-danger pull-left" value="Delete">
+                                    </form>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div><!-- end modal -->
+                    </div><!-- end TaskInfoId -->
+                    <?php
+                }
+                ?>
+            </div><!-- financeModal -->
+        </div><!-- end taskContent -->
+    </div><!-- end well -->
+</div><!-- end col -->
 </div><!-- end row -->
