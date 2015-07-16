@@ -1,10 +1,4 @@
 <div>
-    <div class="navbar-header">
-        <!-- button für menü auf mobile -->
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#leftNavCollapse">
-            Menu <b class="caret"></b>
-        </button>
-    </div><!-- end navbar-header -->
     <div class="collapse navbar-collapse" id="leftNavCollapse">
         <ul class="nav nav-pills nav-stacked">
             <!-- @Todo Dynamisch active class -->

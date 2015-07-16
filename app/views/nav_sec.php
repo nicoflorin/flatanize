@@ -13,7 +13,7 @@
 
             <!-- Titel -->
             <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" /></a>
-            <button id="leftMenuBtn" type="button" class="navbar-toggle hidden-lg" data-toggle="collapse" data-target="#navbarCollapse">
+            <button id="leftMenuBtn" type="button" class="navbar-toggle hidden-lg" data-toggle="collapse" data-target="#leftNavCollapse">
                 <i class="fa fa-chevron-right whiteIcon"></i>
             </button>
 
