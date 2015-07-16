@@ -169,7 +169,7 @@ body {
 @media (max-width: 480px) {
 
     /* ===========================================
-    Global
+        Global Styles
     ============================================*/
     /* Damit auf Smartphone nicht zu viel Platz */
     /* verschwendet wird */
@@ -205,9 +205,14 @@ body {
 
 /* Landscape phone bis portrait tablet */
 @media (max-width: 768px) {
-
     /* ===========================================
-    Navbar
+        Global Styles
+    ============================================*/
+    body {
+        margin-top: 60px; /* Abstand zu Navigation.*/
+    }
+    /* ===========================================
+        Navbar
     ============================================*/
 
     /* Navigation bei Tablet und kleiner zentriert anzeigen */
