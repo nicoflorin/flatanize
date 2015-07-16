@@ -194,7 +194,7 @@ aside {
     /* Damit auf Smartphone nicht zu viel Platz */
     /* verschwendet wird */
     .well {
-        padding-top: 10px;
+        padding-top: 5px;
         padding-bottom: 5px;
         padding-left: 5px;
         padding-right: 5px;
