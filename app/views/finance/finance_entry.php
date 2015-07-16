@@ -17,7 +17,7 @@
         <div class="panel-body" <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
             <p class="text-info">There are no finance entries available.</p>
         </div>
-        
+
         <table class="table table-hover" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
             <thead class="nopadding">
                 <tr>
@@ -27,7 +27,7 @@
                     <th class="col-xs-1 col-md-1 nopadding"></th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 <?php
                 foreach ($this->financeList as $entry) {
@@ -52,18 +52,19 @@
                 }
                 ?>
         </table>
-
-        <!-- Modal für Finance Information -->
+    </div><!-- end panel -->
+    
+    <!-- Modal für Finance Information -->
+    <div id="financeModal">
         <?php
         foreach ($this->financeList as $entry) {
             ?>
-            <!-- Modal für Finance Information -->
             <div id="financeInfoId<?= $entry['id'] ?>" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Information</h4>
+                            <h4 class="modal-title">Finance Informations</h4>
                         </div>
                         <div class="modal-body">
                             <h4><?= $entry['product'] ?></h4>
@@ -95,6 +96,6 @@
             <?php
         }
         ?>
+    </div><!-- financeModal -->
 
-    </div><!-- end panel -->
 </div>
