@@ -28,7 +28,7 @@
                         <!-- login navbar -->
                         <form class="navbar-form navbar-right" action="<?= URL ?>/auth/login" method="post">
                             <div class="form-group ">
-                                <input type="text" placeholder="User Name" class="form-control" name="username" tabindex="1" required autofocus>
+                                <input type="text" placeholder="User Name" class="form-control" name="username" tabindex="1" required>
                             </div>
                             <div class="form-group">
                                 <input type="password" placeholder="Password" class="form-control" name="password" tabindex="2" required>
