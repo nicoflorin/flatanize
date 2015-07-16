@@ -19,10 +19,10 @@
                     <!-- Collect the nav links and forms for toggling -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="nav navbar-nav">
-                            <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                            <li class="<?php echo ($this->data['title'] == 'FAQ') ? 'active' : '' ?>"><a href="<?= URL ?>/home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
-                            <li class="<?php echo ($this->data['title'] == 'About') ? 'active' : '' ?>"><a href="<?= URL ?>/home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li class="<?php echo ($this->data['title'] == 'Sign Up') ? 'active' : '' ?>"><a href="<?= URL ?>/register/index"><span class="glyphicon glyphicon-pencil"></span> Sign Up</a></li>
+                            <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>"><i class="fa fa-home fa-lg fa-fw"></i> Home</a></li>
+                            <li class="<?php echo ($this->data['title'] == 'FAQ') ? 'active' : '' ?>"><a href="<?= URL ?>/home/faq"><i class="fa fa-question-circle fa-lg fa-fw"></i> FAQ</a></li>
+                            <li class="<?php echo ($this->data['title'] == 'About') ? 'active' : '' ?>"><a href="<?= URL ?>/home/about"><i class="fa fa-info-circle fa-lg fa-fw"></i>  About</a></li>
+                            <li class="<?php echo ($this->data['title'] == 'Sign Up') ? 'active' : '' ?>"><a href="<?= URL ?>/register/index"><i class="fa fa-pencil-square-o fa-lg fa-fw"></i> Sign Up</a></li>
                         </ul><!-- end navbar-nav -->
 
                         <!-- login navbar -->

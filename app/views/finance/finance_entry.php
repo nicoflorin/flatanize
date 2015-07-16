@@ -4,7 +4,7 @@
     <div>
         <a class="btn btn-success" href="<?= URL ?>/finance/showCreateEntry" role="button">Create New Entry</a>
         <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-            <span class="glyphicon glyphicon-repeat"></span>
+            <i class="fa fa-refresh fa-lg fa-"></i>
         </button>
     </div>
     <br>
@@ -45,7 +45,7 @@
                             <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
                         </td>
                         <td class="text-right">
-                            <span class="glyphicon glyphicon-menu-right"></span>
+                            <i class="fa fa-chevron-right"></i>
                         </td>
                     </tr>
                     <?php

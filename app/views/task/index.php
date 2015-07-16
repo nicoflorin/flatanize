@@ -18,7 +18,7 @@
                 <div>
                     <a class="btn btn-success" href="<?= URL ?>/task/showCreateTask" role="button">Create New Task</a>
                     <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-                        <span class="glyphicon glyphicon-repeat"></span>
+                        <i class="fa fa-refresh fa-lg fa-"></i>
                     </button>
                 </div>
                 <br>
@@ -69,8 +69,8 @@
                                 <td class="text-right">
                                     <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post">
                                         <input type="hidden" name="id" value="<?= $entry['id'] ?>">
-                                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-                                        <span class="glyphicon glyphicon-menu-right"></span>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check fa-lg"></i></button>
+                                        <i class="fa fa-chevron-right"></i>
                                     </form>
                                 </td>
                             </tr>

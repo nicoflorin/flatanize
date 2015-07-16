@@ -18,14 +18,14 @@
                     <form method="post" action="<?= URL ?>/task/createTask">
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
+                                <span class="input-group-addon"><i class="fa fa-thumb-tack fa-lg"></i></span>
                                 <input type="text" id="title" name="title" class="form-control" placeholder="Title" tabindex="1" required autofocus>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-repeat"></span></span>
+                                <span class="input-group-addon"><i class="fa fa-repeat fa-lg"></i></span>
 
                                 <select name="frequency" class="form-control" tabindex="2" required> 
                                     <option value="" disabled selected>Select frequency</option>
@@ -57,7 +57,7 @@
                         -->
                         <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
                             <div class="input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
                                 <input type="date" id="start" name="start" class="form-control" placeholder="Start Date" tabindex="4" required>
                             </div>
                             <?php

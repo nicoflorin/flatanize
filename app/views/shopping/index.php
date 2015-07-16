@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-xs-8 col-md-8 nopadding-right-xs">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-shopping-cart fa-lg"></i></span>
                                     <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1" autofocus>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                             <div class="col-xs-2 col-md-2 nopadding-left-xs">
                                 <div >
                                     <button type="submit" class="btn btn-success btn-block" tabindex="3">
-                                        <span class="glyphicon glyphicon-plus"></span>
+                                        <i class="fa fa-plus fa-lg"></i>
                                     </button>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                     <td class="text-right">
                                         <form action="<?php echo URL . '/shopping/deleteFromShoppingList'; ?>" method="post">
                                             <input type="hidden" name="id" value="<?= $entry['id'] ?>">
-                                            <button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+                                            <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></button>
                                         </form>
                                     </td>
                                 </tr>

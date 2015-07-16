@@ -15,8 +15,8 @@
 
             <!-- Tab Navigation -->
             <ul class="nav nav-tabs" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
-                <li class="active"><a data-toggle="tab" href="#financeEntry">Entries</a></li>
-                <li><a data-toggle="tab" href="#financeBalance">Balance</a></li>
+                <li class="active"><a data-toggle="tab" href="#financeEntry"><i class="fa fa-list-ul fa-lg fa-fw"></i> Entries</a></li>
+                <li><a data-toggle="tab" href="#financeBalance"><i class="fa fa-pie-chart fa-lg fa-fw"></i> Balance</a></li>
             </ul><!-- end nav -->
             <br />
             <div class="tab-content" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>

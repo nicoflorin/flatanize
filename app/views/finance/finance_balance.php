@@ -4,7 +4,7 @@
     <div>
         <a class="btn btn-success" href="<?= URL ?>/finance/clearBalance" role="button">Clear Balance</a>
         <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-            <span class="glyphicon glyphicon-repeat"></span>
+            <i class="fa fa-refresh fa-lg"></i>
         </button>
     </div>
     <br>
@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center"><span class="glyphicon glyphicon-user"></span><br><?= $balance['display_name'] ?></td>
+                        <td class="text-center"><i class="fa fa-user fa-lg"></i><br><?= $balance['display_name'] ?></td>
                         <td>
                             <div class="progress <?php echo (!isset($balance['plus'])) ? 'hidden' : ''?>">
                                 <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : ''?>>

@@ -31,6 +31,7 @@
                 </div><!-- end carousel-inner -->
 
                 <!-- Controls for left and right icon-->
+                <!-- @Todo font-awesome benutzen -->
                 <a class="left carousel-control" data-slide="prev" href="#mainCarousel"><span class="glyphicon glyphicon-chevron-left"></span></a>
                 <a class="right carousel-control" data-slide="next" href="#mainCarousel"><span class="glyphicon glyphicon-chevron-right"></span></a>
 

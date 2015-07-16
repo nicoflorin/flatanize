@@ -19,19 +19,19 @@
         <!-- Collect the nav links and forms for toggling -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="nav navbar-nav">
-                <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>/home/index"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li class="<?php echo ($this->data['title'] == 'FAQ') ? 'active' : '' ?>"><a href="<?= URL ?>/home/faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
-                <li class="<?php echo ($this->data['title'] == 'About') ? 'active' : '' ?>"><a href="<?= URL ?>/home/about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                <li class="<?php echo ($this->data['title'] == 'Home') ? 'active' : '' ?>"><a href="<?= URL ?>/home/index"><i class="fa fa-home fa-lg fa-fw"></i> Home</a></li>
+                <li class="<?php echo ($this->data['title'] == 'FAQ') ? 'active' : '' ?>"><a href="<?= URL ?>/home/faq"><i class="fa fa-question-circle fa-lg fa-fw"></i> FAQ</a></li>
+                <li class="<?php echo ($this->data['title'] == 'About') ? 'active' : '' ?>"><a href="<?= URL ?>/home/about"><i class="fa fa-info-circle fa-lg fa-fw"></i> About</a></li>
             </ul><!-- end navbar-nav -->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Your Account <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg fa-fw"></i> Your Account <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?= URL ?>/settings/flatSetting"><span class="glyphicon glyphicon-cog"></span> Flat Settings</a></li>
+                        <li><a href="<?= URL ?>/settings/flatSetting"><i class="fa fa-bed fa-lg fa-fw"></i> Flat Settings</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?= URL ?>/settings/userSettings"><span class="glyphicon glyphicon-cog"></span> User Settings</a></li>
+                        <li><a href="<?= URL ?>/settings/userSettings"><i class="fa fa-street-view fa-lg fa-fw"></i> User Settings</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?= URL ?>/auth/logout"><span class="glyphicon glyphicon-off"></span> Log Out</a></li>
+                        <li><a href="<?= URL ?>/auth/logout"><i class="fa fa-sign-out fa-lg fa-fw"></i> Log Out</a></li>
                     </ul>
                 </li>
             </ul>
