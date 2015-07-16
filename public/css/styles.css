@@ -131,10 +131,6 @@ aside {
     color: #000;
 }
 
-.indent { 
-    text-indent: 1em;
-}
-
 /* ===========================================
     Carousel
 ============================================*/
@@ -238,7 +234,7 @@ aside {
     body {
         margin-top: 58px; /* Abstand zu Navigation.*/
     }
-    
+
     /* Grösse des Container bis fast an Rand */
     #mainContainer {
         padding: 0;
@@ -254,20 +250,24 @@ aside {
         margin-top: 5px;
         position: absolute;
         left: 50%;
-        margin-left: -20px !important;  /* 50% of your logo width */
+        margin-left: -20px !important;  /* 50% von logo */
         display: block;
     }
 
     /* ===========================================
         Linke Navigation auf Mobile
     ============================================*/
-    /* Toggle Einstelllungen */
+    /* Toggle Einstellungen */
+    /* linke Navigation */
     aside {
         padding: 0;
         margin-left: -52%; /* Versteckt */
         width: 50%; /* Breite von Nav */
         float: left;
         height: 100%; /* volle höhe */
+        position: absolute; /* bis zum boden */
+        left: 0; /* ganz links am Rand */
+        top: 50px; /* genau unter Navigation */
     }
 
     /* Hauptcontent */
@@ -302,6 +302,20 @@ aside {
 
     /* Design Linke Navigation*/
     #leftNav {
+        background-color: #222; /* Hintergrund gleich navbar */
+    }
+    /* Design Linke Navigation*/
+    .nav-pills > li.active > a, 
+    .nav-pills > li.active > a:focus, 
+    .nav-pills > li.active > a:hover {
+        background-color: #000;
+        color: #fff;
+    }
+    
+    /* Design Linke Navigation*/
+    .nav-pills > li > a {
+        color: #9d9d9d;
+        border-radius: 0px;
     }
 
     /* ===========================================
