@@ -228,6 +228,7 @@ aside {
     html, body {
         overflow-x: hidden;/* kein Scrollen nach links und rechts */
     }
+    
     body {
         margin-top: 58px; /* Abstand zu Navigation.*/
     }
