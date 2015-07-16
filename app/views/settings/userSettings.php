@@ -35,7 +35,7 @@
                             <input type="password" id="new_password" name="new_password" class="form-control" placeholder="New Password" tabindex="2" required> 
                         </div>
                         <div class="form-group">
-                            <input type="password" id="verify_password" name="verify_password" class="form-control" placeholder="New Password" tabindex="3" required> 
+                            <input type="password" id="verify_password" name="verify_password" class="form-control" placeholder="New Password (confirm)" tabindex="3" required> 
                         </div>
 
                         <div class="form-group">
