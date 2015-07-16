@@ -255,9 +255,8 @@ aside {
     }
 
     /* ===========================================
-        Linke Navigation auf Mobile
+        Linke Navigation auf Mobile - Toggle
     ============================================*/
-    /* Toggle Einstellungen */
     /* linke Navigation */
     aside {
         padding: 0;
@@ -300,7 +299,9 @@ aside {
         display: block;
     }
 
-    /* Design Linke Navigation*/
+    /* ===========================================
+        Linke Navigation auf Mobile - Design
+    ============================================*/
     #leftNav {
         background-color: #222; /* Hintergrund gleich navbar */
     }
@@ -316,6 +317,18 @@ aside {
     .nav-pills > li > a {
         color: #9d9d9d;
         border-radius: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    
+    /* Rahmen unterhalt Nav li elemente */
+    .nav-pills > li {
+        border-bottom: 1px solid;
+    }
+    
+    /* Kein Abstand zwischen Nav li Elementen */
+    .nav-stacked>li+li  {
+        margin: 0;
     }
 
     /* ===========================================
