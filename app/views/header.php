@@ -10,7 +10,6 @@
 
         <!-- Bootstrap -->
         <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?= URL ?>/public/css/bootstrap-theme.css" rel="stylesheet">
 
         <!-- font-awesome -->
         <link href="<?= URL ?>/public/css/font-awesome.min.css" rel="stylesheet">
