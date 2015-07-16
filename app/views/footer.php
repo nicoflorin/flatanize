@@ -15,5 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Bootstrap's JavaScript plugin -->
         <script src="<?php echo URL ?>/js/bootstrap.min.js"></script>
+        <!-- toggle left menu script -->
+        <script src="<?php echo URL ?>/js/toggle_left_nav.js"></script>
     </body>
 </html> 
