@@ -13,7 +13,7 @@
                 <!-- Flat Infos -->
                 <div class="panel panel-primary" <?php echo (!Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
                     <div class="panel-heading">
-                        <h3 class="panel-title"><?= $this->flatName ?> - Informations</h3>
+                        <h3 class="panel-title"><?= $this->flatName ?></h3>
                     </div>
                     <div class="panel-body">
                         <p>Your flat code is: <strong><?= $this->flatCode ?></strong></p>
