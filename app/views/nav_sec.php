@@ -12,7 +12,7 @@
             </button>
 
             <!-- Titel -->
-            <a class="navbar-brand" href="<?= URL ?>">FLATANIZE</a>
+            <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" /></a>
 
         </div><!-- end navbar-header -->
 

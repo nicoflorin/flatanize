@@ -35,7 +35,7 @@ body {
     border-bottom: 0px;
 }
 
-/* ------------------------------------------------ */
+/* =========================================== */
 /* Shopping List */
 .nopadding-right {
     padding-right: 1px;
@@ -48,8 +48,6 @@ body {
 .nopadding {
     padding: 0px !important;
 }
-
-/* =========================================== */
 
 
 /* =========================================== */
@@ -80,6 +78,14 @@ body {
     background-color: #D5D5D5;
     color: #000; /* black font when hover */
 }
+
+/* Brand Icon Anpassung für Grosse Bildschirme */
+.brand {
+    margin-top: 5px;
+    margin-right: 10px;
+    display: block;
+}
+
 
 /* ===========================================
     Left Navigation
@@ -150,6 +156,9 @@ body {
 /* Portrait & landscape Smartphone */
 @media (max-width: 480px) {
 
+    /* ===========================================
+    Global
+    ============================================*/
     /* Damit auf Smartphone nicht zu viel Platz */
     /* verschwendet wird */
     .well {
@@ -167,7 +176,7 @@ body {
         margin-top: 60px; /* Abstand zu Navigation.*/
     }
 
-    /* ------------------------------------------------ */
+    /* =========================================== */
     /* Shopping List */
     .nopadding-right-xs {
         padding-right: 1px;
@@ -184,6 +193,20 @@ body {
 
 /* Landscape phone bis portrait tablet */
 @media (max-width: 768px) {
+
+    /* ===========================================
+    Navbar
+    ============================================*/
+
+    /* Navigation bei Tablet und kleiner zentriert anzeigen */
+    .brand {
+        margin-top: 5px;
+        position: absolute;
+        left: 50%;
+        margin-left: -20px !important;  /* 50% of your logo width */
+        display: block;
+    }
+
 
     /* Carousel Einstellungen */
     #mainCarousel .item {
