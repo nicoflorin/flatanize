@@ -55,7 +55,7 @@ class SettingsModel extends Model {
         $saltFromDB = $res[0]['salt'];
         $pwFromDB = $res[0]['password'];
 
-        if (Functions::testPassword($oldPW, $saltFromDB, $pwFromDB)) {
+        if (Functions::testHash($oldPW, $saltFromDB, $pwFromDB)) {
             //Setze neues Passwort
             $salt = Functions::generateRandomData(64); //Generiere Random String
             $string = $newPW . $salt;

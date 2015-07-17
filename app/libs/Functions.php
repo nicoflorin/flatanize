@@ -51,10 +51,10 @@ class Functions {
     }
 
     /**
-     * Return True falls das Password mit dem Sal und Hash übereinstimmt
+     * Return True falls das String mit dem Salt und Hash übereinstimmt
      */
-    public static function testPassword($password, $salt, $hash) {
-        if (password_verify($password . $salt, $hash)) { // Standard PHP hashing Function benutzt
+    public static function testHash($string, $salt, $hash) {
+        if (password_verify($string . $salt, $hash)) { // Standard PHP hashing Function benutzt
             return true;
         } else {
             return false;
