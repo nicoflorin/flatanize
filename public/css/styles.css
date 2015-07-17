@@ -7,7 +7,12 @@ Autor: Nico Florin
 /* ===========================================
     Global Styles
 ============================================*/
-
+@font-face {
+	font-family: 'century-gothic';
+	src:url('../fonts/century-gothic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
 html {
     overflow-y: scroll; /* scrollbar immer anzeigen */
 }
@@ -17,6 +22,7 @@ body {
     /* margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
     font-size: 1.5em;
+    font-family: century-gothic;
 }
 
 /* Linke Navigation */
