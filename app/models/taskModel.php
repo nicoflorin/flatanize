@@ -5,7 +5,7 @@
  *
  * @author Nico
  */
-class taskModel extends Model {
+class TaskModel extends Model {
 
     /**
      * Erstellt einen neuen Task

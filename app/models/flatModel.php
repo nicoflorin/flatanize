@@ -5,7 +5,7 @@
  *
  * @author Nico
  */
-class flatModel extends Model {
+class FlatModel extends Model {
 
     /**
      * Erstellt eine WG und verlinkt den User mit dieser WG

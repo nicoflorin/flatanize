@@ -5,7 +5,7 @@
  *
  * @author Nico
  */
-class shoppingModel extends Model {
+class ShoppingModel extends Model {
 
     /**
      * Fügt einen neuen Eintrag zur Shopping List hinzu
