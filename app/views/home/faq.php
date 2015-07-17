@@ -1,4 +1,5 @@
-<div class="well">
+<?php require_once ROOT . '/app/views/app/left_nav.php'; ?>
+<div id="mainContent" class="well">
     <div class="page-header">
         <h1><i class="fa fa-question-circle fa-lg fa-fw"></i> <?= $this->data['title'] ?></h1>
     </div>
@@ -8,19 +9,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq1">1. What is FLATANIZE?</a>
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq1">1. What is <?= TITLE ?>?</a>
                     </h4>
                 </div>
                 <div id="faq1" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <p>With FLATANIZE you can organize the daily doings in a shared flat. Things like a shared shopping list, a task scheduler or keeping track of the finances has never been easier.</p>
+                        <p>With <?= TITLE ?> you can organize the daily doings in a shared flat. Things like a shared shopping list, a task scheduler or keeping track of the finances has never been easier.</p>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq2">2. Which functionalities does FLATANIZE have?</a>
+                        <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq2">2. Which functionalities does <?= TITLE ?> have?</a>
                     </h4>
                 </div>
                 <div id="faq2" class="panel-collapse collapse">
