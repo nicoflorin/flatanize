@@ -31,6 +31,7 @@ class Session {
      */
     public static function destroy() {
         unset($_SESSION);
+        Cookie::delete('token');
         session_destroy();
     }
 
