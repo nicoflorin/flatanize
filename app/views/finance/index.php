@@ -3,7 +3,7 @@
     <!-- Label damit ganzer Content Rechts clickbar wird, wenn collapsed -->
     <label id="bigLabel" for="leftMenuBtn" class="bigLabel"></label>
     <div class="page-header">
-        <h1><?= $this->data['title'] ?></h1>
+        <h1><i class="fa fa-usd fa-fw"></i> <?= $this->data['title'] ?></h1>
     </div>
     <div class="alert alert-success" role="alert" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
         <p>Please create or join a flat <a href="<?= URL ?>/settings/index"> here.</a></p>

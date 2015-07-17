@@ -33,7 +33,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg fa-fw"></i> Your Account <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?= URL ?>/settings/flatSetting"><i class="fa fa-bed fa-lg fa-fw"></i> Flat Settings</a></li>
+                        <li><a href="<?= URL ?>/settings/flatSetting"><i class="fa fa-building fa-lg fa-fw"></i> Flat Settings</a></li>
                         <li class="divider"></li>
                         <li><a href="<?= URL ?>/settings/userSettings"><i class="fa fa-street-view fa-lg fa-fw"></i> User Settings</a></li>
                         <li class="divider"></li>

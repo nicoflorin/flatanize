@@ -3,7 +3,7 @@
     <!-- Label damit ganzer Content Rechts clickbar wird, wenn collapsed -->
     <label id="bigLabel" for="leftMenuBtn" class="bigLabel"></label>
     <div class="page-header">
-        <h1><?= $this->data['title'] ?></h1>
+        <h1><i class="fa fa-shopping-cart fa-fw"></i> <?= $this->data['title'] ?></h1>
     </div>
 
     <div class="alert alert-success" role="alert" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-xs-8 col-md-8 nopadding-right-xs">
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-shopping-cart fa-lg"></i></span>
+                            <span class="input-group-addon"><i class="fa fa-beer fa-lg"></i></span>
                             <input type="text" class="form-control" name="product" placeholder="Product" tabindex="1" autofocus>
                         </div>
                     </div>

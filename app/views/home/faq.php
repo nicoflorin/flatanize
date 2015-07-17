@@ -1,6 +1,6 @@
 <div class="well">
     <div class="page-header">
-        <h1><?= $this->data['title'] ?></h1>
+        <h1><i class="fa fa-question-circle fa-lg fa-fw"></i> <?= $this->data['title'] ?></h1>
     </div>
         <!-- @Todo FAQ erstellen -->
         <!-- Bootstrap Accordion -->

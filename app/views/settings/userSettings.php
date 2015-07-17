@@ -3,7 +3,7 @@
     <!-- Label damit ganzer Content Rechts clickbar wird, wenn collapsed -->
     <label id="bigLabel" for="leftMenuBtn" class="bigLabel"></label>
     <div class="page-header">
-        <h1><?= $this->data['title'] ?></h1>
+        <h1><i class="fa fa-street-view fa-fw"></i> <?= $this->data['title'] ?></h1>
     </div>
 
     <!-- User Settings tab -->
