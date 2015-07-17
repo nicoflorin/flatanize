@@ -8,6 +8,10 @@ Autor: Nico Florin
     Global Styles
 ============================================*/
 
+html {
+    overflow-y: scroll; /* scrollbar immer anzeigen */
+}
+
 body {
     margin-top: 80px; /* Abstand zu Navigation.*/
     /* margin-bottom: 60px; /* Abstand zu Footer */
@@ -26,6 +30,7 @@ aside {
     float: right;
 }
 
+/* Well Einstellungen */
 .well .page-header {
     margin-top: 0px;   
     margin-bottom: 15px;
@@ -260,10 +265,11 @@ aside {
         padding: 0;
         margin-left: -52%; /* Versteckt */
         width: 50%; /* Breite von Nav */
-        float: left;
         height: 100%; /* volle höhe */
+        float: left;
         position: absolute; /* bis zum boden */
         left: 0; /* ganz links am Rand */
+        bottom: 0;
         top: 50px; /* genau unter Navigation */
     }
 
