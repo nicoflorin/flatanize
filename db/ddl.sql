@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`users` (
   `email` VARCHAR(60) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `salt` CHAR(64) NOT NULL,
+  `token` VARCHAR(255) NULL,
   `img` VARCHAR(255) NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
