@@ -15,11 +15,14 @@ class AuthController extends Controller {
         //POST Daten aus Formular
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $remember = $_POST['remember'];
+        
+        $remember = (isset($remember) && $remember === 'on') ? true : false;
 
         //Lade login model
         $this->loadModel('login');
         // Übergebe Daten an Model
-        $res = $this->model->login($username, $password);
+        $res = $this->model->login($username, $password, $remember);
         
         //Falls Login erfolgreich
         if ($res === true) {
