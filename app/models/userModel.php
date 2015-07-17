@@ -60,5 +60,23 @@ class UserModel extends Model {
             return array();
         }
     }
+    
+     /**
+     * Holt alle Infos zu allen User einer WG aus der DB
+     * @param type $flatId
+     * @return array
+     */
+    public function getAllUsers($flatId) {
+        $bind = array(
+            ':flatId' => $flatId,
+        );
+        $res = $this->db->select('id, username, display_name, email', 'users', 'flats_id = :flatId', $bind);
+        
+        if (!empty($res)) {
+            return $res;
+        } else {
+            return array();
+        }
+    }
 
 }

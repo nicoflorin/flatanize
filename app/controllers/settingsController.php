@@ -11,7 +11,7 @@ class SettingsController extends Controller {
         parent::__construct();
         Session::checkLogin();
     }
-    
+
     public function index() {
         $this->flatSettings();
     }
@@ -30,18 +30,17 @@ class SettingsController extends Controller {
 
             //Hole Usernames und übergebe an view
             $this->loadModel('user');
-            $this->view->users = $this->model->getAllDisplayNames($flatId);
+            $this->view->users = $this->model->getAllUsers($flatId);
         }
         $this->view->render('settings/flatSettings', 'Flat Settings');
     }
-    
-        /**
+
+    /**
      * Lädt user settings Seite
      */
     public function userSettings() {
         $this->view->render('settings/userSettings', 'User Settings');
     }
-
 
     /**
      * Handelt den WG Erstellungsprozess
@@ -66,10 +65,29 @@ class SettingsController extends Controller {
      */
     public function leaveFlat() {
         $userId = Session::getUserId();
+
         $this->loadModel('flat');
         $this->model->leave($userId);
 
+        //Session var löschen
+        Session::unSetFlatId();
+
         $this->redirect('settings', 'flatSettings');
+    }
+
+    /**
+     * Wirft einen WG Bewohner aus der WG
+     */
+    public function throwOut() {
+        $userId = $_POST['id'];
+        if (!empty($userId)) {
+            if (Session::getUserId() != $userId) {
+                $this->loadModel('flat');
+                $this->model->leave($userId);
+            }
+
+            $this->redirect('settings', 'flatSettings');
+        }
     }
 
     /**
@@ -130,11 +148,11 @@ class SettingsController extends Controller {
             $this->view->assign('error_pwchange', true);
             $this->view->assign('error_msg', $res);
         }
-        
+
         $this->view->render('settings/userSettings', 'User Settings');
     }
-    
-        /**
+
+    /**
      * Zuständig für das wechseln des Anzeigenamens
      */
     public function changeDisplayName() {
@@ -143,7 +161,7 @@ class SettingsController extends Controller {
 
         $this->loadModel('settings');
         $res = $this->model->changeDisplayName($displayName, $userId);
-        
+
         //Falls kein Fehler auftrat
         if ($res === true) {
             $this->view->assign('success_dnChange', true);
@@ -151,7 +169,7 @@ class SettingsController extends Controller {
             $this->view->assign('error_msg', $res);
             $this->view->assign('error_dnChange', true);
         }
-        
+
         $this->view->render('settings/userSettings', 'User Settings');
     }
 

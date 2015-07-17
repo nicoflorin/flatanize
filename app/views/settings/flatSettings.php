@@ -16,16 +16,27 @@
             <div class="panel-body">
                 <p>Your flat code is: <strong><?= $this->flatCode ?></strong></p>
                 <p>You are in a flat with:</p>
-                <ul class="list-group">
+                <table class="table table-hover">
                     <?php
                     //Liste der Users anzeigen
-                    foreach ($this->users as $key => $name) {
-                        ?>
-                        <li class="list-group-item"><?= $name ?></li>
-                        <?php
+                    if (isset($this->users)) {
+                        foreach ($this->users as $key => $user) {
+                            ?>
+                            <tr>
+                                <td><?= $user['display_name'] ?></td>
+                                <?php 
+                                    if (Session::getUserId() != $user['id']) {
+                                        echo '<td class="text-right"><a href="#userInfoId' . $user['id'] .'" class="btn btn-danger" data-toggle="modal" >throw out</a></td>';
+                                    }else {
+                                        echo '<td class="text-right"><a href="#" class="btn btn-danger disabled">throw out</a></td>';
+                                    }
+                                ?>
+                            </tr>
+                            <?php
+                        }
                     }
                     ?>
-                </ul>
+                </table>
             </div><!-- end panel-body -->
         </div><!-- end flat infos -->
 
@@ -121,5 +132,37 @@
                 </form>
             </div><!-- end panel-body -->
         </div><!-- end leaveFlat -->
+
+        <!-- Modal für User Information -->
+        <div id="userModal">
+            <?php
+            if (isset($this->users)) {
+                foreach ($this->users as $user) {
+                    ?>
+                    <div id="userInfoId<?= $user['id'] ?>" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">User Informations</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Sure want to throw out <strong><?= $user['display_name'] ?></strong>?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="<?= URL ?>/settings/throwOut">
+                                        <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                                        <input type="submit" class="btn btn-danger pull-left" value="Yes, throw out">
+                                    </form>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end financeInfo -->
+                    <?php
+                }
+            }
+            ?>
+        </div><!-- financeModal -->
     </div><!-- end flatSettings -->
 </div><!-- end mainContent -->

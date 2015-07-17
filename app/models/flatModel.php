@@ -59,9 +59,6 @@ class FlatModel extends Model {
         $bind = array(':userId' => $userId);
         $res = $this->db->update('users', 'flats_id = NULL', 'id = :userId', $bind);
 
-        //Session var löschen
-        Session::unSetFlatId();
-
         // Bei Update in DB
         if ($res == 1) {
             return true;
