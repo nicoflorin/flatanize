@@ -1,10 +1,14 @@
 <?php
 //Konstanten
+//Website Name
+define('TITLE', 'FLATANIZE');
+
 //Frequenz
 define('ONCE', 'once');
 define('DAILY', 'daily');
 define('WEEKLY', 'weekly');
 define('MONTHLY', 'every month');
+
 //Wochentage
 define('MONDAY', 'Monday');
 define('TUESDAY', 'Tuesday');
