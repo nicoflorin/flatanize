@@ -34,7 +34,6 @@ class ShoppingController extends Controller {
         $userId = Session::getUserId();
 
         //Falls kein Produkt eingegeben wurde
-        //@Todo Fehlermeldung anzeigen, wenn nichts eingegeben wurde
         if (!empty($product)) {
             //Menge default 1
             if (empty($amount)) {
