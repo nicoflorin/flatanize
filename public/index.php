@@ -18,15 +18,6 @@ require_once (ROOT . '/app/configs/config.php');
 function __autoload($class) {
     require_once ROOT . '/app/libs/' . $class . '.php';
 }
-//Library
-//@Todo entfernen
-//require_once (ROOT . '/app/libs/App.php');
-//require_once (ROOT . '/app/libs/Controller.php');
-//require_once (ROOT . '/app/libs/Database.php');
-//require_once (ROOT . '/app/libs/Model.php');
-//require_once (ROOT . '/app/libs/Session.php');
-//require_once (ROOT . '/app/libs/View.php');
-//require_once (ROOT . '/app/libs/Functions.php');
 
 // Starte Hauptscript
 $app = new App();
