@@ -21,6 +21,7 @@ class App {
      * Bsp. index.php?url=home/index -> lädt home Controller / index Funktion
      */
     public function init() {
+
         // Trennt Url zwischen / und erstellt Array
         $url = $this->parseUrl();
 
@@ -32,7 +33,7 @@ class App {
         }
 
         //lade Controller (falls er nicht existiert, lade home)
-        $file = ROOT. '/app/controllers/' . $this->controller . '.php';
+        $file = ROOT . '/app/controllers/' . $this->controller . '.php';
         require_once $file;
 
         //erstelle neues controller Objekt
