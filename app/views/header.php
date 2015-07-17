@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- mobile zuerst, kein zoomen auf Smartphone möglich -->
         <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
-        <title>FLATANIZE - <?= $this->data['title'] ?></title>
+        <title><?= TITLE ?> - <?= $this->data['title'] ?></title>
         <!-- @Todo Meta tags wie description, keywords, author usw. -->
 
         <!-- Bootstrap -->
@@ -20,7 +20,7 @@
         
         <!-- iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-title" content="flatanize">
+        <meta name="apple-mobile-web-app-title" content="<?= TITLE ?>">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="format-detection" content="telephone=no">
 
