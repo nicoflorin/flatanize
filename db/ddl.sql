@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`shopping_lists` (
   `flats_id` INT UNSIGNED NOT NULL,
   `added_by` INT UNSIGNED NOT NULL,
   `product` VARCHAR(255) NOT NULL,
-  `amount` INT NULL,
+  `amount` INT NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_shopping_users_idx` (`added_by` ASC),
@@ -177,6 +177,31 @@ CREATE TABLE IF NOT EXISTS `flatanize`.`finances_users` (
   CONSTRAINT `fk_fin_users_users`
     FOREIGN KEY (`users_id`)
     REFERENCES `flatanize`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `flatanize`.`whiteboards`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `flatanize`.`whiteboards` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `users_id` INT UNSIGNED NOT NULL,
+  `flats_id` INT UNSIGNED NOT NULL,
+  `text` VARCHAR(255) NOT NULL,
+  `timestamp` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_whiteboard_users_idx` (`users_id` ASC),
+  INDEX `fk_whiteboard_flats_idx` (`flats_id` ASC),
+  CONSTRAINT `fk_whiteboards_users`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `flatanize`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_whiteboards_flats`
+    FOREIGN KEY (`flats_id`)
+    REFERENCES `flatanize`.`flats` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
