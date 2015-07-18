@@ -7,12 +7,14 @@ Autor: Nico Florin
 /* ===========================================
     Global Styles
 ============================================*/
+/* Definiere eigene font */
 @font-face {
 	font-family: 'century-gothic';
-	src:url('../fonts/century-gothic.ttf');
+	src: url('../fonts/century-gothic.ttf');
 	font-weight: normal;
 	font-style: normal;
 }
+
 html {
     overflow-y: scroll; /* scrollbar immer anzeigen */
 }
@@ -47,7 +49,9 @@ aside {
     margin-top: 0;   
 }
 
+/* =========================================== */
 /* Tabellen */
+
 /* Tabellen standardmässig vertikal zentriert */
 .table > tbody > tr > td {
     vertical-align: middle;
@@ -288,7 +292,7 @@ aside {
 
     /* Langsam einfliegen */
     aside, #mainContent {
-        webkit-transition: 0.25s ease; /* Safari und Chrome */
+        -webkit-transition: 0.25s ease; /* Safari und Chrome */
         -moz-transition: 0.25s ease;
         -o-transition: 0.25s ease;
         transition: 0.25s ease;
