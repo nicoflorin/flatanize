@@ -66,7 +66,7 @@ class Cookie {
      */
     public static function checkCookieLogin() {
         //Falls token cookie vorhanden und session noch nicht gestartet
-        if (Cookie::exists('token')) { // && !Session::isLoggedIn()
+        if (Cookie::exists('token') && !Session::isLoggedIn()) {
             $token = Cookie::get('token');
             $db = new Database();
 
@@ -74,7 +74,8 @@ class Cookie {
             $bind = array(':token' => $token);
             $res = $db->select('id, flats_id', 'users', 'token = :token LIMIT 1', $bind);
 
-            if ($res == 1) {
+            //Falls ein Eintrag gefunden wurde
+            if (!empty($res)) {
                 $flatId = $res[0]['flats_id'];
                 $userId = $res[0]['id'];
 
