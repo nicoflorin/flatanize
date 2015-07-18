@@ -18,7 +18,7 @@
                     <div class="col-xs-9 col-md-10 nopadding-right-xs">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-font fa-lg"></i></span>
-                            <input type="text" class="form-control" id="text" name="text" placeholder="Text" tabindex="1" autofocus>
+                            <input type="text" class="form-control" id="text" name="text" placeholder="Text" tabindex="1">
                         </div>
                     </div>
                     <div class="col-xs-3 col-md-2 nopadding-left-xs">
