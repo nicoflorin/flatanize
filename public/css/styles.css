@@ -277,10 +277,10 @@ aside {
         width: 50%; /* Breite von Nav */
         height: 100%; /* volle höhe */
         float: left;
-        position: absolute; /* bis zum boden */
-        left: 0; /* ganz links am Rand */
-        bottom: 0;
+        position: fixed; /* nicht scrollbar */
         top: 50px; /* genau unter Navigation */
+        bottom: 0; /* bis zum boden */
+        left: 0; /* ganz links am Rand */
     }
 
     /* Hauptcontent */
@@ -305,7 +305,8 @@ aside {
 
     /* Schiebe Content nach rechts */
     #mainContent.moveRight {
-        margin-right: -52%
+        left: 52%; /* abstand zu linkem rand, nach rechts verschieben */
+        position: fixed; /* nicht scrollbar */
     }
 
     /* Damit Content Recht klickbar wird */
@@ -319,6 +320,7 @@ aside {
     #leftNav {
         background-color: #222; /* Hintergrund gleich navbar */
     }
+    
     /* Design Linke Navigation*/
     .nav-pills > li.active > a, 
     .nav-pills > li.active > a:focus, 
