@@ -42,7 +42,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th class="col-xs-10"><?= $key ?>
+                            <th class="col-xs-10"><?= $key ?></th>
                             <th class="col-xs-1"></th>
                             <th class="col-xs-1"></th>
                         </tr>
@@ -54,7 +54,7 @@
                             ?>
                             <tr>
                                 <td><?= $entry['text'] ?></td>
-                                <td><?= $entry['display_name'] ?> </td>
+                                <td class="text-right"><?= $entry['display_name'] ?> </td>
                                 <td><?= $entry['time'] ?></td>
                             </tr>
                             <?php
