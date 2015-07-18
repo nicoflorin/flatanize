@@ -21,7 +21,7 @@
         <!-- iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="<?= TITLE ?>">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
