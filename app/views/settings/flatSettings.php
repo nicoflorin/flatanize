@@ -78,11 +78,11 @@
                 ?>
                 <form action="<?= URL ?>/settings/createFlat" method="post">
                     <div class="form-group">
-                        <input type="text" value="" id="flatName" name="flatName" class="form-control" placeholder="Flat Name" tabindex="1" required>
+                        <input type="text" value="" id="flatName" name="flatName" class="form-control" placeholder="Flat Name" tabindex="3" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-success" tabindex="2">
+                        <input type="submit" value="Create" class="btn btn-success" tabindex="4">
                     </div>
                 </form>
             </div><!-- end panel-body -->
@@ -102,11 +102,11 @@
                 ?>
                 <form action="<?= URL ?>/settings/joinFlat" method="post">
                     <div class="form-group">
-                        <input type="text" value="" id="flatCode" name="flatCode" class="form-control" placeholder="Flat Code" tabindex="1" required>
+                        <input type="text" value="" id="flatCode" name="flatCode" class="form-control" placeholder="Flat Code" tabindex="5" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Join" class="btn btn-success" tabindex="2">
+                        <input type="submit" value="Join" class="btn btn-success" tabindex="6">
                     </div>
                 </form>
             </div><!-- end panel-body -->
@@ -127,7 +127,7 @@
                 <p>You really want to leave your flat?</p>
                 <form action="<?= URL ?>/settings/leaveFlat" method="post">
                     <div class="form-group">
-                        <input type="submit" value="Yes, leave" class="btn btn-success">
+                        <input type="submit" value="Yes, leave" class="btn btn-success" tabindex="7">
                     </div>
                 </form>
             </div><!-- end panel-body -->

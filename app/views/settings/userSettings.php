@@ -69,10 +69,10 @@
                     ?>
                     <form action="<?= URL ?>/settings/changeDisplayName" method="post">
                         <div class="form-group">
-                            <input type="text" id="displayName" name="displayName" class="form-control" placeholder="New Display Name" tabindex="1" required> 
+                            <input type="text" id="displayName" name="displayName" class="form-control" placeholder="New Display Name" tabindex="5" required> 
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Change" class="btn btn-success" tabindex="2">
+                            <input type="submit" value="Change" class="btn btn-success" tabindex="6">
                         </div>
                     </form>
                 </div><!-- end panel-body -->
