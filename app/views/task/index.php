@@ -41,8 +41,8 @@
                     foreach ($this->taskList as $key => $entry) {
                         ?>
                         <!-- row als Link zu Modal -->
-                        <tr onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>" class="<?php echo (isset($entry['overdue'])) ? 'bg-danger' : '' ?>">
-                            <td>
+                        <tr class="<?php echo (isset($entry['overdue'])) ? 'bg-danger' : '' ?>">
+                            <td onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
                                 <strong><?= $entry['title'] ?></strong>
                                 <p><?= $entry['description'] ?></p>
                                 <?php
@@ -57,7 +57,7 @@
                                 ?>
                             </td>
 
-                            <td>
+                            <td onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
                                 <p><?= $entry['display_name'] ?>'s turn</p>
                                 <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
                             </td>
