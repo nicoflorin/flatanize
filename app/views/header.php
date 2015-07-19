@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- mobile zuerst, kein zoomen auf Smartphone möglich -->
-        <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <title><?= TITLE ?> - <?= $this->data['title'] ?></title>
         <!-- @Todo Meta tags wie description, keywords, author usw. -->
 
