@@ -22,9 +22,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                //Balance für jeden User anzeigen
-                foreach ($this->userBalance as $balance) {
+                <?php foreach ($this->userBalance as $balance) : //Balance für jeden User anzeigen ?>
+                    <?php
                     //Prüfen ob Differenz positiv oder negativ
                     $diff = $balance['diff'];
                     if ($diff >= 0) {
@@ -37,24 +36,26 @@
                     ?>
                     <tr>
                         <td>
-                            <div class="progress <?php echo (!isset($balance['minus'])) ? 'hidden' : ''?>">
-                                <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; float: right;"' : ''?>>
-                                    <span><?php echo (isset($balance['minus'])) ? $diff : '' ?></span>
+                            <?php if (isset($balance['minus'])) : ?>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; float: right;"' : '' ?>>
+                                    <span><?= $diff ?></span>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         </td>
                         <td class="text-center"><i class="fa fa-user fa-lg"></i><br><?= $balance['display_name'] ?></td>
                         <td>
-                            <div class="progress <?php echo (!isset($balance['plus'])) ? 'hidden' : ''?>">
-                                <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : ''?>>
-                                    <span><?php echo (isset($balance['plus'])) ? $diff : ''?></span>
+                            <?php if (isset($balance['plus'])) : ?>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : '' ?>>
+                                    <span><?= $diff ?></span>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         </td>
                     </tr>
-                    <?php
-                }
-                ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div><!-- end panel -->

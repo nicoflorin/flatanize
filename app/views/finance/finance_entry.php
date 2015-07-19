@@ -13,89 +13,88 @@
         <div class="panel-heading">
             <h3 class="panel-title">Your Finance Entries</h3>
         </div>
-        <!-- no entries available -->
-        <div class="panel-body" <?php echo (!empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
-            <p class="text-info">There are no finance entries available.</p>
-        </div>
+        <?php if (empty($this->financeList)) : ?>
+            <!-- no entries available -->
+            <div class="panel-body">
+                <p class="text-info">There are no finance entries available.</p>
+            </div>
+        <?php endif; ?>
 
-        <table class="table table-hover" <?php echo (empty($this->financeList)) ? 'style="display:none;"' : '' ?>>
-            <thead class="nopadding">
-                <tr>
-                    <th class="col-xs-4 col-md-3 nopadding"></th>
-                    <th class="col-xs-2 col-md-5 nopadding"></th>
-                    <th class="col-xs-5 col-md-2 nopadding"></th>
-                    <th class="col-xs-1 col-md-1 nopadding"></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php
-                foreach ($this->financeList as $entry) {
-                    //Datum in Format d.m.Y formatieren
-                    $entry['date'] = Functions::formatDate($entry['date'], 'd.m.Y');
-                    ?>
-                    <!-- row als Link zu Modal -->
-                    <tr onclick="input" data-toggle="modal" href="#financeInfoId<?= $entry['id'] ?>">
-                        <td>
-                            <p><strong><?= $entry['product'] ?></strong></p>
-                            <p><?= $entry['date'] ?></p>
-                        </td>
-                        <td>Added: <?= $entry['display_name'] ?></td>
-                        <td class="text-right">
-                            <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
-                        </td>
-                        <td class="text-right">
-                            <i class="fa fa-chevron-right"></i>
-                        </td>
+        <?php if (!empty($this->financeList)) : ?>
+            <table class="table table-hover">
+                <thead class="nopadding">
+                    <tr>
+                        <th class="col-xs-4 col-md-3 nopadding"></th>
+                        <th class="col-xs-2 col-md-5 nopadding"></th>
+                        <th class="col-xs-5 col-md-2 nopadding"></th>
+                        <th class="col-xs-1 col-md-1 nopadding"></th>
                     </tr>
-                    <?php
-                }
-                ?>
-        </table>
+                </thead>
+
+                <tbody>
+                    <?php foreach ($this->financeList as $entry) : ?>
+                        <?php
+                        //Datum in Format d.m.Y formatieren
+                        $entry['date'] = Functions::formatDate($entry['date'], 'd.m.Y');
+                        ?>
+                        <!-- row als Link zu Modal -->
+                        <tr onclick="input" data-toggle="modal" href="#financeInfoId<?= $entry['id'] ?>">
+                            <td>
+                                <p><strong><?= $entry['product'] ?></strong></p>
+                                <p><?= $entry['date'] ?></p>
+                            </td>
+                            <td>Added: <?= $entry['display_name'] ?></td>
+                            <td class="text-right">
+                                <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?>
+                            </td>
+                            <td class="text-right">
+                                <i class="fa fa-chevron-right"></i>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
     </div><!-- end panel -->
-    
-    <!-- Modal für Finance Information -->
-    <div id="financeModal">
-        <?php
-        foreach ($this->financeList as $entry) {
-            ?>
-            <div id="financeInfoId<?= $entry['id'] ?>" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Finance Informations</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h4><?= $entry['product'] ?></h4>
-                            <p><strong><?= $entry['display_name'] ?></strong> paid <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?><p>
-                            <p>on: <?= $entry['date'] ?></p>
-                            <p>participants: </p>
-                            <table class="table">
-                                <?php
-                                $entryId = $entry['id'];
-                                foreach ($this->userList[$entryId] as $user) {
-                                    echo '<tr>';
-                                    echo '<td>' . $user['display_name'] . '</td>';
-                                    echo '<td>' . number_format($entry['pricePP'], 2, '.', '') . ' ' . CURR . '</td>';
-                                    echo '</tr>';
-                                }
-                                ?>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <form method="post" action="<?= URL ?>/finance/deleteEntry">
-                                <input type="hidden" name="id" value="<?= $entry['id'] ?>">
-                                <input type="submit" class="btn btn-danger pull-left" value="Delete">
-                            </form>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+    <?php if (!empty($this->financeList)) : ?>
+        <!-- Modal für Finance Information -->
+        <div id="financeModal">
+            <?php foreach ($this->financeList as $entry) : ?>
+                <div id="financeInfoId<?= $entry['id'] ?>" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Finance Informations</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h4><?= $entry['product'] ?></h4>
+                                <p><strong><?= $entry['display_name'] ?></strong> paid <?= number_format($entry['price'], 2, '.', '') ?> <?= CURR ?><p>
+                                <p>on: <?= $entry['date'] ?></p>
+                                <p>participants: </p>
+                                <table class="table">
+                                    <?php
+                                    $entryId = $entry['id'];
+                                    foreach ($this->userList[$entryId] as $user) {
+                                        echo '<tr>';
+                                        echo '<td>' . $user['display_name'] . '</td>';
+                                        echo '<td>' . number_format($entry['pricePP'], 2, '.', '') . ' ' . CURR . '</td>';
+                                        echo '</tr>';
+                                    }
+                                    ?>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <form method="post" action="<?= URL ?>/finance/deleteEntry">
+                                    <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                    <input type="submit" class="btn btn-danger pull-left" value="Delete">
+                                </form>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div><!-- end financeInfo -->
-            <?php
-        }
-        ?>
-    </div><!-- financeModal -->
-
+                </div><!-- end financeInfo -->
+            <?php endforeach; ?>
+        </div><!-- financeModal -->
+    <?php endif; ?>
 </div>

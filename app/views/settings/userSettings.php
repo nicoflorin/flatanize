@@ -16,17 +16,13 @@
                 </div>
                 <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
-                    <?php
-                    if (isset($this->data['error_pwchange'])) {
-                        echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
-                    }
-                    ?>
+                    <?php if (isset($this->data['error_pwchange'])) : ?>
+                        <div class="alert alert-danger" role="alert"><p><?= $this->data['error_msg'] ?></p></div>
+                    <?php endif; ?>
                     <!-- Success Fenster anzeigen, falls KEIN fehler auftrag -->
-                    <?php
-                    if (isset($this->data['success_pwchange'])) {
-                        echo '<div class="alert alert-success" role="alert"><p>You have changed your password successfully!</p></div>';
-                    }
-                    ?>
+                    <?php if (isset($this->data['success_pwchange'])) : ?>
+                        <div class="alert alert-success" role="alert"><p>You have changed your password successfully!</p></div>
+                    <?php endif; ?>
                     <form action="<?= URL ?>/settings/changePassword" method="post">
                         <div class="form-group">
                             <input type="password" id="old_password" name="old_password" class="form-control" placeholder="Old Password" tabindex="1" required> 
@@ -56,17 +52,13 @@
                 </div>
                 <div class="panel-body">
                     <!-- Error Fenster anzeigen, falls ein Fehler auftrat -->
-                    <?php
-                    if (isset($this->data['error_dnChange'])) {
-                        echo '<div class="alert alert-danger" role="alert"><p>' . $this->data['error_msg'] . '</p></div>';
-                    }
-                    ?>
+                    <?php if (isset($this->data['error_dnChange'])) : ?>
+                        <div class="alert alert-danger" role="alert"><p><?= $this->data['error_msg'] ?></p></div>
+                    <?php endif; ?>
                     <!-- Success Fenster anzeigen, falls KEIN fehler auftrag -->
-                    <?php
-                    if (isset($this->data['success_dnChange'])) {
-                        echo '<div class="alert alert-success" role="alert"><p>You have changed your display name successfully!</p></div>';
-                    }
-                    ?>
+                    <?php if (isset($this->data['success_dnChange'])) : ?>
+                        <div class="alert alert-success" role="alert"><p>You have changed your display name successfully!</p></div>
+                    <?php endif; ?>
                     <form action="<?= URL ?>/settings/changeDisplayName" method="post">
                         <div class="form-group">
                             <input type="text" id="displayName" name="displayName" class="form-control" placeholder="New Display Name" tabindex="5" required> 

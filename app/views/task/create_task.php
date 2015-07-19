@@ -56,28 +56,22 @@
                         <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
                         <input type="date" id="start" name="start" class="form-control" placeholder="Start Date" tabindex="4" required>
                     </div>
-                    <?php
-                    if (isset($this->data['date'])) {
-                        echo '<span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>';
-                    }
-                    ?>
+                    <?php if (isset($this->data['date'])) : ?>
+                        <span class="help-block">Date format must be: "DD.MM.YYYY" or "YYYY-MM-DD"!</span>
+                    <?php endif; ?>
                 </div>
                 <p>Who needs to do it all?</p>
                 <div class="form-group <?php echo (isset($this->data['users'])) ? 'has-error' : '' ?>">
                     <div data-toggle="buttons">
-                        <?php
-                        foreach ($this->userList as $key => $user) {
-                            echo '<label class="btn btn-default">';
-                            echo '<input type="checkbox" name="user[]" value="' . $key . '" tabindex="4">' . $user;
-                            echo '</label>';
-                        }
-                        ?>
+                        <?php foreach ($this->userList as $key => $user) : ?>
+                            <label class="btn btn-default">
+                                <input type="checkbox" name="user[]" value="<?= $key ?>" tabindex="4"><?= $user ?>
+                            </label>
+                        <?php endforeach; ?>
                     </div>
-                    <?php
-                    if (isset($this->data['users'])) {
-                        echo '<span class="help-block">Select at least one resident!</span>';
-                    }
-                    ?> 
+                    <?php if (isset($this->data['users'])) : ?>
+                        <span class="help-block">Select at least one resident!</span>
+                    <?php endif; ?> 
                 </div>
 
                 <div class="form-group">
