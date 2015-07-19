@@ -258,7 +258,7 @@ aside {
         Navbar
     ============================================*/
 
-    /* Navigation bei Tablet und kleiner zentriert anzeigen */
+    /* Logo bei Tablet und kleiner zentriert anzeigen */
     .brand {
         margin-top: 5px;
         position: absolute;
@@ -273,14 +273,14 @@ aside {
     /* linke Navigation */
     aside {
         padding: 0;
-        margin-left: -52%; /* Versteckt */
+        left: -50%; /* Versteckt */
         width: 50%; /* Breite von Nav */
         height: 100%; /* volle höhe */
         float: left;
         position: fixed; /* nicht scrollbar */
         top: 50px; /* genau unter Navigation */
         bottom: 0; /* bis zum boden */
-        left: 0; /* ganz links am Rand */
+        z-index: 1000; /* immer vorderster layer */
     }
 
     /* Hauptcontent */
@@ -300,13 +300,12 @@ aside {
 
     /* Schiebe Left Menu nach rechts */
     #leftNav.showLeftMenu {
-        margin-left: 0;
+        left: 0;
     }
 
     /* Schiebe Content nach rechts */
     #mainContent.moveRight {
-        left: 52%; /* abstand zu linkem rand, nach rechts verschieben */
-        position: fixed; /* nicht scrollbar */
+        margin-right: -52%; /* abstand zu linkem rand, nach rechts verschieben */
     }
 
     /* Damit Content Recht klickbar wird */
