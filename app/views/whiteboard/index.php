@@ -37,6 +37,13 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Whiteboard</h3>
                 </div>
+                <?php if (empty($this->whiteboardList)) : ?>
+                    <!-- no entries available -->
+                    <div class="panel-body">
+                        <p class="text-info">There are no entries available.</p>
+                    </div>
+                <?php endif; ?>
+
                 <?php foreach ($this->whiteboardList as $key => $date) : // Loop durch nach Datum gruppiertes Array ?>
                     <table class="table table-striped">
                         <thead>
