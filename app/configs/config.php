@@ -1,7 +1,7 @@
 <?php
 //Konstanten
 //Website Name
-define('TITLE', 'FLATANIZE');
+define('TITLE', 'flatanize');
 
 //Frequenz
 define('ONCE', 'once');
