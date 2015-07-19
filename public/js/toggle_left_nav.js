@@ -1,3 +1,8 @@
+/*!
+ * Toggle Left Navigation
+ * @author Nico Florin
+ */
+
 /* Zeigt die linke Navigation an */
 $(document).ready(function() {
     $('#leftMenuBtn').click(function() {
