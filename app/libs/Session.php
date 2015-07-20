@@ -60,11 +60,13 @@ class Session {
      */
     public static function checkLogin() {
         if (Session::isLoggedIn()) {
+            // Prüfen ob FlatId Session var noch aktuell
+            // dann Session var FlatId mit Wert aus DB überschreiben
+            // sonst Session var FlatId löschen
             $userId = Session::getUserId();
             $db = new Database();
-            // Session var FlatId mit Wert aus DB überschreiben
-            // Select auf diesen user
             
+            // Select auf diesen user
             $bind = array(':userId' => $userId);
             $res = $db->select('flats_id', 'users', 'id = :userId LIMIT 1', $bind);
             $flatId = $res[0]['flats_id'];
