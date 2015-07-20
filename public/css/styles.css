@@ -9,10 +9,10 @@ Autor: Nico Florin
 ============================================*/
 /* Definiere eigene font */
 @font-face {
-	font-family: 'century-gothic';
-	src: url('../fonts/century-gothic.ttf');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'century-gothic';
+    src: url('../fonts/century-gothic.ttf');
+    font-weight: normal;
+    font-style: normal;
 }
 
 html {
@@ -201,8 +201,8 @@ footer {
     margin-right: auto;
     height: 50px;
     width: 100%;
-    background-color: #F9F9F9;
-    border-top: 1px solid #E3E3E3;
+    background-color: #F9F9F9; /* gleich wiw bg color */
+    border-top: 1px solid #E3E3E3; /* Rahmen oben hellgrau */
     display: block;
 }
 
@@ -211,7 +211,8 @@ footer > div {
 }
 
 footer > div > p {
-    margin-top: 15px; /* Text vertical zentrieren */
+    /* Text vertical zentrieren */
+    margin-top: 15px; 
     margin-bottom: 15px;
 }
 
@@ -262,7 +263,7 @@ footer > div > p {
     html, body {
         overflow-x: hidden;/* kein Scrollen nach links und rechts */
     }
-    
+
     body {
         margin-top: 58px; /* Abstand zu Navigation.*/
     }
@@ -338,7 +339,7 @@ footer > div > p {
     #leftNav {
         background-color: #222; /* Hintergrund gleich navbar */
     }
-    
+
     /* Design Linke Navigation*/
     .nav-pills > li.active > a, 
     .nav-pills > li.active > a:focus, 
@@ -346,7 +347,7 @@ footer > div > p {
         background-color: #000;
         color: #fff;
     }
-    
+
     /* Design Linke Navigation*/
     .nav-pills > li > a {
         color: #9d9d9d;
@@ -354,12 +355,12 @@ footer > div > p {
         padding-top: 15px;
         padding-bottom: 15px;
     }
-    
+
     /* Rahmen unterhalt Nav li elemente */
     .nav-pills > li {
         border-bottom: 1px solid;
     }
-    
+
     /* Kein Abstand zwischen Nav li Elementen */
     .nav-stacked>li+li  {
         margin: 0;
