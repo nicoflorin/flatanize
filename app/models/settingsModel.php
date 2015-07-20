@@ -2,6 +2,8 @@
 
 /**
  * Verarbeitet die Registrierung eines Benutzers
+ * 
+ * @author Nico
  */
 class SettingsModel extends Model {
 

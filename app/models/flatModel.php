@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of flatModel
+ * Verarbeitet die WG Logik
  *
  * @author Nico
  */

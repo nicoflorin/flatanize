@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of taskModel
+ * Verarbeitet die Task Logik
  *
  * @author Nico
  */

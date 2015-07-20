@@ -1,12 +1,17 @@
 <?php
 /**
- * Description of whiteboardModel
+ * Verarbeitet die Whiteboard Logik
  *
  * @author Nico
  */
 class whiteboardModel extends Model {
+    
     /**
      * Fügt einen neuen Eintrag zum Whiteboard hinzu
+     * @param int $flatId
+     * @param int $userId
+     * @param string $text
+     * @return boolean
      */
     public function addToWhiteboard($flatId, $userId, $text) {
 
@@ -26,8 +31,8 @@ class whiteboardModel extends Model {
     
      /**
       * Holt gewisse Anzahl von Whiteboard Einträgen aus DB
-      * @param type $flatId
-      * @param type $count
+      * @param int $flatId
+      * @param int $limit
       * @return array
       */
     public function getWhiteboardList($flatId, $limit = '25') {

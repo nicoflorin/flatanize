@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of shoppingModel
+ * Verarbeitet die Shopping Logik
  *
  * @author Nico
  */

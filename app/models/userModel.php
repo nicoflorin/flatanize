@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Verarbeitet die User Logik
+ * 
+ * @author Nico
+ */
 class UserModel extends Model {
 
     function __construct() {
@@ -8,6 +13,9 @@ class UserModel extends Model {
 
     /**
      * Verlinkt einen User mit einer Flat
+     * @param int $userId
+     * @param int $flatId
+     * @return boolean
      */
     public function linkUserToFlat($userId, $flatId) {
         $bind = array(
@@ -24,7 +32,7 @@ class UserModel extends Model {
 
     /**
      * Holt den Displaynamen eines Users aus der DB
-     * @param type $userId
+     * @param int $userId
      */
     public function getDisplayName($userId) {
         $bind = array(
@@ -40,7 +48,7 @@ class UserModel extends Model {
 
     /**
      * Holt alle DisplayNames einer WG aus der DB
-     * @param type $flatId
+     * @param int $flatId
      * @return array
      */
     public function getAllDisplayNames($flatId) {
@@ -63,7 +71,7 @@ class UserModel extends Model {
     
      /**
      * Holt alle Infos zu allen User einer WG aus der DB
-     * @param type $flatId
+     * @param int $flatId
      * @return array
      */
     public function getAllUsers($flatId) {
