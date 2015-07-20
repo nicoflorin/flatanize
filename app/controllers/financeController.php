@@ -36,61 +36,19 @@ class FinanceController extends Controller {
             //Hole alle beteiligten Users pro Finanz Eintrag, schreibe in Array mit Index FinanzID
             $users[$financeId] = $this->model->getUsersOfFinanceEntry($financeId);
         }
+        //Hole Alle Users einer WG
+        $this->loadModel('flat');
+        $flatUsers = $this->model->getFlatUsers($flatId);
+        
         // Berechne Balance Informationen pro User
-        $userBalance = $this->calcBalanceInfos();
+        $this->loadModel('finance');
+        $userBalance = $this->model->calcBalanceInfos($flatId, $flatUsers);
 
         //übergebe Daten an View
         $this->view->userBalance = $userBalance;
         $this->view->userList = $users;
         $this->view->financeList = $financeList;
         $this->view->render('finance/index', 'Finances');
-    }
-
-    /**
-     * Berechnet Balance Informationen
-     */
-    public function calcBalanceInfos() {
-        $flatId = Session::getFlatId();
-        //Alle Benutzer einer WG suchen
-        $this->loadModel('flat');
-        $usersBalance = $this->model->getFlatUsers($flatId);
-
-        $this->loadModel('finance');
-        //Hole Total aller Einträge für WG
-        //$total = $this->model->getTotal($flatId);
-        $total = 0;
-
-
-        if (!empty($usersBalance)) {
-            //Berechne Differenz von Total Bezahlt - SOLL bezahlt pro User
-            foreach ($usersBalance as $key => $user) {
-                $userId = $user['id'];
-                $usersBalance[$key]['sum'] = $this->model->getSumOfUser($flatId, $userId); //Was User effektiv bezahlt hat
-                $usersBalance[$key]['total'] = $this->model->getTotalPerUser($flatId, $userId); //Was User zahlen muss
-                $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'], 2);
-
-                //Total Berechnen (Total = 100%)
-                if ($usersBalance[$key]['diff'] > 0) {
-                    $total += $usersBalance[$key]['diff'];
-                }
-            }
-
-            foreach ($usersBalance as $key => $user) {
-                //Prozentsatz von Differenz zu Total
-                $oneperc = $total / 100;
-
-                //Division durch null vermeiden
-                if ($oneperc > 0 && $usersBalance[$key]['diff'] != 0) {
-                    $usersBalance[$key]['perc'] = abs(round($usersBalance[$key]['diff'] / $oneperc));
-                } else {
-                    $usersBalance[$key]['perc'] = 100;
-                }
-            }
-
-            return $usersBalance;
-        } else {
-            return false;
-        }
     }
 
     /**

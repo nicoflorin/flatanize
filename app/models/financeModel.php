@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of financeModel
+ * Verarbeitet die Finanzlogik
  *
  * @author Nico
  */
@@ -9,12 +9,12 @@ class FinanceModel extends Model {
 
     /**
      * Erstellt einen neuen Finanz Eintrag in DB
-     * @param type $flatId
-     * @param type $userId
-     * @param type $product
-     * @param type $price
-     * @param type $date
-     * @param type $users
+     * @param int $flatId
+     * @param int $userId
+     * @param string $product
+     * @param float $price
+     * @param date $date
+     * @param array $users
      * @return boolean
      */
     public function create($flatId, $userId, $product, $price, $date, $users, $pricePP) {
@@ -44,7 +44,7 @@ class FinanceModel extends Model {
 
     /**
      * Löscht einen Eintrag aus der DB
-     * @param type $id
+     * @param int $id
      * @return boolean
      */
     public function deleteEntry($id) {
@@ -66,8 +66,8 @@ class FinanceModel extends Model {
 
     /**
      * Erstellt die Einträge in finances_users
-     * @param type $userId
-     * @param type $financesId
+     * @param int $userId
+     * @param int $financesId
      * @return boolean
      */
     public function setFinancesUser($userId, $financesId, $pricePP) {
@@ -89,7 +89,7 @@ class FinanceModel extends Model {
 
     /**
      * Holt die Liste der Finanzeinträge, welche nicht gecleared sind
-     * @param type $flatId
+     * @param int $flatId
      * @return array
      */
     public function getFinanceList($flatId) {
@@ -111,7 +111,7 @@ class FinanceModel extends Model {
 
     /**
      * Holt alle Users eines Finance Eintrages aus der DB
-     * @param type $financesId
+     * @param int $financesId
      * @return array
      */
     public function getUsersOfFinanceEntry($financesId) {
@@ -129,8 +129,8 @@ class FinanceModel extends Model {
 
     /**
      * Holt die Summe der bezahlten Einträge pro Benutzer, welche nicht gecleared sind
-     * @param type $flatId
-     * @return array
+     * @param int $flatId
+     * @return int
      */
     public function getSumOfUser($flatId, $userId) {
         $bind = array(
@@ -138,9 +138,7 @@ class FinanceModel extends Model {
             ':userId' => $userId
         );
         $res = $this->db->select(
-                'added_by, sum(price) as sum', 
-                'finances', 
-                'cleared = 0
+                'added_by, sum(price) as sum', 'finances', 'cleared = 0
                 AND flats_id = :flatId
                 AND added_by = :userId
                 GROUP BY added_by', $bind);
@@ -154,9 +152,9 @@ class FinanceModel extends Model {
 
     /**
      * Holt alle Einträge für einen Benutzer an denen er beteiligt war
-     * @param type $flatId
-     * @param type $userId
-     * @return type
+     * @param int $flatId
+     * @param int $userId
+     * @return array
      */
     public function getEntriesPerUser($flatId, $userId) {
         $bind = array(
@@ -178,9 +176,9 @@ class FinanceModel extends Model {
 
     /**
      * Holt das Total zu bezahlende pro User
-     * @param type $flatId
-     * @param type $userId
-     * @return type
+     * @param int $flatId
+     * @param int $userId
+     * @return int
      */
     public function getTotalPerUser($flatId, $userId) {
         $bind = array(
@@ -202,7 +200,7 @@ class FinanceModel extends Model {
 
     /**
      * Holt das Total aller Einträge einer WG
-     * @param type $flatId
+     * @param int $flatId
      * @return int
      */
     public function getTotal($flatId) {
@@ -222,7 +220,7 @@ class FinanceModel extends Model {
 
     /**
      * Rechnet für eine WG die Balance ab
-     * @param type $flatId
+     * @param int $flatId
      * @return boolean
      */
     public function clearBalance($flatId) {
@@ -234,6 +232,51 @@ class FinanceModel extends Model {
 
         if ($res > 0) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Berechnet Balance Informationen
+     * @param int $flatId
+     * @param int $flatUsers
+     * @return array|boolean
+     */
+    public function calcBalanceInfos($flatId, $flatUsers) {
+
+        $usersBalance = $flatUsers;
+
+        //Hole Total aller Einträge für WG
+        $total = 0;
+
+        if (!empty($usersBalance)) {
+            //Berechne Differenz von Total Bezahlt - SOLL bezahlt pro User
+            foreach ($usersBalance as $key => $user) {
+                $userId = $user['id'];
+                $usersBalance[$key]['sum'] = $this->getSumOfUser($flatId, $userId); //Was User effektiv bezahlt hat
+                $usersBalance[$key]['total'] = $this->getTotalPerUser($flatId, $userId); //Was User zahlen muss
+                $usersBalance[$key]['diff'] = round($usersBalance[$key]['sum'] - $usersBalance[$key]['total'], 2);
+
+                //Total Berechnen (Total = 100%)
+                if ($usersBalance[$key]['diff'] > 0) {
+                    $total += $usersBalance[$key]['diff'];
+                }
+            }
+
+            foreach ($usersBalance as $key => $user) {
+                //Prozentsatz von Differenz zu Total
+                $oneperc = $total / 100;
+
+                //Division durch null vermeiden
+                if ($oneperc > 0 && $usersBalance[$key]['diff'] != 0) {
+                    $usersBalance[$key]['perc'] = abs(round($usersBalance[$key]['diff'] / $oneperc));
+                } else {
+                    $usersBalance[$key]['perc'] = 100;
+                }
+            }
+
+            return $usersBalance;
         } else {
             return false;
         }
