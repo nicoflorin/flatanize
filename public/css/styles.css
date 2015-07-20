@@ -194,7 +194,26 @@ aside {
 /* ===========================================
     Footer
 ============================================*/
+footer {
+    position: fixed;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 100%;
+    background-color: #EAEAEA;
+    display: block;
+}
 
+footer > div {
+    height: 100%;
+    margin: auto;
+}
+
+footer > div > p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
 /* ===========================================
     Media Queries
