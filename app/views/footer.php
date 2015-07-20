@@ -4,7 +4,7 @@
 <!-- Footer only on large devices -->
 
 <footer class="hidden-xs">
-    <div class="text-center text-muted">
+    <div class="text-center">
         <p>&copy; <?php echo date("Y") ?> - Nico Florin All Rights Reserved</p> 
     </div>
 </footer>
