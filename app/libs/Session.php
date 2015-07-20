@@ -60,6 +60,22 @@ class Session {
      */
     public static function checkLogin() {
         if (Session::isLoggedIn()) {
+            $userId = Session::getUserId();
+            $db = new Database();
+            // Session var FlatId mit Wert aus DB überschreiben
+            // Select auf diesen user
+            
+            $bind = array(':userId' => $userId);
+            $res = $db->select('flats_id', 'users', 'id = :userId LIMIT 1', $bind);
+            $flatId = $res[0]['flats_id'];
+            
+            //Prüfen ob flatId in DB leer
+            if (!empty($flatId)) {
+                Session::setFlatId($flatId); //flatId Session var überschreiben
+            } else {
+                Session::unSetFlatId(); //flatId Session var löschen
+            }
+            
             return true;
         } else {
             Session::destroy();
