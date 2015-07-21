@@ -51,7 +51,7 @@ class WhiteboardController extends Controller {
         //Falls kein Text eingegeben wurde
         if (!empty($text)) {
             $this->loadModel('whiteboard');
-            $res = $this->model->addToWhiteboard($flatId, $userId, $text);
+            $this->model->addToWhiteboard($flatId, $userId, $text);
         }
 
         $this->redirect('whiteboard', 'index');
