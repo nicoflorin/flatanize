@@ -37,11 +37,11 @@ class FinanceController extends Controller {
             $users[$financeId] = $this->model->getUsersOfFinanceEntry($financeId);
         }
         //Hole Alle Users einer WG
-        $this->loadModel('flat');
-        $flatUsers = $this->model->getFlatUsers($flatId);
+        $this->requireModel('flat');
+        $flatModel = new FlatModel();
+        $flatUsers = $flatModel->getFlatUsers($flatId);
         
         // Berechne Balance Informationen pro User
-        $this->loadModel('finance');
         $userBalance = $this->model->calcBalanceInfos($flatId, $flatUsers);
 
         //übergebe Daten an View

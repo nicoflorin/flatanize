@@ -10,13 +10,13 @@ class Controller {
 
     function __construct() {
         $this->view = new View();
-        Session::init();
-        Cookie::checkCookieLogin();
+        Session::init(); //Session initialisieren
+        Cookie::checkCookieLogin(); //Prüfen ob Cookie Login OK
     }
 
     /**
      * Lädt ein Model und instanziert es anschliessend
-     * @param type $model
+     * @param string $model
      */
     public function loadModel($model) {
 
@@ -28,9 +28,24 @@ class Controller {
             $this->model = new $this->model();
         }
     }
+    
+    /**
+     * Bindet eine Model Klasse ein
+     * @param string $model
+     */
+    public function requireModel($model) {
+        $file = ROOT . '/app/models/' . $model . 'Model.php';
+
+        if (file_exists($file)) {
+            require_once $file;
+        }
+    }
 
     /**
      * Leitet Anfrage per Header Änderung um
+     * @param string $controller
+     * @param string $method
+     * @param array $args
      */
     public function redirect($controller="home", $method = "index", $args = array()) {
 

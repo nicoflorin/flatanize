@@ -29,8 +29,9 @@ class SettingsController extends Controller {
             $this->view->flatCode = $this->model->getFlatCode($flatId);
 
             //Hole Usernames und übergebe an view
-            $this->loadModel('user');
-            $this->view->users = $this->model->getAllUsers($flatId);
+            $this->requireModel('user');
+            $userModel = new UserModel();
+            $this->view->users = $userModel->getAllUsers($flatId);
         }
         $this->view->render('settings/flatSettings', 'Flat Settings');
     }
@@ -119,10 +120,12 @@ class SettingsController extends Controller {
         $flatCode = $this->model->getFlatCode(Session::getFlatId());
 
         //@Todo Email versand
-        $betreff = 'Der Betreff';
-        $nachricht = $flatCode;
-        $header = 'From: webmaster@example.com' . "\r\n" .
-                'Reply-To: webmaster@example.com' . "\r\n" .
+        $betreff = 'flatanize invitation';
+        $nachricht = 'Hello' . "\r\n" . 'Want to join my awesome flat on flatanize?' . "\r\n" .
+                'Create an account on ' . URL . '/register/index and enter this flat code: '. $flatCode;
+ 
+        $header = 'From: webmaster@flatanize.com' . "\r\n" .
+                'Reply-To: webmaster@flatanize.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
 
         mail($email, $betreff, $nachricht, $header);
