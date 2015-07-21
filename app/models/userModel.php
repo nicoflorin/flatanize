@@ -33,6 +33,7 @@ class UserModel extends Model {
     /**
      * Holt den Displaynamen eines Users aus der DB
      * @param int $userId
+     * @return string, boolean
      */
     public function getDisplayName($userId) {
         $bind = array(
