@@ -1,5 +1,5 @@
 <?php
-if (Session::isLoggedIn()) {
+if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
     require_once ROOT . '/app/views/app/left_nav.php';
 }
 ?>
@@ -38,7 +38,7 @@ if (Session::isLoggedIn()) {
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq3">3. How can i create a new flat?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq3">3. How can I create a new flat?</a>
                 </h4>
             </div>
             <div id="faq3" class="panel-collapse collapse">
@@ -50,7 +50,7 @@ if (Session::isLoggedIn()) {
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq4">4. How can i join a flat someone else created?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq4">4. How can I join a flat someone else created?</a>
                 </h4>
             </div>
             <div id="faq4" class="panel-collapse collapse">
@@ -75,37 +75,73 @@ if (Session::isLoggedIn()) {
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq6">6. How throw out a mate that has left my flat?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq6">6. How can I throw out a mate that has left my flat?</a>
                 </h4>
             </div>
             <div id="faq6" class="panel-collapse collapse">
                 <div class="panel-body">
                     <p>To throw out you head to flat settings and hit the throw out button under the information panel. Confirm your choice and voilà, he's gone.</p>
-                    <p>It was a mistake? Just let him join the flat again by entering the flat code under the join panel.</p>
+                    <p>It was a mistake? Just let him join the flat again by entering the flat code under the join flat panel.</p>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq7">7. How can i create a new flat?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq7">7. I have no smartphone. Can I use <?= TITLE ?> nonetheless?</a>
                 </h4>
             </div>
             <div id="faq7" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <p></p>
+                    <p>Yes, you can ;-). <?= TITLE ?> is a responsive website, that looks good on every device with internet and a web browser.</p>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq8">8. How can i create a new flat?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq8">8. How can I edit a scheduled task?</a>
                 </h4>
             </div>
             <div id="faq8" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <p></p>
+                    <p>That's not possible at the moment i'm afraid. But you can delete it by clicking on it and hit delete. Create a new one afterwards.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq9">9. How can I edit a finance entry?</a>
+                </h4>
+            </div>
+            <div id="faq9" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>That's not possible at the moment i'm afraid. But you can delete it by clicking on it and hit delete. Create a new one afterwards.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq10">10. Want to quit <?= TITLE ?>?</a>
+                </h4>
+            </div>
+            <div id="faq10" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>To quit, you'll have to leave your flat and write an email to <?= WEBMASTER ?> with the subject "delete account".</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq11">11. Want to delete your flat?</a>
+                </h4>
+            </div>
+            <div id="faq11" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>To delete a flat, all your mates have to leave the flat and then write an email to <?= WEBMASTER ?> with the subject "delete flat".</p>
                 </div>
             </div>
         </div>
