@@ -26,7 +26,7 @@ class App {
         $url = $this->parseUrl();
 
         // Prüfe ob Controller existiert
-        $file = '../app/controllers/' . $url[0] . 'Controller.php';
+        $file = ROOT . '/app/controllers/' . $url[0] . 'Controller.php';
         if (file_exists($file)) {
             $this->controller = $url[0] . 'Controller';
             unset($url[0]);
@@ -37,7 +37,7 @@ class App {
         require_once $file;
 
         //erstelle neues controller Objekt
-        $this->controller = new $this->controller;
+        $this->controller = new $this->controller();
 
         //Prüfe ob Methode existiert
         if (isset($url[1])) {
@@ -55,7 +55,7 @@ class App {
     }
 
     /**
-     * Liest url String aus und trennt diesen nach "/". Erstellt Array mit
+     * Liest url String aus und trennt diesen nach "/". Erstellt Array
      * @return string
      */
     public function parseUrl() {
