@@ -2,6 +2,7 @@
 //Konstanten
 //Website Name
 define('TITLE', 'flatanize');
+define('WEBMASTER', 'webmaster@flatanize.com');
 
 //Frequenz
 define('ONCE', 'once');
