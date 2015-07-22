@@ -52,7 +52,7 @@
                                         <?php elseif (isset($entry['today'])) : // Falls Heute Meldung anzeigen ?>
                                             <strong class="text-success">today</strong>
                                         <?php else : ?>
-                                            <p>due in <?= $entry['due_in'] ?> days</p>
+                                            <p>due in <?= $entry['due_in'] ?> <?php echo ($entry['due_in'] == 1) ? 'day' : 'days' ?></p>
                                         <?php endif; ?>
                                     </td>
 
@@ -93,16 +93,13 @@
                                     <p>Scheduled: <?= $entry['description'] ?></p>
                                     <p>Next is <?= $entry['display_name'] ?></p>
                                     <br>
-                                    <?php
-                                    // Falls fällig, Meldung anzeigen
-                                    if (isset($entry['overdue'])) {
-                                        echo '<p>This task is <strong class="text-danger">overdue!</strong></p>';
-                                    } elseif (isset($entry['today'])) { // Falls Heute Meldung anzeigen
-                                        echo '<p>This task is due <strong class="text-success">today!</strong></p>';
-                                    } else {
-                                        echo '<p>This task is due in ' . $entry['due_in'] . ' days.</p>';
-                                    }
-                                    ?>
+                                    <?php if (isset($entry['overdue'])) : // Falls fällig, Meldung anzeigen ?>
+                                        <p>This task is <strong class="text-danger">overdue!</strong></p>
+                                    <?php elseif (isset($entry['today'])) : // Falls Heute Meldung anzeigen ?>
+                                        <p>This task is due <strong class="text-success">today!</strong></p>
+                                    <?php else : ?>
+                                        <p>This task is due in <?= $entry['due_in'] ?> <?php echo ($entry['due_in'] == 1) ? 'day' : 'days' ?>.</p>
+                                    <?php endif; ?>
 
                                 </div>
                                 <div class="modal-footer">
