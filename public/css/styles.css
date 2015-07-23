@@ -244,6 +244,11 @@ footer > div > p {
     body {
         margin-top: 60px; /* Abstand zu Navigation.*/
     }
+    
+    /* Grösse Überschrift 1 auf mobile etwas kleiner */
+    h1 {
+        font-size: 1.6em;
+    }
 
     /* =========================================== */
     /* Shopping List */
@@ -298,8 +303,8 @@ footer > div > p {
     /* linke Navigation */
     aside {
         padding: 0;
-        left: -50%; /* Versteckt */
-        width: 50%; /* Breite von Nav */
+        left: -60%; /* Versteckt */
+        width: 60%; /* Breite von Nav */
         height: 100%; /* volle höhe */
         float: left;
         position: fixed; /* nicht scrollbar */
@@ -330,7 +335,7 @@ footer > div > p {
 
     /* Schiebe Content nach rechts */
     #mainContent.moveRight {
-        margin-right: -52%; /* abstand zu linkem rand, nach rechts verschieben */
+        margin-right: -62%; /* abstand zu linkem rand, nach rechts verschieben */
     }
 
     /* Damit Content Recht klickbar wird */
