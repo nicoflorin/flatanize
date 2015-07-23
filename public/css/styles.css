@@ -49,6 +49,11 @@ aside {
     margin-top: 0;   
 }
 
+/* text in panel ohne margin */
+div.panel-body > p {
+    margin: 0;
+}
+
 /* =========================================== */
 /* Tabellen */
 
