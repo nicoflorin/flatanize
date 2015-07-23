@@ -7,7 +7,6 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
     <div class="page-header">
         <h1><i class="fa fa-question-circle fa-lg fa-fw"></i> <?= $this->data['title'] ?></h1>
     </div>
-    <!-- @Todo FAQ erstellen -->
     <!-- Bootstrap Accordion -->
     <div class="panel-group" id="faqAccordion">
         <div class="panel panel-default">
@@ -142,6 +141,18 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
             <div id="faq11" class="panel-collapse collapse">
                 <div class="panel-body">
                     <p>To delete a flat, all your mates have to leave the flat and then write an email to <?= WEBMASTER ?> with the subject "delete flat".</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq12">12. No email is send, when inviting a friend?</a>
+                </h4>
+            </div>
+            <div id="faq12" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Sometimes the email is in the SPAM folder. Check the SPAM folder on your email account.</p>
                 </div>
             </div>
         </div>
