@@ -263,6 +263,8 @@ footer > div > p {
 
     /* =========================================== */
     /* Shopping List */
+    
+    /* kein Padding um Platz zu sparen */
     .nopadding-right-xs {
         padding-right: 1px !important;
     }
