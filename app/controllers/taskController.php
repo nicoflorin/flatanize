@@ -24,6 +24,7 @@ class TaskController extends Controller {
         $userTaskList = array();
         
         //Alle Tasks des eingeloggten User rausholen
+        //und aus allgemeinen taskliste löschen
         foreach ($taskList as $key => $task) {
             if ($userId == $task['userId']) {
                 $userTaskList[] = $task;
