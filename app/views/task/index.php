@@ -56,11 +56,11 @@
                                         <?php endif; ?>
                                     </td>
 
-                                    <td onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
+                                    <td class="nopadding-left-xs nopadding-right-xs" onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
                                         <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
                                     </td>
 
-                                    <td class="text-right">
+                                    <td class="text-right nopadding-left-xs nopadding-right-xs">
                                         <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post">
                                             <input type="hidden" name="id" value="<?= $entry['id'] ?>">
                                             <button type="submit" class="btn btn-success"><i class="fa fa-check fa-lg"></i></button>
