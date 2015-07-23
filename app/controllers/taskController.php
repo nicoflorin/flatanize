@@ -17,7 +17,22 @@ class TaskController extends Controller {
      */
     public function index() {
         $flatId = Session::getFlatId();
-        $this->view->taskList = $this->getTaskList($flatId);
+        $userId = Session::getUserId();
+        
+        //Hole Alle Task inkl. aktivem User
+        $taskList = $this->getTaskList($flatId);
+        $userTaskList = array();
+        
+        //Alle Tasks des eingeloggten User rausholen
+        foreach ($taskList as $key => $task) {
+            if ($userId == $task['userId']) {
+                $userTaskList[] = $task;
+                unset($taskList[$key] );
+            }
+        }
+        
+        $this->view->userTaskList = $userTaskList;
+        $this->view->taskList = $taskList;
         //Seite laden
         $this->view->render('task/index', 'Task Scheduling');
     }

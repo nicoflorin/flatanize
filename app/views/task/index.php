@@ -19,10 +19,66 @@
                 </button>
             </div>
             <br>
-            <!-- Flat schedules -->
+
+            <!-- User Flat schedules -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Your Scheduled Tasks</h3>
+                    <h3 class="panel-title">Your Next Tasks</h3>
+                </div>
+                <?php if (empty($this->userTaskList)) : ?>
+                    <!-- no tasks available -->
+                    <div class="panel-body">
+                        <p class="text-info">You have no open tasks.</p>
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($this->userTaskList)) : ?>
+                    <table class="table table-hover">
+                        <thead class="nopadding">
+                            <tr>
+                                <th class="col-xs-5 nopadding"></th>
+                                <th class="col-xs-4 nopadding"></th>
+                                <th class="col-xs-3 nopadding"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($this->userTaskList as $key => $entry) : ?>
+                                <!-- row als Link zu Modal -->
+                                <tr class="<?php echo (isset($entry['overdue'])) ? 'bg-danger' : '' ?>">
+                                    <td onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
+                                        <strong><?= $entry['title'] ?></strong>
+                                        <p><?= $entry['description'] ?></p>
+                                        <?php if (isset($entry['overdue'])) : // Falls fällig, Meldung anzeigen ?>
+                                            <strong class="text-danger">overdue</strong>
+                                        <?php elseif (isset($entry['today'])) : // Falls Heute Meldung anzeigen ?>
+                                            <strong class="text-success">today</strong>
+                                        <?php else : ?>
+                                            <p>due in <?= $entry['due_in'] ?> <?php echo ($entry['due_in'] == 1) ? 'day' : 'days' ?></p>
+                                        <?php endif; ?>
+                                    </td>
+
+                                    <td onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
+                                        <p><?= $entry['display_name'] ?>'s turn</p>
+                                        <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
+                                    </td>
+
+                                    <td class="text-right">
+                                        <form action="<?php echo URL . '/task/setTaskDone'; ?>" method="post">
+                                            <input type="hidden" name="id" value="<?= $entry['id'] ?>">
+                                            <button type="submit" class="btn btn-success"><i class="fa fa-check fa-lg"></i></button>
+                                            <i class="fa fa-chevron-right"></i>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div><!-- end panel -->
+
+            <!-- All other Flat schedules -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your Mates Next Tasks</h3>
                 </div>
                 <?php if (empty($this->taskList)) : ?>
                     <!-- no tasks available -->

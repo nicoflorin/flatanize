@@ -113,7 +113,7 @@ class TaskModel extends Model {
             ':taskId' => $taskId
         );
         $res = $this->db->select(
-                'a.id, d.description, a.title, a.next_date, c.display_name'
+                'a.id, d.description, a.title, a.next_date, c.display_name, c.id as userId'
                 , 'tasks a, tasks_users b, users c, frequencies d'
                 , 'a.id = b.tasks_id
                     AND c.id = b.users_id
