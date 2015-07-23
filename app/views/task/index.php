@@ -57,7 +57,6 @@
                                     </td>
 
                                     <td onclick="input" data-toggle="modal" href="#TaskInfoId<?= $entry['id'] ?>">
-                                        <p><?= $entry['display_name'] ?>'s turn</p>
                                         <p>On <strong><?= $entry['day'] ?></strong>, <?= $entry['next_date'] ?></p>
                                     </td>
 
