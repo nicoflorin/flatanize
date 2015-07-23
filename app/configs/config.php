@@ -21,5 +21,5 @@ define('SUNDAY', 'Sunday');
 define('CURR', 'CHF');
 
 //Paths Konstanten
-define('URL', 'http://'.$_SERVER['HTTP_HOST'].'/flatanize');
+define('URL', 'http://'.$_SERVER['HTTP_HOST']);
 // ROOT in public/index.php definiert. ROOT => flatanize
