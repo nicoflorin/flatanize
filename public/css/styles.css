@@ -23,8 +23,8 @@ body {
     margin-top: 80px; /* Abstand zu Navigation.*/
     /* margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
-    font-size: 1.5em;
     font-family: century-gothic;
+    font-size: 1.5em;
 }
 
 /* Linke Navigation */
@@ -103,6 +103,17 @@ div.panel-body > p {
     left: 0;
     width: 100%;
     color: black;
+}
+
+/* Tabs Navigation */
+/* pro Tab 50% breite */
+#financeTabs.nav > li {
+    width: 50%;
+}
+
+/* Text in Tab zentrieren */
+#financeTabs.nav > li > a {
+    text-align: center;
 }
 
 /* ===========================================
@@ -231,6 +242,10 @@ footer > div > p {
     /* ===========================================
         Global Styles
     ============================================*/
+    body {
+        margin-top: 60px; /* Abstand zu Navigation.*/
+    }
+
     /* Damit auf Smartphone nicht zu viel Platz */
     /* verschwendet wird */
     .well {
@@ -241,10 +256,6 @@ footer > div > p {
         padding: 5px
     }
 
-    body {
-        margin-top: 60px; /* Abstand zu Navigation.*/
-    }
-    
     /* Grösse Überschrift 1 auf mobile etwas kleiner */
     h1 {
         font-size: 1.6em;
@@ -253,11 +264,11 @@ footer > div > p {
     /* =========================================== */
     /* Shopping List */
     .nopadding-right-xs {
-        padding-right: 1px;
+        padding-right: 1px !important;
     }
 
     .nopadding-left-xs {
-        padding-left: 1px;
+        padding-left: 1px !important;
     }
 
     .nopadding-xs {
