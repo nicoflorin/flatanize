@@ -17,6 +17,9 @@
         <!-- own Stylesheet -->
         <link href="<?= URL ?>/public/css/styles.css" rel="stylesheet">
         
+        <!-- @Todo favicon -->
+        
+        <!-- @Todo SEO Tags -->
         
         <!-- iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
