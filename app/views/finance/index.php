@@ -13,7 +13,7 @@
 
     <?php if (Session::getFlatId()) : ?>
         <!-- Tab Navigation -->
-        <ul class="nav nav-tabs">
+        <ul id="financeTabs" class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#financeEntry"><i class="fa fa-list-ul fa-lg fa-fw"></i> Entries</a></li>
             <li><a data-toggle="tab" href="#financeBalance"><i class="fa fa-pie-chart fa-lg fa-fw"></i> Balance</a></li>
         </ul><!-- end nav -->
