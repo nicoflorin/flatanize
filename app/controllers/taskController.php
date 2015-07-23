@@ -20,8 +20,10 @@ class TaskController extends Controller {
         $userId = Session::getUserId();
         
         //Hole Alle Task inkl. aktivem User
-        $taskList = $this->getTaskList($flatId);
-        $userTaskList = array();
+        $taskList = $this->getTaskList($flatId); //liste der Task für die anderen WG Bewohner
+        
+        $allTaskList = $taskList; //Alle Tasks der WG
+        $userTaskList = array(); //liste der Tasks für eingeloggten User
         
         //Alle Tasks des eingeloggten User rausholen
         //und aus allgemeinen taskliste löschen
@@ -33,6 +35,7 @@ class TaskController extends Controller {
         }
         
         $this->view->userTaskList = $userTaskList;
+        $this->view->allTaskList = $allTaskList;
         $this->view->taskList = $taskList;
         //Seite laden
         $this->view->render('task/index', 'Task Scheduling');

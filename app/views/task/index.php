@@ -134,7 +134,7 @@
             <!-- Modal für Task Information -->
             <div id="taskModal">
                 <?php
-                foreach ($this->taskList as $entry) {
+                foreach ($this->allTaskList as $entry) {
                     ?>
                     <div id="TaskInfoId<?= $entry['id'] ?>" class="modal fade">
                         <div class="modal-dialog">
