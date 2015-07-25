@@ -54,6 +54,16 @@ div.panel-body > p {
     margin: 0;
 }
 
+/* leicht eingerückt */
+.indent {
+    margin-left: 20px;
+}
+
+/* kleiner Abstand oben für Badges */
+.badge {
+    margin-top: 2px;
+}
+
 /* =========================================== */
 /* Tabellen */
 
