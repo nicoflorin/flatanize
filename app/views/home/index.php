@@ -6,26 +6,33 @@
         <li data-slide-to="0" data-target="#mainCarousel" class="active"></li>
         <li data-slide-to="1" data-target="#mainCarousel"></li>
         <li data-slide-to="2" data-target="#mainCarousel"></li>
+        <li data-slide-to="3" data-target="#mainCarousel"></li>
     </ol>
 
     <!-- Wrapper für slides -->
     <div class="carousel-inner">
         <div class="item active" id="slide1">
             <div class="carousel-caption">
-                <h4>Slide 1</h4>
-                <p>blabla blablab alblab lablablab albla blabl ablabalblablab lablabal</p>
+                <h4>Whiteboard</h4>
+                <p>Write important messages to the whiteboard, so all your flat mates can see them!</p>
             </div>
         </div><!-- end item -->
         <div class="item" id="slide2">
             <div class="carousel-caption">
-                <h4>Slide 2</h4>
-                <p>blabla blablab alblab lablablab albla blabl ablabalblablab lablabal</p>
+                <h4>Shopping List</h4>
+                <p>Create and maintain a shared shopping list!</p>
             </div>
         </div><!-- end item -->
         <div class="item" id="slide3">
             <div class="carousel-caption">
-                <h4>Slide 3</h4>
-                <p>blabla blablab alblab lablablab albla blabl ablabalblablab lablabal</p>
+                <h4>Task Scheduling</h4>
+                <p>Organize your daily doings in your flat with an awesome task scheduler!</p>
+            </div>
+        </div><!-- end item -->
+        <div class="item" id="slide4">
+            <div class="carousel-caption">
+                <h4>Finances</h4>
+                <p>No struggle with your expenses anymore! Flatanize keeps track of your finances.</p>
             </div>
         </div><!-- end item -->
     </div><!-- end carousel-inner -->
@@ -42,7 +49,7 @@
         <h1>Welcome to <?= TITLE ?></h1>
     </div><!-- end page-header -->
 
-    <p class="lead">Some solid leading copy text comes here</p>
+    <p class="lead"></p>
 
     <a href="<?= URL ?>/register/signUp" class="btn btn-large btn-primary">Sign Up now!</a>
 </div><!-- end mainCallout -->
