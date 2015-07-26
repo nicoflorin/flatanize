@@ -122,7 +122,7 @@ class SettingsController extends Controller {
         //@Todo Email versand
         $betreff = 'flatanize invitation';
         $nachricht = 'Hello' . "\r\n" . 'Want to join my awesome flat on flatanize?' . "\r\n" .
-                'Create an account on ' . URL . '/register/index and enter this flat code: '. $flatCode;
+                'Create an account at ' . URL . '/register/index and enter this flat code: '. $flatCode;
  
         $header = 'From: webmaster@flatanize.com' . "\r\n" .
                 'Reply-To: webmaster@flatanize.com' . "\r\n" .
