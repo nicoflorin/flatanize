@@ -49,14 +49,14 @@ aside {
     margin-top: 0;   
 }
 
-/* text in panel ohne margin */
-div.panel-body > p {
+/* kein Margin abstand */
+.noMargin {
     margin: 0;
 }
 
 /* leicht eingerückt */
 .indent {
-    margin-left: 20px;
+    padding-left: 40px !important;
 }
 
 /* kleiner Abstand oben für Badges */
@@ -199,12 +199,13 @@ div.panel-body > p {
 #slide1 {
     background: url('../images/carousel_medium_01.jpg') top center no-repeat;
 }
-
 #slide2 {
     background: url('../images/carousel_medium_01.jpg') top center no-repeat;
 }
-
 #slide3 {
+    background: url('../images/carousel_medium_01.jpg') top center no-repeat;
+}
+#slide4 {
     background: url('../images/carousel_medium_01.jpg') top center no-repeat;
 }
 
@@ -409,12 +410,13 @@ footer > div > p {
     #slide1 {
         background: url('../images/carousel_small_01.jpg') top center no-repeat;
     }
-
     #slide2 {
         background: url('../images/carousel_small_01.jpg') top center no-repeat;
     }
-
     #slide3 {
+        background: url('../images/carousel_small_01.jpg') top center no-repeat;
+    }
+    #slide4 {
         background: url('../images/carousel_small_01.jpg') top center no-repeat;
     }
 
@@ -441,12 +443,13 @@ footer > div > p {
     #slide1 {
         background: url('../images/carousel_large_01.jpg') top center no-repeat;
     }
-
     #slide2 {
         background: url('../images/carousel_large_01.jpg') top center no-repeat;
     }
-
     #slide3 {
+        background: url('../images/carousel_large_01.jpg') top center no-repeat;
+    }
+    #slide4 {
         background: url('../images/carousel_large_01.jpg') top center no-repeat;
     }
 }
