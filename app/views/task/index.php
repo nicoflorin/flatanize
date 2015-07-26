@@ -28,7 +28,7 @@
                 <?php if (empty($this->userTaskList)) : ?>
                     <!-- no tasks available -->
                     <div class="panel-body">
-                        <p class="text-info">You have no open tasks.</p>
+                        <p class="text-info noMargin">You have no open tasks.</p>
                     </div>
                 <?php endif; ?>
                 <?php if (!empty($this->userTaskList)) : ?>
@@ -82,7 +82,7 @@
                 <?php if (empty($this->taskList)) : ?>
                     <!-- no tasks available -->
                     <div class="panel-body">
-                        <p class="text-info">There are no scheduled tasks available.</p>
+                        <p class="text-info noMargin">There are no scheduled tasks available.</p>
                     </div>
                 <?php endif; ?>
 

@@ -16,7 +16,7 @@
         <?php if (empty($this->financeList)) : ?>
             <!-- no entries available -->
             <div class="panel-body">
-                <p class="text-info">There are no finance entries available.</p>
+                <p class="text-info noMargin">There are no finance entries available.</p>
             </div>
         <?php endif; ?>
 
