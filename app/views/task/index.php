@@ -5,8 +5,8 @@
     <div class="page-header">
         <h1>
             <i class="fa fa-wrench fa-fw"></i> <?= $this->data['title'] ?>
-            <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-                <i class="fa fa-refresh fa-lg fa-"></i>
+            <button type="submit" class="btn btn-default btn-sm pull-right" onClick="window.location.reload(true)">
+                <i class="fa fa-refresh fa-lg"></i>
             </button>
         </h1>
     </div>
