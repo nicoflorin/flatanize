@@ -12,19 +12,19 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq1">1. What is <?= TITLE ?>?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq1">1. What is Flatanize?</a>
                 </h4>
             </div>
             <div id="faq1" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    <p>With <?= TITLE ?> you can organize the daily doings in a shared flat. Things like a shared shopping list, a task scheduler or keeping track of the finances has never been easier.</p>
+                    <p>With Flatanize you can organize the daily doings in a shared flat. Things like a shared shopping list, a task scheduler or keeping track of the finances has never been easier.</p>
                 </div>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq2">2. Which functions does <?= TITLE ?> have?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq2">2. Which functions does Flatanize have?</a>
                 </h4>
             </div>
             <div id="faq2" class="panel-collapse collapse">
@@ -68,6 +68,8 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
             <div id="faq5" class="panel-collapse collapse">
                 <div class="panel-body">
                     <p>Just give them your flat code and they will be able to join you. You'll find the code under flat settings in the Information panel.</p>
+                    <p>When they are not around, you can send them the code by entering their email address under the share flat panel</p>
+                    <p>When they have the code, they can enter it right at the registration form or after that under the join flat panel and hit Join</p>
                 </div>
             </div>
         </div>
@@ -87,12 +89,12 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq7">7. I have no smartphone. Can I use <?= TITLE ?> nonetheless?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq7">7. I have no smartphone. Can I use Flatanize nonetheless?</a>
                 </h4>
             </div>
             <div id="faq7" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <p>Yes, you can ;-). <?= TITLE ?> is a responsive website, that looks good on every device with internet and a web browser.</p>
+                    <p>Yes, you can ;-). Flatanize is a responsive website, that looks good on every device with internet and a web browser.</p>
                 </div>
             </div>
         </div>
@@ -123,7 +125,7 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq10">10. Want to quit <?= TITLE ?>?</a>
+                    <a data-toggle="collapse" data-parent="#faqAccordion" href="#faq10">10. Want to quit Flatanize?</a>
                 </h4>
             </div>
             <div id="faq10" class="panel-collapse collapse">
