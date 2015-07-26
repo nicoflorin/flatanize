@@ -3,7 +3,12 @@
     <!-- Label damit ganzer Content Rechts clickbar wird, wenn collapsed -->
     <label id="bigLabel" for="leftMenuBtn" class="bigLabel"></label>
     <div class="page-header">
-        <h1><i class="fa fa-wrench fa-fw"></i> <?= $this->data['title'] ?></h1>
+        <h1>
+            <i class="fa fa-wrench fa-fw"></i> <?= $this->data['title'] ?>
+            <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
+                <i class="fa fa-refresh fa-lg fa-"></i>
+            </button>
+        </h1>
     </div>
     <div class="alert alert-success" role="alert" <?php echo (Session::getFlatId()) ? 'style="display:none;"' : '' ?>>
         <p>Please create or join a flat <a href="<?= URL ?>/settings/index"> here.</a></p>
@@ -14,9 +19,6 @@
             <!-- create New Task -->
             <div>
                 <a class="btn btn-success" href="<?= URL ?>/task/showCreateTask" role="button">Create New Task</a>
-                <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-                    <i class="fa fa-refresh fa-lg fa-"></i>
-                </button>
             </div>
             <br>
 

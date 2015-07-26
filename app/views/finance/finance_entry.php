@@ -3,9 +3,6 @@
     <!-- create New Task -->
     <div>
         <a class="btn btn-success" href="<?= URL ?>/finance/showCreateEntry" role="button">Create New Entry</a>
-        <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-            <i class="fa fa-refresh fa-lg fa-"></i>
-        </button>
     </div>
     <br>
     <!-- All entries -->

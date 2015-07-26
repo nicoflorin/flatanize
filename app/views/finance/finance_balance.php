@@ -3,9 +3,6 @@
     <!-- Clear Balance -->
     <div>
         <a class="btn btn-success" href="<?= URL ?>/finance/clearBalance" role="button">Clear Balance</a>
-        <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
-            <i class="fa fa-refresh fa-lg"></i>
-        </button>
     </div>
     <br>
     <!-- Balance -->

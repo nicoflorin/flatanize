@@ -3,7 +3,12 @@
     <!-- Label damit ganzer Content Rechts clickbar wird, wenn collapsed -->
     <label id="bigLabel" for="leftMenuBtn" class="bigLabel"></label>
     <div class="page-header">
-        <h1><i class="fa fa-comment fa-fw"></i> <?= $this->data['title'] ?></h1>
+        <h1>
+            <i class="fa fa-comment fa-fw"></i> <?= $this->data['title'] ?>
+            <button type="submit" class="btn btn-primary pull-right" onClick="window.location.reload(true)">
+                <i class="fa fa-refresh fa-lg fa-"></i>
+            </button>
+        </h1>
     </div>
 
     <?php if (!Session::getFlatId()) : ?>
