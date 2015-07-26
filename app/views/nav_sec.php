@@ -31,7 +31,7 @@
             </ul><!-- end navbar-nav -->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg fa-fw"></i> Your Account <b class="caret"></b></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg fa-fw"></i> Your Account <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?= URL ?>/settings/flatSetting"><i class="fa fa-building fa-lg fa-fw"></i> Flat Settings</a></li>
                         <li class="divider"></li>
