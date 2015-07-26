@@ -16,21 +16,25 @@ class AuthController extends Controller {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $remember = $_POST['remember'];
-        
+
         $remember = (isset($remember) && $remember === 'on') ? true : false;
 
         //Lade login model
         $this->loadModel('login');
         // Übergebe Daten an Model
         $res = $this->model->login($username, $password, $remember);
-        
+
         //Falls Login erfolgreich
         if ($res === true) {
             // Setze loggedIn Session var
             Session::setLoggedIn();
 
-            //Redirect zu Secure Bereich
-            $this->redirect('app', 'index');
+            //Prüfen ob Flat Session var gesetzt
+            if (Session::getFlatId()) {//Redirect zu Whiteboard
+                $this->redirect('whiteboard', 'index');
+            } else { //Sonst zu Welcome Seite
+                $this->redirect('welcome', 'index');
+            }
         } else {
             $this->redirect(); //home
         }
