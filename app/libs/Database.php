@@ -28,8 +28,8 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
         parent::__construct($dsn, $settings['database']['username'], $settings['database']['password']);
         
         // setzte ErrorLevel
-        // @ToDo entfernen bei Website upload
-        $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // nur für debugging
+        // $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
@@ -101,7 +101,7 @@ class Database extends PDO { //für extend PDO in php.ini: extension=php_pdo_mys
                 if (strpos($sql, 'SELECT') !== false) {
                     return $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
-                // Sonst gib count zurück
+                // Sonst gib anzahl geänderte Datensätze zurück
                 elseif (strpos($sql, 'DELETE') !== false || strpos($sql, 'INSERT') !== false || strpos($sql, 'UPDATE') !== false) {
                     return $stmt->rowCount();
                 }
