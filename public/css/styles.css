@@ -7,13 +7,6 @@ Autor: Nico Florin
 /* ===========================================
     Global Styles
 ============================================*/
-/* Definiere eigene font */
-@font-face {
-    font-family: 'century-gothic';
-    src: url('../fonts/century-gothic.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
 
 html {
     overflow-y: scroll; /* scrollbar immer anzeigen */
@@ -23,7 +16,8 @@ body {
     margin-top: 80px; /* Abstand zu Navigation.*/
     /* margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
-    font-family: century-gothic;
+    /* Font Muli in header importiert */
+    font-family: 'Muli', sans-serif;
     font-size: 1.5em;
 }
 
