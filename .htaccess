@@ -1,3 +1,42 @@
- RewriteEngine on
+# -----------------------------------------------------------------------
+# Weiterleitung aller Anfragen
+# -----------------------------------------------------------------------
+RewriteEngine on
     RewriteRule    ^$    public/    [L]
     RewriteRule    (.*) public/$1    [L]
+
+# -----------------------------------------------------------------------
+# MIME Types definieren, damit Apache diese kennt
+# -----------------------------------------------------------------------
+<IfModule mod_mime.c>
+    AddType application/javascript          js
+    AddType application/vnd.ms-fontobject   eot
+    AddType application/x-font-ttf          ttf ttc
+    AddType font/opentype                   otf
+    AddType application/x-font-woff         woff
+    AddType application/font-woff2          woff2
+    AddType image/svg+xml                   svg svgz 
+    AddEncoding gzip                        svgz
+</Ifmodule>
+
+# -----------------------------------------------------------------------
+# Kompression für MIME Types aktivieren
+# -----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE image/x-icon
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/x-font
+    AddOutputFilterByType DEFLATE application/x-font-truetype
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-font-otf
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/opentype
+</Ifmodule>
