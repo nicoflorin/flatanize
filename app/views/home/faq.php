@@ -68,8 +68,8 @@ if (Session::isLoggedIn()) { //Navigation nur anzeigen wenn eingeloggt.
             <div id="faq5" class="panel-collapse collapse">
                 <div class="panel-body">
                     <p>Just give them your flat code and they will be able to join you. You'll find the code under flat settings in the Information panel.</p>
-                    <p>When they are not around, you can send them the code by entering their email address under the share flat panel</p>
-                    <p>When they have the code, they can enter it right at the registration form or after that under the join flat panel and hit Join</p>
+                    <p>When they are not around, you can send them the code by entering their email address under the share flat panel.</p>
+                    <p>When they have the code, they can enter it right at the registration form or after the login under the join flat panel and hit Join.</p>
                 </div>
             </div>
         </div>
