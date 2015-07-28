@@ -6,6 +6,10 @@
  */
 class whiteboardModel extends Model {
     
+    function __construct() {
+        parent::__construct();
+    }
+    
     /**
      * Fügt einen neuen Eintrag zum Whiteboard hinzu
      * @param int $flatId

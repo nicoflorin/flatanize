@@ -7,6 +7,10 @@
  */
 class FinanceModel extends Model {
 
+    function __construct() {
+        parent::__construct();
+    }
+    
     /**
      * Erstellt einen neuen Finanz Eintrag in DB
      * @param int $flatId

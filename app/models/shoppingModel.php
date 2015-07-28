@@ -7,6 +7,10 @@
  */
 class ShoppingModel extends Model {
 
+    function __construct() {
+        parent::__construct();
+    }
+    
     /**
      * Fügt einen neuen Eintrag zur Shopping List hinzu
      */
