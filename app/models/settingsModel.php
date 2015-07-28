@@ -6,6 +6,7 @@
  * @author Nico
  */
 class SettingsModel extends Model {
+    const MAX_DISPLAYNAME = 15;
 
     function __construct() {
         parent::__construct();
@@ -17,6 +18,11 @@ class SettingsModel extends Model {
         //Prüfen ob Eingabe gemacht
         if (empty($displayName)) {
             $error = $this->setErrorMsg(6); //no value entered
+        }
+
+        // Prüfen ob DisplayName maxLen nicht überschreitet
+        if (strlen($displayName) > self::MAX_DISPLAYNAME) {
+            $error = $this->setErrorMsg(7);
         }
         
         //Falls kein Fehler auftrat
@@ -102,7 +108,7 @@ class SettingsModel extends Model {
         }
         
         // Prüfen ob DisplayName maxLen nicht überschreitet
-        if (strlen($displayName) > 15) {
+        if (strlen($displayName) > self::MAX_DISPLAYNAME) {
             $error['displayname'] = true;
             $error['error_id'] = 7;
         }
