@@ -7,6 +7,10 @@
  */
 class FlatModel extends Model {
 
+    function __construct() {
+        parent::__construct();
+    }
+    
     /**
      * Erstellt eine WG und verlinkt den User mit dieser WG
      */
