@@ -5,6 +5,9 @@ Autor: Nico Florin
 ============================================*/
 
 /* ===========================================
+    Screens grösser als 1200px
+============================================*/
+/* ===========================================
     Global Styles
 ============================================*/
 
@@ -284,7 +287,7 @@ footer > div > p {
 }
 
 /* Landscape phone bis portrait tablet */
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 767px) {
     /* ===========================================
         Global Styles
     ============================================*/
@@ -429,7 +432,18 @@ footer > div > p {
 }
 
 /* Grosse Bildschirme / Desktops */
-@media (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 1200px) {
+    /* ===========================================
+        Global Styles
+    ============================================*/
+    /* Linke Navigation etwas schmaler */
+    aside {
+        width: 25%;
+    }
+    
+    #mainContent {
+        width: 72%;
+    }
 
     /* ===========================================
         Carousel Einstellungen
