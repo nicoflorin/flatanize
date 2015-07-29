@@ -13,11 +13,11 @@ Autor: Nico Florin
 
 html {
     overflow-y: scroll; /* scrollbar immer anzeigen */
+    height: 100%
 }
 
 body {
     margin-top: 80px; /* Abstand zu Navigation.*/
-    /* margin-bottom: 60px; /* Abstand zu Footer */
     background-color: #F9F9F9;
     /* Font Muli in header importiert */
     font-family: 'Muli', sans-serif;
@@ -155,7 +155,7 @@ aside {
     height: 100%;
     position: absolute;
     cursor: pointer;
-    z-index: 0;
+    z-index: 1000; /* Label vor alles andere setzen */
 }
 
 
@@ -324,12 +324,12 @@ footer > div > p {
 
     /* Schiebe Left Menu nach rechts */
     #leftNav.showLeftMenu {
-        left: 0;
+        -webkit-transform: translate3d(100%,0,0); /* X, Y, Z */ /* Versteckt */
     }
 
     /* Schiebe Content nach rechts */
     #mainContent.moveRight {
-        margin-right: -62%; /* abstand zu linkem rand, nach rechts verschieben */
+        -webkit-transform: translate3d(62%,0,0); /* X, Y, Z */ /* Versteckt */ /* abstand zu linkem rand, nach rechts verschieben */
     }
 
     /* Damit Content Recht klickbar wird */
