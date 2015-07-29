@@ -194,16 +194,16 @@ aside {
 }
 
 #slide1 {
-    background: url('../images/carousel_medium_01.jpg') top center no-repeat;
+    background: url('../images/carousel_large_01.jpg') top center no-repeat;
 }
 #slide2 {
-    background: url('../images/carousel_medium_01.jpg') top center no-repeat;
+    background: url('../images/carousel_large_01.jpg') top center no-repeat;
 }
 #slide3 {
-    background: url('../images/carousel_medium_01.jpg') top center no-repeat;
+    background: url('../images/carousel_large_01.jpg') top center no-repeat;
 }
 #slide4 {
-    background: url('../images/carousel_medium_01.jpg') top center no-repeat;
+    background: url('../images/carousel_large_01.jpg') top center no-repeat;
 }
 
 
@@ -244,50 +244,19 @@ footer > div > p {
     Media Queries
 ============================================*/
 
-/* Portrait & landscape Smartphone */
-@media (max-width: 480px) {
-
-    /* ===========================================
-        Global Styles
-    ============================================*/
-    body {
-        margin-top: 60px; /* Abstand zu Navigation.*/
+/* portrait tablet bis grössere Bildschirme */
+@media (max-width: 1200px) {
+    aside {
+        width: 25%;
     }
-
-    /* Damit auf Smartphone nicht zu viel Platz */
-    /* verschwendet wird */
-    .well {
-        padding: 5px;
-    }
-
-    .panel-body {
-        padding: 5px
-    }
-
-    /* Grösse Überschrift 1 auf mobile etwas kleiner */
-    h1 {
-        font-size: 1.6em;
-    }
-
-    /* =========================================== */
-    /* Shopping List */
-
-    /* kein Padding um Platz zu sparen */
-    .nopadding-right-xs {
-        padding-right: 1px !important;
-    }
-
-    .nopadding-left-xs {
-        padding-left: 1px !important;
-    }
-
-    .nopadding-xs {
-        padding: 0px !important;
+    
+    #mainContent {
+        width: 73%;
     }
 }
 
 /* Landscape phone bis portrait tablet */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (max-width: 767px) {
     /* ===========================================
         Global Styles
     ============================================*/
@@ -431,37 +400,44 @@ footer > div > p {
     }
 }
 
-/* Grosse Bildschirme / Desktops */
-@media (min-width: 768px) and (max-width: 1200px) {
+/* Portrait & landscape Smartphone */
+@media (max-width: 480px) {
+
     /* ===========================================
         Global Styles
     ============================================*/
-    /* Linke Navigation etwas schmaler */
-    aside {
-        width: 25%;
-    }
-    
-    #mainContent {
-        width: 72%;
+    body {
+        margin-top: 60px; /* Abstand zu Navigation.*/
     }
 
-    /* ===========================================
-        Carousel Einstellungen
-    ============================================*/
-    #mainCarousel .item {
-        height: 500px;   
+    /* Damit auf Smartphone nicht zu viel Platz */
+    /* verschwendet wird */
+    .well {
+        padding: 5px;
     }
 
-    #slide1 {
-        background: url('../images/carousel_large_01.jpg') top center no-repeat;
+    .panel-body {
+        padding: 5px
     }
-    #slide2 {
-        background: url('../images/carousel_large_01.jpg') top center no-repeat;
+
+    /* Grösse Überschrift 1 auf mobile etwas kleiner */
+    h1 {
+        font-size: 1.6em;
     }
-    #slide3 {
-        background: url('../images/carousel_large_01.jpg') top center no-repeat;
+
+    /* =========================================== */
+    /* Shopping List */
+
+    /* kein Padding um Platz zu sparen */
+    .nopadding-right-xs {
+        padding-right: 1px !important;
     }
-    #slide4 {
-        background: url('../images/carousel_large_01.jpg') top center no-repeat;
+
+    .nopadding-left-xs {
+        padding-left: 1px !important;
+    }
+
+    .nopadding-xs {
+        padding: 0px !important;
     }
 }
