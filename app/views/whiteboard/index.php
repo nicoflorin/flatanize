@@ -22,13 +22,13 @@
             <div id="addToWhiteboard">
                 <form method="post" action="<?= URL ?>/whiteboard/addToWhiteboard">
                     <div class="row">
-                        <div class="col-xs-9 col-md-10 nopadding-right-xs">
+                        <div class="col-xs-10 col-md-10 nopadding-right-xs">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-font fa-lg"></i></span>
                                 <input type="text" class="form-control" id="text" name="text" placeholder="Text" tabindex="1">
                             </div>
                         </div>
-                        <div class="col-xs-3 col-md-2 nopadding-left-xs">
+                        <div class="col-xs-2 col-md-2 nopadding-left-xs">
                             <button type="submit" class="btn btn-success btn-block" tabindex="2">
                                 <i class="fa fa-plus fa-lg"></i>
                             </button>
@@ -45,7 +45,7 @@
                 <?php if (empty($this->whiteboardList)) : ?>
                     <!-- no entries available -->
                     <div class="panel-body">
-                        <p class="text-info">There are no entries available.</p>
+                        <p class="text-info noMargin">There are no entries available.</p>
                     </div>
                 <?php endif; ?>
 
