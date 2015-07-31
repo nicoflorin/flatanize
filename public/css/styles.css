@@ -37,9 +37,9 @@ aside {
 
 /* Well Einstellungen */
 .well .page-header {
-    margin-top: 0px;   
+    margin-top: 0;   
     margin-bottom: 15px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .well .page-header h1 {
@@ -70,7 +70,7 @@ aside {
 }
 
 .table > thead > tr > th {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 /* Für weisse font-awesome */
@@ -89,7 +89,7 @@ aside {
 }
 
 .nopadding {
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 
@@ -97,7 +97,7 @@ aside {
 /* Finanzen */
 /* Default margin-bottom bei progressbar löschen */
 .progress {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 /* Damit Text in Progressbar zentriert ist */
@@ -316,20 +316,30 @@ footer > div > p {
 
     /* Langsam einfliegen */
     aside, #mainContent {
-        -webkit-transition: 0.25s ease; /* Safari und Chrome */
-        -moz-transition: 0.25s ease;
-        -o-transition: 0.25s ease;
-        transition: 0.25s ease;
+        -webkit-transition: 0.25s ease; /* Ab Safari V.3.1 und Chrome V.4.0 */
+        -moz-transition: 0.25s ease; /* FF ab .4.0 */
+        -o-transition: 0.25s ease; /* Opera ab V.10.5 */
+        transition: 0.25s ease; /* Ab Browser Version: Chrome V.26, IE V.10, FF V.16, Safari V.6.1, Opera V.12.1 */
     }
 
     /* Schiebe Left Menu nach rechts */
     #leftNav.showLeftMenu {
-        -webkit-transform: translate3d(100%,0,0); /* X, Y, Z */ /* Versteckt */
+        /* links Versteckt */
+        /* GPU benutzen für bessere Animation /* X, Y, Z */
+        -webkit-transform: translate3d(100%,0,0); /* Browser Version: Chrome V.12, Safari V.4, Opera V.23 */
+        -moz-transform: translate3d(100%,0,0); /* Firefox V.10 */
+        -ms-transform: translate3d(100%, 0, 0); /* IE 9 */
+        transform: translate3d(100%,0,0); /* Ab Browser Versionen: Chrome V.36, IE V.10, FF V.16, Opera V.23*/
     }
 
     /* Schiebe Content nach rechts */
     #mainContent.moveRight {
-        -webkit-transform: translate3d(62%,0,0); /* X, Y, Z */ /* Versteckt */ /* abstand zu linkem rand, nach rechts verschieben */
+        /* abstand zu linkem rand, nach rechts verschieben */
+        /* GPU benutzen für bessere Animation /* X, Y, Z */
+        -webkit-transform: translate3d(62%,0,0); /* Ab Browser Version: Chrome V.12, Safari V.4, Opera V.23 */
+        -moz-transform: translate3d(62%,0,0); /* Firefox V.10 */
+        -ms-transform: translate3d(62%, 0, 0); /* IE 9 */
+        transform: translate3d(62%,0,0);/* Ab Browser Versionen: Chrome V.36, IE V.10, FF V.16, Opera V.23*/
     }
 
     /* Damit Content Recht klickbar wird */
@@ -355,7 +365,7 @@ footer > div > p {
     /* Design Linke Navigation*/
     .nav-pills > li > a {
         color: #9d9d9d;
-        border-radius: 0px;
+        border-radius: 0;
         padding-top: 15px;
         padding-bottom: 15px;
     }
@@ -438,6 +448,6 @@ footer > div > p {
     }
 
     .nopadding-xs {
-        padding: 0px !important;
+        padding: 0 !important;
     }
 }
