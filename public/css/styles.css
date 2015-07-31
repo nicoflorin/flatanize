@@ -24,31 +24,46 @@ body {
     font-size: 1.5em;
 }
 
+/* =========================================== */
 /* Linke Navigation */
 aside {
     width: 20%;
     float: left;
 }
+
+/* =========================================== */
 /* Hauptinhalt rechts */
 #mainContent {
     width: 77%;
     float: right;
 }
 
+/* =========================================== */
 /* Well Einstellungen */
+
+
 .well .page-header {
     margin-top: 0;   
     margin-bottom: 15px;
     padding-bottom: 0;
 }
 
+/* Kein Abstand top für Titel in Header in Well */
 .well .page-header h1 {
     margin-top: 0;   
 }
 
+/* =========================================== */
+/* Diverses
+
 /* kein Margin abstand */
 .noMargin {
     margin: 0;
+}
+
+/* letztes Form element in panel-body ohne Abstand bottom */
+.panel-body > form > div:last-of-type {
+    margin-bottom: 0;
 }
 
 /* leicht eingerückt */
@@ -61,6 +76,11 @@ aside {
     margin-top: 2px;
 }
 
+/* Für weisse font-awesome */
+.whiteIcon {
+    color: #fff;
+}
+
 /* =========================================== */
 /* Tabellen */
 
@@ -69,13 +89,14 @@ aside {
     vertical-align: middle;
 }
 
+/* Kein Border bottom für Tabellen Titel */
 .table > thead > tr > th {
     border-bottom: 0;
 }
 
-/* Für weisse font-awesome */
-.whiteIcon {
-    color: #fff;
+/* Kein Abstand bottom für Tabellen */
+.table {
+    margin-bottom: 0;
 }
 
 /* =========================================== */
@@ -424,10 +445,6 @@ footer > div > p {
     /* verschwendet wird */
     .well {
         padding: 5px;
-    }
-
-    .panel-body {
-        padding: 5px
     }
 
     /* Grösse Überschrift 1 auf mobile etwas kleiner */
