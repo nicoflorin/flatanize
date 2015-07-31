@@ -6,7 +6,14 @@
         <!-- mobile zuerst, kein zoomen auf Smartphone möglich -->
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <title><?= TITLE ?> - <?= $this->data['title'] ?></title>
-        <!-- @Todo Meta tags wie description, keywords, author usw. -->
+        <META NAME="author" CONTENT="Nico Florin">
+        <META NAME="subject" CONTENT="Home, Organize, Planning">
+        <META NAME="Description" CONTENT="An application to organize your flat. It includes functions like a whiteboard, finance/budget planning, a shared shopping list and a task Scheduler.">
+        <META NAME="Keywords" CONTENT="flat, resident, apartment, share, living, community, organize, finances, shopping list, task scheduler, expenses, planning, wg, wohngemeinschaft, organisieren, ausgaben, einkaufsliste, finanzplanung, aufgabenplanung">
+        <META NAME="Language" CONTENT="English">
+        <META NAME="Copyright" CONTENT="Nico Florin">
+        <META NAME="distribution" CONTENT="Global">
+
 
         <!-- Bootstrap -->
         <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
@@ -16,14 +23,12 @@
 
         <!-- own Stylesheet -->
         <link href="<?= URL ?>/public/css/styles.css" rel="stylesheet">
-        
+
         <!-- Muli font -->
         <link href="http://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet" type="text/css">
-        
+
         <!-- @Todo favicon -->
-        
-        <!-- @Todo SEO Tags -->
-        
+
         <!-- iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="<?= TITLE ?>">
