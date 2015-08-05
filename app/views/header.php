@@ -14,7 +14,6 @@
         <META NAME="Copyright" CONTENT="Nico Florin">
         <META NAME="distribution" CONTENT="Global">
 
-
         <!-- Bootstrap -->
         <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,7 +21,7 @@
         <link href="<?= URL ?>/public/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- own Stylesheet -->
-        <link href="<?= URL ?>/public/css/styles.css" rel="stylesheet">
+        <link href="<?= URL ?>/public/css/styles.min.css" rel="stylesheet">
 
         <!-- Muli font -->
         <link href="http://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet" type="text/css">
