@@ -1,11 +1,12 @@
 -- -----------------------------------------------------
 -- Schema flatanize_com
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `flatanize_com` ;
 
 -- -----------------------------------------------------
 -- Schema flatanize_com
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `flatanize_com` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `flatanize_com` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `flatanize_com` ;
 
 -- -----------------------------------------------------
@@ -201,7 +202,6 @@ CREATE TABLE IF NOT EXISTS `flatanize_com`.`whiteboards` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Data for table `flatanize_com`.`frequencies`
 -- -----------------------------------------------------
@@ -213,3 +213,4 @@ INSERT INTO `flatanize_com`.`frequencies` (`id`, `description`) VALUES (DEFAULT,
 INSERT INTO `flatanize_com`.`frequencies` (`id`, `description`) VALUES (DEFAULT, 'every month');
 
 COMMIT;
+
