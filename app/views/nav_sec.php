@@ -12,7 +12,7 @@
             </button>
 
             <!-- left Navbar toggle -->
-            <button id="leftMenuBtn" type="button" class="navbar-toggle hidden-lg">
+            <button id="leftMenuBtn" type="button" class="navbar-toggle visible-xs">
                 <i id="leftMenuIcon" class="fa fa-chevron-right whiteIcon"></i>
             </button>
 
