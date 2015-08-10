@@ -12,6 +12,12 @@ class SettingsModel extends Model {
         parent::__construct();
     }
     
+    /**
+     * Ändert den Anzeigenamen für ein Benutzer
+     * @param string $displayName
+     * @param int $userId
+     * @return boolean/string
+     */
     public function changeDisplayName($displayName, $userId) {
         $error = '';
         
@@ -46,8 +52,11 @@ class SettingsModel extends Model {
 
     /**
      * Ändert das Paswort für einen Benutzer
-     * @param type $oldPW
-     * @param type $newPW
+     * @param string $oldPW
+     * @param string $newPW
+     * @param string $verPW
+     * @param int $userId
+     * @return boolean/string
      */
     public function changePassword($oldPW, $newPW, $verPW, $userId) {
         $error = '';
@@ -84,7 +93,12 @@ class SettingsModel extends Model {
 
     /**
      * Prüft Benutzer Eingaben und erstellt den User in der DB.
-     * @param array $request
+     * @param string $userName
+     * @param string $displayName
+     * @param string $email
+     * @param string $password
+     * @param int $flatCode
+     * @return boolean/string
      */
     public function register($userName, $displayName, $email, $password, $flatCode = "") {
 

@@ -21,7 +21,7 @@ class TaskController extends Controller {
         
         //Hole Alle Task inkl. aktivem User
         $taskList = $this->getTaskList($flatId); //liste der Task für die anderen WG Bewohner
-        
+
         $allTaskList = $taskList; //Alle Tasks der WG
         $userTaskList = array(); //liste der Tasks für eingeloggten User
         
@@ -53,12 +53,12 @@ class TaskController extends Controller {
 
         //Hole alle Tasks für eine WG
         $list = $this->model->getTaskList($flatId);
-
+        
         //Holt für jeden Task den akiven User
         foreach ($list as $entry) {
             $taskList[] = $this->model->getActiveUser($flatId, $entry['id']);
         }
-
+        
         //Da dreidimensionales Array, dieses zu zweidimensional machen
         foreach ($taskList as $entry) {
             $newTaskList[] = $entry[0];
