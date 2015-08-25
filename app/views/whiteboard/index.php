@@ -25,7 +25,7 @@
                         <div class="col-xs-10 col-md-10 nopadding-right-xs">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-font fa-lg"></i></span>
-                                <input type="text" class="form-control" id="text" name="text" placeholder="Text" tabindex="1">
+                                <input type="text" class="form-control" id="text" name="text" placeholder="Text" tabindex="1" required>
                             </div>
                         </div>
                         <div class="col-xs-2 col-md-2 nopadding-left-xs">
