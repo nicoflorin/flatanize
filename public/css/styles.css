@@ -25,7 +25,7 @@ body {
 }
 
 /* =========================================== */
-/* Linke Navigation */
+/* Sidebar */
 aside {
     width: 20%;
     float: left;
@@ -161,7 +161,7 @@ aside {
     display: block;
 }
 
-/* Button für linke Navigation */
+/* Button für Sidebar */
 #leftMenuBtn {
     float: left;
     margin-left: 15px;
@@ -181,10 +181,10 @@ aside {
 
 
 /* ===========================================
-    Left Navigation
+    Sidebar
 ============================================*/
 
-/* Hover, focus anpassung für linke Navigation */
+/* Hover, focus anpassung für Sidebar */
 .nav  > li > a:hover, .nav > li > a:focus {
     background-color: #D5D5D5;
     color: #000;
@@ -314,9 +314,9 @@ footer > div > p {
     }
 
     /* ===========================================
-        Linke Navigation auf Mobile - Toggle
+        Sidebar auf Mobile - Toggle
     ============================================*/
-    /* linke Navigation */
+    /* Sidebar */
     aside {
         padding: 0;
         left: -60%; /* Versteckt */
@@ -370,13 +370,13 @@ footer > div > p {
     }
 
     /* ===========================================
-        Linke Navigation auf Mobile - Design
+        Sidebar auf Mobile - Design
     ============================================*/
     #leftNav {
         background-color: #222; /* Hintergrund gleich navbar */
     }
 
-    /* Design Linke Navigation*/
+    /* Design Sidebar*/
     .nav-pills > li.active > a, 
     .nav-pills > li.active > a:focus, 
     .nav-pills > li.active > a:hover {
@@ -384,7 +384,7 @@ footer > div > p {
         color: #fff;
     }
 
-    /* Design Linke Navigation*/
+    /* Design Sidebar*/
     .nav-pills > li > a {
         color: #9d9d9d;
         border-radius: 0;
