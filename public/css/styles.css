@@ -167,6 +167,10 @@ aside {
     margin-left: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
+    /* Breite und Höhe analog Menü Button */
+    width: 42px;
+    height: 32px;
+    vertical-align: middle;
 }
 
 /* Pseudo Label für Rechten Content */
