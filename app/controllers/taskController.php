@@ -97,6 +97,12 @@ class TaskController extends Controller {
         //Prüfen ob Fehler übermittelt
         foreach ($error as $value) {
             switch ($value) {
+                case 'task_title':
+                    $this->view->assign('task_title', true);
+                    break;
+                case 'freq':
+                    $this->view->assign('freq', true);
+                    break;
                 case 'users':
                     $this->view->assign('users', true);
                     break;
@@ -123,6 +129,17 @@ class TaskController extends Controller {
         $this->loadModel('task');
 
         $error = [];
+        
+        //Prüfe ob Titel eingegeben
+        if (empty($title)) {
+            $error[] = 'task_title';
+        }
+        
+        //Prüfe ob Frequenz eingegeben
+        if (empty($freq)) {
+            $error[] = 'freq';
+        }
+        
         //Prüfe ob Datum format 
         if (Functions::validateDate($start)) { //Y-m-d
         } else if (Functions::validateDate($start, 'd.m.Y')) {

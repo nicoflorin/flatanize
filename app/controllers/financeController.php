@@ -76,6 +76,9 @@ class FinanceController extends Controller {
         //Prüfen ob Fehler übermittelt
         foreach ($error as $value) {
             switch ($value) {
+                case 'product':
+                    $this->view->assign('product', true);
+                    break;
                 case 'users':
                     $this->view->assign('users', true);
                     break;
@@ -104,6 +107,12 @@ class FinanceController extends Controller {
 
         //Errorhandling
         $error = [];
+        
+        //Prüfe ob Product eingegeben
+        if (empty($product)) {
+            $error[] = 'product';
+        } 
+        
         //Prüfe ob Datum format 
         if (Functions::validateDate($date)) { //Y-m-d
         } else if (Functions::validateDate($date, 'd.m.Y')) {

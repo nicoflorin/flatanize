@@ -13,14 +13,14 @@
             </div>
             <div class="panel-body">
                 <form method="post" action="<?= URL ?>/finance/createEntry">
-                    <div class="form-group">
+                    <div class="form-group <?php echo (isset($this->data['product'])) ? 'has-error' : '' ?>">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-shopping-cart fa-lg fa-fw"></i></span>
                             <input type="text" id="product" name="product" class="form-control" placeholder="Product or description" tabindex="1" required autofocus>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="input-group <?php echo (isset($this->data['price'])) ? 'has-error' : '' ?>">
+                    <div class="form-group <?php echo (isset($this->data['price'])) ? 'has-error' : '' ?>">
+                        <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-usd fa-lg fa-fw"></i></span>
                             <input type="number" step="any" min="0" id="price" name="price" class="form-control" placeholder="Price" tabindex="2" required>
                         </div>
@@ -28,8 +28,8 @@
                             <span class="help-block">Please enter positiv numbers only!</span>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group">
-                        <div class="input-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
+                    <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
+                        <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-clock-o fa-lg fa-fw"></i></span>
                             <input type="date" id="date" name="date" class="form-control" value="<?php echo date('d.m.Y', time()); ?>" tabindex="3" required>
                         </div>

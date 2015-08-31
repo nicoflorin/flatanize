@@ -12,14 +12,14 @@
         </div>
         <div class="panel-body">
             <form method="post" action="<?= URL ?>/task/createTask">
-                <div class="form-group">
+                <div class="form-group <?php echo (isset($this->data['task_title'])) ? 'has-error' : '' ?>">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-thumb-tack fa-lg"></i></span>
                         <input type="text" id="title" name="title" class="form-control" placeholder="Title" tabindex="1" required autofocus>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group <?php echo (isset($this->data['freq'])) ? 'has-error' : '' ?>">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-repeat fa-lg"></i></span>
 
@@ -32,25 +32,7 @@
                         </select>
                     </div>
                 </div>
-                <!-- @Todo evtl. als Button lösen, sonst löschen -->
-                <!--
-                <div class="form-group">
-                    <div data-toggle="buttons">
-                        <label class="btn btn-default">
-                            <input type="radio" id="once" name="frequency" value="<?= ONCE ?>"><?= ONCE ?>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" id="daily" name="frequency" value="<?= DAILY ?>"><?= DAILY ?>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" id="weekly" name="frequency" value="<?= WEEKLY ?>"><?= WEEKLY ?>
-                        </label>
-                        <label class="btn btn-default">
-                            <input type="radio" id="monthly" name="frequency" value="<?= MONTHLY ?>"><?= MONTHLY ?>
-                        </label>
-                    </div>
-                </div>
-                -->
+               
                 <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
