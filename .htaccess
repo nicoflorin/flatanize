@@ -20,7 +20,7 @@ RewriteEngine on
 </Ifmodule>
 
 # -----------------------------------------------------------------------
-# Kompression für MIME Types aktivieren
+# Kompression fuer MIME Types aktivieren
 # -----------------------------------------------------------------------
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html
