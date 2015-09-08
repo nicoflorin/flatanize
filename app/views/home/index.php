@@ -46,10 +46,10 @@
 <!-- main Callout -->
 <div class="well" id="mainCallout">
     <div class="page-header">
-        <h1>Welcome to <?= TITLE ?></h1>
+        <h1><?= TITLE ?> <small>the little helper for your flat!</small></h1>
     </div><!-- end page-header -->
-
-    <p class="lead"></p>
-
+    <p class="lead">Let all the trouble of organize your living in a flat in the past and start to care about the real important things.</p>
+    <p class="lead">With flatanize it’s never been more comfortable and easier to maintain a shared flat.</p>
     <a href="<?= URL ?>/register/signUp" class="btn btn-large btn-primary">Sign Up now!</a>
+    <p class="margin-top-20">If you need any help, check out the <a href="<?= URL ?>/home/faq" alt="FAQ">FAQ</a> page.</p>
 </div><!-- end mainCallout -->
