@@ -5,9 +5,6 @@ Autor: Nico Florin
 ============================================*/
 
 /* ===========================================
-    Screens grösser als 1200px
-============================================*/
-/* ===========================================
     Global Styles
 ============================================*/
 
@@ -79,6 +76,11 @@ aside {
 /* Für weisse font-awesome */
 .whiteIcon {
     color: #fff;
+}
+
+/* Abstand nach oben */
+.margin-top-20 {
+    margin-top: 20px;
 }
 
 /* =========================================== */
@@ -270,7 +272,7 @@ footer > div > p {
 ============================================*/
 
 /* portrait tablet bis grössere Bildschirme */
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
     aside {
         width: 25%;
     }
@@ -437,7 +439,7 @@ footer > div > p {
 }
 
 /* Portrait & landscape Smartphone */
-@media (max-width: 480px) {
+@media (max-width: 479px) {
 
     /* ===========================================
         Global Styles
