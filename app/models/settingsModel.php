@@ -6,12 +6,13 @@
  * @author Nico
  */
 class SettingsModel extends Model {
+
     const MAX_DISPLAYNAME = 15;
 
     function __construct() {
         parent::__construct();
     }
-    
+
     /**
      * Ändert den Anzeigenamen für ein Benutzer
      * @param string $displayName
@@ -20,7 +21,7 @@ class SettingsModel extends Model {
      */
     public function changeDisplayName($displayName, $userId) {
         $error = '';
-        
+
         //Prüfen ob Eingabe gemacht
         if (empty($displayName)) {
             $error = $this->setErrorMsg(6); //no value entered
@@ -30,7 +31,7 @@ class SettingsModel extends Model {
         if (strlen($displayName) > self::MAX_DISPLAYNAME) {
             $error = $this->setErrorMsg(7);
         }
-        
+
         //Falls kein Fehler auftrat
         if (empty($error)) {
             $bind = array(
@@ -39,7 +40,7 @@ class SettingsModel extends Model {
             );
             //Setze neuen Namen
             $res = $this->db->update('users', 'display_name = :displayName', 'id = :userId', $bind);
-            
+
             if ($res > 0) {
                 return true;
             } else {
@@ -65,7 +66,7 @@ class SettingsModel extends Model {
             $error = $this->setErrorMsg(5);
             return $error;
         }
-        
+
         //Vergleiche eingegebenes altes Passwort mit Passwort von DB
         $bind = array(':userId' => $userId);
         $res = $this->db->select('password, salt', 'users', 'id = :userId LIMIT 1', $bind);
@@ -120,13 +121,13 @@ class SettingsModel extends Model {
             $error['password'] = true;
             $error['error_id'] = 1;
         }
-        
+
         // Prüfen ob DisplayName maxLen nicht überschreitet
         if (strlen($displayName) > self::MAX_DISPLAYNAME) {
             $error['displayname'] = true;
             $error['error_id'] = 7;
         }
-        
+
         // Prüfe ob User oder email Adresse bereits existiert
         $bind = array(
             ':username' => $userName,
@@ -142,8 +143,9 @@ class SettingsModel extends Model {
         //Falls Flat eingegebn, Prüfe ob Flat existiert
         if (!empty($flatCode)) {
             $bind = array(':flat_code' => $flatCode);
-            $res = $this->db->select('id', 'flats', 'code = :flat_code LIMIT 1', $bind);
-            if (empty($res)) {
+            $res = $this->db->select('id, code', 'flats', 'code = :flat_code LIMIT 1', $bind);
+            //Prüfen ob Eingabe wirklich mit DB übereinstimmt (case sensitiv)s
+            if (empty($res) || ($flatCode != $res[0]['code'])) {
                 $error['error_id'] = 3;
             } else {
                 $flatId = $res[0]['id'];

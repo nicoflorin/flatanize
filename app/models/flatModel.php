@@ -10,7 +10,7 @@ class FlatModel extends Model {
     function __construct() {
         parent::__construct();
     }
-    
+
     /**
      * Erstellt eine WG und verlinkt den User mit dieser WG
      */
@@ -85,29 +85,34 @@ class FlatModel extends Model {
 
         //Suche nach WG mit diesem Code
         $bind = array(':flatCode' => $flatCode);
-        $res = $this->db->select('id', 'flats', 'code = :flatCode LIMIT 1', $bind);
+        $res = $this->db->select('id, code', 'flats', 'code = :flatCode LIMIT 1', $bind);
 
-        if (!empty($res)) {//Fals eine WG zurück kam
+        //Fals eine WG zurück kam
+        if (!empty($res)) {
             $flatId = $res[0]['id'];
 
-            //Füge User WG hinzu
-            $bind = array(
-                ':userId' => $userId,
-                ':flatId' => $flatId,
-            );
-            $res = $this->db->update('users', 'flats_id = :flatId', 'id = :userId', $bind);
+            //Prüfen ob Eingabe genau gleich wie DB Code
+            if ($flatCode == $res[0]['code']) {
 
-            // Bei Update in DB
-            if ($res == 1) {
-                //Session var schreiben
-                Session::setFlatId($flatId);
-                return true;
-            } else {
-                return false;
+                //Füge User WG hinzu
+                $bind = array(
+                    ':userId' => $userId,
+                    ':flatId' => $flatId,
+                );
+                $res = $this->db->update('users', 'flats_id = :flatId', 'id = :userId', $bind);
+
+                // Bei Update in DB
+                if ($res == 1) {
+                    //Session var schreiben
+                    Session::setFlatId($flatId);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else { //Wenn es die WG nicht gibt, false zurückgeben
+                $error['error_msg'] = 'Flat Code not valid!';
+                return $error;
             }
-        } else { //Wenn es die WG nicht gibt, false zurückgeben
-            $error['error_msg'] = 'Flat Code not valid!';
-            return $error;
         }
     }
 
