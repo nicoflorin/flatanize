@@ -24,7 +24,7 @@
         <link href="<?= URL ?>/public/css/styles.min.css" rel="stylesheet">
 
         <!-- Muli font -->
-        <link href="http://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet" type="text/css">
+        <link href="<?= PROTOCOL ?>://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet" type="text/css">
 
         <!-- @Todo favicon -->
 
@@ -34,12 +34,6 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
     </head>
     <body>
         <div id="wrapper">

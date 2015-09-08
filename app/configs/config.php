@@ -20,6 +20,9 @@ define('SATURDAY', 'Saturday');
 define('SUNDAY', 'Sunday');
 define('CURR', 'CHF');
 
+//Protokoll (http/https)
+define('PROTOCOL', isset($_SERVER['HTTPS']) ? 'https' : 'http');
+
 //Paths Konstanten
-define('URL', 'http://'.$_SERVER['HTTP_HOST']);
+define('URL', PROTOCOL . '://' . $_SERVER['HTTP_HOST']);
 // ROOT in public/index.php definiert. ROOT => flatanize
