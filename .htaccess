@@ -1,11 +1,4 @@
 # -----------------------------------------------------------------------
-# Weiterleitung aller Anfragen
-# -----------------------------------------------------------------------
-RewriteEngine on
-    RewriteRule    ^$    public/    [L]
-    RewriteRule    (.*) public/$1    [L]
-
-# -----------------------------------------------------------------------
 # MIME Types definieren, damit Apache diese kennt
 # -----------------------------------------------------------------------
 <IfModule mod_mime.c>
@@ -40,3 +33,11 @@ RewriteEngine on
     AddOutputFilterByType DEFLATE font/otf
     AddOutputFilterByType DEFLATE font/opentype
 </Ifmodule>
+
+# -----------------------------------------------------------------------
+# Weiterleitung aller Anfragen
+# -----------------------------------------------------------------------
+RewriteEngine on
+    RewriteRule    ^$    public/    [L]
+    RewriteRule    (.*) public/$1    [L]
+
