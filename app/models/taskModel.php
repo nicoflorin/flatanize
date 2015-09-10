@@ -10,16 +10,22 @@ class TaskModel extends Model {
     function __construct() {
         parent::__construct();
     }
-    
+
     /**
      * Erstellt einen neuen Task
+     * @param string $flatId
+     * @param string $title
+     * @param string $freq
+     * @param string $nextDate
+     * @param string $users
+     * @return boolean
      */
     public function createTask($flatId, $title, $freq, $nextDate, $users) {
         //Hole Frequenz ID aus DB
         $bind = array(':freq' => $freq);
         $res = $this->db->select('id', 'frequencies', 'description = :freq LIMIT 1', $bind);
         $freqId = $res[0]['id'];
-        
+
         //Füge Daten in DB ein
         $bind = array(
             ':flatId' => $flatId,
@@ -94,9 +100,7 @@ class TaskModel extends Model {
     public function getTask($id) {
         $bind = array(':id' => $id);
         $res = $this->db->select(
-                'a.id, a.flats_id, a.title, a.next_date, b.description', 
-                'tasks a, frequencies b', 
-                'a.id = :id AND a.frequencies_id = b.id', $bind);
+                'a.id, a.flats_id, a.title, a.next_date, b.description', 'tasks a, frequencies b', 'a.id = :id AND a.frequencies_id = b.id', $bind);
 
         if (!empty($res)) {
             return $res;
@@ -109,6 +113,7 @@ class TaskModel extends Model {
      * Holt für einen Task den aktiven User aus der DB
      * @param type $flatId
      * @param type $taskId
+     * @return array
      */
     public function getActiveUser($flatId, $taskId) {
         //@Todo evtl. View erstellen
@@ -189,6 +194,7 @@ class TaskModel extends Model {
      * Berechnet das nächste Datum für Task
      * @param type $date
      * @param type $freq
+     * @return string
      */
     public function calcNextDate($date, $freq) {
         $date = new DateTime($date);
@@ -219,11 +225,11 @@ class TaskModel extends Model {
 
         return $ret;
     }
-    
-        /**
+
+    /**
      * Gibt Wochentag zurück
-     * @param type $date
-     * @return type
+     * @param string $date
+     * @return string
      */
     function getWeekday($date) {
         $day = date('w', strtotime($date));

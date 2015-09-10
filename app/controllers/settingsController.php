@@ -12,6 +12,9 @@ class SettingsController extends Controller {
         Session::checkLogin();
     }
 
+    /**
+     * Lädt die Index Seite
+     */
     public function index() {
         $this->flatSettings();
     }
@@ -134,7 +137,7 @@ class SettingsController extends Controller {
     }
 
     /**
-     * Zuständig für das Passwort wechseln
+     * Handelt den Passwort-Wechsel
      */
     public function changePassword() {
         $oldPW = $_POST['old_password'];
@@ -156,7 +159,7 @@ class SettingsController extends Controller {
     }
 
     /**
-     * Zuständig für das wechseln des Anzeigenamens
+     * Handelt das Wechseln des Anzeigenamens
      */
     public function changeDisplayName() {
         $displayName = strip_tags($_POST['displayName']);

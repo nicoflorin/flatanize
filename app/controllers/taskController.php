@@ -34,6 +34,7 @@ class TaskController extends Controller {
             }
         }
         
+        //Wertean View übergeben
         $this->view->userTaskList = $userTaskList;
         $this->view->allTaskList = $allTaskList;
         $this->view->taskList = $taskList;

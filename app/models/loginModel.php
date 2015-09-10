@@ -13,6 +13,10 @@ class LoginModel extends Model {
 
     /**
      * Verarbeitet Login
+     * @param string $username
+     * @param string $password
+     * @param string $remember
+     * @return boolean
      */
     public function login($username, $password, $remember) {
         // Select auf diesen Usernamen

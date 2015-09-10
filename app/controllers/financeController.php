@@ -64,6 +64,8 @@ class FinanceController extends Controller {
 
     /**
      * Lädt die Seite um einen Eintrag zu erstellen
+     * 
+     * @param array $error
      */
     public function showCreateEntry(...$error) {
         //Hole Displayname für alle User einer WG

@@ -1,14 +1,18 @@
 <?php
 
 /**
- * 
+ * Controller Parent-Klasse. Von dieser Klasse erben alle weiteren Controller.
+ *
+ * @author Nico
  */
 class Controller {
 
+    //Properties
     protected $model;
     protected $view;
 
     function __construct() {
+        //Property view instanzieren
         $this->view = new View();
         Session::init(); //Session initialisieren
         Cookie::checkCookieLogin(); //Prüfen ob Cookie Login OK
@@ -19,9 +23,9 @@ class Controller {
      * @param string $model
      */
     public function loadModel($model) {
-
         $file = ROOT . '/app/models/' . $model . 'Model.php';
 
+        //Prüfen ob die Datei existiert. Falls ja, includen und Property model instanzieren
         if (file_exists($file)) {
             require_once $file;
             $this->model = $model . "Model";
@@ -43,8 +47,8 @@ class Controller {
 
     /**
      * Leitet Anfrage per Header Änderung um
-     * @param string $controller
-     * @param string $method
+     * @param string $controller    default 'home'
+     * @param string $method        default 'index'
      * @param array $args
      */
     public function redirect($controller="home", $method = "index", $args = array()) {

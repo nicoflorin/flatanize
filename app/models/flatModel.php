@@ -13,6 +13,9 @@ class FlatModel extends Model {
 
     /**
      * Erstellt eine WG und verlinkt den User mit dieser WG
+     * @param string $flatName
+     * @param string $userId
+     * @return string|boolean
      */
     public function create($flatName, $userId) {
 
@@ -58,6 +61,8 @@ class FlatModel extends Model {
 
     /**
      * Löscht bei einem User die WG Verlinkung
+     * @param string $userId
+     * @return boolean
      */
     public function leave($userId) {
         $bind = array(':userId' => $userId);
@@ -73,6 +78,9 @@ class FlatModel extends Model {
 
     /**
      * fügt einen Benutzer einer bestehenden WG hinzu
+     * @param string $userId
+     * @param string $flatCode
+     * @return string|boolean
      */
     public function join($userId, $flatCode) {
 
@@ -119,6 +127,7 @@ class FlatModel extends Model {
     /**
      * Holt den WG Code aus der DB
      * @param int $flatId
+     * @return array|boolean
      */
     public function getFlatCode($flatId) {
         //Suche nach WG mit dieser Id
@@ -136,6 +145,7 @@ class FlatModel extends Model {
     /**
      * Holt den WG Namen aus der DB
      * @param int $flatId
+     * @return array|boolean
      */
     public function getFlatName($flatId) {
         //Suche nach WG mit dieser Id
@@ -153,12 +163,14 @@ class FlatModel extends Model {
     /**
      * Holt alle usersId aus einer WG
      * @param type $flatId
+     * @return array|boolean
      */
     public function getFlatUsers($flatId) {
         //Suche nach WG mit dieser Id
         $bind = array(':flatId' => $flatId);
         $res = $this->db->select('id, display_name', 'users', 'flats_id = :flatId', $bind);
 
+        //Falls Daten zurück kamen
         if (!empty($res)) {
             return $res;
         } else {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * App Class
+ * App Klasse
  * Hier wird der Controller und die Funktion geladen
  */
 class App {

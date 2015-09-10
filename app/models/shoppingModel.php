@@ -13,6 +13,11 @@ class ShoppingModel extends Model {
     
     /**
      * Fügt einen neuen Eintrag zur Shopping List hinzu
+     * @param string $flatId
+     * @param string $product
+     * @param string $amount    default ''
+     * @param string $userId
+     * @return boolean
      */
     public function add($flatId, $product, $amount = "", $userId) {
 
@@ -34,6 +39,7 @@ class ShoppingModel extends Model {
     /**
      * Löscht einen Eintrag aus der Shopping List
      * @param type $id
+     * @return array|boolean
      */
     public function delete($id) {
         $bind = array(

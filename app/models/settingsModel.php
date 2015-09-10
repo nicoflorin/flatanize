@@ -7,6 +7,7 @@
  */
 class SettingsModel extends Model {
 
+    //Konstante für Maximale Anzeigename-Länge
     const MAX_DISPLAYNAME = 15;
 
     function __construct() {

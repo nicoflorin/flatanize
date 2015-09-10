@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Session
+ * Beinhaltet die Statischen Funktionen für Session-Aufgaben
  *
  * @author Nico
  */
@@ -14,10 +14,20 @@ class Session {
         @session_start();
     }
 
+    /**
+     * Setzt wert einer Session Variable
+     * @param string $key
+     * @param string $value
+     */
     public static function set($key, $value) {
         $_SESSION[$key] = $value;
     }
 
+    /**
+     * Holt Wert einer Session Variable
+     * @param string $key
+     * @return string/boolean
+     */
     public static function get($key) {
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
@@ -27,7 +37,7 @@ class Session {
     }
 
     /**
-     * Zerstört eine Session
+     * Zerstört eine Session, Löscht Cookie
      */
     public static function destroy() {
         unset($_SESSION);
@@ -59,27 +69,29 @@ class Session {
      * @return boolean
      */
     public static function checkLogin() {
+        //Wenn angemeldet
         if (Session::isLoggedIn()) {
             // Prüfen ob FlatId Session var noch aktuell
             // dann Session var FlatId mit Wert aus DB überschreiben
             // sonst Session var FlatId löschen
             $userId = Session::getUserId();
             $db = new Database();
-            
+
             // Select auf diesen user
             $bind = array(':userId' => $userId);
             $res = $db->select('flats_id', 'users', 'id = :userId LIMIT 1', $bind);
             $flatId = $res[0]['flats_id'];
-            
+
             //Prüfen ob flatId in DB leer
             if (!empty($flatId)) {
                 Session::setFlatId($flatId); //flatId Session var überschreiben
             } else {
                 Session::unSetFlatId(); //flatId Session var löschen
             }
-            
+
             return true;
-        } else {
+        } else { //Wenn nicht angemeldet
+            //Session löschen und auf Startseite weiterleiten
             Session::destroy();
             header("Location: " . URL);
             exit;
@@ -88,6 +100,7 @@ class Session {
 
     /**
      * Setzt 'user_id' Session Variable
+     * @param string $userId
      */
     public static function setUserId($userId) {
         $_SESSION['user_id'] = $userId;
@@ -95,7 +108,7 @@ class Session {
 
     /**
      * Gibt user ID zurück, falls vorhanden
-     * @return boolean
+     * @return string/boolean
      */
     public static function getUserId() {
         if (isset($_SESSION['user_id'])) {
@@ -107,6 +120,7 @@ class Session {
 
     /**
      * Setzt 'flat_id' Session Variable
+     * @param string $flatId
      */
     public static function setFlatId($flatId) {
         $_SESSION['flat_id'] = $flatId;
@@ -114,7 +128,7 @@ class Session {
 
     /**
      * Gibt flat ID zurück, falls vorhanden
-     * @return boolean
+     * @return string/boolean
      */
     public static function getFlatId() {
         if (isset($_SESSION['flat_id'])) {

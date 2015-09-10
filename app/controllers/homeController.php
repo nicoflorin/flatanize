@@ -2,6 +2,8 @@
 
 /**
  * Controller für Home
+ *
+ * @author Nico
  */
 class HomeController extends Controller {
 

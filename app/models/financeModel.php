@@ -10,7 +10,7 @@ class FinanceModel extends Model {
     function __construct() {
         parent::__construct();
     }
-    
+
     /**
      * Erstellt einen neuen Finanz Eintrag in DB
      * @param int $flatId
@@ -245,7 +245,7 @@ class FinanceModel extends Model {
      * Berechnet Balance Informationen
      * @param int $flatId
      * @param int $flatUsers
-     * @return array|boolean
+     * @return array/boolean
      */
     public function calcBalanceInfos($flatId, $flatUsers) {
 

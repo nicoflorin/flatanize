@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of Cookie
+ * Beinhaltet die Statischen Funktionen für Cookie-Aufgaben
  *
  * @author Nico
  */
@@ -23,7 +23,7 @@ class Cookie {
     /**
      * Holt ein Cookie anhand des keys
      * @param type $key
-     * @return boolean
+     * @return string/boolean
      */
     public static function get($key) {
         if (isset($_COOKIE[$key])) {
