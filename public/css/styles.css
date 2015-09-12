@@ -38,7 +38,6 @@ aside {
 /* =========================================== */
 /* Well Einstellungen */
 
-
 .well .page-header {
     margin-top: 0;   
     margin-bottom: 15px;
@@ -216,21 +215,30 @@ aside {
 /* ===========================================
     Standard Carousel Einstellungen
 ============================================*/
+
+.carousel-caption {
+    color: #000;
+}
+
 #mainCarousel .item {
     height: 500px;   
 }
 
+/* Whiteboard */
 #slide1 {
-    background: url('../images/carousel_large_01.jpg') top center no-repeat;
+    background: url('../images/whiteboard_large.png') top center no-repeat;
 }
+/* Shopping List */
 #slide2 {
-    background: url('../images/carousel_large_01.jpg') top center no-repeat;
+    background: url('../images/shopping_list_large.png') top center no-repeat;
 }
+/* Task Scheduler */
 #slide3 {
-    background: url('../images/carousel_large_01.jpg') top center no-repeat;
+    background: url('../images/task_scheduling_large.png') top center no-repeat;
 }
+/* Finances */
 #slide4 {
-    background: url('../images/carousel_large_01.jpg') top center no-repeat;
+    background: url('../images/finances_large.png') top center no-repeat;
 }
 
 
@@ -415,17 +423,21 @@ footer > div > p {
         height: 310px;   
     }
 
+    /* Whiteboard */
     #slide1 {
-        background: url('../images/carousel_small_01.jpg') top center no-repeat;
+        background: url('../images/whiteboard_small.png') top center no-repeat;
     }
+    /* Shopping List */
     #slide2 {
-        background: url('../images/carousel_small_01.jpg') top center no-repeat;
+        background: url('../images/shopping_list_small.png') top center no-repeat;
     }
+    /* Task Scheduling */
     #slide3 {
-        background: url('../images/carousel_small_01.jpg') top center no-repeat;
+        background: url('../images/task_scheduling_small.png') top center no-repeat;
     }
+    /* Finances */
     #slide4 {
-        background: url('../images/carousel_small_01.jpg') top center no-repeat;
+        background: url('../images/finances_small.png') top center no-repeat;
     }
 
     /* Kleinere Schriftgrösse für kleinere Bildschirme */
