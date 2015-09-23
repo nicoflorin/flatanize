@@ -70,15 +70,12 @@
                                 <p>on: <?= $entry['date'] ?></p>
                                 <p>participants: </p>
                                 <table class="table">
-                                    <?php
-                                    $entryId = $entry['id'];
-                                    foreach ($this->userList[$entryId] as $user) {
-                                        echo '<tr>';
-                                        echo '<td>' . $user['display_name'] . '</td>';
-                                        echo '<td>' . number_format($entry['pricePP'], 2, '.', '') . ' ' . CURR . '</td>';
-                                        echo '</tr>';
-                                    }
-                                    ?>
+                                    <?php foreach ($this->userList[$entry['id']] as $user) : ?>
+                                        <tr>
+                                            <td><?= $user['display_name'] ?></td>
+                                            <td><?= number_format($entry['pricePP'], 2, '.', '') . ' ' . CURR ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </table>
                             </div>
                             <div class="modal-footer">

@@ -134,9 +134,7 @@
 
             <!-- Modal für Task Information -->
             <div id="taskModal">
-                <?php
-                foreach ($this->allTaskList as $entry) {
-                    ?>
+                <?php foreach ($this->allTaskList as $entry) : ?>
                     <div id="TaskInfoId<?= $entry['id'] ?>" class="modal fade">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -157,7 +155,6 @@
                                     <?php else : ?>
                                         <p>This task is due in <?= $entry['due_in'] ?> <?php echo ($entry['due_in'] == 1) ? 'day' : 'days' ?>.</p>
                                     <?php endif; ?>
-
                                 </div>
                                 <div class="modal-footer">
                                     <form method="post" action="<?= URL ?>/task/deleteTask">
@@ -169,9 +166,7 @@
                             </div>
                         </div><!-- end modal -->
                     </div><!-- end TaskInfoId -->
-                    <?php
-                }
-                ?>
+                <?php endforeach; ?>
             </div><!-- financeModal -->
         </div><!-- end taskContent -->
     <?php endif; ?>
