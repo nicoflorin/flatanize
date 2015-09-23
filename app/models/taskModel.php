@@ -39,7 +39,6 @@ class TaskModel extends Model {
         //Wenn OK
         if ($res == 1) {
             //Erstelle für jeden User einen Eintrag in task_users
-            //@Todo UserOrder aus GUI übernehmen
             $userOrder = 1;
             foreach ($users as $user) {
                 $this->setTaskUser($user, $taskId, $userOrder);
@@ -116,7 +115,6 @@ class TaskModel extends Model {
      * @return array
      */
     public function getActiveUser($flatId, $taskId) {
-        //@Todo evtl. View erstellen
         $bind = array(
             ':flatId' => $flatId,
             ':taskId' => $taskId

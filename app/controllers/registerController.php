@@ -28,13 +28,10 @@ class RegisterController extends Controller {
         $in_email = strip_tags($_POST['email']);
         $in_password = $_POST['password'];
         $in_flatCode = $_POST['flat_code'];
-        
-        //@Todo Fehlerüberprüfung 
 
         $this->loadModel('settings');
         $res = $this->model->register($in_userName, $in_displayName, $in_email, $in_password, $in_flatCode);
 
-        //@Todo Passwortlänge mind. 8 Zeichen lang.
         //Falls keine Fehler aufgetreten sind
         if ($res === true) {
             $this->view->assign('success', 'true');

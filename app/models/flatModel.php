@@ -43,7 +43,7 @@ class FlatModel extends Model {
                 $res = $this->db->insert('flats', 'name, code', ':flatName, :code', $bind);
                 $flatId = $this->db->lastInsertId();
                 Session::setFlatId($flatId);
-                //@Todo Besser lösen als so
+                //User Model laden
                 require_once ROOT . '/app/models/userModel.php';
                 $user = new UserModel();
                 $user->linkUserToFlat($userId, $flatId);

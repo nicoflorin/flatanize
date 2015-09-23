@@ -122,7 +122,6 @@ class SettingsController extends Controller {
         $this->loadModel('flat');
         $flatCode = $this->model->getFlatCode(Session::getFlatId());
 
-        //@Todo Email versand
         $betreff = 'flatanize invitation';
         $nachricht = 'Hello' . "\r\n" . 'Want to join my awesome flat on flatanize?' . "\r\n" .
                 'Create an account at ' . URL . '/register/index and enter this flat code: '. $flatCode;

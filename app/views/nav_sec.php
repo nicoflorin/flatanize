@@ -2,7 +2,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="container">
-
         <div class="navbar-header">
             <!-- button for menu when on mobile -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapse">
@@ -18,8 +17,6 @@
 
             <!-- Titel -->
             <a class="brand" href="<?= URL ?>"><img src="<?= URL ?>/public/images/brand.png" alt="brand" /></a>
-            
-
         </div><!-- end navbar-header -->
 
         <!-- Collect the nav links and forms for toggling -->
@@ -41,7 +38,6 @@
                     </ul>
                 </li>
             </ul>
-
         </div><!-- end navbarCollapse -->
     </div> <!-- end container -->
 </nav><!-- end nav -->	

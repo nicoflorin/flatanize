@@ -33,14 +33,11 @@
                         <div class="form-group">
                             <input type="password" id="verify_password" name="verify_password" class="form-control" placeholder="New Password (confirm)" tabindex="3" required> 
                         </div>
-
                         <div class="form-group">
                             <input type="submit" value="Change" class="btn btn-success" tabindex="4">
                         </div>
                     </form>
                 </div><!-- end panel-body -->
-                <!-- @Todo Bild hochladen -->
-                <!-- @Todo Anzeigenamen ändern -->
             </div><!-- end panel -->
         </div><!-- end changePassword -->
 
@@ -68,8 +65,6 @@
                         </div>
                     </form>
                 </div><!-- end panel-body -->
-                <!-- @Todo Bild hochladen -->
-                <!-- @Todo Anzeigenamen ändern -->
             </div><!-- end panel -->
         </div><!-- end changeDisplayName -->
     </div><!-- end userSettings -->

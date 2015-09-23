@@ -126,7 +126,6 @@ class TaskController extends Controller {
         $users = (isset($_POST['user'])) ? $_POST['user'] : ''; //Array, falls nicht gesetzt leer lassen
         $flatId = Session::getFlatId();
 
-        //@Todo erster User anhand von Reihenfolge Auswahl in GUI
         $this->loadModel('task');
 
         $error = [];
@@ -173,7 +172,6 @@ class TaskController extends Controller {
      * Löscht einen Task aus DB
      */
     public function deleteTask() {
-        //@Todo prüfen ob User berechtigt
         $id = $_POST['id'];
         if (!empty($id)) {
             $this->loadModel('task');
@@ -187,7 +185,6 @@ class TaskController extends Controller {
      * Setzt den Task für den eingeloggten User auf erledigt
      */
     public function setTaskDone() {
-        //@Todo prüfen ob User berechtigt
         $id = $_POST['id'];
         if (!empty($id)) {
             $userId = Session::getUserId();

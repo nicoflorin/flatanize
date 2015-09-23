@@ -157,7 +157,6 @@ class FinanceController extends Controller {
      * Löscht einen Eintrag aus der DB
      */
     public function deleteEntry() {
-        //@Todo prüfen ob berechtigt
         $id = $_POST['id'];
         if (!empty($id)) {
             $this->loadModel('finance');

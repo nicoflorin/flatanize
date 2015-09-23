@@ -27,7 +27,6 @@ class ShoppingController extends Controller {
      * Handelt das hinzügen eines Artikel zur Shopping List
      */
     public function addToShoppingList() {
-        //@Todo Eingabe Produkt mit Produkt:Menge. Dann String bei : trennen
         $product = strip_tags($_POST['product']);
         $amount = $_POST['amount'];
         $flatId = Session::getFlatId();
@@ -52,7 +51,6 @@ class ShoppingController extends Controller {
 
     public function deleteFromShoppingList() {
         $id = $_POST['id'];
-        //@Todo prüfen ob user berechtigt ist zum löschen
         if (!empty($id)) {
             $this->loadModel('shopping');
             $res = $this->model->delete($id);

@@ -32,7 +32,7 @@
                         </select>
                     </div>
                 </div>
-               
+
                 <div class="form-group <?php echo (isset($this->data['date'])) ? 'has-error' : '' ?>">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar fa-lg"></i></span>
@@ -55,7 +55,6 @@
                         <span class="help-block">Select at least one resident!</span>
                     <?php endif; ?> 
                 </div>
-
                 <div class="form-group">
                     <input type="submit" value="Create Task" class="btn btn-success btn-block btn-lg" tabindex="5">
                 </div>

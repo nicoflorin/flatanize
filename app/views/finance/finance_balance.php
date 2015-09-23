@@ -29,26 +29,26 @@
                     } else {
                         $balance['minus'] = true;
                         $diff = $diff . ' ' . CURR;
-                    }
+                        }
                     ?>
-                    <tr>
+                <tr>
                         <td>
                             <?php if (isset($balance['minus'])) : ?>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; float: right;"' : '' ?>>
-                                    <span><?= $diff ?></span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" <?php echo (isset($balance['minus'])) ? ' style="width: ' . $balance['perc'] . '%; float: right;"' : '' ?>>
+                                        <span><?= $diff ?></span>
+                                    </div>
                                 </div>
-                            </div>
                             <?php endif; ?>
                         </td>
                         <td class="text-center"><i class="fa fa-user fa-lg"></i><br><?= $balance['display_name'] ?></td>
                         <td>
                             <?php if (isset($balance['plus'])) : ?>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : '' ?>>
-                                    <span><?= $diff ?></span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" <?php echo (isset($balance['plus'])) ? ' style="width: ' . $balance['perc'] . '%;"' : '' ?>>
+                                        <span><?= $diff ?></span>
+                                    </div>
                                 </div>
-                            </div>
                             <?php endif; ?>
                         </td>
                     </tr>
