@@ -37,7 +37,6 @@ aside {
 
 /* =========================================== */
 /* Well Einstellungen */
-
 .well .page-header {
     margin-top: 0;   
     margin-bottom: 15px;
@@ -114,9 +113,9 @@ aside {
     padding: 0 !important;
 }
 
-
 /* =========================================== */
 /* Finanzen */
+
 /* Default margin-bottom bei progressbar löschen */
 .progress {
     margin-bottom: 0;
@@ -126,6 +125,7 @@ aside {
 .progress {
     position: relative;
 }
+
 /* Damit Text in Progressbar immer zentriert ist */
 .progress span {
     position: absolute;
@@ -184,7 +184,6 @@ aside {
     z-index: 1000; /* Label vor alles andere setzen */
 }
 
-
 /* ===========================================
     Sidebar
 ============================================*/
@@ -210,7 +209,6 @@ aside {
 .carousel-caption h4 {  /* font size von carousel titel */
     font-size: 32px
 }
-
 
 /* ===========================================
     Standard Carousel Einstellungen
@@ -240,7 +238,6 @@ aside {
 #slide4 {
     background: url('../images/finances_large.png') top center no-repeat;
 }
-
 
 /* ===========================================
     Callout
