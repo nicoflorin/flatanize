@@ -13,26 +13,38 @@
         <META NAME="Language" CONTENT="English">
         <META NAME="Copyright" CONTENT="Nico Florin">
         <META NAME="distribution" CONTENT="Global">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/public/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/public/images/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/public/images/favicon-16x16.png">
 
         <!-- Bootstrap -->
-        <link href="<?= URL ?>/public/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/public/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- font-awesome -->
-        <link href="<?= URL ?>/public/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/public/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- own Stylesheet -->
-        <link href="<?= URL ?>/public/css/styles.min.css" rel="stylesheet">
+        <link href="/public/css/styles.min.css" rel="stylesheet">
 
         <!-- Muli font -->
         <link href="<?= PROTOCOL ?>://fonts.googleapis.com/css?family=Muli:300" rel="stylesheet" type="text/css">
 
-        <!-- @Todo favicon -->
-
-        <!-- iOS -->
+        <!-- iOS / WebApp -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="<?= TITLE ?>">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no">
+        <link rel="apple-touch-icon" sizes="57x57" href="/public/images/webapp/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/public/images/webapp/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/public/images/webapp/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/public/images/webapp/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/public/images/webapp/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/public/images/webapp/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/public/images/webapp/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/public/images/webapp/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/public/images/webapp/apple-icon-180x180.png">
 
     </head>
     <body>
