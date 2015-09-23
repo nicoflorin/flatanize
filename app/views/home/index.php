@@ -14,25 +14,25 @@
         <div class="item active" id="slide1">
             <div class="carousel-caption">
                 <h4>Whiteboard</h4>
-                <p>Write important messages to the whiteboard, so all your flat mates can see them!</p>
+                <!-- <p>Write important messages to the whiteboard, so all your flat mates can see them!</p> -->
             </div>
         </div><!-- end item -->
         <div class="item" id="slide2">
             <div class="carousel-caption">
                 <h4>Shopping List</h4>
-                <p>Create and maintain a shared shopping list!</p>
+                <!-- <p>Create and maintain a shared shopping list!</p> -->
             </div>
         </div><!-- end item -->
         <div class="item" id="slide3">
             <div class="carousel-caption">
                 <h4>Task Scheduling</h4>
-                <p>Organize your daily doings in your flat with an awesome task scheduler!</p>
+                <!-- <p>Organize your daily doings in your flat with an awesome task scheduler!</p> -->
             </div>
         </div><!-- end item -->
         <div class="item" id="slide4">
             <div class="carousel-caption">
                 <h4>Finances</h4>
-                <p>No struggle with your expenses anymore! Flatanize keeps track of your finances.</p>
+                <!-- <p>No struggle with your expenses anymore! Flatanize keeps track of your finances.</p> -->
             </div>
         </div><!-- end item -->
     </div><!-- end carousel-inner -->
